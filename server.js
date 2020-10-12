@@ -27,18 +27,18 @@ const morgan = require('morgan')
     LOGS_ENABLED
   } = process.env
 
-  const distDirectory = DIST_DIRECTORY || config.has('distDirectory') ? config.get('distDirectory') :
-    'dist/'
-  const port = PORT || config.has('port') ? config.get('port') :
-    3000
+  const distDirectory = DIST_DIRECTORY || (config.has('distDirectory') ? config.get('distDirectory') :
+    'dist/')
+  const port = PORT || (config.has('port') ? config.get('port') :
+    3000)
   const cacheEnabled = isEnabled(CACHE_ENABLED, 'cacheEnabled', config)
-  const cacheControlHeaderValue = CACHE_CONTROL_HEADER_VALUE || config.has('cacheControlHeaderValue') ? config.get('cacheControlHeaderValue') :
-    'public, no-cache, max-age=604800'
-  const defaultFile = DEFALUT_FILE || config.has('defaultFile') ? config.get('defaultFile') :
-    'index.html'
+  const cacheControlHeaderValue = CACHE_CONTROL_HEADER_VALUE || (config.has('cacheControlHeaderValue') ? config.get('cacheControlHeaderValue') :
+    'public, no-cache, max-age=604800')
+  const defaultFile = DEFALUT_FILE || (config.has('defaultFile') ? config.get('defaultFile') :
+    'index.html')
   const logsEnabled = isEnabled(LOGS_ENABLED, 'logsEnabled', config)
-  const logsFormat = LOGS_FORMAT || config.has('logsFormat') ? config.get('logsFormat') :
-    jsonFormat
+  const logsFormat = LOGS_FORMAT || (config.has('logsFormat') ? config.get('logsFormat') :
+    jsonFormat)
 
   // middleware for serving static files
   const serve = files(path.join(__dirname, distDirectory), {

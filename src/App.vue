@@ -114,7 +114,7 @@ export default {
       options: {
         fullWidth: true,
         dualView: true,
-        singleView: 0
+        singleView: 'corpus'
       },
       wideScreen: false
     }

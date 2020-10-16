@@ -9,7 +9,7 @@
           <v-col :class="{
             'col-12': true,
             'col-lg-6': dualView,
-            'd-none': !dualView && mainData.options.singleView !== 0
+            'd-none': !dualView && mainData.options.singleView !== 'search'
           }">
             <v-card class="fill-height">
               <SearchSelect :mainData="mainData" :viewNr="0" :dualView="dualView" />
@@ -19,7 +19,7 @@
           <v-col :class="{
             'col-12': true,
             'col-lg-6': dualView,
-            'd-none': !dualView && mainData.options.singleView !== 1
+            'd-none': !dualView && mainData.options.singleView !== 'corpus'
           }">
             <v-card class="fill-height d-flex flex-column">
               <SearchSelect :mainData="mainData" :viewNr="1" :dualView="dualView" />

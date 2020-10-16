@@ -40,11 +40,11 @@ export default {
   },
   methods: {
     search () {
-      this.mainData.options.singleView = 0
+      this.mainData.options.singleView = 'search'
     },
     selectCorpusElement (ceId) {
       this.mainData.corpus.selectedElement = ceId
-      this.mainData.options.singleView = 1
+      this.mainData.options.singleView = 'corpus'
     },
     closeCorpusElement (ceId, ceKey) {
       console.log('closeCorpusElement', ceKey)

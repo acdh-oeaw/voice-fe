@@ -56,7 +56,7 @@ export default {
     active (nVal) {
       this.mainData.corpus.selectedElement = nVal[0]
       if (nVal[0]) {
-        this.mainData.options.singleView = 1
+        this.mainData.options.singleView = 'corpus'
         if (this.mainData.corpus.elements.filter(e => e.id === nVal[0]).length === 0) {
           if (this.mainData.corpus.obj[nVal[0]]) {
             this.$set(this.mainData.corpus.obj[nVal[0]], 'loaded', true)

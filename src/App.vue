@@ -18,6 +18,12 @@
     <v-main>
       <router-view :main-data="mainData" />
     </v-main>
+    <v-overlay :value="loading">
+      <v-progress-circular
+        indeterminate
+        size="64"
+      ></v-progress-circular>
+    </v-overlay>
   </v-app>
 </template>
 
@@ -25,6 +31,7 @@
 export default {
   name: 'App',
   data: () => ({
+    loading: false,
     publicPath: process.env.BASE_URL,
     mainData: {
       search: {
@@ -38,77 +45,6 @@ export default {
         elements: [
         ],
         list: [
-          {
-            id: 'ED',
-            children: [
-              { id: 'EDcon4' },
-              { id: 'EDcon250' },
-              { id: 'EDcon496', audio: true },
-              { id: 'EDcon521', audio: true },
-              { id: 'EDint328' },
-              { id: 'EDint330' },
-              { id: 'EDint331' },
-              { id: 'EDint604' },
-              { id: 'EDint605' },
-              { id: 'EDsed31' },
-              { id: 'EDsed25', audio: true },
-              { id: 'EDsed301' },
-              { id: 'EDsed362' },
-              { id: 'EDsed363' },
-              { id: 'EDsed364' },
-              { id: 'EDsve421' },
-              { id: 'EDsve422', audio: true },
-              { id: 'EDsve423' },
-              { id: 'EDsve451' },
-              { id: 'EDsve452' },
-              { id: 'EDwgd5' },
-              { id: 'EDwgd6' },
-              { id: 'EDwgd241' },
-              { id: 'EDwgd305' },
-              { id: 'EDwgd497', audio: true },
-              { id: 'EDwsd9' },
-              { id: 'EDwsd15' },
-              { id: 'EDwsd242' },
-              { id: 'EDwsd302' },
-              { id: 'EDwsd303', audio: true },
-              { id: 'EDwsd304' },
-              { id: 'EDwsd306' },
-              { id: 'EDwsd464' },
-              { id: 'EDwsd499' },
-              { id: 'EDwsd590' }
-            ]
-          },
-          {
-            id: 'LE',
-            children: [
-              { id: 'LEcon8' },
-              { id: 'LEcon227' },
-              { id: 'LEcon228' },
-              { id: 'LEcon229' },
-              { id: 'LEcon329' },
-              { id: 'LEcon351' },
-              { id: 'LEcon352' },
-              { id: 'LEcon353' },
-              { id: 'LEcon405' },
-              { id: 'LEcon417' },
-              { id: 'LEcon418' },
-              { id: 'LEcon420', audio: true },
-              { id: 'LEcon545', audio: true },
-              { id: 'LEcon547' },
-              { id: 'LEcon548' },
-              { id: 'LEcon560' },
-              { id: 'LEcon562' },
-              { id: 'LEcon565' },
-              { id: 'LEcon566', audio: true },
-              { id: 'LEcon573' },
-              { id: 'LEcon575' },
-              { id: 'LEint551' },
-              { id: 'LEint552' },
-              { id: 'LEint553' },
-              { id: 'LEint554' },
-              { id: 'LEint555' }
-            ]
-          }
         ]
       },
       options: {
@@ -121,7 +57,7 @@ export default {
   }),
   mounted () {
     this.resized()
-    this.updateCorpus()
+    this.loadCorpus()
     window.addEventListener('resize', this.resized)
   },
   beforeDestroy () {
@@ -131,20 +67,58 @@ export default {
     resized () {
       this.mainData.wideScreen = window.innerWidth >= 1264
     },
-    updateCorpus () {
-      let flatCorpusList = (cList, aObj) => {
-        cList.forEach(el => {
-          if (el.children) {
-            flatCorpusList(el.children, aObj)
-          } else {
-            aObj[el.id] = el
+    loadCorpus () {
+      this.loading = true
+      this.$http
+        .get('/corpustree.json')
+        .then((response) => {
+          // console.log(response)
+          let getCorpusObjs = (cList, aObj) => {
+            cList.forEach(el => {
+              if (el.speechEvents) {
+                el.id = el.label
+                el.children = el.speechEvents
+                delete el.speechEvents
+                getCorpusObjs(el.children, aObj)
+              } else {
+                ['speakersBucket', 'interactantsBucket'].forEach(p => {
+                  if (typeof el[p] !== 'undefined') {
+                    let aStr = el[p].toString()
+                    let aFrom = el[p]
+                    let aTo = el[p]
+                    if (typeof el[p] === 'string') {
+                      if (aFrom.indexOf('–') > -1) {
+                        let aVals = aFrom.split('–')
+                        aFrom = parseInt(aVals[0])
+                        aTo = parseInt(aVals[1])
+                      } else if (aFrom.indexOf('and more') > -1) {
+                        aFrom = parseInt(aFrom)
+                        aTo = Infinity
+                      } else {
+                        aFrom = parseInt(aFrom)
+                        aTo = parseInt(aTo)
+                      }
+                    }
+                    el[p] = { str: aStr, from: aFrom, to: aTo}
+                  }
+                })
+                el.loaded = false
+                el.loading = false
+                aObj[el.id] = el
+              }
+            })
+            return aObj
           }
+          let aObj = {}
+          this.$set(this.mainData.corpus, 'list', response.data.domains)
+          this.$set(this.mainData.corpus, 'obj', getCorpusObjs(this.mainData.corpus.list, aObj))
+          console.log('mainData.corpus', this.mainData.corpus)
+          this.loading = false
         })
-        return aObj
-      }
-      let aObj = {}
-      this.$set(this.mainData.corpus, 'obj', flatCorpusList(this.mainData.corpus.list, aObj))
-      console.log('mainData.corpus.obj', this.mainData.corpus.obj)
+        .catch((err) => {
+          console.log(err)
+          this.loading = false
+        })
     }
   },
   computed: {

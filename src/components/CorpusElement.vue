@@ -11,9 +11,10 @@
       <div class="px-3 py-2">
         VOICE - {{ vTab }}<br>
         {{ aElement ? aElement.id : 'Kein Element ausgewählt ...'}}
+        <code v-if="aElement" style="display: block; white-space: pre-wrap;">{{ aElement }}</code>
       </div>
     </div>
-    <div class="fx-bt audio-frm px-3 py-1" v-if="aElement && aElement.audio">
+    <div class="fx-bt audio-frm px-3 py-1" v-if="aElement && aElement.audioAvailable">
       Audioplayer
     </div>
   </div>

@@ -19,7 +19,7 @@
             }">{{ item.id }}</span>
           </template>
           <template v-slot:append="{ item }">
-            <v-icon v-if="item.audio">mdi-volume-high</v-icon>
+            <v-icon v-if="item.audioAvailable">mdi-volume-high</v-icon>
           </template>
         </v-treeview>
       </v-tab-item>

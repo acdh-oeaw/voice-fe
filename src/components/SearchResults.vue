@@ -12,7 +12,6 @@ export default {
     'mainData': Object
   },
   data: () => ({
-    publicPath: process.env.BASE_URL
   }),
   mounted () {
     console.log('SearchResults', this.mainData)

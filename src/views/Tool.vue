@@ -18,9 +18,8 @@
           </v-col>
           <v-col :class="{
             'col-12': true,
-            'col-lg-6': dualView,
-            'd-none': !dualView && mainData.options.singleView !== 'corpus'
-          }">
+            'col-lg-6': dualView
+          }" v-if="dualView || mainData.options.singleView === 'corpus'">
             <v-card class="fill-height d-flex flex-column">
               <SearchSelect :mainData="mainData" :viewNr="1" :dualView="dualView" />
               <CorpusElement :mainData="mainData" />

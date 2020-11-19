@@ -27,7 +27,6 @@ export default {
     'mainData': Object
   },
   data: () => ({
-    publicPath: process.env.BASE_URL,
     vTab: 0
   }),
   mounted () {

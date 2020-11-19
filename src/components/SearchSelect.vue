@@ -32,8 +32,6 @@ export default {
     'dualView': Boolean
   },
   data: () => ({
-    publicPath: process.env.BASE_URL,
-    cTab: 0
   }),
   mounted () {
     console.log('SearchSelect', this.mainData)

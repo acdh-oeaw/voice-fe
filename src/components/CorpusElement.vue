@@ -14,36 +14,48 @@
         <code v-if="aElement" style="display: block; white-space: pre-wrap;">{{ aElement }}</code>
       </div>
     </div>
-    <div class="fx-bt audio-frm px-3 py-1" v-if="aElement && aElement.audioAvailable">
-      Audioplayer
-    </div>
+    <Audioplayer class="fx-bt" :audiourl="aAudioUrl" v-if="!refreshAudio && aAudioUrl" />
   </div>
 </template>
 
 <script>
+import Audioplayer from './Audioplayer';
+
 export default {
   name: 'CorpusElement',
   props: {
     'mainData': Object
   },
   data: () => ({
-    vTab: 0
+    vTab: 0,
+    refreshAudio: false
   }),
   mounted () {
     console.log('CorpusElement', this.mainData)
   },
   computed: {
+    aAudioUrl () {
+      return this.aElement && this.aElement.audioAvailable && this.aElement.refs && this.aElement.refs.audio
+    },
     aElement () {
       return this.mainData.corpus.selectedElement && this.mainData.corpus.obj[this.mainData.corpus.selectedElement]
     }
   },
   methods: {
+  },
+  watch: {
+    aAudioUrl () {
+      this.refreshAudio = true
+      this.$nextTick(() => {
+        this.refreshAudio = false
+      })
+    }
+  },
+  components: {
+    Audioplayer
   }
 }
 </script>
 
 <style scoped>
-  .audio-frm {
-    background: #eee;
-  }
 </style>

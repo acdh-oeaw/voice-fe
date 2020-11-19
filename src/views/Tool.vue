@@ -8,9 +8,8 @@
         <v-row class="fill-height">
           <v-col :class="{
             'col-12': true,
-            'col-lg-6': dualView,
-            'd-none': !dualView && mainData.options.singleView !== 'search'
-          }">
+            'col-lg-6': dualView
+          }" v-if="dualView || mainData.options.singleView === 'search'">
             <v-card class="fill-height">
               <SearchSelect :mainData="mainData" :viewNr="0" :dualView="dualView" />
               <SearchResults :mainData="mainData" />

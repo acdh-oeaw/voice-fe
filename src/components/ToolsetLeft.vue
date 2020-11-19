@@ -14,9 +14,9 @@
           activatable :active.sync="active"
         >
           <template v-slot:label="{ item }">
-            <span :class="{
+            <div :class="{
               'underline': item.loaded
-            }">{{ item.id }}</span>
+            }" :title="item.title">{{ item.id }}</div>
           </template>
           <template v-slot:append="{ item }">
             <v-icon v-if="item.audioAvailable">mdi-volume-high</v-icon>
@@ -77,5 +77,9 @@ export default {
 <style scoped>
   .v-treeview--dense >>> .v-treeview-node__root {
     min-height: 25px!important;
+  }
+  .v-treeview--dense >>> .v-icon.v-icon::after {
+    -webkit-transform: scale(1.0);
+    transform: scale(1.0);
   }
 </style>

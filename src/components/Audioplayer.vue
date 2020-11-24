@@ -13,7 +13,7 @@
           height="25"
           v-on:click="setAudioPos"
         >
-          <template v-slot:default="{ value }">
+          <template v-slot:default>
             <div class="white--text mx-2">{{ starttime }}</div>
             <div class="white--text flex-grow-1 text-center">{{ akttime }}</div>
             <div class="white--text mx-2">{{ enditme }}</div>

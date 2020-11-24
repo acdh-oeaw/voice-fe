@@ -141,7 +141,7 @@ export default {
     width: 100%;
   }
   .logo-small {
-    width: 300px;
+    width: 200px;
   }
   .fx-bt {
     border-top: 1px solid #ddd;

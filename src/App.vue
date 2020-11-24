@@ -34,6 +34,7 @@ export default {
     loading: false,
     publicPath: process.env.BASE_URL,
     mainData: {
+      apiUrl: process.env.NODE_ENV === 'development' ? 'http://127.0.0.1:8000/' : null,
       search: {
         value: '',
         searched: false,
@@ -102,9 +103,14 @@ export default {
                     el[p] = { str: aStr, from: aFrom, to: aTo}
                   }
                 })
-                el.loaded = false
-                el.loading = false
-                aObj[el.id] = el
+                this.$set(el, 'open', false)
+                this.$set(el, 'header', '')
+                this.$set(el, 'headerLoading', false)
+                this.$set(el, 'headerLoaded', false)
+                this.$set(el, 'xml', '')
+                this.$set(el, 'xmlLoading', false)
+                this.$set(el, 'xmlLoaded',  false)
+                this.$set(aObj, el.id, el)
               }
             })
             return aObj

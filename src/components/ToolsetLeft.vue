@@ -15,7 +15,7 @@
         >
           <template v-slot:label="{ item }">
             <div :class="{
-              'underline': item.loaded
+              'underline': item.open
             }" :title="item.title">{{ item.id }}</div>
           </template>
           <template v-slot:append="{ item }">
@@ -59,7 +59,7 @@ export default {
         this.mainData.options.singleView = 'corpus'
         if (this.mainData.corpus.elements.filter(e => e.id === nVal[0]).length === 0) {
           if (this.mainData.corpus.obj[nVal[0]]) {
-            this.$set(this.mainData.corpus.obj[nVal[0]], 'loaded', true)
+            this.$set(this.mainData.corpus.obj[nVal[0]], 'open', true)
             this.mainData.corpus.elements.unshift(this.mainData.corpus.obj[nVal[0]])
           }
         }

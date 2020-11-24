@@ -49,6 +49,22 @@ export default {
       this.$nextTick(() => {
         this.refreshAudio = false
       })
+    },
+    aElement () {
+      console.log(this.aElement)
+      if (this.mainData.apiUrl) {
+        if (this.vTab === 'textheader') {
+          if (!this.aElement.headerLoaded && !this.aElement.headerLoading) {
+            // header headerLoaded headerLoading
+            console.log('Load Header ...', this.mainData.apiUrl)
+          }
+        } else {
+          if (!this.aElement.xmlLoaded && !this.aElement.xmlLoading) {
+            // xml xmlLoaded xmlLoading
+            console.log('Load XML ...', this.mainData.apiUrl)
+          }
+        }
+      }
     }
   },
   components: {

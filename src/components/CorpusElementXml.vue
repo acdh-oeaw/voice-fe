@@ -1,10 +1,12 @@
 <template>
-  <div class="xml-prev" v-if="xmlFormated">
-    <div
-      v-for="(aLine, aIdx) in xmlFormated.slice(0, 1000)"
-      :key="'xmll' + aIdx"
-      v-html="aLine"
-    />
+  <div ref="linescroll" class="linescroll" v-on:scroll="scrolling">
+    <div class="xml-prev" :style="'height: ' + (xmlLines.length * lineHeight) + 'px;'" v-if="xmlLines">
+      <div ref="xmlviewarea" class="xml-viewarea" :style="'top: ' + (lineTop * lineHeight) + 'px; min-width: ' + minWidth + 'px;'"
+        v-if="xmlFormated"
+        v-html="xmlFormated"
+      />
+    </div>
+    <div ref="lineheight" class="xml-prev" style="color:#fff;">.</div>
   </div>
 </template>
 
@@ -15,28 +17,72 @@ export default {
     'element': Object
   },
   data: () => ({
+    lineHeight: 24,
+    lineTop: 0,
+    lineLenght: 100,
+    minWidth: 100
   }),
   mounted () {
+    // console.log(this.$refs)
+    this.$nextTick(() => {
+      this.lineHeight = this.$refs.lineheight.clientHeight
+      if (this.lineHeight < 10) {
+        this.lineHeight = 10
+      }
+    })
+  },
+  beforeDestroy () {
   },
   computed: {
+    xmlLines () {
+      let xmlS = this.element && this.element.xml
+      if (xmlS) {
+        // let t1 = performance.now()
+        xmlS = xmlS.replace(/\r?\n/g, '#lsp!lt#').split('#lsp!lt#')
+        // console.log('xmlLines - split', performance.now() - t1)
+        return xmlS
+      }
+      return null
+    },
     xmlFormated () {
-      let xmlF = this.element && this.element.xml && this.w3CodeColor(this.element.xml)
-      if (xmlF) {
-        let t1 = performance.now()
-        xmlF = xmlF.split('<br>')
-        console.log('xmlFormated - split', performance.now() - t1)
+      if (this.xmlLines) {
+        // let t1 = performance.now()
+        let xmlF = this.w3CodeColor(this.xmlLines.slice(this.lineTop, this.lineTop + this.lineLenght).join('\n'))
+        // console.log('xmlFormated - w3CodeColor', performance.now() - t1)
         return xmlF
       }
       return null
     }
   },
   methods: {
-    w3CodeColor(elmntTxt) {
-      let t1 = performance.now()
+    scrolling (e) {
+      let aTop = e.srcElement.scrollTop
+      let aBottom = e.srcElement.scrollTop + e.srcElement.clientHeight
+      if (this.$refs.xmlviewarea) {
+        let aWidth = this.$refs.xmlviewarea.clientWidth
+        if (this.minWidth < aWidth) {
+          this.minWidth = aWidth
+        }
+      }
+      let aTopLine = Math.floor(aTop / this.lineHeight)
+      let aBottomLine = Math.ceil(aBottom / this.lineHeight)
+      if (aTopLine <= this.lineTop) {
+        this.lineTop = Math.floor(aTopLine - (this.lineLenght / 2 + (aBottomLine - aTopLine) / 2))
+        if (this.lineTop < 0) {
+          this.lineTop = 0
+        }
+      } else if (aBottomLine >= this.lineTop + this.lineLenght) {
+        this.lineTop = Math.ceil(aTopLine - (this.lineLenght / 3))
+        if (this.lineTop + this.lineLenght > this.xmlLines.length - 1) {
+          this.lineTop = this.xmlLines.length - 1 - this.lineLenght
+        }
+      }
+    },
+    w3CodeColor (elmntTxt) {
+      // let t1 = performance.now()
       elmntTxt = elmntTxt.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/\r?\n/g, '<br>')
-      console.log('w3CodeColor - replace', performance.now() - t1)
       elmntTxt = htmlMode(elmntTxt);
-      console.log('w3CodeColor - htmlMode', performance.now() - t1)
+      // console.log('w3CodeColor', performance.now() - t1)
       return elmntTxt;
 
       function extract(str, start, end, func, repl) {
@@ -130,9 +176,25 @@ export default {
 </script>
 
 <style scoped>
+.linescroll {
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  overflow: auto;
+}
 .xml-prev {
   font-family: Consolas, "Courier New", monospace;
   white-space: pre;
+  position: relative;
+}
+.xml-viewarea {
+  position: absolute;
+  left: 0;
+  top: 0;
+  min-width: 100%;
+  min-height: 10px;
 }
 .xml-prev >>> .tc {
   color: mediumblue;

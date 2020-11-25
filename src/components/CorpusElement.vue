@@ -9,10 +9,12 @@
         <v-tab href="#xml">XML</v-tab>
       </v-tabs>
       <div class="px-3 py-2 scroll-content flex-grow-1">
-        <div>
+        <div v-if="vTab === 'xml'">
+          <CorpusElementXml :element="aElement" v-if="aElement && aElement.xml" />
+        </div>
+        <div v-else>
           VOICE - {{ vTab }}<br>
           {{ aElement ? aElement.id : 'Kein Element ausgewählt ...'}}
-          <CorpusElementXml :element="aElement" v-if="vTab === 'xml' && aElement" />
           <code v-if="aElement" style="display: block; white-space: pre-wrap;">{{ aElementDev }}</code>
         </div>
       </div>

@@ -34,7 +34,7 @@ export default {
     loading: false,
     publicPath: process.env.BASE_URL,
     mainData: {
-      apiUrl: process.env.NODE_ENV === 'development' ? 'http://127.0.0.1:8000/' : 'https://voice-node.acdh-dev.oeaw.ac.at',
+      apiUrl: process.env.NODE_ENV === 'development' ? 'http://127.0.0.1:8000/' : 'https://voice-node.acdh-dev.oeaw.ac.at/',
       search: {
         value: '',
         searched: false,

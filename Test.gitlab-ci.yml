@@ -17,7 +17,7 @@ test:
     - export DATABASE_URL="postgres://${POSTGRES_USER}:${POSTGRES_PASSWORD}@${DB_HOST}:5432/${POSTGRES_DB}"
     - cp -R . /tmp/app
     - /bin/herokuish buildpack test
-    - cp -Rv /app/coverage /app/cypress .
+    - cp -Rv /app/coverage /app/cypress . ; exit 0
   rules:
     - if: '$TEST_DISABLED'
       when: never

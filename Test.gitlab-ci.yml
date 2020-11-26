@@ -17,6 +17,7 @@ test:
     - export DATABASE_URL="postgres://${POSTGRES_USER}:${POSTGRES_PASSWORD}@${DB_HOST}:5432/${POSTGRES_DB}"
     - cp -R . /tmp/app
     - /bin/herokuish buildpack test
+    - sleep 300
   rules:
     - if: '$TEST_DISABLED'
       when: never

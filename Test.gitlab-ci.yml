@@ -16,10 +16,8 @@ test:
       fi
     - export DATABASE_URL="postgres://${POSTGRES_USER}:${POSTGRES_PASSWORD}@${DB_HOST}:5432/${POSTGRES_DB}"
     - cp -R . /tmp/app
-    - ln -s /app/coverage .
-    - rm -rf cypress
-    - ln -s /app/cypress .
     - /bin/herokuish buildpack test
+    - cp -Rv /app/cypress .
   rules:
     - if: '$TEST_DISABLED'
       when: never

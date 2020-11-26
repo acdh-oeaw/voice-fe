@@ -17,7 +17,7 @@ test:
     - export DATABASE_URL="postgres://${POSTGRES_USER}:${POSTGRES_PASSWORD}@${DB_HOST}:5432/${POSTGRES_DB}"
     - cp -R . /tmp/app
     - /bin/herokuish buildpack test
-    - sleep 300
+    - cp -Rv /tmp/app/coverage /tmp/app/cypress .
   rules:
     - if: '$TEST_DISABLED'
       when: never
@@ -26,7 +26,7 @@ test:
     when: always
     paths:
       # save both cypress artifacts and coverage results
-      - /app/coverage
-      - /app/cypress/videos/**/*.mp4
-      - /app/cypress/screenshots/**/*.png
+      - coverage
+      - cypress/videos/**/*.mp4
+      - cypress/screenshots/**/*.png
     expire_in: 10 days

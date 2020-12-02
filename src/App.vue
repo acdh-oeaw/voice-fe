@@ -7,6 +7,12 @@
       <router-link to="/"><img :src="publicPath + 'images/vc-logo-0-300.png'" class="img-fluid logo-small mt-1" /></router-link>
       <v-spacer />
       <div class="d-flex align-end">
+        <v-select dense hide-details
+          label="API"
+          :items="['https://voice-node.acdh-dev.oeaw.ac.at/', 'http://127.0.0.1:3000/']"
+          v-model="mainData.apiUrl"
+          v-if="dev"
+        ></v-select>
         <v-btn @click="mainData.options.dualView = !mainData.options.dualView" icon small v-if="dualViewPossible">
           <v-icon>{{ mainData.options.dualView ? 'mdi-arrow-collapse-horizontal' : 'mdi-arrow-split-vertical' }}</v-icon>
         </v-btn>
@@ -33,8 +39,9 @@ export default {
   data: () => ({
     loading: false,
     publicPath: process.env.BASE_URL,
+    dev: process.env.NODE_ENV === 'development',
     mainData: {
-      apiUrl: process.env.NODE_ENV === 'development' ? 'http://127.0.0.1:3000/' : 'https://voice-node.acdh-dev.oeaw.ac.at/',
+      apiUrl: 'https://voice-node.acdh-dev.oeaw.ac.at/',
       search: {
         value: '',
         searched: false,

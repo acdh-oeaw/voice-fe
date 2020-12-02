@@ -10,7 +10,7 @@
             'col-12': true,
             'col-lg-6': dualView
           }" v-if="dualView || mainData.options.singleView === 'search'">
-            <v-card class="fill-height">
+            <v-card class="d-flex flex-column fill-height">
               <SearchSelect :mainData="mainData" :viewNr="0" :dualView="dualView" />
               <SearchResults :mainData="mainData" />
             </v-card>

@@ -1,9 +1,6 @@
 <template>
   <div class="search-select-frm fx-bb d-flex flex-wrap flex-md-nowrap">
-    <div class="d-flex flex-shrink-1 search-field align-center px-3" v-if="!dualView || viewNr === 0">
-      <v-text-field v-model="mainData.search.value" @keydown.enter="search" label="Search the VOICE Corpus" hide-details class="mr-2 mt-0"></v-text-field>
-      <v-btn @click="search" small color="indigo darken-4 white--text">Search</v-btn>
-    </div>
+    <SearchField :mainData="mainData" v-if="!dualView || viewNr === 0" />
     <div v-if="!dualView || viewNr === 1" :class="{ 'fx-bl': !dualView, 'px-3': true, 'py-1': true, 'ce-frm': true, 'flex-grow-1': true }">
       <v-chip
         close label outlined color="default"
@@ -24,6 +21,8 @@
 </template>
 
 <script>
+import SearchField from './SearchField';
+
 export default {
   name: 'SearchSelect',
   props: {
@@ -37,9 +36,6 @@ export default {
     console.log('SearchSelect', this.mainData)
   },
   methods: {
-    search () {
-      this.mainData.options.singleView = 'search'
-    },
     selectCorpusElement (ceId) {
       this.mainData.corpus.selectedElement = ceId
       this.mainData.options.singleView = 'corpus'
@@ -52,14 +48,14 @@ export default {
       this.$delete(this.mainData.corpus.elements[ceKey], 'loaded')
       this.$delete(this.mainData.corpus.elements, ceKey)
     }
+  },
+  components: {
+    SearchField
   }
 }
 </script>
 
 <style scoped>
-  .search-field {
-    min-width: 310px;
-  }
   .search-select-frm > div {
     height: 48px;
   }

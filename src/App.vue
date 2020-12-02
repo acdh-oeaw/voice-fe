@@ -45,8 +45,9 @@ export default {
       search: {
         value: '',
         searched: false,
+        loading: false,
         searchValue: '',
-        results: []
+        results: {}
       },
       corpus: {
         selectedElement: null,
@@ -186,6 +187,7 @@ export default {
   .scroll-content {
     position: relative;
     height: 100%;
+    width: 100%;
   }
   .scroll-content > div {
     position: absolute;

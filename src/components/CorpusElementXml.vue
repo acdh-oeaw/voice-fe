@@ -1,5 +1,5 @@
 <template>
-  <div ref="linescroll" class="linescroll" v-on:scroll="scrolling">
+  <div class="linescroll" v-on:scroll="scrolling">
     <div class="xml-prev" :style="'height: ' + (xmlLines.length * lineHeight) + 'px;'" v-if="xmlLines">
       <div ref="xmlviewarea" class="xml-viewarea px-3 py-1" :style="'top: ' + (lineTop * lineHeight) + 'px; min-width: ' + minWidth + 'px;'"
         v-if="xmlFormated"

@@ -44,6 +44,7 @@ export default {
       apiUrl: 'https://voice-node.acdh-dev.oeaw.ac.at/',
       search: {
         value: '',
+        lastValue: '',
         searched: false,
         loading: false,
         searchValue: '',

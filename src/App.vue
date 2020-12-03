@@ -190,7 +190,7 @@ export default {
     height: 100%;
     width: 100%;
   }
-  .scroll-content > div {
+  .linescroll, .scroll-content > div {
     position: absolute;
     left: 0;
     right: 0;

@@ -1,7 +1,7 @@
 <template>
   <div ref="linescroll" class="linescroll" v-on:scroll="scrolling">
     <div class="xml-prev" :style="'height: ' + (xmlLines.length * lineHeight) + 'px;'" v-if="xmlLines">
-      <div ref="xmlviewarea" class="xml-viewarea" :style="'top: ' + (lineTop * lineHeight) + 'px; min-width: ' + minWidth + 'px;'"
+      <div ref="xmlviewarea" class="xml-viewarea px-3 py-1" :style="'top: ' + (lineTop * lineHeight) + 'px; min-width: ' + minWidth + 'px;'"
         v-if="xmlFormated"
         v-html="xmlFormated"
       />
@@ -39,7 +39,7 @@ export default {
       if (xmlS) {
         // let t1 = performance.now()
         xmlS = xmlS.replace(/\r?\n/g, '#lsp!lt#').split('#lsp!lt#')
-        // console.log('xmlLines - split', performance.now() - t1)
+        // console.log('xmlLines', performance.now() - t1)
         return xmlS
       }
       return null
@@ -176,14 +176,6 @@ export default {
 </script>
 
 <style scoped>
-.linescroll {
-  position: absolute;
-  left: 0;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  overflow: auto;
-}
 .xml-prev {
   font-family: Consolas, "Courier New", monospace;
   white-space: pre;
@@ -211,5 +203,4 @@ export default {
 .xml-prev >>> .cc {
   color: green;
 }
-
 </style>

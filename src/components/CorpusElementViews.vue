@@ -7,13 +7,15 @@
       >
         <div class="line-nr">{{ aIdx + 1 }}</div>
         <div class="line-speaker">{{ aLine.speaker }}</div>
-        <div class="line-content" v-html="aLine.text"></div>
+        <RenderLine :xmlObjLine="aLine"/>
       </div>
     </div>
   </div>
 </template>
 
 <script>
+import RenderLine from './RenderLine';
+
 export default {
   name: 'CorpusElementViews',
   props: {
@@ -38,14 +40,11 @@ export default {
           if (speaker && typeof speaker === 'string') {
             speaker = speaker.split('_').slice(-1)[0]
           }
-          let text = dom.textContent
-          if (dom.childNodes && dom.childNodes.length > 0) {
-            text = this.renderText(dom.childNodes)
-          }
           return {
             dom: dom,
             speaker: speaker,
-            text: text
+            text: null,
+            textHeight: 24
           }
         })
         console.log('xmlObjLines', performance.now() - t1)
@@ -55,39 +54,11 @@ export default {
     }
   },
   methods: {
-    renderText (dom, trimIt=true) {
-      let domArray = [].slice.call(dom)
-      let aTxt = ''
-      if (domArray && domArray.length > 0) {
-        domArray.forEach(elm => {
-          if (elm.nodeType === 1) {
-            let trimThis = !(elm.attributes && elm.attributes['xml:space'] && elm.attributes['xml:space'].value === 'preserve')
-            let aClasses = ['tag-' + elm.tagName]
-            if (elm.attributes && elm.attributes['type'] && elm.attributes['type'].value) {
-              aClasses.push('type-' + elm.attributes['type'].value)
-            }
-            if (elm.attributes && elm.attributes['n'] && elm.attributes['n'].value) {
-              aClasses.push('has-n')
-              aClasses.push('n-' + elm.attributes['n'].value)
-            }
-            aTxt += '<span class="' + aClasses.join(' ') + '">'
-            aTxt += elm.childNodes && elm.childNodes.length > 0 ? this.renderText(elm.childNodes, trimThis) : elm.textContent.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
-            aTxt += '</span>'
-          } else if (elm.nodeType === 3) {
-            let bTxt = elm.textContent.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
-            if (trimIt) {
-              bTxt = bTxt.trim()
-            }
-            aTxt += bTxt
-          }
-        })
-      }
-      return aTxt
-    }
   },
   watch: {
   },
   components: {
+    RenderLine
   }
 }
 </script>

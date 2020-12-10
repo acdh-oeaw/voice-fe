@@ -8,7 +8,7 @@
         >
           <div class="line-nr">{{ lineTop + aIdx + 1 }}</div>
           <div class="line-speaker">{{ aLine.speaker }}</div>
-          <RenderLine :xmlObjLine="aLine"/>
+          <RenderLine :xmlObjLine="aLine" :highlight="mainData.search.highlights" />
         </div>
       </div>
     </div>
@@ -21,6 +21,7 @@ import RenderLine from './RenderLine';
 export default {
   name: 'CorpusElementViews',
   props: {
+    'mainData': Object,
     'element': Object
   },
   data: () => ({

@@ -29,6 +29,14 @@ export default {
             if (response.data && response.data.u) {
               this.mainData.search.searched = true
               this.mainData.search.results = response.data
+              this.mainData.search.highlights = []
+              if (this.mainData.search.results && this.mainData.search.results.u) {
+                this.mainData.search.results.u.forEach(aU => {
+                  if (aU.highlight) {
+                    this.mainData.search.highlights = this.mainData.search.highlights.concat(aU.highlight)
+                  }
+                })
+              }
             }
             this.mainData.search.loading = false
           })

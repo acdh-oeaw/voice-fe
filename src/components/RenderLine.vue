@@ -6,7 +6,8 @@
 export default {
   name: 'RenderLine',
   props: {
-    'xmlObjLine': Object
+    'xmlObjLine': Object,
+    'highlight': Array
   },
   data: () => ({
     aText: ''
@@ -18,25 +19,25 @@ export default {
   beforeDestroy () {
   },
   computed: {
-    aLine () {
-      return this.xmlObjLine
-    }
   },
   methods: {
     updateXmlObjLine () {
-      if (!this.xmlObjLine.text) {
-        let text = this.xmlObjLine.dom.textContent
-        if (this.xmlObjLine.dom.childNodes && this.xmlObjLine.dom.childNodes.length > 0) {
-          text = this.renderText(this.xmlObjLine.dom.childNodes)
+      if (this.xmlObjLine) {
+        this.$set(this.xmlObjLine, 'text', null)
+        if (!this.xmlObjLine.text) {
+          let text = this.xmlObjLine.dom.textContent
+          if (this.xmlObjLine.dom.childNodes && this.xmlObjLine.dom.childNodes.length > 0) {
+            text = this.renderText(this.xmlObjLine.dom.childNodes)
+          }
+          this.$set(this.xmlObjLine, 'text', text)
         }
-        this.$set(this.xmlObjLine, 'text', text)
+        this.aText = this.xmlObjLine.text
+        this.$nextTick(() => {
+          if (this.$refs && this.$refs.lineContent) {
+            this.$set(this.xmlObjLine, 'textHeight', this.$refs.lineContent.clientHeight)
+          }
+        })
       }
-      this.aText = this.xmlObjLine.text
-      this.$nextTick(() => {
-        if (this.$refs && this.$refs.lineContent) {
-          this.$set(this.xmlObjLine, 'textHeight', this.$refs.lineContent.clientHeight)
-        }
-      })
     },
     renderText (dom, trimIt=true) {
       let domArray = [].slice.call(dom)
@@ -57,6 +58,9 @@ export default {
                   }
                 }
               })
+              if (this.highlight && elm.attributes['xml:id'] && elm.attributes['xml:id'].value && this.highlight.indexOf(elm.attributes['xml:id'].value) > -1) {
+                aClasses.push('highlight')
+              }
             }
             aTxt += '<span class="' + aClasses.join(' ') + '">'
             if (elm.attributes && elm.attributes['voice:syl'] && elm.attributes['voice:syl'].value) {
@@ -79,6 +83,9 @@ export default {
   watch: {
     xmlObjLine () {
       this.updateXmlObjLine()
+    },
+    highlight () {
+      this.updateXmlObjLine()
     }
   },
   components: {
@@ -89,5 +96,12 @@ export default {
 <style scoped>
 .line-content >>> .has-n {
   color: #00f;
+}
+.line-content >>> .highlight {
+  background: #ff0;
+}
+.line-content >>> .tag-parsererror {
+  color: #d00;
+  font-weight: bold;
 }
 </style>

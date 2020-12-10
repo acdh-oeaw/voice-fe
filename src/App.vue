@@ -48,7 +48,8 @@ export default {
         searched: false,
         loading: false,
         searchValue: '',
-        results: {}
+        results: {},
+        highlights: []
       },
       corpus: {
         selectedElement: null,

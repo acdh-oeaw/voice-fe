@@ -18,7 +18,7 @@
           <code v-if="aElement" style="display: block; white-space: pre-wrap;">{{ aElementDev }}</code>
         </div>
         <div v-else>
-          <CorpusElementViews :element="aElement" v-if="aElement && aElement.xml" />
+          <CorpusElementViews :element="aElement" :mainData="mainData" v-if="aElement && aElement.xml" />
         </div>
       </div>
     </div>

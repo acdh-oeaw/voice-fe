@@ -12,11 +12,13 @@
           :items="mainData.corpus.list" item-text="id"
           open-on-click
           activatable :active.sync="active"
+          class="ctree"
         >
           <template v-slot:label="{ item }">
             <div :class="{
-              'underline': item.open
-            }" :title="item.title">{{ item.id }}</div>
+              'underline': item.open,
+              'found': mainData.search.foundXmlId.indexOf(item.id) > -1
+            }" :title="item.title">{{ item.children ? item.label : item.id }}</div>
           </template>
           <template v-slot:append="{ item }">
             <v-icon v-if="item.audioAvailable">mdi-volume-high</v-icon>
@@ -81,5 +83,8 @@ export default {
   .v-treeview--dense >>> .v-icon.v-icon::after {
     -webkit-transform: scale(1.0);
     transform: scale(1.0);
+  }
+  .ctree >>> .found {
+    font-weight: bold;
   }
 </style>

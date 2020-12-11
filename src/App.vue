@@ -49,7 +49,8 @@ export default {
         loading: false,
         searchValue: '',
         results: {},
-        highlights: []
+        highlights: [],
+        foundXmlId: []
       },
       corpus: {
         selectedElement: null,

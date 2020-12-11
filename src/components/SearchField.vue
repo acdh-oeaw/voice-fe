@@ -30,10 +30,14 @@ export default {
               this.mainData.search.searched = true
               this.mainData.search.results = response.data
               this.mainData.search.highlights = []
+              this.mainData.search.foundXmlId = []
               if (this.mainData.search.results && this.mainData.search.results.u) {
                 this.mainData.search.results.u.forEach(aU => {
                   if (aU.highlight) {
                     this.mainData.search.highlights = this.mainData.search.highlights.concat(aU.highlight)
+                  }
+                  if (this.mainData.search.foundXmlId.indexOf(aU.xmlId) < 0) {
+                    this.mainData.search.foundXmlId.push(aU.xmlId)
                   }
                 })
               }

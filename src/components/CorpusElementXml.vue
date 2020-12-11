@@ -1,5 +1,5 @@
 <template>
-  <div class="linescroll" v-on:scroll="scrolling">
+  <div ref="xmlScrollFrm" class="linescroll" v-on:scroll="scrolling">
     <div class="xml-prev" :style="'height: ' + (xmlLines.length * lineHeight) + 'px;'" v-if="xmlLines">
       <div ref="xmlviewarea" class="xml-viewarea px-3 py-1" :style="'top: ' + (lineTop * lineHeight) + 'px; min-width: ' + minWidth + 'px;'"
         v-if="xmlFormated"
@@ -23,8 +23,9 @@ export default {
     minWidth: 100
   }),
   mounted () {
-    // console.log(this.$refs)
+    // console.log(this.$refs, this.element)
     this.$nextTick(() => {
+      this.loadScrollPos()
       this.lineHeight = this.$refs.lineheight.clientHeight
       if (this.lineHeight < 10) {
         this.lineHeight = 10
@@ -58,6 +59,7 @@ export default {
     scrolling (e) {
       let aTop = e.srcElement.scrollTop
       let aBottom = e.srcElement.scrollTop + e.srcElement.clientHeight
+      this.element.scrollPos.xml = aTop
       if (this.$refs.xmlviewarea) {
         let aWidth = this.$refs.xmlviewarea.clientWidth
         if (this.minWidth < aWidth) {
@@ -166,9 +168,17 @@ export default {
       function commentMode(txt) {
         return '<span class="cc">' + txt + '</span>';
       }
+    },
+    loadScrollPos () {
+      if (this.$refs && this.$refs.xmlScrollFrm) {
+        this.$refs.xmlScrollFrm.scrollTop = this.element.scrollPos.xml
+      }
     }
   },
   watch: {
+    'element.id' () {
+      this.loadScrollPos()
+    }
   },
   components: {
   }

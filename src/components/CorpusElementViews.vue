@@ -22,17 +22,23 @@ export default {
   name: 'CorpusElementViews',
   props: {
     'mainData': Object,
-    'element': Object
+    'element': Object,
+    'view': String
   },
   data: () => ({
     lineTop: 0,
     lineLenght: 100,
     extraHeight: 5,
-    xmlObjLines: null
+    xmlObjLines: null,
+    lastElement: null
   }),
   mounted () {
     console.log('CorpusElementViews', this.element, this.xmlObjLines)
     this.updateXmlObjLines()
+    this.$nextTick(() => {
+      this.loadScrollPos()
+    })
+    this.lastElement = this.element
   },
   beforeDestroy () {
   },
@@ -48,10 +54,11 @@ export default {
     }
   },
   methods: {
-    scrolling (e) {
-      if (this.xmlObjLines) {
-        let aTop = e.srcElement.scrollTop
-        let aBottom = e.srcElement.scrollTop + e.srcElement.clientHeight
+    scrolling () {
+      if (this.xmlObjLines && this.$refs && this.$refs.viewarea) {
+        let aTop = this.$refs.viewarea.scrollTop
+        this.element.scrollPos[this.view] = aTop
+        let aBottom = this.$refs.viewarea.scrollTop + this.$refs.viewarea.clientHeight
         let aTopLine = 0
         let aBottomLine = 0
         let aLinePx = 0
@@ -84,7 +91,7 @@ export default {
         let t1 = performance.now()
         let parser = new DOMParser()
         let xmlDoc = parser.parseFromString(xmlS,"text/xml")
-        let aLines = [].slice.call(xmlDoc.getElementsByTagName('u')).map(dom => {
+        let aLines = [].slice.call(xmlDoc.getElementsByTagName('u')).map((dom, i) => {
           let speaker = dom.attributes && dom.attributes.who && dom.attributes.who.nodeValue ? dom.attributes.who.nodeValue : null
           if (speaker && typeof speaker === 'string') {
             speaker = speaker.split('_').slice(-1)[0]
@@ -93,7 +100,7 @@ export default {
             dom: dom,
             speaker: speaker,
             text: null,
-            textHeight: 24
+            textHeight: this.element.lineHeight[this.view] && this.element.lineHeight[this.view][i] ? this.element.lineHeight[this.view][i] : 24
           }
         })
         this.xmlObjLines = aLines
@@ -101,15 +108,45 @@ export default {
       } else {
         this.xmlObjLines = null
       }
+    },
+    loadScrollPos () {
+      if (this.$refs && this.$refs.viewarea) {
+        this.$refs.viewarea.scrollTop = this.element.scrollPos[this.view]
+      }
+    },
+    cacheHeights (v, el) {
+      if (v && this.xmlObjLines && this.xmlObjLines.length > 0 && el.lineHeight[v]) {
+        this.$set(el.lineHeight, v, Array.from(this.xmlObjLines.map(l => l.textHeight)))
+        console.log('cacheHeights')
+      }
     }
   },
   watch: {
-    element: {
-      deep: true,
-      handler() {
-        this.updateXmlObjLines()
+    'element.id' () {
+      if (this.lastElement) {
+        this.cacheHeights(this.view, this.lastElement)
       }
+      this.loadScrollPos()
+      this.updateXmlObjLines()
+      this.lastElement = this.element
+      this.$nextTick(() => {
+        this.scrolling()
+      })
+    },
+    view (nVal, oVal) {
+      this.cacheHeights(oVal, this.element)
+      this.loadScrollPos()
+      this.updateXmlObjLines()
+      this.$nextTick(() => {
+        this.scrolling()
+      })
     }
+    // element: {
+    //   deep: true,
+    //   handler() {
+    //     this.updateXmlObjLines()
+    //   }
+    // }
   },
   components: {
     RenderLine

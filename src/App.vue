@@ -115,6 +115,17 @@ export default {
                   }
                 })
                 this.$set(el, 'open', false)
+                this.$set(el, 'scrollPos', {
+                  voice: 0,
+                  plain: 0,
+                  pos: 0,
+                  xml: 0
+                })
+                this.$set(el, 'lineHeight', {
+                  voice: [],
+                  plain: [],
+                  pos: []
+                })
                 this.$set(el, 'header', '')
                 this.$set(el, 'headerLoading', false)
                 this.$set(el, 'headerLoaded', false)

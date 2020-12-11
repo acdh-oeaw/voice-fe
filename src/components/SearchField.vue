@@ -21,6 +21,8 @@ export default {
       if (!this.mainData.search.loading && this.mainData.search.lastValue !== this.mainData.search.value) {
         this.mainData.search.loading = true
         this.mainData.search.searched = false
+        this.mainData.search.highlights = []
+        this.mainData.search.foundXmlId = []
         this.mainData.search.lastValue = this.mainData.search.value
         this.$http
           .get(this.mainData.apiUrl + 'search/', { params: { q: this.mainData.search.value } })
@@ -29,8 +31,6 @@ export default {
             if (response.data && response.data.u) {
               this.mainData.search.searched = true
               this.mainData.search.results = response.data
-              this.mainData.search.highlights = []
-              this.mainData.search.foundXmlId = []
               if (this.mainData.search.results && this.mainData.search.results.u) {
                 this.mainData.search.results.u.forEach(aU => {
                   if (aU.highlight) {

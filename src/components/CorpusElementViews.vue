@@ -180,7 +180,4 @@ export default {
   min-width: 4rem;
   font-weight: bold;
 }
-.line-content >>> .has-n {
-  color: #00f;
-}
 </style>

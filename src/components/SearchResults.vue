@@ -15,11 +15,17 @@
           <div>xmlStatus: {{ mainData.search.results.xmlStatus }}</div>
           <div>u: {{ mainData.search.results.u ? mainData.search.results.u.length : 'error' }}</div>
           <div class="mt-2" v-if="mainData.search.results.u">
-            <hr>
-            <div v-for="(uObj, uIdx) in mainData.search.results.u.slice(0, 100)" :key="uIdx">
-              xmlId: {{ uObj.xmlId }}, uId: {{ uObj.uId }}<br>
-              <RenderLine :xmlObjLine="xmlObjLines[uIdx]" :highlight="uObj.highlight" v-if="xmlObjLines"/>
-              <hr>
+            <div>
+              <div v-for="(uObj, uIdx) in searchResultsU" class="line-frm" :key="uIdx">
+                <div @click="openDocument(uObj.xmlId)" class="line-document" v-if="uIdx < 1 || uObj.xmlId !== searchResultsU[uIdx-1].xmlId">
+                  {{ uObj.xmlId }}
+                </div>
+                <div class="d-flex">
+                  <div class="line-nr">{{ uObj.uId.split('_')[2] }}</div>
+                  <div class="line-speaker" v-if="xmlObjLines">{{ xmlObjLines[uIdx].speaker }}</div>
+                  <RenderLine :xmlObjLine="xmlObjLines[uIdx]" :highlight="uObj.highlight" v-if="xmlObjLines"/>
+                </div>
+              </div>
             </div>
             <div class="my-3" v-if="mainData.search.results.u && mainData.search.results.u.length > 100">
               <b>Weitere Ergebnisse ausgeblendet ... (ToDo)</b>
@@ -45,7 +51,25 @@ export default {
   mounted () {
     this.updateXmlObjLines()
   },
+  computed: {
+    searchResultsU () {
+      return this.mainData.search.results && this.mainData.search.results.u && this.mainData.search.results.u.length > 0 ? this.mainData.search.results.u.slice(0, 100) : []
+    }
+  },
   methods: {
+    openDocument (xmlId) {
+      console.log('openDocument', xmlId)
+      this.mainData.corpus.selectedElement = xmlId
+      if (xmlId) {
+        this.mainData.options.singleView = 'corpus'
+        if (this.mainData.corpus.elements.filter(e => e.id === xmlId).length === 0) {
+          if (this.mainData.corpus.obj[xmlId]) {
+            this.$set(this.mainData.corpus.obj[xmlId], 'open', true)
+            this.mainData.corpus.elements.unshift(this.mainData.corpus.obj[xmlId])
+          }
+        }
+      }
+    },
     updateXmlObjLines () {
       this.xmlObjLines = null
       if (this.mainData.search.results && this.mainData.search.results.u && this.mainData.search.results.u.length > 0) {
@@ -84,4 +108,28 @@ export default {
 </script>
 
 <style scoped>
+.line-frm {
+  border-top: 1px solid #ddd;
+  padding: 2px 0.5rem;
+}
+.line-frm:last-child {
+  border-bottom: 1px solid #ddd;
+}
+.line-document {
+  background: #eee;
+  margin: -2px -0.5rem 3px -0.5rem;
+  padding: 0 0.5rem 0 7.5rem;
+  font-weight: bold;
+  cursor: pointer;
+}
+.line-document:hover, .line-document:focus {
+  background: #eef;
+}
+.line-nr {
+  min-width: 3rem;
+}
+.line-speaker {
+  min-width: 4rem;
+  font-weight: bold;
+}
 </style>

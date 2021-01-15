@@ -76,8 +76,12 @@ export default {
         // console.log('SearchResults - updateXmlObjLines', this.mainData.search.results.u)
         let parser = new DOMParser()
         let aLines = this.mainData.search.results.u.map(aU => {
-          let uDom = parser.parseFromString(aU.xml, "text/html").getElementsByTagName('u')[0]
-          let speaker = uDom.attributes && uDom.attributes.who && uDom.attributes.who.nodeValue ? uDom.attributes.who.nodeValue : null
+          let uDom = null
+          let speaker = null
+          if (typeof aU.xml === 'string' && aU.xml.length > 5) {
+            uDom = parser.parseFromString(aU.xml, "text/html").getElementsByTagName('u')[0]
+            speaker = uDom.attributes && uDom.attributes.who && uDom.attributes.who.nodeValue ? uDom.attributes.who.nodeValue : null
+          }
           if (speaker && typeof speaker === 'string') {
             speaker = speaker.split('_').slice(-1)[0]
           }

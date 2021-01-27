@@ -37,7 +37,7 @@ export default {
     'mainData': Object
   },
   data: () => ({
-    vTab: 0,
+    vTab: null,
     refreshAudio: false
   }),
   mounted () {

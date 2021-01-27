@@ -42,6 +42,7 @@ export default {
                 })
               }
             }
+            this.mainData.search.scrollPos = 0
             this.mainData.search.loading = false
           })
           .catch((err) => {

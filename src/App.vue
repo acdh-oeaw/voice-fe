@@ -49,6 +49,7 @@ export default {
         loading: false,
         searchValue: '',
         results: {},
+        scrollPos: 0,
         highlights: [],
         foundXmlId: []
       },

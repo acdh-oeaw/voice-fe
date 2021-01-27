@@ -1,7 +1,7 @@
 <template>
   <div class="d-flex flex-grow-1">
     <div class="scroll-content">
-      <div class="px-3 py-2">
+      <div ref="viewarea" class="px-3 py-2" v-on:scroll="scrolling">
         <div class="mb-2">Search Results - "{{ mainData.search.value }}"</div>
         <div v-if="mainData.search.loading">
           loading ...
@@ -50,6 +50,9 @@ export default {
   }),
   mounted () {
     this.updateXmlObjLines()
+    this.$nextTick(() => {
+      this.loadScrollPos()
+    })
   },
   computed: {
     searchResultsU () {
@@ -57,6 +60,12 @@ export default {
     }
   },
   methods: {
+    scrolling () {
+      if (this.$refs && this.$refs.viewarea) {
+        let aTop = this.$refs.viewarea.scrollTop
+        this.mainData.search.scrollPos = aTop
+      }
+    },
     openDocument (xmlId) {
       console.log('openDocument', xmlId)
       this.mainData.corpus.selectedElement = xmlId
@@ -95,12 +104,18 @@ export default {
         this.xmlObjLines = aLines
         // console.log('updateXmlObjLines', this.xmlObjLines[0].dom.outerHTML, this.mainData.search.results.u[0].xml)
       }
+    },
+    loadScrollPos () {
+      if (this.$refs && this.$refs.viewarea) {
+        this.$refs.viewarea.scrollTop = this.mainData.search.scrollPos
+      }
     }
   },
   watch: {
     'mainData.search.results': {
       deep: true,
       handler() {
+        this.loadScrollPos()
         this.updateXmlObjLines()
       }
     }

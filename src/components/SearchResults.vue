@@ -21,7 +21,7 @@
                   {{ uObj.xmlId }}
                 </div>
                 <div class="d-flex">
-                  <div class="line-nr">{{ uObj.uId.split('_')[2] }}</div>
+                  <div class="line-uid">{{ uObj.uId.split('_')[0] + ':' + uObj.uId.split('_')[2] }}</div>
                   <div class="line-speaker" v-if="xmlObjLines">{{ xmlObjLines[uIdx].speaker }}</div>
                   <RenderLine :xmlObjLine="xmlObjLines[uIdx]" :highlight="uObj.highlight" v-if="xmlObjLines"/>
                 </div>
@@ -137,15 +137,15 @@ export default {
 .line-document {
   background: #eee;
   margin: -2px -0.5rem 3px -0.5rem;
-  padding: 0 0.5rem 0 7.5rem;
+  padding: 0 0.5rem 0 0.5rem;
   font-weight: bold;
   cursor: pointer;
 }
 .line-document:hover, .line-document:focus {
   background: #eef;
 }
-.line-nr {
-  min-width: 3rem;
+.line-uid {
+  min-width: 8.5rem;
 }
 .line-speaker {
   min-width: 4rem;

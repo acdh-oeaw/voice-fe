@@ -1,5 +1,5 @@
 <template>
-  <div ref="lineContent" class="line-content" v-html="aText"></div>
+  <div ref="lineContent" :class="'line-con typ-' + aType" v-html="aText"></div>
 </template>
 
 <script>
@@ -7,10 +7,12 @@ export default {
   name: 'RenderLine',
   props: {
     'xmlObjLine': Object,
-    'highlight': Array
+    'highlight': Array,
+    'type': String
   },
   data: () => ({
-    aText: ''
+    aText: '',
+    aType: 'plain',
   }),
   mounted () {
     // console.log('CorpusElementViews', this.xmlObjLine)
@@ -23,17 +25,20 @@ export default {
   methods: {
     updateXmlObjLine () {
       if (this.xmlObjLine) {
-        this.$set(this.xmlObjLine, 'text', null)
-        if (!this.xmlObjLine.text) {
+        this.aType = this.type || 'plain'
+        // console.log(this.aType)
+        if (!this.xmlObjLine[this.aType]) {
+          this.$set(this.xmlObjLine, this.aType, null)
           let text = this.xmlObjLine.dom.textContent
           if (this.xmlObjLine.dom.childNodes && this.xmlObjLine.dom.childNodes.length > 0) {
             text = this.renderText(this.xmlObjLine.dom.childNodes)
           }
-          this.$set(this.xmlObjLine, 'text', text)
+          this.$set(this.xmlObjLine, this.aType, text)
         }
-        this.aText = this.xmlObjLine.text
+        this.aText = this.xmlObjLine[this.aType]
         this.$nextTick(() => {
           if (this.$refs && this.$refs.lineContent) {
+            // ToDo: textHeight (plain, voice, usw.)
             this.$set(this.xmlObjLine, 'textHeight', this.$refs.lineContent.clientHeight)
           }
         })
@@ -81,6 +86,9 @@ export default {
     }
   },
   watch: {
+    type () {
+      this.updateXmlObjLine()
+    },
     xmlObjLine () {
       this.updateXmlObjLine()
     },
@@ -94,13 +102,13 @@ export default {
 </script>
 
 <style scoped>
-.line-content >>> .has-n {
+.line-con >>> .has-n {
   color: #00f;
 }
-.line-content >>> .highlight {
+.line-con >>> .highlight {
   background: #ff0;
 }
-.line-content >>> .tag-parsererror {
+.line-con >>> .tag-parsererror {
   color: #d00;
   font-weight: bold;
 }

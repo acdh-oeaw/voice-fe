@@ -6,9 +6,9 @@
           v-for="(aLine, aIdx) in visibleXmlObjLines" :key="'l' + aIdx"
           class="d-flex line-frm"
         >
-          <div class="line-nr">{{ lineTop + aIdx + 1 }}</div>
-          <div class="line-speaker">{{ aLine.speaker }}</div>
-          <RenderLine :xmlObjLine="aLine" :highlight="mainData.search.highlights" />
+          <div class="line-nr" v-if="show_utI">{{ lineTop + aIdx + 1 }}</div>
+          <div class="line-speaker" v-if="show_sId">{{ aLine.speaker }}</div>
+          <RenderLine :xmlObjLine="aLine" :type="view" :highlight="mainData.search.highlights" />
         </div>
       </div>
     </div>
@@ -43,6 +43,12 @@ export default {
   beforeDestroy () {
   },
   computed: {
+    show_utI () {
+      return this.view !== 'voice' || this.mainData.views.voice.utI
+    },
+    show_sId () {
+      return this.view !== 'voice' || this.mainData.views.voice.sId
+    },
     height () {
       return this.xmlObjLines ? this.xmlObjLines.reduce((a,b) => a + b.textHeight + this.extraHeight, 0) : 100
     },

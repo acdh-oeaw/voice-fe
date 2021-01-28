@@ -65,6 +65,24 @@ export default {
         dualView: true,
         singleView: 'corpus'
       },
+      views: {
+        voice: {
+          utI: true, // utterance identifier
+          sId: true, // speaker id
+          oT: true, // overlap tags
+          p: true, // pauses
+          cE: true, // contextual events
+          sM: true, // speaking modes
+          vsN: true, // vocal/speaker noise
+          spl: true, // spelled
+          fLaT: true, // foreign language tags
+          oC: true, // other continuations
+          uiT: true, // unintelligible tags
+          ono: true, // onomatopoeia
+          pvcT: true, // pvc tags
+          gap: true // gap
+        }
+      },
       wideScreen: false
     }
   }),

@@ -181,12 +181,25 @@ export default {
   min-width: 20px;
   padding: 0 2px;
   text-align: center;
-  color: #333;
 }
 .voice-switches > div > div.off {
-  color: #aaa;
+  color: #bbb!important;
 }
 .voice-switches > div > div:hover {
   background: #ddd;
+}
+
+/* voice-switches */
+.vs-sid {
+  font-weight: bold;
+}
+.vs-ot {
+  color: blue;
+}
+.vs-p {
+  color: brown;
+}
+.vs-ce {
+  color: #808080;
 }
 </style>

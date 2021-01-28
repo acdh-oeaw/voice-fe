@@ -8,7 +8,7 @@
         >
           <div class="line-nr" v-if="show_utI">{{ lineTop + aIdx + 1 }}</div>
           <div class="line-speaker" v-if="show_sId">{{ aLine.speaker }}</div>
-          <RenderLine :xmlObjLine="aLine" :type="view" :highlight="mainData.search.highlights" />
+          <RenderLine :xmlObjLine="aLine" :type="view" :highlight="mainData.search.highlights" :mainData="mainData" />
         </div>
       </div>
     </div>

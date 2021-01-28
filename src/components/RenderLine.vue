@@ -1,5 +1,5 @@
 <template>
-  <div ref="lineContent" :class="'line-con typ-' + aType" v-html="aText"></div>
+  <div ref="lineContent" :class="classes" v-html="aText"></div>
 </template>
 
 <script>
@@ -8,7 +8,8 @@ export default {
   props: {
     'xmlObjLine': Object,
     'highlight': Array,
-    'type': String
+    'type': String,
+    'mainData': Object
   },
   data: () => ({
     aText: '',
@@ -21,6 +22,15 @@ export default {
   beforeDestroy () {
   },
   computed: {
+    classes () {
+      let aClasses = 'line-con typ-' + this.aType
+      if (this.aType === 'voice') {
+        if (this.mainData.views.voice.p) { aClasses += ' s-p' }
+        if (this.mainData.views.voice.oT) { aClasses += ' s-ot' }
+        if (this.mainData.views.voice.cE) { aClasses += ' s-ce' }
+      }
+      return aClasses
+    }
   },
   methods: {
     updateXmlObjLine () {
@@ -52,7 +62,7 @@ export default {
           if (elm.nodeType === 1) {
             let trimThis = !(elm.attributes && elm.attributes['xml:space'] && elm.attributes['xml:space'].value === 'preserve')
             let aClasses = ['tag-' + elm.tagName]
-            let attrClasses = {'type': {}, 'n': { has: true }, 'voice:desc': {}, 'voice:syl': {}}
+            let attrClasses = {'type': {}, 'n': { has: true }}
             if (elm.attributes) {
               Object.keys(attrClasses).forEach(a => {
                 if (elm.attributes[a] && elm.attributes[a].value) {
@@ -71,7 +81,47 @@ export default {
             if (elm.attributes && elm.attributes['voice:syl'] && elm.attributes['voice:syl'].value) {
               aTxt += '@'.repeat(parseInt(elm.attributes['voice:syl'].value))
             }
+            if (this.aType === 'voice') {
+              // overlap tags - before
+              if (elm.tagName === 'seg' && elm.attributes && elm.attributes['type'] && elm.attributes['type'].value === 'overlap') {
+                aTxt += '<span class="fx-overlap"> &lt;'
+                if (elm.attributes['n'] && elm.attributes['n'].value) {
+                  aTxt += elm.attributes['n'].value
+                } else {
+                  console.log('overlap tags - No "n" attribute!!!!')
+                }
+                aTxt += '&gt; </span>'
+              }
+              // pause
+              if (elm.tagName === 'pause') {
+                aTxt += ' ('
+                if (elm.attributes && elm.attributes['dur'] && elm.attributes['dur'].value && typeof elm.attributes['dur'].value === 'string') {
+                  let aM = elm.attributes['dur'].value.match(/PT(.+)S/i)
+                  aTxt += (aM && aM[1]) ? aM[1] : '.'
+                } else {
+                  aTxt += '.'
+                }
+                aTxt += ')'
+              }
+              // contextual events
+              if (elm.tagName === 'incident') {
+                aTxt += ' {' + (elm.attributes && elm.attributes['voice:desc'] && elm.attributes['voice:desc'].value ? elm.attributes && elm.attributes['voice:desc'] && elm.attributes['voice:desc'].value : '');
+                if (elm.attributes && elm.attributes['dur'] && elm.attributes['dur'].value && typeof elm.attributes['dur'].value === 'string') {
+                  let aM = elm.attributes['dur'].value.match(/PT(.+)S/i)
+                  aTxt += ' (' + ((aM && aM[1]) ? aM[1] : '.') + ')'
+                }
+                aTxt += '} '
+              }
+            }
             aTxt += elm.childNodes && elm.childNodes.length > 0 ? this.renderText(elm.childNodes, trimThis) : elm.textContent.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+            // overlap tags - after
+            if (elm.tagName === 'seg' && elm.attributes && elm.attributes['type'] && elm.attributes['type'].value === 'overlap') {
+                aTxt += '<span class="fx-overlap"> &lt;/'
+                if (elm.attributes['n'] && elm.attributes['n'].value) {
+                  aTxt += elm.attributes['n'].value
+                }
+                aTxt += '&gt; </span>'
+            }
             aTxt += '</span>'
           } else if (elm.nodeType === 3) {
             let bTxt = elm.textContent.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
@@ -102,9 +152,6 @@ export default {
 </script>
 
 <style scoped>
-.line-con >>> .has-n {
-  color: #00f;
-}
 .line-con >>> .highlight {
   background: #ff0;
 }
@@ -112,4 +159,32 @@ export default {
   color: #d00;
   font-weight: bold;
 }
+
+/* Voice */
+.line-con.typ-voice >>> .fx-overlap {
+  color: blue;
+}
+.line-con.typ-voice:not(.s-ot) >>> .fx-overlap {
+  display: none;
+}
+
+.line-con.typ-voice >>> .tag-pause {
+  color: brown;
+}
+.line-con.typ-voice:not(.s-p) >>> .tag-pause {
+  display: none;
+}
+
+.line-con.typ-voice >>> .tag-incident {
+  color: #808080;
+}
+.line-con.typ-voice:not(.s-ce) >>> .tag-incident {
+  display: none;
+}
+
+/* Plain */
+.line-con.typ-plain >>> .has-n {
+  color: #00f;
+}
+/* Pos */
 </style>

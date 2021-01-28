@@ -23,7 +23,7 @@
                 <div class="d-flex">
                   <div class="line-uid">{{ uObj.uId.split('_')[0] + ':' + uObj.uId.split('_')[2] }}</div>
                   <div class="line-speaker" v-if="xmlObjLines">{{ xmlObjLines[uIdx].speaker }}</div>
-                  <RenderLine :xmlObjLine="xmlObjLines[uIdx]" :highlight="uObj.highlight" v-if="xmlObjLines"/>
+                  <RenderLine :xmlObjLine="xmlObjLines[uIdx]" :highlight="uObj.highlight" :mainData="mainData" v-if="xmlObjLines"/>
                 </div>
               </div>
             </div>

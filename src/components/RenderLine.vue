@@ -14,6 +14,7 @@ export default {
   data: () => ({
     aText: '',
     aType: 'plain',
+    xmlIdCache: {}
   }),
   mounted () {
     // console.log('CorpusElementViews', this.xmlObjLine)
@@ -28,6 +29,7 @@ export default {
         if (this.mainData.views.voice.p) { aClasses += ' s-p' }
         if (this.mainData.views.voice.oT) { aClasses += ' s-ot' }
         if (this.mainData.views.voice.cE) { aClasses += ' s-ce' }
+        if (this.mainData.views.voice.sM) { aClasses += ' s-sm' }
       }
       return aClasses
     }
@@ -41,7 +43,9 @@ export default {
           this.$set(this.xmlObjLine, this.aType, null)
           let text = this.xmlObjLine.dom.textContent
           if (this.xmlObjLine.dom.childNodes && this.xmlObjLine.dom.childNodes.length > 0) {
+            this.xmlIdCache = {}
             text = this.renderText(this.xmlObjLine.dom.childNodes)
+            // console.log(this.xmlIdCache)
           }
           this.$set(this.xmlObjLine, this.aType, text)
         }
@@ -113,6 +117,39 @@ export default {
                 }
                 aTxt += '} '
               }
+              // speaking modes
+              if (elm.tagName === 'shift') {
+                aTxt += ' &lt;'
+                if (elm.attributes && elm.attributes['new']) {
+                  if (elm.attributes['new'].value === 'neutral') {
+                    if (elm.attributes['corresp'] && elm.attributes['corresp'].value && this.xmlIdCache[elm.attributes['corresp'].value]) {
+                      aTxt += '/' + this.xmlIdCache[elm.attributes['corresp'].value]
+                    } else {
+                      aTxt += '/' + elm.attributes['new'].value
+                    }
+                  } else if (elm.attributes['new'].value === 'normal') {
+                    aTxt += '/@'
+                  } else if (elm.attributes['new'].value) {
+                    let nList = {
+                      'laugh': '@',
+                      'p': 'soft',
+                      'l': 'slow',
+                      'f': 'loud',
+                      'whisp': 'whispering',
+                      'sigh': 'sighing',
+                      'phone': 'on phone',
+                      'reading': 'reading',
+                      'a': 'fast'
+                    }
+                    let aVal = nList[elm.attributes['new'].value] || elm.attributes['new'].value
+                    if (elm.attributes['xml:id'] && elm.attributes['xml:id'].value) {
+                      this.xmlIdCache['#' + elm.attributes['xml:id'].value] = aVal
+                    }
+                    aTxt += aVal
+                  }
+                }
+                aTxt += '&gt; '
+              }
             }
             aTxt += elm.childNodes && elm.childNodes.length > 0 ? this.renderText(elm.childNodes, trimThis) : elm.textContent.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
             // voice - layout
@@ -183,6 +220,13 @@ export default {
   color: #808080;
 }
 .line-con.typ-voice:not(.s-ce) >>> .tag-incident {
+  display: none;
+}
+
+.line-con.typ-voice >>> .tag-shift {
+  color: #AA0066;
+}
+.line-con.typ-voice:not(.s-sm) >>> .tag-shift {
   display: none;
 }
 

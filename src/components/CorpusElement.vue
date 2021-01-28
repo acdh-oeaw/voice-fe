@@ -202,4 +202,7 @@ export default {
 .vs-ce {
   color: #808080;
 }
+.vs-sm {
+  color: #AA0066;
+}
 </style>

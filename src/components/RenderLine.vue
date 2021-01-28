@@ -81,6 +81,7 @@ export default {
             if (elm.attributes && elm.attributes['voice:syl'] && elm.attributes['voice:syl'].value) {
               aTxt += '@'.repeat(parseInt(elm.attributes['voice:syl'].value))
             }
+            // voice - layout
             if (this.aType === 'voice') {
               // overlap tags - before
               if (elm.tagName === 'seg' && elm.attributes && elm.attributes['type'] && elm.attributes['type'].value === 'overlap') {
@@ -114,13 +115,16 @@ export default {
               }
             }
             aTxt += elm.childNodes && elm.childNodes.length > 0 ? this.renderText(elm.childNodes, trimThis) : elm.textContent.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
-            // overlap tags - after
-            if (elm.tagName === 'seg' && elm.attributes && elm.attributes['type'] && elm.attributes['type'].value === 'overlap') {
-                aTxt += '<span class="fx-overlap"> &lt;/'
-                if (elm.attributes['n'] && elm.attributes['n'].value) {
-                  aTxt += elm.attributes['n'].value
-                }
-                aTxt += '&gt; </span>'
+            // voice - layout
+            if (this.aType === 'voice') {
+              // overlap tags - after
+              if (elm.tagName === 'seg' && elm.attributes && elm.attributes['type'] && elm.attributes['type'].value === 'overlap') {
+                  aTxt += '<span class="fx-overlap"> &lt;/'
+                  if (elm.attributes['n'] && elm.attributes['n'].value) {
+                    aTxt += elm.attributes['n'].value
+                  }
+                  aTxt += '&gt; </span>'
+              }
             }
             aTxt += '</span>'
           } else if (elm.nodeType === 3) {

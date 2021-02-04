@@ -208,4 +208,7 @@ export default {
 .vs-vsn {
   color: #AA0066;
 }
+.vs-spl {
+  color: #AA0066;
+}
 </style>

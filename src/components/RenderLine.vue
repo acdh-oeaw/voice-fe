@@ -31,6 +31,7 @@ export default {
         if (this.mainData.views.voice.cE) { aClasses += ' s-ce' }
         if (this.mainData.views.voice.sM) { aClasses += ' s-sm' }
         if (this.mainData.views.voice.vsN) { aClasses += ' s-vsn' }
+        if (this.mainData.views.voice.spl) { aClasses += ' s-spl' }
       }
       return aClasses
     }
@@ -64,7 +65,7 @@ export default {
       let aTxt = ''
       if (domArray && domArray.length > 0) {
         domArray.forEach(elm => {
-          if (elm.nodeType === 1) {
+          if (elm.nodeType === 1) { // ELEMENT_NODE
             let trimThis = !(elm.attributes && elm.attributes['xml:space'] && elm.attributes['xml:space'].value === 'preserve')
             let aClasses = ['tag-' + elm.tagName]
             let attrClasses = {'type': {}, 'n': { has: true }, 'voice:desc': {}}
@@ -151,11 +152,27 @@ export default {
                 }
                 aTxt += '&gt; '
               }
+              // vocal
               if (elm.tagName === 'vocal' && elm.attributes && elm.attributes['voice:desc'] && elm.attributes['voice:desc'].value !== 'laughing') {
                 aTxt += '&lt;' + elm.attributes['voice:desc'].value + '&gt;'
               }
+              // spel - before
+              if (elm.attributes && elm.attributes['spelt_orig']) {
+                aTxt += '<span class="fx-spel"> &lt;spel&gt; </span>'
+              }
             }
-            aTxt += elm.childNodes && elm.childNodes.length > 0 ? this.renderText(elm.childNodes, trimThis) : elm.textContent.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+            if (elm.childNodes && elm.childNodes.length > 0 && (elm.childNodes.length > 1 || elm.childNodes[0].nodeType !== 3)) {
+              aTxt +=  this.renderText(elm.childNodes, trimThis)
+            } else {
+              if (elm.tagName === 'w') {
+                console.log(elm.attributes)
+              }
+              if (elm.attributes && elm.attributes['spelt_orig'] && elm.attributes['spelt_orig'].value) {
+                aTxt += elm.attributes['spelt_orig'].value
+              } else {
+                aTxt += elm.textContent.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+              }
+            }
             // voice - layout
             if (this.aType === 'voice') {
               // overlap tags - after
@@ -166,9 +183,13 @@ export default {
                   }
                   aTxt += '&gt; </span>'
               }
+              // spel - after
+              if (elm.attributes && elm.attributes['spelt_orig']) {
+                aTxt += '<span class="fx-spel"> &lt;/spel&gt; </span>'
+              }
             }
             aTxt += '</span>'
-          } else if (elm.nodeType === 3) {
+          } else if (elm.nodeType === 3) { // TEXT_NODE
             let bTxt = elm.textContent.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
             if (trimIt) {
               bTxt = bTxt.trim()
@@ -238,6 +259,13 @@ export default {
   color: #AA0066;
 }
 .line-con.typ-voice:not(.s-vsn) >>> .tag-vocal {
+  display: none;
+}
+
+.line-con.typ-voice >>> .fx-spel {
+  color: #AA0066;
+}
+.line-con.typ-voice:not(.s-spl) >>> .fx-spel {
   display: none;
 }
 

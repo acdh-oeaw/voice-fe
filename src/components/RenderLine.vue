@@ -35,6 +35,7 @@ export default {
         if (this.mainData.views.voice.fLaT) { aClasses += ' s-flat' }
         if (this.mainData.views.voice.oC) { aClasses += ' s-oc' }
         if (this.mainData.views.voice.uiT) { aClasses += ' s-uit' }
+        if (this.mainData.views.voice.ono) { aClasses += ' s-ono' }
       }
       return aClasses
     }
@@ -174,6 +175,9 @@ export default {
               if (elm.tagName === 'supplied' && elm.attributes && elm.attributes['reason'] && elm.attributes['reason'].value === 'unintelligible') {
                 aTxt += '<span class="fx-unintelligible-tag"> &lt;un&gt; </span>'
               }
+              // ono - before
+              if (elm.tagName === 'seg' && elm.attributes && elm.attributes['type'] && elm.attributes['type'].value === 'onomatopoeia') {
+                aTxt += '<span class="fx-ono"> &lt;ono&gt; </span>'
               }
             }
             if (elm.childNodes && elm.childNodes.length > 0 && (elm.childNodes.length > 1 || elm.childNodes[0].nodeType !== 3)) {
@@ -213,6 +217,9 @@ export default {
               if (elm.tagName === 'supplied' && elm.attributes && elm.attributes['reason'] && elm.attributes['reason'].value === 'unintelligible') {
                 aTxt += '<span class="fx-unintelligible-tag"> &lt;/un&gt; </span>'
               }
+              // ono - after
+              if (elm.tagName === 'seg' && elm.attributes && elm.attributes['type'] && elm.attributes['type'].value === 'onomatopoeia') {
+                aTxt += '<span class="fx-ono"> &lt;/ono&gt; </span>'
               }
             }
             aTxt += '</span>'
@@ -311,6 +318,13 @@ export default {
   color: #00978E;
 }
 .line-con.typ-voice:not(.s-uit) >>> .fx-unintelligible-tag {
+  display: none;
+}
+
+.line-con.typ-voice >>> .fx-ono {
+  color: #61DDD2;
+}
+.line-con.typ-voice:not(.s-ono) >>> .fx-ono {
   display: none;
 }
 

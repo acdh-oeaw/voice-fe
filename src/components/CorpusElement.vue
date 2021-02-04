@@ -214,4 +214,7 @@ export default {
 .vs-uit {
   color: #00978E;
 }
+.vs-ono {
+  color: #61DDD2;
+}
 </style>

@@ -234,6 +234,18 @@ export default {
               if (elm.tagName === 'voice:pvc') {
                 aTxt += '<span class="fx-pvct"> &lt;/pvc&gt; </span>'
               }
+              // c - after
+              if (elm.tagName === 'c' && elm.attributes && elm.attributes['type']) {
+                if (elm.attributes['type'].value === 'lengthening') {
+                  aTxt += ':'
+                } else if (elm.attributes['type'].value === 'intonation') {
+                  if (elm.attributes['function'] && elm.attributes['function'].value === 'fall') {
+                    aTxt += '.'
+                  } else if (elm.attributes['function'] && elm.attributes['function'].value === 'rise') {
+                    aTxt += '?'
+                  }
+                }
+              }
             }
             aTxt += '</span>'
           } else if (elm.nodeType === 3) { // TEXT_NODE
@@ -273,7 +285,9 @@ export default {
   font-weight: bold;
 }
 
+/*********/
 /* Voice */
+/*********/
 .line-con.typ-voice >>> .fx-overlap, .line-con.typ-voice >>> .type-overlap {
   color: blue;
 }
@@ -352,9 +366,19 @@ export default {
   color: #61DDD2;
 }
 
+.line-con.typ-voice >>> .tag-emph {
+  text-transform: uppercase;
+}
+
+/*********/
 /* Plain */
+/*********/
 .line-con.typ-plain >>> .has-n {
   color: #00f;
 }
+
+/*******/
 /* Pos */
+/*******/
+
 </style>

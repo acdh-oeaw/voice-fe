@@ -217,4 +217,7 @@ export default {
 .vs-ono {
   color: #61DDD2;
 }
+.vs-pvct {
+  color: #61DDD2;
+}
 </style>

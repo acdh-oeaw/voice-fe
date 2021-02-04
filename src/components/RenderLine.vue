@@ -36,6 +36,7 @@ export default {
         if (this.mainData.views.voice.oC) { aClasses += ' s-oc' }
         if (this.mainData.views.voice.uiT) { aClasses += ' s-uit' }
         if (this.mainData.views.voice.ono) { aClasses += ' s-ono' }
+        if (this.mainData.views.voice.pvcT) { aClasses += ' s-pvct' }
       }
       return aClasses
     }
@@ -179,6 +180,10 @@ export default {
               if (elm.tagName === 'seg' && elm.attributes && elm.attributes['type'] && elm.attributes['type'].value === 'onomatopoeia') {
                 aTxt += '<span class="fx-ono"> &lt;ono&gt; </span>'
               }
+              // pvc - before
+              if (elm.tagName === 'voice:pvc') {
+                aTxt += '<span class="fx-pvct"> &lt;pvc&gt; </span>'
+              }
             }
             if (elm.childNodes && elm.childNodes.length > 0 && (elm.childNodes.length > 1 || elm.childNodes[0].nodeType !== 3)) {
               aTxt +=  this.renderText(elm.childNodes, trimThis)
@@ -220,6 +225,18 @@ export default {
               // ono - after
               if (elm.tagName === 'seg' && elm.attributes && elm.attributes['type'] && elm.attributes['type'].value === 'onomatopoeia') {
                 aTxt += '<span class="fx-ono"> &lt;/ono&gt; </span>'
+              }
+              // pvc - after (before ipa)
+              if (elm.tagName === 'voice:pvc' && elm.attributes && elm.attributes['comment']) {
+                aTxt += '{' + elm.attributes['comment'].value + '}'
+              }
+              // ipa - after
+              if (elm.attributes && elm.attributes['voice:ipa']) {
+                aTxt += '<span class="tag-seg type-ipa"><span class="fx-ipa"> &lt;ipa&gt; </span>' + elm.attributes['voice:ipa'].value + '<span class="fx-ipa"> &lt;/ipa&gt; </span></span>'
+              }
+              // pvc - after
+              if (elm.tagName === 'voice:pvc') {
+                aTxt += '<span class="fx-pvct"> &lt;/pvc&gt; </span>'
               }
             }
             aTxt += '</span>'
@@ -326,6 +343,17 @@ export default {
 }
 .line-con.typ-voice:not(.s-ono) >>> .fx-ono {
   display: none;
+}
+
+.line-con.typ-voice >>> .fx-pvct {
+  color: #61DDD2;
+}
+.line-con.typ-voice:not(.s-pvct) >>> .fx-pvct {
+  display: none;
+}
+
+.line-con.typ-voice >>> .fx-ipa {
+  color: #61DDD2;
 }
 
 /* Plain */

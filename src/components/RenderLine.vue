@@ -34,6 +34,7 @@ export default {
         if (this.mainData.views.voice.spl) { aClasses += ' s-spl' }
         if (this.mainData.views.voice.fLaT) { aClasses += ' s-flat' }
         if (this.mainData.views.voice.oC) { aClasses += ' s-oc' }
+        if (this.mainData.views.voice.uiT) { aClasses += ' s-uit' }
       }
       return aClasses
     }
@@ -70,7 +71,7 @@ export default {
           if (elm.nodeType === 1) { // ELEMENT_NODE
             let trimThis = !(elm.attributes && elm.attributes['xml:space'] && elm.attributes['xml:space'].value === 'preserve')
             let aClasses = ['tag-' + elm.tagName]
-            let attrClasses = {'type': {}, 'n': { has: true }, 'voice:desc': {}}
+            let attrClasses = {'type': {}, 'n': { has: true }, 'voice:desc': {}, 'reason': {}}
             if (elm.attributes) {
               Object.keys(attrClasses).forEach(a => {
                 if (elm.attributes[a] && elm.attributes[a].value) {
@@ -169,6 +170,11 @@ export default {
               if (elm.attributes && elm.attributes['type'] && elm.attributes['type'].value === 'other_continuation') {
                 aTxt += '<span class="fx-other-continuation"> = </span>'
               }
+              // unintelligible - before
+              if (elm.tagName === 'supplied' && elm.attributes && elm.attributes['reason'] && elm.attributes['reason'].value === 'unintelligible') {
+                aTxt += '<span class="fx-unintelligible-tag"> &lt;un&gt; </span>'
+              }
+              }
             }
             if (elm.childNodes && elm.childNodes.length > 0 && (elm.childNodes.length > 1 || elm.childNodes[0].nodeType !== 3)) {
               aTxt +=  this.renderText(elm.childNodes, trimThis)
@@ -202,6 +208,11 @@ export default {
                   aTxt += '<span class="fx-foreign-t"> {' + elm.attributes['voice:translation'].value + '} </span>'
                 }
                 aTxt += '<span class="fx-foreign"> &lt;/' + elm.attributes['type'].value + elm.attributes['xml:lang'].value + '&gt; </span>'
+              }
+              // unintelligible - after
+              if (elm.tagName === 'supplied' && elm.attributes && elm.attributes['reason'] && elm.attributes['reason'].value === 'unintelligible') {
+                aTxt += '<span class="fx-unintelligible-tag"> &lt;/un&gt; </span>'
+              }
               }
             }
             aTxt += '</span>'
@@ -243,7 +254,7 @@ export default {
 }
 
 /* Voice */
-.line-con.typ-voice >>> .fx-overlap {
+.line-con.typ-voice >>> .fx-overlap, .line-con.typ-voice >>> .type-overlap {
   color: blue;
 }
 .line-con.typ-voice:not(.s-ot) >>> .fx-overlap {
@@ -293,6 +304,13 @@ export default {
 }
 
 .line-con.typ-voice:not(.s-oc) >>> .fx-other-continuation {
+  display: none;
+}
+
+.line-con.typ-voice >>> .tag-supplied.reason-unintelligible {
+  color: #00978E;
+}
+.line-con.typ-voice:not(.s-uit) >>> .fx-unintelligible-tag {
   display: none;
 }
 

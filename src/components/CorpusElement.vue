@@ -211,4 +211,7 @@ export default {
 .vs-spl {
   color: #AA0066;
 }
+.vs-uit {
+  color: #00978E;
+}
 </style>

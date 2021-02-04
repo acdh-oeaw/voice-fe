@@ -52,7 +52,6 @@ export default {
           if (this.xmlObjLine.dom.childNodes && this.xmlObjLine.dom.childNodes.length > 0) {
             this.xmlIdCache = {}
             text = this.renderText(this.xmlObjLine.dom.childNodes)
-            // console.log(this.xmlIdCache)
           }
           this.$set(this.xmlObjLine, this.aType, text)
         }
@@ -188,9 +187,6 @@ export default {
             if (elm.childNodes && elm.childNodes.length > 0 && (elm.childNodes.length > 1 || elm.childNodes[0].nodeType !== 3)) {
               aTxt +=  this.renderText(elm.childNodes, trimThis)
             } else {
-              if (elm.tagName === 'w') {
-                console.log(elm.attributes)
-              }
               if (elm.attributes && elm.attributes['spelt_orig'] && elm.attributes['spelt_orig'].value) {
                 aTxt += elm.attributes['spelt_orig'].value
               } else {

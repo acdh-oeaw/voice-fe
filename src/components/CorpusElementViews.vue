@@ -2,14 +2,18 @@
   <div ref="viewarea" class="viewarea linescroll" v-on:scroll="scrolling">
     <div class="line-viewarea" :style="'height: ' + (height) + 'px;'" v-if="xmlObjLines">
       <div class="line-viewarea" :style="'top: ' + lineTopPx + 'px;'">
-        <div
-          v-for="(aLine, aIdx) in visibleXmlObjLines" :key="'l' + aIdx"
-          class="d-flex line-frm"
+        <template
+          v-for="(aLine, aIdx) in visibleXmlObjLines"
         >
-          <div class="line-nr" v-if="show_utI">{{ lineTop + aIdx + 1 }}</div>
-          <div class="line-speaker" v-if="show_sId">{{ aLine.speaker }}</div>
-          <RenderLine :xmlObjLine="aLine" :type="view" :highlight="mainData.search.highlights" :mainData="mainData" />
-        </div>
+          <div class="d-flex line-frm" :key="'l' + aIdx">
+            <div class="line-nr" v-if="show_utI">{{ lineTop + aIdx + 1 }}</div>
+            <div class="line-speaker" v-if="show_sId">{{ aLine.speaker }}</div>
+            <RenderLine :xmlObjLine="aLine" :type="view" :highlight="mainData.search.highlights" :mainData="mainData" />
+          </div>
+          <div class="line-gap" :key="'lg' + aIdx" v-if="show_gap && aLine.gap">
+            {{ aLine.gap }}
+          </div>
+        </template>
       </div>
     </div>
   </div>
@@ -48,6 +52,9 @@ export default {
     },
     show_sId () {
       return this.view !== 'voice' || this.mainData.views.voice.sId
+    },
+    show_gap () {
+      return this.view !== 'voice' || this.mainData.views.voice.gap
     },
     height () {
       return this.xmlObjLines ? this.xmlObjLines.reduce((a,b) => a + b.textHeight + this.extraHeight, 0) : 100
@@ -102,9 +109,31 @@ export default {
           if (speaker && typeof speaker === 'string') {
             speaker = speaker.split('_').slice(-1)[0]
           }
+          let gap = ''
+          if (dom && !dom.nextElementSibling && dom.parentElement && dom.parentElement.nextElementSibling && dom.parentElement.nextElementSibling.tagName === 'gap') {
+            let aDom = dom.parentElement.nextElementSibling
+            if (aDom.attributes && aDom.attributes['reason']) {
+              gap += '('
+              if (aDom.attributes['reason'].value === 'not_transcribed') {
+                gap += 'gap'
+              } else if (aDom.attributes['reason'].value === 'not_recorded') {
+                gap += 'nrec'
+              }
+              if (dom.parentElement.attributes['voice:end'] && aDom.nextElementSibling && aDom.nextElementSibling.attributes['voice:start']) {
+                let fTime = this.dur2sec(dom.parentElement.attributes['voice:end'].value)
+                let tTime = this.dur2sec(aDom.nextElementSibling.attributes['voice:start'].value)
+                gap += ' ' + this.sec2dur(tTime - fTime, 0)
+              }
+              gap += ')'
+              if (aDom.attributes['voice:desc'] && aDom.attributes['voice:desc'].value) {
+                gap += ' {' + aDom.attributes['voice:desc'].value + '}'
+              }
+            }
+          }
           return {
             dom: dom,
             speaker: speaker,
+            gap: gap.length > 0 ? gap : null,
             text: null,
             textHeight: this.element.lineHeight[this.view] && this.element.lineHeight[this.view][i] ? this.element.lineHeight[this.view][i] : 24
           }
@@ -125,6 +154,27 @@ export default {
         this.$set(el.lineHeight, v, Array.from(this.xmlObjLines.map(l => l.textHeight)))
         console.log('cacheHeights')
       }
+    },
+    dur2sec (hms) {
+      var s = 0.0
+      if (hms && hms.indexOf(':') > -1) {
+        var a = hms.split(':')
+        if (a.length > 2) { s += parseFloat(a[a.length - 3]) * 60 * 60 }
+        if (a.length > 1) { s += parseFloat(a[a.length - 2]) * 60 }
+        if (a.length > 0) { s += parseFloat(a[a.length - 1]) }
+      } else {
+        s = parseFloat(hms)
+      }
+      return ((isNaN(s)) ? 0.0 : s)
+    },
+    sec2dur (sec) {
+      var v = ''
+      if (sec < 0) { sec = -sec; v = '-' }
+      var h = parseInt(sec / 3600)
+      sec %= 3600
+      var m = parseInt(sec / 60)
+      var s = sec % 60
+      return v + ('0' + h).slice(-2) + ':' + ('0' + m).slice(-2) + ':' + ('0' + s.toFixed(0)).slice(-2)
     }
   },
   watch: {
@@ -178,6 +228,12 @@ export default {
 .line-frm {
   border-top: 1px solid #ddd;
   padding: 2px 0.5rem;
+}
+.line-gap {
+  color: #222;
+  background: #fafafa;
+  border-top: 1px solid #ddd;
+  padding: 0.5rem 0.5rem;
 }
 .line-nr {
   min-width: 3rem;

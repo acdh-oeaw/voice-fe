@@ -205,4 +205,7 @@ export default {
 .vs-sm {
   color: #AA0066;
 }
+.vs-vsn {
+  color: #AA0066;
+}
 </style>

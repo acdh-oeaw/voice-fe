@@ -30,6 +30,7 @@ export default {
         if (this.mainData.views.voice.oT) { aClasses += ' s-ot' }
         if (this.mainData.views.voice.cE) { aClasses += ' s-ce' }
         if (this.mainData.views.voice.sM) { aClasses += ' s-sm' }
+        if (this.mainData.views.voice.vsN) { aClasses += ' s-vsn' }
       }
       return aClasses
     }
@@ -66,12 +67,12 @@ export default {
           if (elm.nodeType === 1) {
             let trimThis = !(elm.attributes && elm.attributes['xml:space'] && elm.attributes['xml:space'].value === 'preserve')
             let aClasses = ['tag-' + elm.tagName]
-            let attrClasses = {'type': {}, 'n': { has: true }}
+            let attrClasses = {'type': {}, 'n': { has: true }, 'voice:desc': {}}
             if (elm.attributes) {
               Object.keys(attrClasses).forEach(a => {
                 if (elm.attributes[a] && elm.attributes[a].value) {
                   let cn = a.replace(/:/g, '-')
-                  aClasses.push(cn + '-' + elm.attributes[a].value)
+                  aClasses.push(cn + '-' + elm.attributes[a].value.replace(/\s/gm, '-'))
                   if (attrClasses[a].has) {
                     aClasses.push('has-'+ cn)
                   }
@@ -150,6 +151,9 @@ export default {
                 }
                 aTxt += '&gt; '
               }
+              if (elm.tagName === 'vocal' && elm.attributes && elm.attributes['voice:desc'] && elm.attributes['voice:desc'].value !== 'laughing') {
+                aTxt += '&lt;' + elm.attributes['voice:desc'].value + '&gt;'
+              }
             }
             aTxt += elm.childNodes && elm.childNodes.length > 0 ? this.renderText(elm.childNodes, trimThis) : elm.textContent.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
             // voice - layout
@@ -227,6 +231,13 @@ export default {
   color: #AA0066;
 }
 .line-con.typ-voice:not(.s-sm) >>> .tag-shift {
+  display: none;
+}
+
+.line-con.typ-voice >>> .tag-vocal {
+  color: #AA0066;
+}
+.line-con.typ-voice:not(.s-vsn) >>> .tag-vocal {
   display: none;
 }
 

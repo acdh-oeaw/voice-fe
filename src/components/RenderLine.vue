@@ -33,6 +33,7 @@ export default {
         if (this.mainData.views.voice.vsN) { aClasses += ' s-vsn' }
         if (this.mainData.views.voice.spl) { aClasses += ' s-spl' }
         if (this.mainData.views.voice.fLaT) { aClasses += ' s-flat' }
+        if (this.mainData.views.voice.oC) { aClasses += ' s-oc' }
       }
       return aClasses
     }
@@ -165,6 +166,9 @@ export default {
               if (elm.tagName === 'foreign' && elm.attributes && elm.attributes['type'] && elm.attributes['xml:lang']) {
                 aTxt += '<span class="fx-foreign"> &lt;' + elm.attributes['type'].value + elm.attributes['xml:lang'].value + '&gt; </span>'
               }
+              if (elm.attributes && elm.attributes['type'] && elm.attributes['type'].value === 'other_continuation') {
+                aTxt += '<span class="fx-other-continuation"> = </span>'
+              }
             }
             if (elm.childNodes && elm.childNodes.length > 0 && (elm.childNodes.length > 1 || elm.childNodes[0].nodeType !== 3)) {
               aTxt +=  this.renderText(elm.childNodes, trimThis)
@@ -285,6 +289,10 @@ export default {
   display: none;
 }
 .line-con.typ-voice:not(.s-flat) >>> .fx-foreign-t {
+  display: none;
+}
+
+.line-con.typ-voice:not(.s-oc) >>> .fx-other-continuation {
   display: none;
 }
 

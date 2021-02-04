@@ -32,6 +32,7 @@ export default {
         if (this.mainData.views.voice.sM) { aClasses += ' s-sm' }
         if (this.mainData.views.voice.vsN) { aClasses += ' s-vsn' }
         if (this.mainData.views.voice.spl) { aClasses += ' s-spl' }
+        if (this.mainData.views.voice.fLaT) { aClasses += ' s-flat' }
       }
       return aClasses
     }
@@ -160,6 +161,10 @@ export default {
               if (elm.attributes && elm.attributes['spelt_orig']) {
                 aTxt += '<span class="fx-spel"> &lt;spel&gt; </span>'
               }
+              // foreign_tag - before
+              if (elm.tagName === 'foreign' && elm.attributes && elm.attributes['type'] && elm.attributes['xml:lang']) {
+                aTxt += '<span class="fx-foreign"> &lt;' + elm.attributes['type'].value + elm.attributes['xml:lang'].value + '&gt; </span>'
+              }
             }
             if (elm.childNodes && elm.childNodes.length > 0 && (elm.childNodes.length > 1 || elm.childNodes[0].nodeType !== 3)) {
               aTxt +=  this.renderText(elm.childNodes, trimThis)
@@ -186,6 +191,13 @@ export default {
               // spel - after
               if (elm.attributes && elm.attributes['spelt_orig']) {
                 aTxt += '<span class="fx-spel"> &lt;/spel&gt; </span>'
+              }
+              // foreign_tag - after
+              if (elm.tagName === 'foreign' && elm.attributes && elm.attributes['type'] && elm.attributes['xml:lang']) {
+                if (elm.attributes['voice:translation']) {
+                  aTxt += '<span class="fx-foreign-t"> {' + elm.attributes['voice:translation'].value + '} </span>'
+                }
+                aTxt += '<span class="fx-foreign"> &lt;/' + elm.attributes['type'].value + elm.attributes['xml:lang'].value + '&gt; </span>'
               }
             }
             aTxt += '</span>'
@@ -266,6 +278,13 @@ export default {
   color: #AA0066;
 }
 .line-con.typ-voice:not(.s-spl) >>> .fx-spel {
+  display: none;
+}
+
+.line-con.typ-voice:not(.s-flat) >>> .fx-foreign {
+  display: none;
+}
+.line-con.typ-voice:not(.s-flat) >>> .fx-foreign-t {
   display: none;
 }
 

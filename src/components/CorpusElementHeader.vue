@@ -1,8 +1,11 @@
 <template>
   <div class="header">
-    {{ headerData }}
-    <div class="notes-stmt" v-if="headerData.notes.length > 0">
-      <h3 class="my-3">Event Description</h3>
+    <h1>Header:</h1>
+    <h2 v-if="headerData.title">{{ headerData.title.textContent }}</h2>
+    <hr/>
+    <h3 v-if="headerData.edition">{{ headerData.edition.textContent }}</h3>
+    <div class="notes-stmt" v-if="headerData.notes && headerData.notes.length > 0">
+      <h3>Event Description</h3>
       <div class="note ml-2 mb-2"
         v-for="(n, i) in headerData.notes" :key="'n' + i"
       >
@@ -22,7 +25,7 @@ export default {
   data: () => ({
   }),
   mounted () {
-    console.log('CorpusElementHeader', this.element)
+    console.log('CorpusElementHeader', this.element, {x: this.headerDom})
   },
   beforeDestroy () {
   },
@@ -34,16 +37,10 @@ export default {
     },
     headerData () {
       let hData = {
-        notes: []
+        title: this.headerDom.querySelector('titleStmt title'),
+        edition: this.headerDom.querySelector('edition'),
+        notes: this.headerDom.querySelectorAll('notesStmt note')
       }
-      let ns = this.headerDom.getElementsByTagName('notesStmt')
-      for(let i = 0; i < ns.length; i++) {
-        let n = ns[i].getElementsByTagName('note')
-        for(let i2 = 0; i2 < n.length; i2++) {
-          hData.notes.push(n[i2])
-        }
-      }
-      console.log(hData)
       return hData
     }
   },
@@ -57,6 +54,16 @@ export default {
 </script>
 
 <style scoped>
+h1 {
+  font-size: 1.6rem;
+}
+h2 {
+  font-size: 1.4rem;
+  font-style: italic;
+}
+h3 {
+  margin: 0.75rem 0;
+}
 .header {
   padding: 1rem;
 }

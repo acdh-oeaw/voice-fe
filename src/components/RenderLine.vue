@@ -183,11 +183,17 @@ export default {
               if (elm.tagName === 'voice:pvc') {
                 aTxt += '<span class="fx-pvct"> &lt;pvc&gt; </span>'
               }
+              // unclear - before
+              if (elm.tagName === 'unclear') {
+                aTxt += '('
+              }
             }
             if (elm.childNodes && elm.childNodes.length > 0 && (elm.childNodes.length > 1 || elm.childNodes[0].nodeType !== 3)) {
               aTxt +=  this.renderText(elm.childNodes, trimThis)
             } else {
-              if (elm.attributes && elm.attributes['spelt_orig'] && elm.attributes['spelt_orig'].value) {
+              if (this.aType === 'voice' && elm.tagName === 'seg' && elm.attributes && elm.attributes['type'] && elm.attributes['type'].value === 'ws' && elm.parentElement.tagName === 'unclear' && (!elm.previousElementSibling || !elm.nextElementSibling)) {
+                aTxt += ''
+              } else if (elm.attributes && elm.attributes['spelt_orig'] && elm.attributes['spelt_orig'].value) {
                 aTxt += elm.attributes['spelt_orig'].value
               } else {
                 aTxt += elm.textContent.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
@@ -245,6 +251,10 @@ export default {
                     aTxt += '?'
                   }
                 }
+              }
+              // unclear - after
+              if (elm.tagName === 'unclear') {
+                aTxt += ')'
               }
             }
             aTxt += '</span>'

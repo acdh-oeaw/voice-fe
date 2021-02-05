@@ -13,9 +13,7 @@
           <CorpusElementXml :element="aElement" v-if="aElement && aElement.xml" />
         </div>
         <div v-else-if="vTab === 'textheader'">
-          VOICE - {{ vTab }}<br>
-          {{ aElement ? aElement.id : 'Kein Element ausgewählt ...'}}
-          <code v-if="aElement" style="display: block; white-space: pre-wrap;">{{ aElementDev }}</code>
+          <CorpusElementHeader :element="aElement" :mainData="mainData" v-if="aElement && aElement.header" />
         </div>
         <div v-else>
           <CorpusElementViews :view="vTab" :element="aElement" :mainData="mainData" v-if="aElement && aElement.xml" />
@@ -46,6 +44,7 @@
 
 <script>
 import Audioplayer from './Audioplayer';
+import CorpusElementHeader from './CorpusElementHeader';
 import CorpusElementViews from './CorpusElementViews';
 import CorpusElementXml from './CorpusElementXml';
 
@@ -162,6 +161,7 @@ export default {
   },
   components: {
     Audioplayer,
+    CorpusElementHeader,
     CorpusElementViews,
     CorpusElementXml
   }

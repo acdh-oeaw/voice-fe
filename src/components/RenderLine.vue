@@ -125,7 +125,7 @@ export default {
               }
               // speaking modes
               if (elm.tagName === 'shift') {
-                aTxt += ' &lt;'
+                aTxt += '&lt;'
                 if (elm.attributes && elm.attributes['new']) {
                   if (elm.attributes['new'].value === 'neutral') {
                     if (elm.attributes['corresp'] && elm.attributes['corresp'].value && this.xmlIdCache[elm.attributes['corresp'].value]) {

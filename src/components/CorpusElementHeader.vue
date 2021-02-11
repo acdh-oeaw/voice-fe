@@ -71,6 +71,17 @@
         </tbody>
       </table>
     </div>
+    <div class="revision-desc" v-if="headerData.revisionDesc">
+      <h3>Creation History</h3>
+      <table class="changes ml-2">
+        <tbody>
+          <tr v-for="(rd, i) in headerData.revisionDesc" :key="'rd' + i">
+            <th>{{ rd.txt }}:</th>
+            <td>{{ rd.who }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
     <div class="notes-stmt" v-if="headerData.notes && headerData.notes.length > 0">
       <h3>Event Description</h3>
       <div class="note ml-2 mb-2"
@@ -130,6 +141,24 @@ export default {
           locale: this.headerDom.querySelector('locale'),
           activity: this.headerDom.querySelector('activity')
         },
+        revisionDesc: (() => {
+          let rDescs = []
+          this.headerDom.querySelectorAll('revisionDesc change').forEach(c => {
+            rDescs.push({
+              when: c.attributes.when.value,
+              who: c.attributes.who.value,
+              txt: c.textContent
+            })
+          })
+          rDescs.sort((a, b) => {
+            if ( a.when > b.when ){ return -1 }
+            if ( a.when < b.when ){ return 1 }
+            if ( a.who < b.who ){ return -1 }
+            if ( a.who > b.who ){ return 1 }
+            return 0
+          })
+          return rDescs
+        }) (),
         notes: this.headerDom.querySelectorAll('notesStmt note')
       }
       console.log(hData)
@@ -168,7 +197,7 @@ h3 {
 .header {
   padding: 1rem;
 }
-.rec-entries th, .cat-refs th, .setting-descs th {
+.rec-entries th, .cat-refs th, .setting-descs th, .changes th {
   padding-right: 1rem;
   text-align: left;
 }

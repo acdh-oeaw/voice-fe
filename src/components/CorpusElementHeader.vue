@@ -71,6 +71,41 @@
         </tbody>
       </table>
     </div>
+    <div class="partic-desc" v-if="headerData.particDesc">
+      <h3>Speaker Information</h3>
+      <table class="list-person ml-2">
+        <tbody>
+          <template v-if="headerData.particDesc.personGrp && headerData.particDesc.personGrp.length > 0">
+            <tr class="person" v-for="(pg, i) in headerData.particDesc.personGrp" :key="'pdpg' + i">
+              <th colspan="2">{{ pg.h }}</th>
+              <td colspan="4">{{ pg.d }}</td>
+            </tr>
+          </template>
+          <template v-if="headerData.particDesc.personIdentified && headerData.particDesc.personIdentified.length > 0">
+            <tr><th colspan="6">Identified</th></tr>
+            <tr><th>ID</th><th>Sex</th><th>Age</th><th>L1</th><th>Role</th><th>Occupation</th></tr>
+            <tr v-for="(pi, i) in headerData.particDesc.personIdentified" :key="'pdpi' + i">
+              <th>{{ pi.id }}</th>
+              <td>{{ pi.sex }}</td>
+              <td>{{ pi.age }}</td>
+              <td>{{ pi.l1 }}</td>
+              <td>{{ pi.role }}</td>
+              <td>{{ pi.occupation }}</td>
+            </tr>
+          </template>
+          <template v-if="headerData.particDesc.personNotIdentified && headerData.particDesc.personNotIdentified.length > 0">
+            <tr><th colspan="6">Speakers Not Identified</th></tr>
+            <tr><th colspan="6">{{ headerData.particDesc.personNotIdentified.join(', ') }}</th></tr>
+          </template>
+          <template v-if="headerData.particDesc.relationGrp && headerData.particDesc.relationGrp.length > 0">
+            <tr class="person" v-for="(rg, i) in headerData.particDesc.relationGrp" :key="'pdrg' + i">
+              <th colspan="2">{{ rg.h }}</th>
+              <td colspan="4">{{ rg.d }}</td>
+            </tr>
+          </template>
+        </tbody>
+      </table>
+    </div>
     <div class="revision-desc" v-if="headerData.revisionDesc">
       <h3>Creation History</h3>
       <table class="changes ml-2">
@@ -141,6 +176,55 @@ export default {
           locale: this.headerDom.querySelector('locale'),
           activity: this.headerDom.querySelector('activity')
         },
+        particDesc: {
+          personGrp: (() => {
+            let pGrp = []
+            this.headerDom.querySelectorAll('particDesc personGrp').forEach(pg => {
+              pGrp.push({
+                h: pg.attributes.role ? {speakers: 'Speakers', audience: 'Audience', interactants: 'Interactants'}[pg.attributes.role.value] || pg.attributes.role.value  : '?',
+                d: pg.attributes.size && pg.attributes.size.value ? pg.attributes.size.value : 'unknown'
+              })
+            })
+            return pGrp
+          }) (),
+          personIdentified: (() => {
+            let pIdent = []
+            this.headerDom.querySelectorAll('particDesc listPerson[type="identified"] > person').forEach(p => {
+              pIdent.push({
+                id: p.attributes['xml:id'].value.split('_')[1],
+                sex: ['male', 'female'][p.querySelector('sex').attributes.value.value - 1] || 'unknown',
+                age: ['unknown', '17-24', '25-34', '35-49', '50+'][p.querySelector('age').attributes.value.value] || 'N/A',
+                l1: p.querySelector('langKnown[level="L1"]').attributes.tag.value,
+                role: p.attributes['role'].value,
+                occupation: p.querySelector('occupation') && p.querySelector('occupation').textContent ? p.querySelector('occupation').textContent : ' '
+              })
+            })
+            pIdent.sort((a, b) => {
+              if ( a.id < b.id ){ return -1 }
+              if ( a.id > b.id ){ return 1 }
+              return 0
+            })
+            return pIdent
+          }) (),
+          personNotIdentified: (() => {
+            let pNotIdent = []
+            this.headerDom.querySelectorAll('particDesc listPerson[type="not_identified"] > person').forEach(p => {
+              pNotIdent.push(p.attributes['xml:id'].value.split('_')[1])
+            })
+            return pNotIdent.sort()
+          }) (),
+          relationGrp: (() => {
+            let rGrp = []
+            this.headerDom.querySelectorAll('relationGrp relation').forEach(r => {
+              rGrp.push({
+                h: r.attributes.type ? {acquaintedness: 'Acquaintedness', power: 'Power relations'}[r.attributes.type.value] || r.attributes.type.value : '?',
+                d: r.attributes.name.value.split('_').join(' ')
+              })
+            })
+            return rGrp.sort()
+          }) ()
+
+        },
         revisionDesc: (() => {
           let rDescs = []
           this.headerDom.querySelectorAll('revisionDesc change').forEach(c => {
@@ -197,8 +281,12 @@ h3 {
 .header {
   padding: 1rem;
 }
-.rec-entries th, .cat-refs th, .setting-descs th, .changes th {
+.rec-entries th, .cat-refs th, .setting-descs th, .changes th, .list-person th {
   padding-right: 1rem;
   text-align: left;
+}
+.list-person td {
+  padding-right: 1rem;
+  min-width: 4.5rem;
 }
 </style>

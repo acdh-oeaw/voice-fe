@@ -6,7 +6,7 @@
     <h3 v-if="headerData.edition">{{ headerData.edition.textContent }}</h3>
     <div class="recording" v-if="headerData.recording.dom && headerData.recording.dom.length > 0">
       <h3>Recording</h3>
-      <table class="rec-entries">
+      <table class="rec-entries ml-2">
         <tbody>
           <tr v-if="headerData.recording.duration">
             <th>Duration:</th>
@@ -39,11 +39,34 @@
     </div>
     <div class="text-class" v-if="headerData.textClass && headerData.textClass.length > 0">
       <h3>Text Classification</h3>
-      <table class="cat-refs">
+      <table class="cat-refs ml-2">
         <tbody>
           <tr v-for="(tc, i) in headerData.textClass" :key="'tc' + i">
-            <th>{{ tc.h }}</th>
+            <th>{{ tc.h }}:</th>
             <td>{{ tc.d }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="setting-desc" v-if="headerData.settingDesc">
+      <h3>Setting</h3>
+      <table class="setting-descs ml-2">
+        <tbody>
+          <tr v-if="headerData.settingDesc.countryCode">
+            <th>Country-Code:</th>
+            <td>{{ headerData.settingDesc.countryCode.textContent }}</td>
+          </tr>
+          <tr v-if="headerData.settingDesc.city">
+            <th>City:</th>
+            <td>{{ headerData.settingDesc.city.textContent }}</td>
+          </tr>
+          <tr v-if="headerData.settingDesc.locale">
+            <th>Locale:</th>
+            <td>{{ headerData.settingDesc.locale.textContent }}</td>
+          </tr>
+          <tr v-if="headerData.settingDesc.activity">
+            <th>Activity:</th>
+            <td>{{ headerData.settingDesc.activity.textContent }}</td>
           </tr>
         </tbody>
       </table>
@@ -101,6 +124,12 @@ export default {
           }
           return textClass
         }) (),
+        settingDesc: {
+          countryCode: this.headerDom.querySelector('name[type="country"]'),
+          city: this.headerDom.querySelector('name[type="city"]'),
+          locale: this.headerDom.querySelector('locale'),
+          activity: this.headerDom.querySelector('activity')
+        },
         notes: this.headerDom.querySelectorAll('notesStmt note')
       }
       console.log(hData)
@@ -139,7 +168,7 @@ h3 {
 .header {
   padding: 1rem;
 }
-.rec-entries th, .cat-refs th {
+.rec-entries th, .cat-refs th, .setting-descs th {
   padding-right: 1rem;
   text-align: left;
 }

@@ -14,6 +14,7 @@
           <div v-if="mainData.search.results.status">status: {{ mainData.search.results.status }}</div>
           <div>xmlStatus: {{ mainData.search.results.xmlStatus }}</div>
           <div>u: {{ mainData.search.results.u ? mainData.search.results.u.length : 'error' }}</div>
+          <div>cql: {{ mainData.search.results.cql }}</div>
           <div class="mt-2" v-if="mainData.search.results.u">
             <div>
               <div v-for="(uObj, uIdx) in searchResultsU" class="line-frm" :key="uIdx">

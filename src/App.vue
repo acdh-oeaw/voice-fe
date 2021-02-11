@@ -41,7 +41,7 @@ export default {
     publicPath: process.env.BASE_URL,
     dev: process.env.NODE_ENV === 'development',
     mainData: {
-      apiUrl: 'https://voice-node.acdh-dev.oeaw.ac.at/',
+      apiUrl: process.env.VUE_APP_API_URL,
       search: {
         value: '',
         lastValue: '',

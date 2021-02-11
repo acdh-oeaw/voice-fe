@@ -1,6 +1,7 @@
 <template>
   <div class="d-flex flex-shrink-1 search-field align-center px-3">
     <v-text-field v-model="mainData.search.value" @keydown.enter="search" :loading="mainData.search.loading" label="Search the VOICE Corpus" hide-details class="mr-2 mt-0"></v-text-field>
+    <v-select v-model="searchType" :items="searchTypes" item-text="title" item-value="value" label="Search engine" hide-details class="mr-2 mt-0 search-select" />
     <v-btn @click="search" small color="indigo darken-4 white--text" :loading="mainData.search.loading" :disabled="!mainData.search.value || mainData.search.value.length < 2">Search</v-btn>
   </div>
 </template>
@@ -12,6 +13,12 @@ export default {
     'mainData': Object
   },
   data: () => ({
+    searchType: 'a',
+    searchTypes: [
+      {title: 'A', value: 'a'},
+      {title: 'B', value: 'b'},
+      {title: 'C', value: 'c'},
+    ]
   }),
   mounted () {
   },
@@ -25,7 +32,7 @@ export default {
         this.mainData.search.foundXmlId = []
         this.mainData.search.lastValue = this.mainData.search.value
         this.$http
-          .get(this.mainData.apiUrl + 'search/', { params: { q: this.mainData.search.value } })
+          .get(this.mainData.apiUrl + 'search/', { params: { q: this.mainData.search.value, t: this.searchType } })
           .then((response) => {
             console.log('search', response.data)
             if (response.data && response.data.u) {
@@ -51,6 +58,11 @@ export default {
           })
       }
     }
+  },
+  watch: {
+    searchType() {
+      this.mainData.search.lastValue = ''
+    }
   }
 }
 </script>
@@ -58,5 +70,8 @@ export default {
 <style scoped>
   .search-field {
     min-width: 310px;
+  }
+  .search-select {
+    max-width: 100px;
   }
 </style>

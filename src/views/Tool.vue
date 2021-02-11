@@ -1,11 +1,11 @@
 <template>
   <v-container :class="{'max-width': !mainData.options.fullWidth, 'py-0': true}" :fluid="!mainData.wideScreen" fill-height align-start>
-    <v-row class="fill-height">
+    <v-row class="fill-height" style="margin-bottom: initial; margin-top: initial">
       <v-col class="col-12 col-md toolsetleft fill-height">
         <ToolsetLeft :mainData="mainData" />
       </v-col>
       <v-col class="col-12 col-md py-0 fill-height">
-        <v-row class="fill-height">
+        <v-row class="fill-height" style="margin-bottom: initial; margin-top: initial">
           <v-col :class="{
             'col-12': true,
             'col-lg-6': dualView

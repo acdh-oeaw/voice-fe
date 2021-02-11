@@ -37,6 +37,17 @@
         </tbody>
       </table>
     </div>
+    <div class="text-class" v-if="headerData.textClass && headerData.textClass.length > 0">
+      <h3>Text Classification</h3>
+      <table class="cat-refs">
+        <tbody>
+          <tr v-for="(tc, i) in headerData.textClass" :key="'tc' + i">
+            <th>{{ tc.h }}</th>
+            <td>{{ tc.d }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
     <div class="notes-stmt" v-if="headerData.notes && headerData.notes.length > 0">
       <h3>Event Description</h3>
       <div class="note ml-2 mb-2"
@@ -65,7 +76,7 @@ export default {
   computed: {
     headerDom () {
       let parser = new DOMParser()
-      let xmlDoc = parser.parseFromString(this.element.header,"text/xml")
+      let xmlDoc = parser.parseFromString(this.element.header,"application/xml")
       return xmlDoc
     },
     headerData () {
@@ -77,6 +88,19 @@ export default {
           dom: this.headerDom.querySelectorAll('recordingStmt recording > *'),
           duration: recTmp && recTmp.attributes && recTmp.attributes.dur ? [...recTmp.attributes.dur.value.matchAll(/T(.+)H(.+)M(.+)S/gm)][0] : null
         },
+        textClass: (() => {
+          let textClass = []
+          let catRef = this.headerDom.querySelectorAll('textClass > catRef')
+          if (catRef && catRef[0] && catRef[0].attributes && catRef[0].attributes.target && catRef[0].attributes.target.value) {
+            let catRefs = catRef[0].attributes.target.value.split(' ').map(v => v.substring(1))
+            this.headerDom.querySelectorAll('taxonomy category').forEach(cat => {
+              if (cat.attributes && cat.attributes['xml:id'] && cat.attributes['xml:id'].value && catRefs.indexOf(cat.attributes['xml:id'].value) > -1) {
+                textClass.push({h: cat.parentElement.querySelector('catDesc').textContent, d: cat.querySelector('catDesc').textContent })
+              }
+            })
+          }
+          return textClass
+        }) (),
         notes: this.headerDom.querySelectorAll('notesStmt note')
       }
       console.log(hData)
@@ -115,7 +139,7 @@ h3 {
 .header {
   padding: 1rem;
 }
-.rec-entries th {
+.rec-entries th, .cat-refs th {
   padding-right: 1rem;
   text-align: left;
 }

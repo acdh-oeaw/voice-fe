@@ -6,7 +6,7 @@ context('isLoading', () => {
     })
     it('page title is voice-fe', () => {
       // https://on.cypress.io/title
-      cy.title().should('include', 'voice-fe')
+      cy.title().should('include', 'VOICE CLARIAH')
     })
   
     it('type search', () => {

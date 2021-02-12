@@ -58,7 +58,8 @@ export default {
         elements: [
         ],
         list: [
-        ]
+        ],
+        baseJSON: {}
       },
       options: {
         fullWidth: true,
@@ -158,8 +159,9 @@ export default {
           }
           let aObj = {}
           this.$set(this.mainData.corpus, 'list', response.data.domains)
+          this.$set(this.mainData.corpus, 'baseJSON', response.data)
           this.$set(this.mainData.corpus, 'obj', getCorpusObjs(this.mainData.corpus.list, aObj))
-          console.log('mainData.corpus', this.mainData.corpus)
+          console.log('mainData', this.mainData)
           this.loading = false
         })
         .catch((err) => {

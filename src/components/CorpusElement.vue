@@ -1,7 +1,7 @@
 <template>
   <div class="flex-grow-1 d-flex flex-column">
     <div class="flex-grow-1 d-flex flex-column">
-      <v-tabs v-model="vTab" grow height="30" class="flex-shrink-1 fx-bb">
+      <v-tabs v-model="vTab" grow height="30" class="flex-shrink-1 fx-bb" v-if="aElement">
         <v-tab href="#textheader">Text Header</v-tab>
         <v-tab href="#voice">voice</v-tab>
         <v-tab href="#plain">plain</v-tab>
@@ -9,7 +9,8 @@
         <v-tab href="#xml">XML</v-tab>
       </v-tabs>
       <div class="px-3 py-2 scroll-content flex-grow-1">
-        <div v-if="vTab === 'xml'">
+        <div v-if="!aElement" class="tei-header pa-2" v-html="teiHeader"/>
+        <div v-else-if="vTab === 'xml'">
           <CorpusElementXml :element="aElement" v-if="aElement && aElement.xml" />
         </div>
         <div v-else-if="vTab === 'textheader'">
@@ -20,7 +21,7 @@
         </div>
       </div>
     </div>
-    <div class="voice-switches" v-if="vTab === 'voice'">
+    <div class="voice-switches" v-if="aElement && vTab === 'voice'">
       <div class="d-flex flex-wrap justify-space-around">
         <div @click="mainData.views.voice.utI = !mainData.views.voice.utI" :class="'vs-uti' + (mainData.views.voice.utI ? '' : ' off')" title="utterance identifier">1</div>
         <div @click="mainData.views.voice.sId = !mainData.views.voice.sId" :class="'vs-sid' + (mainData.views.voice.sId ? '' : ' off')" title="speaker id">S1</div>
@@ -73,6 +74,12 @@ export default {
         aElDev[p] = (p === 'xml' || p === 'header') ? ('size ' + this.aElement[p].length.toLocaleString() + ' Byte') : this.aElement[p]
       })
       return aElDev
+    },
+    teiHeader () {
+      if (this.mainData.corpus.baseJSON.teiHeader) {
+        return this.mainData.corpus.baseJSON.teiHeader.replaceAll(/(class=")([0-9a-z-]+)(")/gm, '$1th-$2$3')
+      }
+      return 'Loading ...'
     }
   },
   methods: {
@@ -219,5 +226,18 @@ export default {
 }
 .vs-pvct {
   color: #61DDD2;
+}
+.tei-header >>> ul, .tei-header >>> p, .tei-header >>> dl {
+  margin-left: 8px;
+}
+.tei-header >>> dl dt {
+  font-weight: bold;
+}
+.tei-header >>> dl dd {
+  margin-left: 8px;
+  margin-bottom: 8px;
+}
+.tei-header >>> h3 {
+  margin-bottom: 8px;
 }
 </style>

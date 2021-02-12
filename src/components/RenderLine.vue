@@ -185,7 +185,7 @@ export default {
               }
               // unclear - before
               if (elm.tagName === 'unclear') {
-                aTxt += '('
+                aTxt += ' ('
               }
             }
             if (elm.childNodes && elm.childNodes.length > 0 && (elm.childNodes.length > 1 || elm.childNodes[0].nodeType !== 3)) {
@@ -196,7 +196,11 @@ export default {
               } else if (elm.attributes && elm.attributes['spelt_orig'] && elm.attributes['spelt_orig'].value) {
                 aTxt += elm.attributes['spelt_orig'].value
               } else {
-                aTxt += elm.textContent.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+                let aTC = elm.textContent.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+                if (!(elm.attributes && elm.attributes['type'] && elm.attributes['type'].value === 'ws')) {
+                  aTC = aTC.trim()
+                }
+                aTxt += aTC
               }
             }
             // voice - layout
@@ -259,7 +263,7 @@ export default {
             }
             aTxt += '</span>'
           } else if (elm.nodeType === 3) { // TEXT_NODE
-            let bTxt = elm.textContent.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+            let bTxt = elm.textContent.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').trim()
             if (trimIt) {
               bTxt = bTxt.trim()
             }

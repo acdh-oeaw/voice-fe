@@ -9,7 +9,7 @@
         <v-tab href="#xml">XML</v-tab>
       </v-tabs>
       <div class="px-3 py-2 scroll-content flex-grow-1">
-        <div v-if="!aElement" class="tei-header pa-2" v-html="teiHeader"/>
+        <div v-if="!aElement" class="tei-header px-4 py-2" v-html="teiHeader"/>
         <div v-else-if="vTab === 'xml'">
           <CorpusElementXml :element="aElement" v-if="aElement && aElement.xml" />
         </div>
@@ -236,6 +236,11 @@ export default {
 .tei-header >>> dl dd {
   margin-left: 8px;
   margin-bottom: 8px;
+}
+.tei-header >>> h2 {
+  margin-top: 16px;
+  margin-bottom: 16px;
+  border-bottom: solid 1px #bbb;
 }
 .tei-header >>> h3 {
   margin-bottom: 8px;

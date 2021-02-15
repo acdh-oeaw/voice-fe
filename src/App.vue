@@ -161,6 +161,19 @@ export default {
           this.$set(this.mainData.corpus, 'list', response.data.domains)
           this.$set(this.mainData.corpus, 'baseJSON', response.data)
           this.$set(this.mainData.corpus, 'obj', getCorpusObjs(this.mainData.corpus.list, aObj))
+          Object.keys(response.data.speakers).forEach((sn) => {
+            let aSpeaker = response.data.speakers[sn]
+            this.$set(aSpeaker, 'id', sn)
+            Object.keys(aSpeaker.refs).forEach((rc) => {
+              let aRef = aSpeaker.refs[rc]
+              if (this.mainData.corpus.obj[rc]) {
+                if (!this.mainData.corpus.obj[rc].speakers) {
+                  this.$set(this.mainData.corpus.obj[rc], 'speakers', {})
+                }
+                this.$set(this.mainData.corpus.obj[rc].speakers, aRef.tag, aSpeaker)
+              }
+            })
+          })
           console.log('mainData', this.mainData)
           this.loading = false
         })

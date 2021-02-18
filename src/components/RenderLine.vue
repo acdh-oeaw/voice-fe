@@ -30,7 +30,9 @@ export default {
         if (this.mainData.views.voice.oT) { aClasses += ' s-ot' }
         if (this.mainData.views.voice.cE) { aClasses += ' s-ce' }
         if (this.mainData.views.voice.sM) { aClasses += ' s-sm' }
+        if (this.mainData.views.voice.sMls) { aClasses += ' s-smls' }
         if (this.mainData.views.voice.vsN) { aClasses += ' s-vsn' }
+        if (this.mainData.views.voice.vsNl) { aClasses += ' s-vsnl' }
         if (this.mainData.views.voice.spl) { aClasses += ' s-spl' }
         if (this.mainData.views.voice.fLaT) { aClasses += ' s-flat' }
         if (this.mainData.views.voice.oC) { aClasses += ' s-oc' }
@@ -72,7 +74,7 @@ export default {
           if (elm.nodeType === 1) { // ELEMENT_NODE
             let trimThis = !(elm.attributes && elm.attributes['xml:space'] && elm.attributes['xml:space'].value === 'preserve')
             let aClasses = ['tag-' + elm.tagName]
-            let attrClasses = {'type': {}, 'n': { has: true }, 'voice:desc': {}, 'reason': {}}
+            let attrClasses = {'type': {}, 'n': { has: true }, 'voice:desc': {}, 'reason': {}, 'new': {}}
             if (elm.attributes) {
               Object.keys(attrClasses).forEach(a => {
                 if (elm.attributes[a] && elm.attributes[a].value) {
@@ -85,6 +87,11 @@ export default {
               })
               if (this.highlight && elm.attributes['xml:id'] && elm.attributes['xml:id'].value && this.highlight.indexOf(elm.attributes['xml:id'].value) > -1) {
                 aClasses.push('highlight')
+              }
+              if (elm.tagName === 'shift' && elm.attributes['new'] && elm.attributes['new'].value === 'neutral') {
+                if (elm.attributes['corresp'] && elm.attributes['corresp'].value && this.xmlIdCache[elm.attributes['corresp'].value]) {
+                  aClasses.push('neutral-' + this.xmlIdCache[elm.attributes['corresp'].value]) // new-laugh
+                }
               }
             }
             aTxt += '<span class="' + aClasses.join(' ') + '">'
@@ -127,31 +134,30 @@ export default {
               if (elm.tagName === 'shift') {
                 aTxt += '&lt;'
                 if (elm.attributes && elm.attributes['new']) {
+                  let nList = {
+                    'laugh': '@',
+                    'p': 'soft',
+                    'l': 'slow',
+                    'f': 'loud',
+                    'whisp': 'whispering',
+                    'sigh': 'sighing',
+                    'phone': 'on phone',
+                    'reading': 'reading',
+                    'a': 'fast'
+                  }
                   if (elm.attributes['new'].value === 'neutral') {
                     if (elm.attributes['corresp'] && elm.attributes['corresp'].value && this.xmlIdCache[elm.attributes['corresp'].value]) {
-                      aTxt += '/' + this.xmlIdCache[elm.attributes['corresp'].value]
+                      aTxt += '/' + (nList[this.xmlIdCache[elm.attributes['corresp'].value]] || this.xmlIdCache[elm.attributes['corresp'].value])
                     } else {
                       aTxt += '/' + elm.attributes['new'].value
                     }
                   } else if (elm.attributes['new'].value === 'normal') {
                     aTxt += '/@'
                   } else if (elm.attributes['new'].value) {
-                    let nList = {
-                      'laugh': '@',
-                      'p': 'soft',
-                      'l': 'slow',
-                      'f': 'loud',
-                      'whisp': 'whispering',
-                      'sigh': 'sighing',
-                      'phone': 'on phone',
-                      'reading': 'reading',
-                      'a': 'fast'
-                    }
-                    let aVal = nList[elm.attributes['new'].value] || elm.attributes['new'].value
                     if (elm.attributes['xml:id'] && elm.attributes['xml:id'].value) {
-                      this.xmlIdCache['#' + elm.attributes['xml:id'].value] = aVal
+                      this.xmlIdCache['#' + elm.attributes['xml:id'].value] = elm.attributes['new'].value
                     }
-                    aTxt += aVal
+                    aTxt += nList[elm.attributes['new'].value] || elm.attributes['new'].value
                   }
                 }
                 aTxt += '&gt; '
@@ -326,14 +332,22 @@ export default {
 .line-con.typ-voice >>> .tag-shift {
   color: #AA0066;
 }
-.line-con.typ-voice:not(.s-sm) >>> .tag-shift {
+.line-con.typ-voice:not(.s-sm) >>> .tag-shift:not(.new-laugh):not(.neutral-laugh) {
+  display: none;
+}
+
+.line-con.typ-voice:not(.s-smls) >>> .new-laugh, .line-con.typ-voice:not(.s-smls) >>> .neutral-laugh {
   display: none;
 }
 
 .line-con.typ-voice >>> .tag-vocal {
   color: #AA0066;
 }
-.line-con.typ-voice:not(.s-vsn) >>> .tag-vocal {
+.line-con.typ-voice:not(.s-vsn) >>> .tag-vocal:not(.voice-desc-laughing) {
+  display: none;
+}
+
+.line-con.typ-voice:not(.s-vsnl) >>> .tag-vocal.voice-desc-laughing {
   display: none;
 }
 
@@ -342,6 +356,10 @@ export default {
 }
 .line-con.typ-voice:not(.s-spl) >>> .fx-spel {
   display: none;
+}
+
+.line-con.typ-voice >>> .tag-foreign.type-LN {
+  color: #b13610;
 }
 
 .line-con.typ-voice:not(.s-flat) >>> .fx-foreign {
@@ -382,6 +400,10 @@ export default {
 
 .line-con.typ-voice >>> .tag-emph {
   text-transform: uppercase;
+}
+
+.line-con.typ-voice >>> .type-other_continuation {
+  color: #8700C1;
 }
 
 /*********/

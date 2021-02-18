@@ -74,7 +74,9 @@ export default {
           p: true, // pauses
           cE: true, // contextual events
           sM: true, // speaking modes
+          sMls: true, // speaking mode laughingly spoken
           vsN: true, // vocal/speaker noise
+          vsNl: true, // vocal/speaker noise laughter
           spl: true, // spelled
           fLaT: true, // foreign language tags
           oC: true, // other continuations

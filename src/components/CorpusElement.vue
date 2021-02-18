@@ -24,19 +24,21 @@
     <div class="voice-switches" v-if="aElement && vTab === 'voice'">
       <div class="d-flex flex-wrap justify-space-around">
         <div @click="mainData.views.voice.utI = !mainData.views.voice.utI" :class="'vs-uti' + (mainData.views.voice.utI ? '' : ' off')" title="utterance identifier">1</div>
-        <div @click="mainData.views.voice.sId = !mainData.views.voice.sId" :class="'vs-sid' + (mainData.views.voice.sId ? '' : ' off')" title="speaker id">S1</div>
+        <!-- <div @click="mainData.views.voice.sId = !mainData.views.voice.sId" :class="'vs-sid' + (mainData.views.voice.sId ? '' : ' off')" title="speaker id">S1</div> -->
         <div @click="mainData.views.voice.oT = !mainData.views.voice.oT" :class="'vs-ot' + (mainData.views.voice.oT ? '' : ' off')" title="overlap tags">&lt;1&gt;</div>
         <div @click="mainData.views.voice.p = !mainData.views.voice.p" :class="'vs-p' + (mainData.views.voice.p ? '' : ' off')" title="pauses">(.)</div>
         <div @click="mainData.views.voice.cE = !mainData.views.voice.cE" :class="'vs-ce' + (mainData.views.voice.cE ? '' : ' off')" title="contextual events">{...}</div> 
         <div @click="mainData.views.voice.sM = !mainData.views.voice.sM" :class="'vs-sm' + (mainData.views.voice.sM ? '' : ' off')" title="speaking modes">&lt;fast&gt;</div>
+        <div @click="mainData.views.voice.sMls = !mainData.views.voice.sMls" :class="'vs-smls' + (mainData.views.voice.sMls ? '' : ' off')" title="speaking mode laughingly spoken">&lt;@&gt;</div>
         <div @click="mainData.views.voice.vsN = !mainData.views.voice.vsN" :class="'vs-vsn' + (mainData.views.voice.vsN ? '' : ' off')" title="vocal/speaker noise">&lt;coughs&gt;</div>
+        <div @click="mainData.views.voice.vsNl = !mainData.views.voice.vsNl" :class="'vs-vsnl' + (mainData.views.voice.vsNl ? '' : ' off')" title="vocal/speaker noise">@</div>
         <div @click="mainData.views.voice.spl = !mainData.views.voice.spl" :class="'vs-spl' + (mainData.views.voice.spl ? '' : ' off')" title="spelled">&lt;spel&gt;</div>
         <div @click="mainData.views.voice.fLaT = !mainData.views.voice.fLaT" :class="'vs-flat' + (mainData.views.voice.fLaT ? '' : ' off')" title="foreign language tags">&lt;L1fr&gt;</div>
         <div @click="mainData.views.voice.oC = !mainData.views.voice.oC" :class="'vs-oc' + (mainData.views.voice.oC ? '' : ' off')" title="other continuations">=</div>
         <div @click="mainData.views.voice.uiT = !mainData.views.voice.uiT" :class="'vs-uit' + (mainData.views.voice.uiT ? '' : ' off')" title="unintelligible tags">&lt;un&gt;</div>
         <div @click="mainData.views.voice.ono = !mainData.views.voice.ono" :class="'vs-ono' + (mainData.views.voice.ono ? '' : ' off')" title="onomatopoeia">&lt;ono&gt;</div>
         <div @click="mainData.views.voice.pvcT = !mainData.views.voice.pvcT" :class="'vs-pvct' + (mainData.views.voice.pvcT ? '' : ' off')" title="pvc tags">&lt;pvc&gt;</div>
-        <div @click="mainData.views.voice.gap = !mainData.views.voice.gap" :class="'vs-gap' + (mainData.views.voice.gap ? '' : ' off')" title="gap">(gap/(nrec</div>
+        <div @click="mainData.views.voice.gap = !mainData.views.voice.gap" :class="'vs-gap' + (mainData.views.voice.gap ? '' : ' off')" title="gap">(gap)</div>
       </div>
     </div>
     <Audioplayer class="fx-bt" :audiourl="aAudioUrl" v-if="!refreshAudio && aAudioUrl" />
@@ -212,7 +214,13 @@ export default {
 .vs-sm {
   color: #AA0066;
 }
+.vs-smls {
+  color: #AA0066;
+}
 .vs-vsn {
+  color: #AA0066;
+}
+.vs-vsnl {
   color: #AA0066;
 }
 .vs-spl {
@@ -226,6 +234,12 @@ export default {
 }
 .vs-pvct {
   color: #61DDD2;
+}
+.vs-flat {
+  color: #b13610;
+}
+.vs-oc {
+  color: #8700C1;
 }
 .tei-header >>> ul, .tei-header >>> p, .tei-header >>> dl {
   margin-left: 8px;

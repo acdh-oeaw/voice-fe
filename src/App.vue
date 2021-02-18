@@ -83,7 +83,9 @@ export default {
           uiT: true, // unintelligible tags
           ono: true, // onomatopoeia
           pvcT: true, // pvc tags
-          gap: true // gap
+          gap: true, // gap
+          lie: true, // (Lengthening, Intonation, Emphasis)
+          ut: true // Uncertain transcription
         }
       },
       wideScreen: false

@@ -39,6 +39,8 @@
         <div @click="mainData.views.voice.ono = !mainData.views.voice.ono" :class="'vs-ono' + (mainData.views.voice.ono ? '' : ' off')" title="onomatopoeia">&lt;ono&gt;</div>
         <div @click="mainData.views.voice.pvcT = !mainData.views.voice.pvcT" :class="'vs-pvct' + (mainData.views.voice.pvcT ? '' : ' off')" title="pvc tags">&lt;pvc&gt;</div>
         <div @click="mainData.views.voice.gap = !mainData.views.voice.gap" :class="'vs-gap' + (mainData.views.voice.gap ? '' : ' off')" title="gap">(gap)</div>
+        <div @click="mainData.views.voice.lie = !mainData.views.voice.lie" :class="'vs-lie' + (mainData.views.voice.lie ? '' : ' off')" title="(Lengthening, Intonation, Emphasis)">:.?</div>
+        <div @click="mainData.views.voice.ut = !mainData.views.voice.ut" :class="'vs-ut' + (mainData.views.voice.ut ? '' : ' off')" title="Uncertain transcription">(word)</div>
       </div>
     </div>
     <Audioplayer class="fx-bt" :audiourl="aAudioUrl" v-if="!refreshAudio && aAudioUrl" />

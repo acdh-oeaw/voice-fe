@@ -39,6 +39,8 @@ export default {
         if (this.mainData.views.voice.uiT) { aClasses += ' s-uit' }
         if (this.mainData.views.voice.ono) { aClasses += ' s-ono' }
         if (this.mainData.views.voice.pvcT) { aClasses += ' s-pvct' }
+        if (this.mainData.views.voice.ut) { aClasses += ' s-ut' }
+        if (this.mainData.views.voice.lie) { aClasses += ' s-lie' }
       }
       return aClasses
     }
@@ -308,7 +310,8 @@ export default {
 /*********/
 /* Voice */
 /*********/
-.line-con.typ-voice >>> .fx-overlap, .line-con.typ-voice >>> .type-overlap {
+.line-con.typ-voice >>> .fx-overlap,
+.line-con.typ-voice >>> .type-overlap {
   color: blue;
 }
 .line-con.typ-voice:not(.s-ot) >>> .fx-overlap {
@@ -336,7 +339,8 @@ export default {
   display: none;
 }
 
-.line-con.typ-voice:not(.s-smls) >>> .new-laugh, .line-con.typ-voice:not(.s-smls) >>> .neutral-laugh {
+.line-con.typ-voice:not(.s-smls) >>> .new-laugh,
+.line-con.typ-voice:not(.s-smls) >>> .neutral-laugh {
   display: none;
 }
 
@@ -404,6 +408,16 @@ export default {
 
 .line-con.typ-voice >>> .type-other_continuation {
   color: #8700C1;
+}
+
+.line-con.typ-voice:not(.s-ut) >>> .tag-unclear {
+  display: none;
+}
+
+.line-con.typ-voice:not(.s-lie) >>> .type-lengthening,
+.line-con.typ-voice:not(.s-lie) >>> .type-intonation,
+.line-con.typ-voice:not(.s-lie) >>> .tag-emph {
+  display: none;
 }
 
 /*********/

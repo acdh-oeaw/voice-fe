@@ -2,6 +2,7 @@
   <div class="search-select-frm fx-bb d-flex flex-wrap flex-md-nowrap">
     <SearchField :mainData="mainData" v-if="!dualView || viewNr === 0" />
     <div v-if="!dualView || viewNr === 1" :class="{ 'fx-bl': !dualView, 'px-3': true, 'py-1': true, 'ce-frm': true, 'flex-grow-1': true }">
+      <v-chip @click="selectCorpusElement()" :class="{'selected': !mainData.corpus.selectedElement, 'px-1': true, 'my-1': true, 'mx-1': true}" label outlined color="default"><v-icon>mdi-view-headline</v-icon></v-chip>
       <v-chip
         close label outlined color="default"
         :class="{

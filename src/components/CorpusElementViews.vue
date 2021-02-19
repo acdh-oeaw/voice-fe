@@ -103,7 +103,7 @@ export default {
       if (xmlS) {
         let t1 = performance.now()
         let parser = new DOMParser()
-        let xmlDoc = parser.parseFromString(xmlS,"text/xml")
+        let xmlDoc = parser.parseFromString(xmlS,"application/xml")
         let aLines = [].slice.call(xmlDoc.getElementsByTagName('u')).map((dom, i) => {
           let speaker = dom.attributes && dom.attributes.who && dom.attributes.who.nodeValue ? dom.attributes.who.nodeValue : null
           if (speaker && typeof speaker === 'string') {

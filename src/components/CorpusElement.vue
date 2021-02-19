@@ -112,7 +112,7 @@ export default {
                     if (!lElement.headerLoaded && !lElement.headerLoading) {
                       console.log('extract header from xml file')
                       let parser = new DOMParser()
-                      let xmlDoc = parser.parseFromString(lElement.xml,"text/xml")
+                      let xmlDoc = parser.parseFromString(lElement.xml,"application/xml")
                       let aHeader = xmlDoc.getElementsByTagName('teiHeader')
                       if (aHeader && aHeader[0]) {
                         aHeader = aHeader[0]

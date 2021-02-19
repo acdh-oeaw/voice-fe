@@ -51,7 +51,10 @@ export default {
         results: {},
         scrollPos: 0,
         highlights: [],
-        foundXmlId: []
+        foundXmlId: [],
+        view: {
+          type: 'voice'
+        }
       },
       corpus: {
         selectedElement: null,

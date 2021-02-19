@@ -15,6 +15,13 @@
           <div>xmlStatus: {{ mainData.search.results.xmlStatus }}</div>
           <div>u: {{ mainData.search.results.u ? mainData.search.results.u.length : 'error' }}</div>
           <div>cql: {{ mainData.search.results.cql }}</div>
+          <div>
+            <v-select hide-details
+              label="Style"
+              :items="['voice', 'plain', 'pos', 'xml']"
+              v-model="mainData.search.view.type"
+            ></v-select>
+          </div>
           <div class="mt-2" v-if="mainData.search.results.u">
             <div>
               <div v-for="(uObj, uIdx) in searchResultsU" class="line-frm" :key="uIdx">
@@ -24,7 +31,7 @@
                 <div class="d-flex">
                   <div class="line-uid">{{ uObj.uId.split('_')[0] + ':' + uObj.uId.split('_')[2] }}</div>
                   <div class="line-speaker" v-if="xmlObjLines">{{ xmlObjLines[uIdx].speaker }}</div>
-                  <RenderLine :xmlObjLine="xmlObjLines[uIdx]" :highlight="uObj.highlight" :mainData="mainData" v-if="xmlObjLines"/>
+                  <RenderLine :xmlObjLine="xmlObjLines[uIdx]" :highlight="uObj.highlight" :type="mainData.search.view.type" :mainData="mainData" v-if="xmlObjLines"/>
                 </div>
               </div>
             </div>
@@ -89,7 +96,7 @@ export default {
           let uDom = null
           let speaker = null
           if (typeof aU.xml === 'string' && aU.xml.length > 5) {
-            uDom = parser.parseFromString(aU.xml, "text/html").getElementsByTagName('u')[0]
+            uDom = parser.parseFromString('<TEI xmlns="http://www.tei-c.org/ns/1.0" xmlns:voice="http://www.univie.ac.at/voice/ns/1.0" xmlns:xi="http://www.w3.org/2001/XInclude" version="5">' + aU.xml + '</TEI>', "application/xml").getElementsByTagName('u')[0]
             speaker = uDom.attributes && uDom.attributes.who && uDom.attributes.who.nodeValue ? uDom.attributes.who.nodeValue : null
           }
           if (speaker && typeof speaker === 'string') {
@@ -97,6 +104,7 @@ export default {
           }
           return {
             dom: uDom,
+            xml: aU.xml,
             speaker: speaker,
             text: null,
             textHeight: 24

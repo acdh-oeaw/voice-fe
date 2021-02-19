@@ -175,7 +175,7 @@ export default {
                 aTxt += '<span class="fx-foreign"> &lt;' + elm.attributes['type'].value + elm.attributes['xml:lang'].value + '&gt; </span>'
               }
               if (elm.attributes && elm.attributes['type'] && elm.attributes['type'].value === 'other_continuation') {
-                aTxt += '<span class="fx-other-continuation"> = </span>'
+                aTxt += '<span class="fx-other-continuation">=</span>'
               }
               // unintelligible - before
               if (elm.tagName === 'supplied' && elm.attributes && elm.attributes['reason'] && elm.attributes['reason'].value === 'unintelligible') {

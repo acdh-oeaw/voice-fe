@@ -193,7 +193,7 @@ export default {
               }
               // unclear - before
               if (elm.tagName === 'unclear') {
-                aTxt += ' ('
+                aTxt += '<span class="fx-unclear"> (</span>'
               }
             }
             if (elm.childNodes && elm.childNodes.length > 0 && (elm.childNodes.length > 1 || elm.childNodes[0].nodeType !== 3)) {
@@ -266,7 +266,7 @@ export default {
               }
               // unclear - after
               if (elm.tagName === 'unclear') {
-                aTxt += ')'
+                aTxt += '<span class="fx-unclear">)</span>'
               }
             }
             aTxt += '</span>'
@@ -411,6 +411,9 @@ export default {
 }
 
 .line-con.typ-voice:not(.s-ut) >>> .tag-unclear {
+  text-transform: lowercase;
+}
+.line-con.typ-voice:not(.s-ut) >>> .fx-unclear {
   display: none;
 }
 

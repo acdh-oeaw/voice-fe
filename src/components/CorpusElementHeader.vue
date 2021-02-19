@@ -1,7 +1,7 @@
 <template>
   <div class="header">
-    <h1>Header:</h1>
-    <h2 v-if="headerData.title">{{ headerData.title.textContent }}</h2>
+    <h1>Header: {{ headerData.id }}</h1>
+    <h2 v-if="headerData.title">{{ headerData.title.textContent.charAt(0).toUpperCase() + headerData.title.textContent.slice(1) }}</h2>
     <hr/>
     <h3 v-if="headerData.edition">{{ headerData.edition.textContent }}</h3>
     <div class="recording" v-if="headerData.recording.dom && headerData.recording.dom.length > 0">
@@ -151,6 +151,7 @@ export default {
     headerData () {
       let recTmp = this.headerDom.querySelector('recordingStmt recording')
       let hData = {
+        id: this.mainData.corpus.selectedElement,
         title: this.headerDom.querySelector('titleStmt title'),
         edition: this.headerDom.querySelector('edition'),
         recording: {

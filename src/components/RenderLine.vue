@@ -26,21 +26,11 @@ export default {
     classes () {
       let aClasses = 'line-con typ-' + this.aType
       if (this.aType === 'voice') {
-        if (this.mainData.views.voice.p) { aClasses += ' s-p' }
-        if (this.mainData.views.voice.oT) { aClasses += ' s-ot' }
-        if (this.mainData.views.voice.cE) { aClasses += ' s-ce' }
-        if (this.mainData.views.voice.sM) { aClasses += ' s-sm' }
-        if (this.mainData.views.voice.sMls) { aClasses += ' s-smls' }
-        if (this.mainData.views.voice.vsN) { aClasses += ' s-vsn' }
-        if (this.mainData.views.voice.vsNl) { aClasses += ' s-vsnl' }
-        if (this.mainData.views.voice.spl) { aClasses += ' s-spl' }
-        if (this.mainData.views.voice.fLaT) { aClasses += ' s-flat' }
-        if (this.mainData.views.voice.oC) { aClasses += ' s-oc' }
-        if (this.mainData.views.voice.uiT) { aClasses += ' s-uit' }
-        if (this.mainData.views.voice.ono) { aClasses += ' s-ono' }
-        if (this.mainData.views.voice.pvcT) { aClasses += ' s-pvct' }
-        if (this.mainData.views.voice.ut) { aClasses += ' s-ut' }
-        if (this.mainData.views.voice.lie) { aClasses += ' s-lie' }
+        Object.keys(this.mainData.views.voice).forEach(vo => {
+          if (this.mainData.views.voice[vo].val) {
+            aClasses += ' s-' + vo.toLowerCase()
+          }
+        })
       }
       return aClasses
     }

@@ -48,13 +48,13 @@ export default {
   },
   computed: {
     show_utI () {
-      return this.view !== 'voice' || this.mainData.views.voice.utI
+      return this.view !== 'voice' || this.mainData.views.voice.utI.val
     },
     show_sId () {
-      return this.view !== 'voice' || this.mainData.views.voice.sId
+      return this.view !== 'voice' || this.mainData.views.voice.sId.val
     },
     show_gap () {
-      return this.view !== 'voice' || this.mainData.views.voice.gap
+      return this.view !== 'voice' || this.mainData.views.voice.gap.val
     },
     height () {
       return this.xmlObjLines ? this.xmlObjLines.reduce((a,b) => a + b.textHeight + this.extraHeight, 0) : 100

@@ -94,13 +94,21 @@ export default {
             if (this.aType === 'voice') {
               // overlap tags - before
               if (elm.tagName === 'seg' && elm.attributes && elm.attributes['type'] && elm.attributes['type'].value === 'overlap') {
-                aTxt += '<span class="fx-overlap"> &lt;'
+                aTxt += '<span class="fx-overlap">'
+                if (elm.nextElementSibling && elm.nextElementSibling.tagName === 'seg') {
+                  aTxt += ' '
+                }
+                aTxt += '&lt;'
                 if (elm.attributes['n'] && elm.attributes['n'].value) {
                   aTxt += elm.attributes['n'].value
                 } else {
                   console.log('overlap tags - No "n" attribute!!!!')
                 }
-                aTxt += '&gt; </span>'
+                aTxt += '&gt;'
+                if (!elm.previousElementSibling || (elm.previousElementSibling && elm.previousElementSibling.tagName === 'seg')) {
+                  aTxt += ' '
+                }
+                aTxt += '</span>'
               }
               // pause
               if (elm.tagName === 'pause') {
@@ -111,7 +119,7 @@ export default {
                 } else {
                   aTxt += '.'
                 }
-                aTxt += ')'
+                aTxt += ') '
               }
               // contextual events
               if (elm.tagName === 'incident') {
@@ -205,11 +213,19 @@ export default {
             if (this.aType === 'voice') {
               // overlap tags - after
               if (elm.tagName === 'seg' && elm.attributes && elm.attributes['type'] && elm.attributes['type'].value === 'overlap') {
-                  aTxt += '<span class="fx-overlap"> &lt;/'
-                  if (elm.attributes['n'] && elm.attributes['n'].value) {
-                    aTxt += elm.attributes['n'].value
-                  }
-                  aTxt += '&gt; </span>'
+                aTxt += '<span class="fx-overlap">'
+                if (!elm.nextElementSibling || (elm.nextElementSibling && elm.nextElementSibling.tagName === 'seg')) {
+                  aTxt += ' '
+                }
+                aTxt += '&lt;/'
+                if (elm.attributes['n'] && elm.attributes['n'].value) {
+                  aTxt += elm.attributes['n'].value
+                }
+                aTxt += '&gt;'
+                if (elm.previousElementSibling && elm.previousElementSibling.tagName === 'seg') {
+                  aTxt += ' '
+                }
+                aTxt += '</span>'
               }
               // spel - after
               if (elm.attributes && elm.attributes['spelt_orig']) {

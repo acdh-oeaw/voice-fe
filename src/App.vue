@@ -51,7 +51,10 @@ export default {
         results: {},
         scrollPos: 0,
         highlights: [],
-        foundXmlId: []
+        foundXmlId: [],
+        view: {
+          type: 'voice'
+        }
       },
       corpus: {
         selectedElement: null,
@@ -68,20 +71,24 @@ export default {
       },
       views: {
         voice: {
-          utI: true, // utterance identifier
-          sId: true, // speaker id
-          oT: true, // overlap tags
-          p: true, // pauses
-          cE: true, // contextual events
-          sM: true, // speaking modes
-          vsN: true, // vocal/speaker noise
-          spl: true, // spelled
-          fLaT: true, // foreign language tags
-          oC: true, // other continuations
-          uiT: true, // unintelligible tags
-          ono: true, // onomatopoeia
-          pvcT: true, // pvc tags
-          gap: true // gap
+          utI: { val: true, text: '1', title: 'utterance identifier', style: { color: '#000' } },
+          sId: { val: true, text: 'S1', title: 'speaker id', style: { color: '#000', 'font-weight': 'bold', display: 'none' } },
+          oT: { val: true, text: '<1>', title: 'overlap tags', style: { color: 'blue' } },
+          p: { val: true, text: '(.)', title: 'pauses', style: { color: 'brown' } },
+          cE: { val: true, text: '{...}', title: 'contextual events', style: { color: '#808080' } }, 
+          sM: { val: true, text: '<fast>', title: 'speaking modes', style: { color: '#AA0066' } },
+          sMls: { val: true, text: '<@>', title: 'speaking mode laughingly spoken', style: { color: '#AA0066' } },
+          vsN: { val: true, text: '<coughs>', title: 'vocal/speaker noise', style: { color: '#AA0066' } },
+          vsNl: { val: true, text: '@', title: 'vocal/speaker noise laughter', style: { color: '#AA0066' } },
+          spl: { val: true, text: '<spel>', title: 'spelled', style: { color: '#AA0066' } },
+          fLaT: { val: true, text: '<L1fr>', title: 'foreign language tags', style: { color: '#b13610' } },
+          oC: { val: true, text: '=', title: 'other continuations', style: { color: '#8700C1' } },
+          uiT: { val: true, text: '<un>', title: 'unintelligible tags', style: { color: '#00978E' } },
+          ono: { val: true, text: '<ono>', title: 'onomatopoeia', style: { color: '#61DDD2' } },
+          pvcT: { val: true, text: '<pvc>', title: 'pvc tags', style: { color: '#61DDD2' } },
+          gap: { val: true, text: '(gap)', title: 'gap', style: { color: '#000' } },
+          lie: { val: true, text: ':.?', title: '(Lengthening, Intonation, Emphasis)', style: { color: '#000' } },
+          ut: { val: true, text: '(word)', title: 'Uncertain transcription', style: { color: '#000' } },
         }
       },
       wideScreen: false

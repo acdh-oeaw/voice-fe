@@ -26,17 +26,11 @@ export default {
     classes () {
       let aClasses = 'line-con typ-' + this.aType
       if (this.aType === 'voice') {
-        if (this.mainData.views.voice.p) { aClasses += ' s-p' }
-        if (this.mainData.views.voice.oT) { aClasses += ' s-ot' }
-        if (this.mainData.views.voice.cE) { aClasses += ' s-ce' }
-        if (this.mainData.views.voice.sM) { aClasses += ' s-sm' }
-        if (this.mainData.views.voice.vsN) { aClasses += ' s-vsn' }
-        if (this.mainData.views.voice.spl) { aClasses += ' s-spl' }
-        if (this.mainData.views.voice.fLaT) { aClasses += ' s-flat' }
-        if (this.mainData.views.voice.oC) { aClasses += ' s-oc' }
-        if (this.mainData.views.voice.uiT) { aClasses += ' s-uit' }
-        if (this.mainData.views.voice.ono) { aClasses += ' s-ono' }
-        if (this.mainData.views.voice.pvcT) { aClasses += ' s-pvct' }
+        Object.keys(this.mainData.views.voice).forEach(vo => {
+          if (this.mainData.views.voice[vo].val) {
+            aClasses += ' s-' + vo.toLowerCase()
+          }
+        })
       }
       return aClasses
     }
@@ -72,7 +66,7 @@ export default {
           if (elm.nodeType === 1) { // ELEMENT_NODE
             let trimThis = !(elm.attributes && elm.attributes['xml:space'] && elm.attributes['xml:space'].value === 'preserve')
             let aClasses = ['tag-' + elm.tagName]
-            let attrClasses = {'type': {}, 'n': { has: true }, 'voice:desc': {}, 'reason': {}}
+            let attrClasses = {'type': {}, 'n': { has: true }, 'voice:desc': {}, 'reason': {}, 'new': {}}
             if (elm.attributes) {
               Object.keys(attrClasses).forEach(a => {
                 if (elm.attributes[a] && elm.attributes[a].value) {
@@ -86,6 +80,11 @@ export default {
               if (this.highlight && elm.attributes['xml:id'] && elm.attributes['xml:id'].value && this.highlight.indexOf(elm.attributes['xml:id'].value) > -1) {
                 aClasses.push('highlight')
               }
+              if (elm.tagName === 'shift' && elm.attributes['new'] && elm.attributes['new'].value === 'neutral') {
+                if (elm.attributes['corresp'] && elm.attributes['corresp'].value && this.xmlIdCache[elm.attributes['corresp'].value]) {
+                  aClasses.push('neutral-' + this.xmlIdCache[elm.attributes['corresp'].value]) // new-laugh
+                }
+              }
             }
             aTxt += '<span class="' + aClasses.join(' ') + '">'
             if (elm.attributes && elm.attributes['voice:syl'] && elm.attributes['voice:syl'].value) {
@@ -95,13 +94,21 @@ export default {
             if (this.aType === 'voice') {
               // overlap tags - before
               if (elm.tagName === 'seg' && elm.attributes && elm.attributes['type'] && elm.attributes['type'].value === 'overlap') {
-                aTxt += '<span class="fx-overlap"> &lt;'
+                aTxt += '<span class="fx-overlap">'
+                if (elm.nextElementSibling && elm.nextElementSibling.tagName === 'seg') {
+                  aTxt += ' '
+                }
+                aTxt += '&lt;'
                 if (elm.attributes['n'] && elm.attributes['n'].value) {
                   aTxt += elm.attributes['n'].value
                 } else {
                   console.log('overlap tags - No "n" attribute!!!!')
                 }
-                aTxt += '&gt; </span>'
+                aTxt += '&gt;'
+                if (!elm.previousElementSibling || (elm.previousElementSibling && elm.previousElementSibling.tagName === 'seg')) {
+                  aTxt += ' '
+                }
+                aTxt += '</span>'
               }
               // pause
               if (elm.tagName === 'pause') {
@@ -112,7 +119,7 @@ export default {
                 } else {
                   aTxt += '.'
                 }
-                aTxt += ')'
+                aTxt += ') '
               }
               // contextual events
               if (elm.tagName === 'incident') {
@@ -127,31 +134,30 @@ export default {
               if (elm.tagName === 'shift') {
                 aTxt += '&lt;'
                 if (elm.attributes && elm.attributes['new']) {
+                  let nList = {
+                    'laugh': '@',
+                    'p': 'soft',
+                    'l': 'slow',
+                    'f': 'loud',
+                    'whisp': 'whispering',
+                    'sigh': 'sighing',
+                    'phone': 'on phone',
+                    'reading': 'reading',
+                    'a': 'fast'
+                  }
                   if (elm.attributes['new'].value === 'neutral') {
                     if (elm.attributes['corresp'] && elm.attributes['corresp'].value && this.xmlIdCache[elm.attributes['corresp'].value]) {
-                      aTxt += '/' + this.xmlIdCache[elm.attributes['corresp'].value]
+                      aTxt += '/' + (nList[this.xmlIdCache[elm.attributes['corresp'].value]] || this.xmlIdCache[elm.attributes['corresp'].value])
                     } else {
                       aTxt += '/' + elm.attributes['new'].value
                     }
                   } else if (elm.attributes['new'].value === 'normal') {
                     aTxt += '/@'
                   } else if (elm.attributes['new'].value) {
-                    let nList = {
-                      'laugh': '@',
-                      'p': 'soft',
-                      'l': 'slow',
-                      'f': 'loud',
-                      'whisp': 'whispering',
-                      'sigh': 'sighing',
-                      'phone': 'on phone',
-                      'reading': 'reading',
-                      'a': 'fast'
-                    }
-                    let aVal = nList[elm.attributes['new'].value] || elm.attributes['new'].value
                     if (elm.attributes['xml:id'] && elm.attributes['xml:id'].value) {
-                      this.xmlIdCache['#' + elm.attributes['xml:id'].value] = aVal
+                      this.xmlIdCache['#' + elm.attributes['xml:id'].value] = elm.attributes['new'].value
                     }
-                    aTxt += aVal
+                    aTxt += nList[elm.attributes['new'].value] || elm.attributes['new'].value
                   }
                 }
                 aTxt += '&gt; '
@@ -169,7 +175,7 @@ export default {
                 aTxt += '<span class="fx-foreign"> &lt;' + elm.attributes['type'].value + elm.attributes['xml:lang'].value + '&gt; </span>'
               }
               if (elm.attributes && elm.attributes['type'] && elm.attributes['type'].value === 'other_continuation') {
-                aTxt += '<span class="fx-other-continuation"> = </span>'
+                aTxt += '<span class="fx-other-continuation">=</span>'
               }
               // unintelligible - before
               if (elm.tagName === 'supplied' && elm.attributes && elm.attributes['reason'] && elm.attributes['reason'].value === 'unintelligible') {
@@ -185,7 +191,7 @@ export default {
               }
               // unclear - before
               if (elm.tagName === 'unclear') {
-                aTxt += ' ('
+                aTxt += '<span class="fx-unclear"> (</span>'
               }
             }
             if (elm.childNodes && elm.childNodes.length > 0 && (elm.childNodes.length > 1 || elm.childNodes[0].nodeType !== 3)) {
@@ -207,11 +213,19 @@ export default {
             if (this.aType === 'voice') {
               // overlap tags - after
               if (elm.tagName === 'seg' && elm.attributes && elm.attributes['type'] && elm.attributes['type'].value === 'overlap') {
-                  aTxt += '<span class="fx-overlap"> &lt;/'
-                  if (elm.attributes['n'] && elm.attributes['n'].value) {
-                    aTxt += elm.attributes['n'].value
-                  }
-                  aTxt += '&gt; </span>'
+                aTxt += '<span class="fx-overlap">'
+                if (!elm.nextElementSibling || (elm.nextElementSibling && elm.nextElementSibling.tagName === 'seg')) {
+                  aTxt += ' '
+                }
+                aTxt += '&lt;/'
+                if (elm.attributes['n'] && elm.attributes['n'].value) {
+                  aTxt += elm.attributes['n'].value
+                }
+                aTxt += '&gt;'
+                if (elm.previousElementSibling && elm.previousElementSibling.tagName === 'seg') {
+                  aTxt += ' '
+                }
+                aTxt += '</span>'
               }
               // spel - after
               if (elm.attributes && elm.attributes['spelt_orig']) {
@@ -258,7 +272,7 @@ export default {
               }
               // unclear - after
               if (elm.tagName === 'unclear') {
-                aTxt += ')'
+                aTxt += '<span class="fx-unclear">)</span>'
               }
             }
             aTxt += '</span>'
@@ -302,7 +316,8 @@ export default {
 /*********/
 /* Voice */
 /*********/
-.line-con.typ-voice >>> .fx-overlap, .line-con.typ-voice >>> .type-overlap {
+.line-con.typ-voice >>> .fx-overlap,
+.line-con.typ-voice >>> .type-overlap {
   color: blue;
 }
 .line-con.typ-voice:not(.s-ot) >>> .fx-overlap {
@@ -326,14 +341,23 @@ export default {
 .line-con.typ-voice >>> .tag-shift {
   color: #AA0066;
 }
-.line-con.typ-voice:not(.s-sm) >>> .tag-shift {
+.line-con.typ-voice:not(.s-sm) >>> .tag-shift:not(.new-laugh):not(.neutral-laugh) {
+  display: none;
+}
+
+.line-con.typ-voice:not(.s-smls) >>> .new-laugh,
+.line-con.typ-voice:not(.s-smls) >>> .neutral-laugh {
   display: none;
 }
 
 .line-con.typ-voice >>> .tag-vocal {
   color: #AA0066;
 }
-.line-con.typ-voice:not(.s-vsn) >>> .tag-vocal {
+.line-con.typ-voice:not(.s-vsn) >>> .tag-vocal:not(.voice-desc-laughing) {
+  display: none;
+}
+
+.line-con.typ-voice:not(.s-vsnl) >>> .tag-vocal.voice-desc-laughing {
   display: none;
 }
 
@@ -342,6 +366,10 @@ export default {
 }
 .line-con.typ-voice:not(.s-spl) >>> .fx-spel {
   display: none;
+}
+
+.line-con.typ-voice >>> .tag-foreign.type-LN {
+  color: #b13610;
 }
 
 .line-con.typ-voice:not(.s-flat) >>> .fx-foreign {
@@ -382,6 +410,23 @@ export default {
 
 .line-con.typ-voice >>> .tag-emph {
   text-transform: uppercase;
+}
+
+.line-con.typ-voice >>> .type-other_continuation {
+  color: #8700C1;
+}
+
+.line-con.typ-voice:not(.s-ut) >>> .tag-unclear {
+  text-transform: lowercase;
+}
+.line-con.typ-voice:not(.s-ut) >>> .fx-unclear {
+  display: none;
+}
+
+.line-con.typ-voice:not(.s-lie) >>> .type-lengthening,
+.line-con.typ-voice:not(.s-lie) >>> .type-intonation,
+.line-con.typ-voice:not(.s-lie) >>> .tag-emph {
+  display: none;
 }
 
 /*********/

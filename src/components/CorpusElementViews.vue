@@ -48,13 +48,13 @@ export default {
   },
   computed: {
     show_utI () {
-      return this.view !== 'voice' || this.mainData.views.voice.utI
+      return this.view !== 'voice' || this.mainData.views.voice.utI.val
     },
     show_sId () {
-      return this.view !== 'voice' || this.mainData.views.voice.sId
+      return this.view !== 'voice' || this.mainData.views.voice.sId.val
     },
     show_gap () {
-      return this.view !== 'voice' || this.mainData.views.voice.gap
+      return this.view !== 'voice' || this.mainData.views.voice.gap.val
     },
     height () {
       return this.xmlObjLines ? this.xmlObjLines.reduce((a,b) => a + b.textHeight + this.extraHeight, 0) : 100
@@ -103,7 +103,7 @@ export default {
       if (xmlS) {
         let t1 = performance.now()
         let parser = new DOMParser()
-        let xmlDoc = parser.parseFromString(xmlS,"text/xml")
+        let xmlDoc = parser.parseFromString(xmlS,"application/xml")
         let aLines = [].slice.call(xmlDoc.getElementsByTagName('u')).map((dom, i) => {
           let speaker = dom.attributes && dom.attributes.who && dom.attributes.who.nodeValue ? dom.attributes.who.nodeValue : null
           if (speaker && typeof speaker === 'string') {

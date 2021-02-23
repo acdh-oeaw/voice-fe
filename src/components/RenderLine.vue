@@ -62,7 +62,7 @@ export default {
       let domArray = [].slice.call(dom)
       let aTxt = ''
       if (domArray && domArray.length > 0) {
-        domArray.forEach(elm => {
+        domArray.forEach((elm, idx, domArray) => {
           if (elm.nodeType === 1) { // ELEMENT_NODE
             let trimThis = !(elm.attributes && elm.attributes['xml:space'] && elm.attributes['xml:space'].value === 'preserve')
             let aClasses = ['tag-' + elm.tagName]
@@ -276,6 +276,13 @@ export default {
               }
             }
             aTxt += '</span>'
+            if (elm.tagName === 'w' &&
+                (!elm.attributes['part'] ||
+                (elm.attributes['part'] && elm.attributes['part'].value === 'F')) &&
+                idx !== domArray.length - 2
+               ) {
+              aTxt += ' '
+            }
           } else if (elm.nodeType === 3) { // TEXT_NODE
             let bTxt = elm.textContent.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').trim()
             if (trimIt) {

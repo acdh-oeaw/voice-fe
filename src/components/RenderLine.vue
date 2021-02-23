@@ -276,7 +276,7 @@ export default {
               }
             }
             aTxt += '</span>'
-            if (elm.tagName === 'w' &&
+            if ((elm.tagName === 'w' || elm.tagName === 'emph') &&
                 (!elm.attributes['part'] ||
                 (elm.attributes['part'] && elm.attributes['part'].value === 'F')) &&
                 idx !== domArray.length - 2

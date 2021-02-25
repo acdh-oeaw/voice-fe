@@ -384,7 +384,7 @@ export default {
   display: none;
 }
 
-.line-con.typ-voice >>> .tag-foreign.type-LN {
+.line-con.typ-voice >>> .tag-foreign.type-LN, .line-con.typ-voice >>> .tag-foreign.type-L1, .line-con.typ-voice >>> .tag-foreign.type-LQ {
   color: #b13610;
 }
 

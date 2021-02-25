@@ -85,6 +85,8 @@ export default {
           aLinePx += l.textHeight + this.extraHeight
         })
         // console.log(aTopLine, aBottomLine, aLinePx)
+        this.$set(this.element, 'aTopLine', aTopLine)
+        this.$set(this.element, 'aTopLineUId', this.xmlObjLines[aTopLine].uId)
         if (aTopLine <= this.lineTop) {
           this.lineTop = Math.floor(aTopLine - (this.lineLenght / 2 + (aBottomLine - aTopLine) / 2))
           if (this.lineTop < 0) {
@@ -132,6 +134,7 @@ export default {
           }
           return {
             dom: dom,
+            uId: dom && dom.tagName === 'u' && dom.attributes['xml:id'] ? dom.attributes['xml:id'].value : null,
             speaker: speaker,
             gap: gap.length > 0 ? gap : null,
             text: null,

@@ -46,7 +46,7 @@ export default {
   },
   computed: {
     uLine () {
-      return this.findLine('xml:id="' + this.element.aTopLineUId + '"')
+      return this.element.aTopLineUId ? this.findLine('xml:id="' + this.element.aTopLineUId + '"') : null
     },
     teiHeaderLine () {
       return this.findLine('<teiHeader>')

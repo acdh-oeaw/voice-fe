@@ -64,7 +64,6 @@ export default {
       let domArray = [].slice.call(dom)
       let aTxt = ''
       if (domArray && domArray.length > 0) {
-        domArray.forEach((elm, idx, domArray) => {
         if (this.aType === 'xml-view') {
           let aXml = this.xmlObjLine.xml.split('\n')
           aXml = aXml.filter(l => l.trim().length > 0)
@@ -74,7 +73,7 @@ export default {
           }
           aTxt = CorpusElementXml.methods.w3CodeColor(aXml.join('\n'))
         } else {
-          domArray.forEach(elm => {
+        domArray.forEach((elm, idx, domArray) => {
             if (elm.nodeType === 1) { // ELEMENT_NODE
             let trimThis = !(elm.attributes && elm.attributes['xml:space'] && elm.attributes['xml:space'].value === 'preserve')
             let aClasses = ['tag-' + elm.tagName]

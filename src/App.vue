@@ -30,6 +30,9 @@
         size="64"
       ></v-progress-circular>
     </v-overlay>
+    <v-footer>      
+      Version: {{ branch }}: {{ version }} {{commit_hash}}
+    </v-footer>
   </v-app>
 </template>
 
@@ -40,6 +43,8 @@ export default {
     loading: false,
     publicPath: process.env.BASE_URL,
     dev: process.env.NODE_ENV === 'development',
+    version: process.env.VUE_APP_VERSION,
+    branch: process.env.VUE_APP_BRANCH,
     mainData: {
       apiUrl: process.env.VUE_APP_API_URL,
       search: {

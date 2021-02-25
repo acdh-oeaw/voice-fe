@@ -1,7 +1,16 @@
 <template>
   <div class="d-flex flex-shrink-1 search-field align-center px-3">
-    <v-text-field v-model="mainData.search.value" @keydown.enter="search" :loading="mainData.search.loading" label="Search the VOICE Corpus" hide-details class="mr-2 mt-0"></v-text-field>
-    <v-btn @click="search" small color="indigo darken-4 white--text" :loading="mainData.search.loading" :disabled="!mainData.search.value || mainData.search.value.length < 2">Search</v-btn>
+    <v-text-field
+      v-model="mainData.search.value"
+      @keydown.enter="search(false)"
+      @click:clear="search(true)"
+      :loading="mainData.search.loading"
+      label="Search the VOICE Corpus"
+      class="mr-2 mt-0"
+      hide-details
+      clearable
+    />
+    <v-btn @click="search(false)" small color="indigo darken-4 white--text" :loading="mainData.search.loading" :disabled="!mainData.search.value || mainData.search.value.length < 2">Search</v-btn>
   </div>
 </template>
 
@@ -12,43 +21,49 @@ export default {
     'mainData': Object
   },
   data: () => ({
+    dev: process.env.NODE_ENV === 'development'
   }),
   mounted () {
   },
   methods: {
-    search () {
+    search (clear = false) {
+      if (clear) {
+        this.mainData.search.value = ''
+      }
       this.mainData.options.singleView = 'search'
-      if (!this.mainData.search.loading && this.mainData.search.lastValue !== this.mainData.search.value) {
-        this.mainData.search.loading = true
+      if (!this.mainData.search.loading && (this.mainData.search.lastValue !== this.mainData.search.value || this.dev)) {
         this.mainData.search.searched = false
         this.mainData.search.highlights = []
         this.mainData.search.foundXmlId = []
         this.mainData.search.lastValue = this.mainData.search.value
-        this.$http
-          .get(this.mainData.apiUrl + 'search/', { params: { q: this.mainData.search.value } })
-          .then((response) => {
-            console.log('search', response.data)
-            if (response.data && response.data.u) {
-              this.mainData.search.searched = true
-              this.mainData.search.results = response.data
-              if (this.mainData.search.results && this.mainData.search.results.u) {
-                this.mainData.search.results.u.forEach(aU => {
-                  if (aU.highlight) {
-                    this.mainData.search.highlights = this.mainData.search.highlights.concat(aU.highlight)
-                  }
-                  if (this.mainData.search.foundXmlId.indexOf(aU.xmlId) < 0) {
-                    this.mainData.search.foundXmlId.push(aU.xmlId)
-                  }
-                })
+        if (this.mainData.search.value && this.mainData.search.value.length > 0) {
+          this.mainData.search.loading = true
+          this.$http
+            .get(this.mainData.apiUrl + 'search/', { params: { q: this.mainData.search.value } })
+            .then((response) => {
+              console.log('search', response.data)
+              if (response.data && response.data.u) {
+                this.mainData.search.results = response.data
+                if (this.mainData.search.results && this.mainData.search.results.u) {
+                  this.mainData.search.results.u.forEach(aU => {
+                    if (aU.highlight) {
+                      this.mainData.search.highlights = this.mainData.search.highlights.concat(aU.highlight)
+                    }
+                    if (this.mainData.search.foundXmlId.indexOf(aU.xmlId) < 0) {
+                      this.mainData.search.foundXmlId.push(aU.xmlId)
+                    }
+                  })
+                }
+                this.mainData.search.searched = true
               }
-            }
-            this.mainData.search.scrollPos = 0
-            this.mainData.search.loading = false
-          })
-          .catch((err) => {
-            console.log(err)
-            this.mainData.search.loading = false
-          })
+              this.mainData.search.scrollPos = 0
+              this.mainData.search.loading = false
+            })
+            .catch((err) => {
+              console.log(err)
+              this.mainData.search.loading = false
+            })
+        }
       }
     }
   }

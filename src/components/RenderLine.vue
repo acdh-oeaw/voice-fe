@@ -309,6 +309,10 @@ export default {
     },
     highlight () {
       this.updateXmlObjLine()
+    },
+    'mainData.search.searched' () {
+      this.$set(this.xmlObjLine, this.aType, null)
+      this.updateXmlObjLine()
     }
   },
   components: {

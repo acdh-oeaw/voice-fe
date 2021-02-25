@@ -1,12 +1,22 @@
 <template>
-  <div ref="xmlScrollFrm" class="linescroll" v-on:scroll="scrolling">
-    <div class="xml-prev" :style="'height: ' + (xmlLines.length * lineHeight) + 'px;'" v-if="xmlLines">
-      <div ref="xmlviewarea" class="xml-viewarea px-3 py-1" :style="'top: ' + (lineTop * lineHeight) + 'px; min-width: ' + minWidth + 'px;'"
-        v-if="xmlFormated"
-        v-html="xmlFormated"
-      />
+  <div class="xml-view d-flex flex-column">
+    <div class="xml-tools pa-2">
+      <v-btn @click="scrollTo(0)" class="mr-2" small>TOP</v-btn>
+      <v-btn @click="scrollTo(teiHeaderLine)" class="mr-2" small :disabled="teiHeaderLine < 0">&lt;teiHeader&gt;</v-btn>
+      <v-btn @click="scrollTo(bodyLine)" class="mr-2" small :disabled="bodyLine < 0">&lt;body&gt;</v-btn>
+      <v-btn @click="scrollTo(uLine)" class="mr-2" small v-if="uLine">Jump to utterance {{ element.aTopLineUId.split('_').slice(-1)[0] }}</v-btn>
     </div>
-    <div ref="lineheight" class="xml-prev" style="color:#fff;">.</div>
+    <div class="xml-content flex-grow-1">
+      <div ref="xmlScrollFrm" class="linescroll" v-on:scroll="scrolling">
+        <div class="xml-prev" :style="'height: ' + (xmlLines.length * lineHeight) + 'px;'" v-if="xmlLines">
+          <div ref="xmlviewarea" class="xml-viewarea px-3 py-1" :style="'top: ' + (lineTop * lineHeight) + 'px; min-width: ' + minWidth + 'px;'"
+            v-if="xmlFormated"
+            v-html="xmlFormated"
+          />
+        </div>
+        <div ref="lineheight" class="xml-prev" style="color:#fff;">.</div>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -35,6 +45,15 @@ export default {
   beforeDestroy () {
   },
   computed: {
+    uLine () {
+      return this.element.aTopLineUId ? this.findLine('xml:id="' + this.element.aTopLineUId + '"') : null
+    },
+    teiHeaderLine () {
+      return this.findLine('<teiHeader>')
+    },
+    bodyLine () {
+      return this.findLine('<body>')
+    },
     xmlLines () {
       let xmlS = this.element && this.element.xml
       if (xmlS) {
@@ -56,6 +75,20 @@ export default {
     }
   },
   methods: {
+    findLine (s) {
+      if (this.xmlLines) {
+        s = s.toLowerCase()
+        for (let i = 0; i < this.xmlLines.length; i++) {
+          if (this.xmlLines[i].toLowerCase().indexOf(s) > -1) {
+            return i * this.lineHeight
+          }
+        }
+      }
+      return -1
+    },
+    scrollTo (line) {
+      this.$refs.xmlScrollFrm.scrollTop = line
+    },
     scrolling (e) {
       let aTop = e.srcElement.scrollTop
       let aBottom = e.srcElement.scrollTop + e.srcElement.clientHeight
@@ -186,6 +219,22 @@ export default {
 </script>
 
 <style scoped>
+.v-btn {
+  text-transform:none !important;
+}
+.xml-view {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+}
+.xml-content {
+  position: relative;
+}
+.xml-tools {
+  border-bottom: solid 1px #ccc;
+}
 .xml-prev {
   font-family: Consolas, "Courier New", monospace;
   white-space: pre;

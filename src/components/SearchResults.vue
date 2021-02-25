@@ -1,5 +1,5 @@
 <template>
-  <div class="d-flex flex-grow-1">
+  <div class="d-flex flex-grow-1 flex-column">
     <div class="scroll-content">
       <div ref="viewarea" class="px-3 py-2" v-on:scroll="scrolling">
         <div class="mb-2">Search Results - "{{ mainData.search.value }}"</div>
@@ -14,6 +14,7 @@
           <div v-if="mainData.search.results.status">status: {{ mainData.search.results.status }}</div>
           <div>xmlStatus: {{ mainData.search.results.xmlStatus }}</div>
           <div>u: {{ mainData.search.results.u ? mainData.search.results.u.length : 'error' }}</div>
+          <div>h: {{ mainData.search.highlights ? mainData.search.highlights.length : 'error' }}</div>
           <div>cql: {{ mainData.search.results.cql }}</div>
           <div>
             <v-select hide-details
@@ -28,9 +29,10 @@
                 <div @click="openDocument(uObj.xmlId)" class="line-document" v-if="uIdx < 1 || uObj.xmlId !== searchResultsU[uIdx-1].xmlId">
                   {{ uObj.xmlId }}
                 </div>
-                <div class="d-flex">
-                  <div class="line-uid">{{ uObj.uId.split('_')[0] + ':' + uObj.uId.split('_')[2] }}</div>
+                <div :class="'d-flex' + (mainData.search.view.type === 'xml' ? ' flex-wrap' : '')">
+                  <div class="line-uid" v-if="show_utI">{{ uObj.uId.split('_')[0] + ':' + uObj.uId.split('_')[2] }}</div>
                   <div class="line-speaker" v-if="xmlObjLines">{{ xmlObjLines[uIdx].speaker }}</div>
+                  <div class="flex-break" v-if="mainData.search.view.type === 'xml'"></div>
                   <RenderLine :xmlObjLine="xmlObjLines[uIdx]" :highlight="uObj.highlight" :type="mainData.search.view.type" :mainData="mainData" v-if="xmlObjLines"/>
                 </div>
               </div>
@@ -42,11 +44,15 @@
         </div>
       </div>
     </div>
+    <div class="voice-switches" v-if="mainData.search.view.type === 'voice' && mainData.search.results && mainData.search.results.u && mainData.search.results.u.length > 0">
+      <RenderSelect :mainData="mainData" class="d-flex flex-wrap justify-space-around" />
+    </div>
   </div>
 </template>
 
 <script>
 import RenderLine from './RenderLine';
+import RenderSelect from './RenderSelect';
 
 export default {
   name: 'SearchResults',
@@ -64,7 +70,11 @@ export default {
   },
   computed: {
     searchResultsU () {
-      return this.mainData.search.results && this.mainData.search.results.u && this.mainData.search.results.u.length > 0 ? this.mainData.search.results.u.slice(0, 100) : []
+      let ml = this.mainData.search.view.type === 'xml' ? 25 : 100
+      return this.mainData.search.results && this.mainData.search.results.u && this.mainData.search.results.u.length > 0 ? this.mainData.search.results.u.slice(0, ml) : []
+    },
+    show_utI () {
+      return this.mainData.search.view.type !== 'voice' || this.mainData.views.voice.utI.val
     }
   },
   methods: {
@@ -130,7 +140,8 @@ export default {
     }
   },
   components: {
-    RenderLine
+    RenderLine,
+    RenderSelect
   }
 }
 </script>
@@ -159,5 +170,11 @@ export default {
 .line-speaker {
   min-width: 4rem;
   font-weight: bold;
+}
+.voice-switches {
+  border-top: solid 1px #ccc;
+}
+.voice-switches > div {
+  max-width: 700px;
 }
 </style>

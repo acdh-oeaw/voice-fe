@@ -1,5 +1,5 @@
 <template>
-  <div ref="viewarea" class="viewarea linescroll" v-on:scroll="scrolling">
+  <div ref="viewarea" class="viewarea linescroll" v-on:scroll="scrolling()">
     <div class="line-viewarea" :style="'height: ' + (height) + 'px;'" v-if="xmlObjLines">
       <div class="line-viewarea" :style="'top: ' + lineTopPx + 'px;'">
         <template
@@ -34,7 +34,8 @@ export default {
     lineLenght: 100,
     extraHeight: 5,
     xmlObjLines: null,
-    lastElement: null
+    lastElement: null,
+    scrollReady: false
   }),
   mounted () {
     console.log('CorpusElementViews', this.element, this.xmlObjLines)
@@ -67,11 +68,7 @@ export default {
     }
   },
   methods: {
-    scrolling () {
-      if (this.xmlObjLines && this.$refs && this.$refs.viewarea) {
-        let aTop = this.$refs.viewarea.scrollTop
-        this.element.scrollPos[this.view] = aTop
-        let aBottom = this.$refs.viewarea.scrollTop + this.$refs.viewarea.clientHeight
+    scrollGetALine (aTop, aBottom) {
         let aTopLine = 0
         let aBottomLine = 0
         let aLinePx = 0
@@ -84,14 +81,27 @@ export default {
           }
           aLinePx += l.textHeight + this.extraHeight
         })
+        return {aTopLine, aBottomLine}
         // console.log(aTopLine, aBottomLine, aLinePx)
-        if (aTopLine <= this.lineTop) {
-          this.lineTop = Math.floor(aTopLine - (this.lineLenght / 2 + (aBottomLine - aTopLine) / 2))
+    },
+    scrolling () {
+      if (this.xmlObjLines && this.$refs && this.$refs.viewarea) {
+        let aTop = this.$refs.viewarea.scrollTop
+        this.element.scrollPos[this.view] = aTop
+        let aBottom = this.$refs.viewarea.scrollTop + this.$refs.viewarea.clientHeight
+        let aLines = this.scrollGetALine(aTop, aBottom)
+        if (this.scrollReady) {
+          // console.log('setTop', aLines.aTopLine)
+          this.$set(this.element, 'aTopLine', aLines.aTopLine)
+          this.$set(this.element, 'aTopLineUId', this.xmlObjLines[aLines.aTopLine].uId)
+        }
+        if (aLines.aTopLine <= this.lineTop) {
+          this.lineTop = Math.floor(aLines.aTopLine - (this.lineLenght / 2 + (aLines.aBottomLine - aLines.aTopLine) / 2))
           if (this.lineTop < 0) {
             this.lineTop = 0
           }
-        } else if (aBottomLine >= this.lineTop + this.lineLenght) {
-          this.lineTop = Math.ceil(aTopLine - (this.lineLenght / 3))
+        } else if (aLines.aBottomLine >= this.lineTop + this.lineLenght) {
+          this.lineTop = Math.ceil(aLines.aTopLine - (this.lineLenght / 3))
           if (this.lineTop + this.lineLenght > this.xmlObjLines.length - 1) {
             this.lineTop = this.xmlObjLines.length - 1 - this.lineLenght
           }
@@ -132,6 +142,7 @@ export default {
           }
           return {
             dom: dom,
+            uId: dom && dom.tagName === 'u' && dom.attributes['xml:id'] ? dom.attributes['xml:id'].value : null,
             speaker: speaker,
             gap: gap.length > 0 ? gap : null,
             text: null,
@@ -144,9 +155,21 @@ export default {
         this.xmlObjLines = null
       }
     },
-    loadScrollPos () {
-      if (this.$refs && this.$refs.viewarea) {
-        this.$refs.viewarea.scrollTop = this.element.scrollPos[this.view]
+    loadScrollPos (dg = 5) {
+      if (this.$refs && this.$refs.viewarea && this.element.aTopLine) {
+        let aLinePx = this.xmlObjLines ? this.xmlObjLines.slice(0, this.element.aTopLine).reduce((a,b) => a + b.textHeight + this.extraHeight, 0) : 0
+        this.$refs.viewarea.scrollTop = aLinePx
+        // console.log(this.element.aTopLine, aLinePx, this.scrollGetALine(aLinePx).aTopLine)
+        if (dg >= 0) {
+          this.$nextTick(() => {
+            this.loadScrollPos(dg - 1)
+          })
+        } else {
+          this.scrollReady = true
+        }
+        // this.$refs.viewarea.scrollTop = this.element.scrollPos[this.view]
+      } else {
+        this.scrollReady = true
       }
     },
     cacheHeights (v, el) {
@@ -182,6 +205,7 @@ export default {
       if (this.lastElement) {
         this.cacheHeights(this.view, this.lastElement)
       }
+      this.scrollReady = false
       this.loadScrollPos()
       this.updateXmlObjLines()
       this.lastElement = this.element
@@ -191,6 +215,7 @@ export default {
     },
     view (nVal, oVal) {
       this.cacheHeights(oVal, this.element)
+      this.scrollReady = false
       this.loadScrollPos()
       this.updateXmlObjLines()
       this.$nextTick(() => {

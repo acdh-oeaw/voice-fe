@@ -252,6 +252,10 @@ export default {
     bottom: 0;
     overflow: auto;
   }
+  .flex-break {
+    flex-basis: 100%;
+    height: 0;
+  }
   @media (min-width: 1264px) {
     .container {
       max-width: 1785px!important;

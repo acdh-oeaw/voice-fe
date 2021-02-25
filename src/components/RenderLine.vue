@@ -1,8 +1,10 @@
 <template>
-  <div ref="lineContent" :class="classes" v-html="aText"></div>
+  <div ref="lineContent" :class="'rl-lc ' + classes" v-html="aText"></div>
 </template>
 
 <script>
+import CorpusElementXml from './CorpusElementXml';
+
 export default {
   name: 'RenderLine',
   props: {
@@ -38,7 +40,7 @@ export default {
   methods: {
     updateXmlObjLine () {
       if (this.xmlObjLine) {
-        this.aType = this.type || 'plain'
+        this.aType = this.type === 'xml' ? 'xml-view' : this.type || 'plain'
         // console.log(this.aType)
         if (!this.xmlObjLine[this.aType]) {
           this.$set(this.xmlObjLine, this.aType, null)
@@ -63,7 +65,17 @@ export default {
       let aTxt = ''
       if (domArray && domArray.length > 0) {
         domArray.forEach((elm, idx, domArray) => {
-          if (elm.nodeType === 1) { // ELEMENT_NODE
+        if (this.aType === 'xml-view') {
+          let aXml = this.xmlObjLine.xml.split('\n')
+          aXml = aXml.filter(l => l.trim().length > 0)
+          let lS = aXml.length > 0 && aXml[aXml.length - 1] ? aXml[aXml.length - 1].search(/\S/) : -1
+          if (lS > 0) {
+            aXml = aXml.map((l, i) => i > 0 ? l.substring(lS) : l)
+          }
+          aTxt = CorpusElementXml.methods.w3CodeColor(aXml.join('\n'))
+        } else {
+          domArray.forEach(elm => {
+            if (elm.nodeType === 1) { // ELEMENT_NODE
             let trimThis = !(elm.attributes && elm.attributes['xml:space'] && elm.attributes['xml:space'].value === 'preserve')
             let aClasses = ['tag-' + elm.tagName]
             let attrClasses = {'type': {}, 'n': { has: true }, 'voice:desc': {}, 'reason': {}, 'new': {}}
@@ -292,6 +304,7 @@ export default {
           }
         })
       }
+      }
       return aTxt
     }
   },
@@ -303,6 +316,10 @@ export default {
       this.updateXmlObjLine()
     },
     highlight () {
+      this.updateXmlObjLine()
+    },
+    'mainData.search.searched' () {
+      this.$set(this.xmlObjLine, this.aType, null)
       this.updateXmlObjLine()
     }
   },
@@ -375,7 +392,7 @@ export default {
   display: none;
 }
 
-.line-con.typ-voice >>> .tag-foreign.type-LN {
+.line-con.typ-voice >>> .tag-foreign.type-LN, .line-con.typ-voice >>> .tag-foreign.type-L1, .line-con.typ-voice >>> .tag-foreign.type-LQ {
   color: #b13610;
 }
 
@@ -446,5 +463,31 @@ export default {
 /*******/
 /* Pos */
 /*******/
+
+/*******/
+/* XML */
+/*******/
+
+.line-con.typ-xml-view {
+  font-family: Consolas, "Courier New", monospace;
+  white-space: pre-wrap;
+  position: relative;
+  border-top: 1px solid #bbb;
+}
+.line-con.typ-xml-view >>> .tc {
+  color: mediumblue;
+}
+.line-con.typ-xml-view >>> .tnc {
+  color: brown;
+}
+.line-con.typ-xml-view >>> .ac {
+  color: red;
+}
+.line-con.typ-xml-view >>> .avc {
+  color: mediumblue;
+}
+.line-con.typ-xml-view >>> .cc {
+  color: green;
+}
 
 </style>

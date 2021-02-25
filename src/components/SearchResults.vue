@@ -28,9 +28,10 @@
                 <div @click="openDocument(uObj.xmlId)" class="line-document" v-if="uIdx < 1 || uObj.xmlId !== searchResultsU[uIdx-1].xmlId">
                   {{ uObj.xmlId }}
                 </div>
-                <div class="d-flex">
+                <div :class="'d-flex' + (mainData.search.view.type === 'xml' ? ' flex-wrap' : '')">
                   <div class="line-uid">{{ uObj.uId.split('_')[0] + ':' + uObj.uId.split('_')[2] }}</div>
                   <div class="line-speaker" v-if="xmlObjLines">{{ xmlObjLines[uIdx].speaker }}</div>
+                  <div class="flex-break" v-if="mainData.search.view.type === 'xml'"></div>
                   <RenderLine :xmlObjLine="xmlObjLines[uIdx]" :highlight="uObj.highlight" :type="mainData.search.view.type" :mainData="mainData" v-if="xmlObjLines"/>
                 </div>
               </div>

@@ -41,7 +41,6 @@ export default {
           this.$http
             .get(this.mainData.apiUrl + 'search/', { params: { q: this.mainData.search.value } })
             .then((response) => {
-              console.log('search', response.data)
               if (response.data && response.data.u) {
                 this.mainData.search.results = response.data
                 if (this.mainData.search.results && this.mainData.search.results.u) {
@@ -58,6 +57,7 @@ export default {
               }
               this.mainData.search.scrollPos = 0
               this.mainData.search.loading = false
+              console.log('search', response.data, this.mainData.search)
             })
             .catch((err) => {
               console.log(err)

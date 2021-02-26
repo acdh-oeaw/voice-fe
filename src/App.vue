@@ -31,7 +31,7 @@
       ></v-progress-circular>
     </v-overlay>
     <v-footer>      
-      Version: {{ branch }}: {{ version }} {{commit_hash}}
+      Version: {{ version }}
     </v-footer>
   </v-app>
 </template>

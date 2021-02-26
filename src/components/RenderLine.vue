@@ -1,5 +1,5 @@
 <template>
-  <div ref="lineContent" :class="'rl-lc ' + classes" v-html="aText"></div>
+  <div ref="lineContent" :class="'rl-lc ' + classes" v-html="aText" data-testid="lineContent"></div>
 </template>
 
 <script>

@@ -1,8 +1,14 @@
 <template>
   <v-card class="fill-height d-flex flex-column">
     <v-tabs v-model="cTab" grow class="flex-shrink-1 fx-bb">
-      <v-tab href="#tree">Tree</v-tab>
-      <v-tab href="#filter">Filter</v-tab>
+      <v-tab href="#tree">
+        Tree
+        <v-icon class="tree-icon tree-icon-tree" v-if="mainData.filter.manualSelect">mdi-check-bold</v-icon>
+      </v-tab>
+      <v-tab href="#filter">
+        Filter
+        <v-icon class="tree-icon" v-if="filterActive">mdi-exclamation-thick</v-icon>
+      </v-tab>
       <v-tab href="#bookmarks">Bookmarks</v-tab>
     </v-tabs>
     <v-tabs-items v-model="cTab" class="flex-grow-1 fill-height" style="overflow-y: scroll;">
@@ -37,6 +43,12 @@ export default {
   },
   methods: {
   },
+  computed: {
+    filterActive () {
+      let f = this.mainData.filter
+      return f.manualSelect || f.interactants || f.speakers || f.acquaintedness || f.powerRelations || f.durationOfSpeechEvent || f.words || f.onlyWidthAudio
+    }
+  },
   watch: {
   },
   components: {
@@ -48,4 +60,17 @@ export default {
 </script>
 
 <style scoped>
+.tree-icon {
+  position: absolute;
+  right: 2px;
+  top: 2px;
+  background: #08690c;
+  color: #fff!important;
+  border-radius: 100%;
+  font-size: 13px;
+  padding: 2px;
+}
+.tree-icon-tree {
+  background: #ff9800;
+}
 </style>

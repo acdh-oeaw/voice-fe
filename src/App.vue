@@ -78,7 +78,8 @@ export default {
       options: {
         fullWidth: true,
         dualView: true,
-        singleView: 'corpus'
+        singleView: 'corpus',
+        treeShowSpet: false,
       },
       views: {
         voice: {
@@ -175,10 +176,37 @@ export default {
             })
             return aObj
           }
+          let getSpetList = (cList) => {
+            console.log(cList)
+            let aList = []
+            cList.forEach(el => {
+              if (el.children) {
+                aList.push({
+                  id: el.id,
+                  label: el.label,
+                  children: getSpetList(el.children)
+                })
+              } else {
+                let aSpet = aList.filter(e => e.label === el.spet)
+                if (aSpet.length > 0) {
+                  aSpet[0].children.push(el)
+                } else {
+                  aList.push({
+                    id: el.domain + '-' + el.spet,
+                    label: el.spet,
+                    children: [el]
+                  })
+                }
+              }
+            })
+            return aList
+          }
           let aObj = {}
           this.$set(this.mainData.corpus, 'list', response.data.domains)
           this.$set(this.mainData.corpus, 'baseJSON', response.data)
           this.$set(this.mainData.corpus, 'obj', getCorpusObjs(this.mainData.corpus.list, aObj))
+          this.$set(this.mainData.corpus, 'listSpet', getSpetList(this.mainData.corpus.list))
+          console.log('listSpet', this.mainData.corpus.listSpet)
           Object.keys(response.data.speakers).forEach((sn) => {
             let aSpeaker = response.data.speakers[sn]
             this.$set(aSpeaker, 'id', sn)

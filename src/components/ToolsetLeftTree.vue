@@ -1,8 +1,15 @@
 <template>
   <div class="py-2">
+    <div class="fx-bb mb-3">
+      <v-card class="mx-2 mb-2 px-1" flat>
+        <div class="d-flex">
+          <v-switch v-model="mainData.options.treeShowSpet" dense hide-details class="mt-0 mr-3" label="spet"></v-switch>
+        </div>
+      </v-card>
+    </div>
     <v-treeview
       dense selected-color="primary"
-      :items="mainData.corpus.list" item-text="id"
+      :items="mainData.options.treeShowSpet ? mainData.corpus.listSpet : mainData.corpus.list" item-text="id"
       :selectable="mainData.filter.manualSelect"
       open-on-click
       activatable :active.sync="active"

@@ -7,84 +7,45 @@
     </v-tabs>
     <v-tabs-items v-model="cTab" class="flex-grow-1 fill-height py-2" style="overflow-y: scroll;">
       <v-tab-item value="tree">
-        <v-treeview
-          selectable dense selected-color="primary"
-          :items="mainData.corpus.list" item-text="id"
-          open-on-click
-          activatable :active.sync="active"
-          class="ctree"
-        >
-          <template v-slot:label="{ item }">
-            <div :class="{
-              'underline': item.open,
-              'found': mainData.search.foundXmlId.indexOf(item.id) > -1
-            }" :title="item.title">{{ item.children ? item.label : item.id }}</div>
-          </template>
-          <template v-slot:append="{ item }">
-            <v-icon v-if="item.audioAvailable">mdi-volume-high</v-icon>
-          </template>
-        </v-treeview>
+        <ToolsetLeftTree :mainData="mainData" />
       </v-tab-item>
       <v-tab-item value="filter">
-        ToolsetLeft - Filter
+        <ToolsetLeftFilter :mainData="mainData" />
       </v-tab-item>
       <v-tab-item value="bookmarks">
-        ToolsetLeft - Bookmarks
+        <ToolsetLeftBookmarks :mainData="mainData" />
       </v-tab-item>
     </v-tabs-items>
   </v-card>
 </template>
 
 <script>
+import ToolsetLeftFilter from './ToolsetLeftFilter';
+import ToolsetLeftBookmarks from './ToolsetLeftBookmarks';
+import ToolsetLeftTree from './ToolsetLeftTree';
+
 export default {
   name: 'ToolsetLeft',
   props: {
     'mainData': Object,
   },
   data: () => ({
-    publicPath: process.env.BASE_URL,
-    cTab: 0,
-    active: []
+    cTab: 0
   }),
   mounted () {
     console.log('ToolsetLeft', this.mainData)
   },
   methods: {
-    test (x) {
-      console.log(x)
-    }
   },
   watch: {
-    active (nVal) {
-      this.mainData.corpus.selectedElement = nVal[0]
-      if (nVal[0]) {
-        this.mainData.options.singleView = 'corpus'
-        if (this.mainData.corpus.elements.filter(e => e.id === nVal[0]).length === 0) {
-          if (this.mainData.corpus.obj[nVal[0]]) {
-            this.$set(this.mainData.corpus.obj[nVal[0]], 'open', true)
-            this.mainData.corpus.elements.unshift(this.mainData.corpus.obj[nVal[0]])
-          }
-        }
-      }
-    },
-    'mainData.corpus.selectedElement' (nVal) {
-      if (!this.active || this.active[0] !== nVal) {
-        this.active = [nVal]
-      }
-    }
+  },
+  components: {
+    ToolsetLeftFilter,
+    ToolsetLeftBookmarks,
+    ToolsetLeftTree
   }
 }
 </script>
 
 <style scoped>
-  .v-treeview--dense >>> .v-treeview-node__root {
-    min-height: 25px!important;
-  }
-  .v-treeview--dense >>> .v-icon.v-icon::after {
-    -webkit-transform: scale(1.0);
-    transform: scale(1.0);
-  }
-  .ctree >>> .found {
-    font-weight: bold;
-  }
 </style>

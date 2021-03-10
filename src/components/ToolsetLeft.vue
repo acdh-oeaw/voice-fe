@@ -16,7 +16,7 @@
         <ToolsetLeftTree :mainData="mainData" />
       </v-tab-item>
       <v-tab-item value="filter">
-        <ToolsetLeftFilter :mainData="mainData" />
+        <ToolsetLeftFilter @treeview="cTab = '#tree'" :mainData="mainData" />
       </v-tab-item>
       <v-tab-item value="bookmarks">
         <ToolsetLeftBookmarks :mainData="mainData" />

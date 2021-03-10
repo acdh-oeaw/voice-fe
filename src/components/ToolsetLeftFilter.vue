@@ -4,6 +4,10 @@
       <v-card class="mb-2 px-1">
         <div class="m-title">Manual select</div>
         <v-switch v-model="mainData.filter.manualSelect" dense hide-details class="mt-0" :label="mainData.filter.manualSelect ? 'On: ' + (mainData.filter.manualSelection.length > 0 ? mainData.filter.manualSelection.length + ' element' + (mainData.filter.manualSelection.length > 1 ? 's' : '') + ' selected' : 'Please select elements in Tree View') : 'Off'"></v-switch>
+        <div v-if="mainData.filter.manualSelect">
+          <v-icon class="fx-tree-icon mr-2" v-if="mainData.filter.manualSelect">mdi-check-bold</v-icon>
+          <span class="m-hint">Select elements in <a @click="$emit('treeview')">Tree View</a>.</span>
+        </div>
       </v-card>
       <div class="my-3">
         Simple filter
@@ -158,5 +162,16 @@ export default {
   font-size: 12px;
   padding: 2px;
   color: rgba(0, 0, 0, 0.6);
+}
+.m-hint {
+  font-size: 12px;
+  color: rgba(0, 0, 0, 0.6);
+}
+.fx-tree-icon {
+  background: #ff9800;
+  color: #fff!important;
+  border-radius: 100%!important;
+  font-size: 13px;
+  padding: 2px;
 }
 </style>

@@ -42,6 +42,17 @@ export default {
     dev: process.env.NODE_ENV === 'development',
     mainData: {
       apiUrl: process.env.VUE_APP_API_URL,
+      filter: {
+        manualSelect: false,
+        manualSelection: [],
+        interactants: null,
+        speakers: null,
+        acquaintedness: null,
+        powerRelations: null,
+        durationOfSpeechEvent: null,
+        words: null,
+        onlyWidthAudio: false,
+      },
       search: {
         value: '',
         lastValue: '',
@@ -174,6 +185,9 @@ export default {
             Object.keys(aSpeaker.refs).forEach((rc) => {
               let aRef = aSpeaker.refs[rc]
               if (this.mainData.corpus.obj[rc]) {
+                if (this.mainData.filter.manualSelection.indexOf(this.mainData.corpus.obj[rc].id) < 0) {
+                  this.mainData.filter.manualSelection.push(this.mainData.corpus.obj[rc].id)
+                }
                 if (!this.mainData.corpus.obj[rc].speakers) {
                   this.$set(this.mainData.corpus.obj[rc], 'speakers', {})
                 }

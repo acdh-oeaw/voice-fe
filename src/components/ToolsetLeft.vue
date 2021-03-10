@@ -5,7 +5,7 @@
       <v-tab href="#filter">Filter</v-tab>
       <v-tab href="#bookmarks">Bookmarks</v-tab>
     </v-tabs>
-    <v-tabs-items v-model="cTab" class="flex-grow-1 fill-height py-2" style="overflow-y: scroll;">
+    <v-tabs-items v-model="cTab" class="flex-grow-1 fill-height" style="overflow-y: scroll;">
       <v-tab-item value="tree">
         <ToolsetLeftTree :mainData="mainData" />
       </v-tab-item>

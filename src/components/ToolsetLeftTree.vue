@@ -1,12 +1,19 @@
 <template>
-  <div>
+  <div class="py-2">
     <v-treeview
-      selectable dense selected-color="primary"
+      dense selected-color="primary"
       :items="mainData.corpus.list" item-text="id"
+      :selectable="mainData.filter.manualSelect"
       open-on-click
       activatable :active.sync="active"
       class="ctree"
+      v-model="mainData.filter.manualSelection"
     >
+      <template v-slot:prepend="{ item, open }" v-if="!mainData.filter.manualSelect">
+        <v-icon>
+          {{ item.children ? (open ? 'mdi-folder-open-outline' : 'mdi-folder-outline') : 'mdi-text-box-outline' }}
+        </v-icon>
+      </template>
       <template v-slot:label="{ item }">
         <div :class="{
           'underline': item.open,

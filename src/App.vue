@@ -270,6 +270,9 @@ export default {
     flex-basis: 100%;
     height: 0;
   }
+  .fx-icon-red {
+    background: #b00!important;
+  }
   @media (min-width: 1264px) {
     .container {
       max-width: 1785px!important;

@@ -3,7 +3,7 @@
     <v-tabs v-model="cTab" grow class="flex-shrink-1 fx-bb">
       <v-tab href="#tree">
         Tree
-        <v-icon class="tree-icon tree-icon-tree" v-if="mainData.filter.manualSelect">mdi-check-bold</v-icon>
+        <v-icon :class="'tree-icon' + (mainData.filter.manualSelection.length > 0 ? '' : ' fx-icon-red') + ' tree-icon-tree'" v-if="mainData.filter.manualSelect">mdi-check-bold</v-icon>
       </v-tab>
       <v-tab href="#filter">
         Filter
@@ -71,6 +71,6 @@ export default {
   padding: 2px;
 }
 .tree-icon-tree {
-  background: #ff9800;
+  background: #1976d2;
 }
 </style>

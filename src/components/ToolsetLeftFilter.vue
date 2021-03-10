@@ -3,10 +3,10 @@
     <div>
       <v-card class="mb-2 px-1">
         <div class="m-title">Manual select</div>
-        <v-switch v-model="mainData.filter.manualSelect" dense hide-details class="mt-0" :label="mainData.filter.manualSelect ? 'On: ' + (mainData.filter.manualSelection.length > 0 ? mainData.filter.manualSelection.length + ' element' + (mainData.filter.manualSelection.length > 1 ? 's' : '') + ' selected' : 'Please select elements in Tree View') : 'Off'"></v-switch>
+        <v-switch v-model="mainData.filter.manualSelect" dense hide-details class="mt-0" :label="mainData.filter.manualSelect ? 'On: ' + (mainData.filter.manualSelection.length > 0 ? mainData.filter.manualSelection.length + ' element' + (mainData.filter.manualSelection.length > 1 ? 's' : '') + ' selected' : 'No element selected') : 'Off'"></v-switch>
         <div v-if="mainData.filter.manualSelect">
-          <v-icon class="fx-tree-icon mr-2" v-if="mainData.filter.manualSelect">mdi-check-bold</v-icon>
-          <span class="m-hint">Select elements in <a @click="$emit('treeview')">Tree View</a>.</span>
+          <v-icon :class="'fx-tree-icon' + (mainData.filter.manualSelection.length > 0 ? '' : ' fx-icon-red') + ' mr-2'" v-if="mainData.filter.manualSelect">mdi-check-bold</v-icon>
+          <span class="m-hint">Elements are selectable in <a @click="$emit('treeview')">Tree View</a>.</span>
         </div>
       </v-card>
       <div class="my-3">
@@ -168,7 +168,7 @@ export default {
   color: rgba(0, 0, 0, 0.6);
 }
 .fx-tree-icon {
-  background: #ff9800;
+  background: #1976d2;
   color: #fff!important;
   border-radius: 100%!important;
   font-size: 13px;

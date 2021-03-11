@@ -5,12 +5,16 @@
         <v-card class="mx-2 mb-2 px-1" flat>
           <div class="d-flex">
             <v-switch v-model="mainData.options.treeShowSpet" dense hide-details class="mt-0 mr-3" label="spet"></v-switch>
+            <v-switch v-model="mainData.options.treeShowFiltered" dense hide-details class="mt-0 mr-3 s-small-font"
+              label="Hide filtered Speech Events"
+              v-if="mainData.app.filteredSeIds"
+            ></v-switch>
           </div>
         </v-card>
       </div>
       <v-treeview
         dense selected-color="primary"
-        :items="mainData.options.treeShowSpet ? mainData.corpus.listSpet : mainData.corpus.list" item-text="id"
+        :items="tree" item-text="id"
         :selectable="mainData.filter.active && mainData.filter.manualSelect"
         open-on-click
         activatable :active.sync="active"
@@ -77,6 +81,36 @@ export default {
       }
     }
   },
+  computed: {
+    tree () {
+      let aList = this.mainData.options.treeShowSpet ? this.mainData.corpus.listSpet : this.mainData.corpus.list
+      if (this.mainData.options.treeShowFiltered && this.mainData.app.filteredSeIds) {
+        let aFilter = (aList) => {
+          let al = []
+          aList.forEach(l => {
+            if (l.children) {
+              let c = aFilter(l.children)
+              if (c.length > 0) {
+                al.push({
+                  id: l.id,
+                  label: l.label,
+                  children: c
+                })
+              }
+            } else {
+              if (this.mainData.app.filteredSeIds.indexOf(l.id) > -1) {
+                al.push(l)
+              }
+            }
+          })
+          return al
+        }
+        aList = aFilter(aList)
+      }
+      console.log(aList)
+      return aList
+    }
+  },
   watch: {
     active (nVal) {
       this.mainData.corpus.selectedElement = nVal[0]
@@ -112,5 +146,12 @@ export default {
   }
   .ctree >>> .filtered {
     color: #aaa;
+  }
+  .s-small-font {
+    max-width: 135px;
+  }
+  .s-small-font >>> label {
+    font-size: 12px;
+    line-height: 12px;
   }
 </style>

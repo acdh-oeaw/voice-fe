@@ -47,6 +47,7 @@ const localFunctions = {
         dualView: true,
         singleView: 'corpus',
         treeShowSpet: false,
+        treeShowFiltered: false,
       },
       views: {
         voice: {

@@ -172,7 +172,7 @@ export default {
   computed: {
     filterActive () {
       let f = this.mainData.filter
-      return f.manualSelect || f.interactants || f.speakers || f.acquaintedness || f.powerRelations || f.durationOfSpeechEvent || f.words || f.onlyWidthAudio
+      return f.manualSelect || f.interactants || f.speakers || f.acquaintedness || f.powerRelations || f.durationOfSpeechEvent || f.words || f.onlyWidthAudio ? true : false
     },
     currentRouteName() {
         return this.$route.name;

@@ -11,11 +11,11 @@
         </div>
         <div v-else-if="mainData.search.results">
           <div>query: {{ mainData.search.results.query }}</div>
+          <div>cql: {{ mainData.search.results.cql }}</div>
           <div v-if="mainData.search.results.status">status: {{ mainData.search.results.status }}</div>
           <div>xmlStatus: {{ mainData.search.results.xmlStatus }}</div>
-          <div>u: {{ mainData.search.results.u ? filteredSearchResults.length + ' / ' + mainData.search.results.u.length : 'error' }}</div>
-          <div>h: {{ mainData.search.highlights ? mainData.search.highlights.length : 'error' }}</div>
-          <div>cql: {{ mainData.search.results.cql }}</div>
+          <div>{{ mainData.search.results.hits }} hits in {{ mainData.search.results.u ? filteredSearchResults.length + ' / ' + mainData.search.results.u.length : 'error' }} utterances</div>
+          <div>highlighted tokens: {{ mainData.search.highlights ? mainData.search.highlights.length : 'error' }}</div>
           <div>
             <v-select hide-details
               label="Style"
@@ -30,7 +30,7 @@
                   {{ uObj.xmlId }}
                 </div>
                 <div :class="'d-flex' + (mainData.search.view.type === 'xml' ? ' flex-wrap' : '')">
-                  <div class="line-uid" v-if="show_utI">{{ uObj.uId.split('_')[0] + ':' + uObj.uId.split('_')[2] }}</div>
+                  <div class="line-uid" v-if="show_utI">{{ uObj.uId.split('_')[0] + ':' + uObj.uId.split('_')[2] }} <span class="u-hits">Hits:<br/>{{uObj.hits}}</span></div>
                   <template v-if="xmlObjLines[uObj.idx] && xmlObjLines[uObj.idx].dom">
                     <div class="line-speaker" v-if="xmlObjLines">{{ xmlObjLines[uObj.idx].speaker }}</div>
                     <div class="flex-break" v-if="mainData.search.view.type === 'xml'"></div>
@@ -198,5 +198,11 @@ export default {
   background: #f1f3ff;
   padding: 0 4px;
   font-style: italic;
+}
+
+.u-hits {
+  font-size: xx-small;
+  display: inline-block;
+  text-align: center;
 }
 </style>

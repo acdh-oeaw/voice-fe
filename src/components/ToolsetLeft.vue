@@ -56,7 +56,7 @@ export default {
 </script>
 
 <style scoped>
-#filter {
+#tree, #filter, #bookmarks {
   height: 100%;
 }
 .tree-icon {

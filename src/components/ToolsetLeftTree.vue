@@ -1,38 +1,43 @@
 <template>
-  <div class="py-2">
-    <div class="fx-bb mb-3">
-      <v-card class="mx-2 mb-2 px-1" flat>
-        <div class="d-flex">
-          <v-switch v-model="mainData.options.treeShowSpet" dense hide-details class="mt-0 mr-3" label="spet"></v-switch>
-        </div>
-      </v-card>
+  <div class="fill-height d-flex flex-column">
+    <div class="py-2 flex-grow-1" style="overflow-y: scroll;">
+      <div class="fx-bb mb-3">
+        <v-card class="mx-2 mb-2 px-1" flat>
+          <div class="d-flex">
+            <v-switch v-model="mainData.options.treeShowSpet" dense hide-details class="mt-0 mr-3" label="spet"></v-switch>
+          </div>
+        </v-card>
+      </div>
+      <v-treeview
+        dense selected-color="primary"
+        :items="mainData.options.treeShowSpet ? mainData.corpus.listSpet : mainData.corpus.list" item-text="id"
+        :selectable="mainData.filter.active && mainData.filter.manualSelect"
+        open-on-click
+        activatable :active.sync="active"
+        class="ctree"
+        v-model="mainData.filter.manualSelection"
+      >
+        <template v-slot:prepend="{ item, open }" v-if="!mainData.filter.active || !mainData.filter.manualSelect">
+          <v-icon>
+            {{ item.children ? (open ? 'mdi-folder-open-outline' : 'mdi-folder-outline') : 'mdi-text-box-outline' }}
+          </v-icon>
+        </template>
+        <template v-slot:label="{ item }">
+          <div :class="{
+              'underline': item.open,
+              'found': mainData.search.foundXmlId.indexOf(item.id) > -1,
+              'filtered': !item.children && mainData.app.filteredSeIds && mainData.app.filteredSeIds.indexOf(item.id) < 0,
+            }"
+            :title="item.title"
+            v-html="itemLabel(item)"
+          />
+        </template>
+        <template v-slot:append="{ item }">
+          <v-icon v-if="item.audioAvailable">mdi-volume-high</v-icon>
+        </template>
+      </v-treeview>
+      <v-btn @click="mainData.corpus.selectedElement = null" small elevation="0" class="ma-3">VOICE Header</v-btn>
     </div>
-    <v-treeview
-      dense selected-color="primary"
-      :items="mainData.options.treeShowSpet ? mainData.corpus.listSpet : mainData.corpus.list" item-text="id"
-      :selectable="mainData.filter.active && mainData.filter.manualSelect"
-      open-on-click
-      activatable :active.sync="active"
-      class="ctree"
-      v-model="mainData.filter.manualSelection"
-    >
-      <template v-slot:prepend="{ item, open }" v-if="!mainData.filter.active && !mainData.filter.manualSelect">
-        <v-icon>
-          {{ item.children ? (open ? 'mdi-folder-open-outline' : 'mdi-folder-outline') : 'mdi-text-box-outline' }}
-        </v-icon>
-      </template>
-      <template v-slot:label="{ item }">
-        <div :class="{
-          'underline': item.open,
-          'found': mainData.search.foundXmlId.indexOf(item.id) > -1,
-          'filtered': !item.children && mainData.app.filteredSeIds && mainData.app.filteredSeIds.indexOf(item.id) < 0,
-        }" :title="item.title">{{ item.children ? item.label : item.id }}</div>
-      </template>
-      <template v-slot:append="{ item }">
-        <v-icon v-if="item.audioAvailable">mdi-volume-high</v-icon>
-      </template>
-    </v-treeview>
-    <v-btn @click="mainData.corpus.selectedElement = null" small elevation="0" class="ma-3">VOICE Header</v-btn>
   </div>
 </template>
 
@@ -49,6 +54,28 @@ export default {
     console.log('ToolsetLeftTree', this.mainData)
   },
   methods: {
+    itemLabel (item) {
+      if (item.children) {
+        if (this.mainData.app.filteredSeIds) {
+          let getChildCount = (el) => {
+            let c = 0
+            if (el.children) {
+              el.children.forEach(e => {
+                c += getChildCount(e)
+              })
+            } else {
+              c += this.mainData.app.filteredSeIds.indexOf(el.id) > -1 ? 1 : 0
+            }
+            return c
+          }
+          return item.label + ' <span style="font-size: 14px;">(' + getChildCount(item) + ')</span>'
+        } else {
+          return item.label
+        }
+      } else {
+        return item.id
+      }
+    }
   },
   watch: {
     active (nVal) {

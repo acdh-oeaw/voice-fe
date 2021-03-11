@@ -172,7 +172,10 @@ export default {
   computed: {
     filterActive () {
       let f = this.mainData.filter
-      return f.manualSelect || f.interactants || f.speakers || f.acquaintedness || f.powerRelations || f.durationOfSpeechEvent || f.words || f.onlyWidthAudio ? true : false
+      return f.active && (f.manualSelect || f.interactants || f.speakers || f.acquaintedness || f.powerRelations || f.durationOfSpeechEvent || f.words || f.onlyWidthAudio) ? true : false
+    },
+    filteredSeIds () {
+      return this.filterActive ? this.mainData.filter.filterSpeechEventsFunc.getFilteredIds(this.mainData.corpus, this.mainData.filter) : null
     },
     currentRouteName() {
         return this.$route.name;

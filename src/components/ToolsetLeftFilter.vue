@@ -1,9 +1,13 @@
 <template>
-  <div class="pa-2">
-    <div>
+  <div class="fill-height d-flex flex-column">
+    <div class="pa-2 flex-grow-1" style="overflow-y: scroll;">
+      <v-card class="mb-2 px-1">
+        <div class="m-title">All Filters</div>
+        <v-switch v-model="mainData.filter.active" dense hide-details class="mt-0" :label="mainData.filter.active ? 'On' : 'Off'"></v-switch>
+      </v-card>
       <v-card class="mb-2 px-1">
         <div class="m-title">Manual select</div>
-        <v-switch v-model="mainData.filter.manualSelect" dense hide-details class="mt-0" :label="mainData.filter.manualSelect ? 'On: ' + (mainData.filter.manualSelection.length > 0 ? mainData.filter.manualSelection.length + ' element' + (mainData.filter.manualSelection.length > 1 ? 's' : '') + ' selected' : 'No element selected') : 'Off'"></v-switch>
+        <v-switch v-model="mainData.filter.manualSelect" @change="mainData.filter.active = true" dense hide-details class="mt-0" :label="mainData.filter.manualSelect ? 'On: ' + (mainData.filter.manualSelection.length > 0 ? mainData.filter.manualSelection.length + ' element' + (mainData.filter.manualSelection.length > 1 ? 's' : '') + ' selected' : 'No element selected') : 'Off'"></v-switch>
         <div v-if="mainData.filter.manualSelect">
           <v-icon :class="'fx-tree-icon' + (mainData.filter.manualSelection.length > 0 ? '' : ' fx-icon-red') + ' mr-2'" v-if="mainData.filter.manualSelect">mdi-check-bold</v-icon>
           <span class="m-hint">Elements are selectable in <a @click="$emit('treeview')">Tree View</a>.</span>
@@ -20,6 +24,7 @@
           label="No of interactants"
           class="mb-3"
           hide-details
+          @change="mainData.filter.active = true"
           v-model="mainData.filter.interactants"
         >
           <template v-slot:append-outer>
@@ -36,6 +41,7 @@
           label="No of speakers"
           class="mb-3"
           hide-details
+          @change="mainData.filter.active = true"
           v-model="mainData.filter.speakers"
         >
           <template v-slot:append-outer>
@@ -52,6 +58,7 @@
           label="Acquaintedness"
           class="mb-3"
           hide-details
+          @change="mainData.filter.active = true"
           v-model="mainData.filter.acquaintedness"
         >
         </v-select>
@@ -62,6 +69,7 @@
           label="Power relations"
           class="mb-3"
           hide-details
+          @change="mainData.filter.active = true"
           v-model="mainData.filter.powerRelations"
         >
         </v-select>
@@ -72,6 +80,7 @@
           label="Duration of speech event"
           class="mb-3"
           hide-details
+          @change="mainData.filter.active = true"
           v-model="mainData.filter.durationOfSpeechEvent"
         >
         </v-select>
@@ -82,12 +91,23 @@
           label="No of words"
           class="mb-3"
           hide-details
+          @change="mainData.filter.active = true"
           v-model="mainData.filter.words"
         >
         </v-select>
         <div class="m-title">Width Audio File</div>
-        <v-switch v-model="mainData.filter.onlyWidthAudio" dense hide-details class="mt-0" :label="mainData.filter.onlyWidthAudio ? 'On' : 'Off'"></v-switch>
+        <v-switch v-model="mainData.filter.onlyWidthAudio" @change="mainData.filter.active = true" dense hide-details class="mt-0" :label="mainData.filter.onlyWidthAudio ? 'On' : 'Off'"></v-switch>
       </v-card>
+    </div>
+    <div>
+      <div :class="'filter-results' + (mainData.app.filteredSeIds && mainData.app.filteredSeIds.length < 1 ? ' warning' : '') + (mainData.app.filteredSeIds ? '' : ' no-filters')">
+        <div v-if="mainData.app.filteredSeIds">
+          Speech Events: <b>{{ mainData.app.filteredSeIds.length }}</b>
+        </div>
+        <div v-else>
+          No active filters
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -173,5 +193,15 @@ export default {
   border-radius: 100%!important;
   font-size: 13px;
   padding: 2px;
+}
+.filter-results {
+  color: #fff;
+  background: #1976d2;
+  padding: 5px 10px;
+  font-size: 18px;
+}
+.no-filters {
+  color: #777;
+  background: #ddd;
 }
 </style>

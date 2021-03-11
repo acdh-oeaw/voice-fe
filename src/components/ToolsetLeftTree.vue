@@ -10,13 +10,13 @@
     <v-treeview
       dense selected-color="primary"
       :items="mainData.options.treeShowSpet ? mainData.corpus.listSpet : mainData.corpus.list" item-text="id"
-      :selectable="mainData.filter.manualSelect"
+      :selectable="mainData.filter.active && mainData.filter.manualSelect"
       open-on-click
       activatable :active.sync="active"
       class="ctree"
       v-model="mainData.filter.manualSelection"
     >
-      <template v-slot:prepend="{ item, open }" v-if="!mainData.filter.manualSelect">
+      <template v-slot:prepend="{ item, open }" v-if="!mainData.filter.active && !mainData.filter.manualSelect">
         <v-icon>
           {{ item.children ? (open ? 'mdi-folder-open-outline' : 'mdi-folder-outline') : 'mdi-text-box-outline' }}
         </v-icon>
@@ -24,7 +24,8 @@
       <template v-slot:label="{ item }">
         <div :class="{
           'underline': item.open,
-          'found': mainData.search.foundXmlId.indexOf(item.id) > -1
+          'found': mainData.search.foundXmlId.indexOf(item.id) > -1,
+          'filtered': !item.children && mainData.app.filteredSeIds && mainData.app.filteredSeIds.indexOf(item.id) < 0,
         }" :title="item.title">{{ item.children ? item.label : item.id }}</div>
       </template>
       <template v-slot:append="{ item }">
@@ -81,5 +82,8 @@ export default {
   }
   .ctree >>> .found {
     font-weight: bold;
+  }
+  .ctree >>> .filtered {
+    color: #aaa;
   }
 </style>

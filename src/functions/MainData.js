@@ -6,6 +6,7 @@ const localFunctions = {
       app: null,
       apiUrl: process.env.VUE_APP_API_URL,
       filter: {
+        active: false,
         manualSelect: false,
         manualSelection: [],
         interactants: null,

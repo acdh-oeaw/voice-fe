@@ -3,7 +3,7 @@
     <v-tabs v-model="cTab" grow class="flex-shrink-1 fx-bb">
       <v-tab href="#tree">
         Tree
-        <v-icon :class="'tree-icon' + (mainData.filter.manualSelection.length > 0 ? '' : ' fx-icon-red') + ' tree-icon-tree'" v-if="mainData.filter.manualSelect">mdi-check-bold</v-icon>
+        <v-icon :class="'tree-icon' + (mainData.filter.manualSelection.length > 0 ? '' : ' fx-icon-red') + ' tree-icon-tree'" v-if="mainData.filter.active && mainData.filter.manualSelect">mdi-check-bold</v-icon>
       </v-tab>
       <v-tab href="#filter">
         Filter
@@ -11,7 +11,7 @@
       </v-tab>
       <v-tab href="#bookmarks">Bookmarks</v-tab>
     </v-tabs>
-    <v-tabs-items v-model="cTab" class="flex-grow-1 fill-height" style="overflow-y: scroll;">
+    <v-tabs-items v-model="cTab" class="flex-grow-1 fill-height">
       <v-tab-item value="tree">
         <ToolsetLeftTree :mainData="mainData" />
       </v-tab-item>
@@ -56,6 +56,9 @@ export default {
 </script>
 
 <style scoped>
+#filter {
+  height: 100%;
+}
 .tree-icon {
   position: absolute;
   right: 2px;

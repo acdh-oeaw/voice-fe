@@ -76,9 +76,8 @@ export default {
   computed: {
     filteredSearchResults () {
       if (this.mainData.search.results && this.mainData.search.results.u && this.mainData.search.results.u.length > 0) {
-        if (this.mainData.app.filterActive) {
-          let filteredXMLIds = this.mainData.filter.filterSpeechEventsFunc.getFilteredIds(this.mainData.corpus, this.mainData.filter)
-          return this.mainData.search.results.u.filter(e => filteredXMLIds.indexOf(e.xmlId) > -1)
+        if (this.mainData.app.filteredSeIds) {
+          return this.mainData.search.results.u.filter(e => this.mainData.app.filteredSeIds.indexOf(e.xmlId) > -1)
         }
         return this.mainData.search.results.u
       } else {

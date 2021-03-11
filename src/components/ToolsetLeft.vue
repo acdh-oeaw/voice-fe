@@ -1,90 +1,75 @@
 <template>
   <v-card class="fill-height d-flex flex-column">
     <v-tabs v-model="cTab" grow class="flex-shrink-1 fx-bb">
-      <v-tab href="#tree">Tree</v-tab>
-      <v-tab href="#filter">Filter</v-tab>
+      <v-tab href="#tree">
+        Tree
+        <v-icon :class="'tree-icon' + (mainData.filter.manualSelection.length > 0 ? '' : ' fx-icon-red') + ' tree-icon-tree'" v-if="mainData.filter.active && mainData.filter.manualSelect">mdi-check-bold</v-icon>
+      </v-tab>
+      <v-tab href="#filter">
+        Filter
+        <v-icon class="tree-icon" v-if="mainData.app.filterActive">mdi-exclamation-thick</v-icon>
+      </v-tab>
       <v-tab href="#bookmarks">Bookmarks</v-tab>
     </v-tabs>
-    <v-tabs-items v-model="cTab" class="flex-grow-1 fill-height py-2" style="overflow-y: scroll;">
+    <v-tabs-items v-model="cTab" class="flex-grow-1 fill-height">
       <v-tab-item value="tree">
-        <v-treeview
-          selectable dense selected-color="primary"
-          :items="mainData.corpus.list" item-text="id"
-          open-on-click
-          activatable :active.sync="active"
-          class="ctree"
-        >
-          <template v-slot:label="{ item }">
-            <div :class="{
-              'underline': item.open,
-              'found': mainData.search.foundXmlId.indexOf(item.id) > -1
-            }" :title="item.title">{{ item.children ? item.label : item.id }}</div>
-          </template>
-          <template v-slot:append="{ item }">
-            <v-icon v-if="item.audioAvailable">mdi-volume-high</v-icon>
-          </template>
-        </v-treeview>
+        <ToolsetLeftTree :mainData="mainData" />
       </v-tab-item>
       <v-tab-item value="filter">
-        ToolsetLeft - Filter
+        <ToolsetLeftFilter @treeview="cTab = '#tree'" :mainData="mainData" />
       </v-tab-item>
       <v-tab-item value="bookmarks">
-        ToolsetLeft - Bookmarks
+        <ToolsetLeftBookmarks :mainData="mainData" />
       </v-tab-item>
     </v-tabs-items>
   </v-card>
 </template>
 
 <script>
+import ToolsetLeftFilter from './ToolsetLeftFilter';
+import ToolsetLeftBookmarks from './ToolsetLeftBookmarks';
+import ToolsetLeftTree from './ToolsetLeftTree';
+
 export default {
   name: 'ToolsetLeft',
   props: {
     'mainData': Object,
   },
   data: () => ({
-    publicPath: process.env.BASE_URL,
-    cTab: 0,
-    active: []
+    cTab: 0
   }),
   mounted () {
     console.log('ToolsetLeft', this.mainData)
   },
   methods: {
-    test (x) {
-      console.log(x)
-    }
+  },
+  computed: {
   },
   watch: {
-    active (nVal) {
-      this.mainData.corpus.selectedElement = nVal[0]
-      if (nVal[0]) {
-        this.mainData.options.singleView = 'corpus'
-        if (this.mainData.corpus.elements.filter(e => e.id === nVal[0]).length === 0) {
-          if (this.mainData.corpus.obj[nVal[0]]) {
-            this.$set(this.mainData.corpus.obj[nVal[0]], 'open', true)
-            this.mainData.corpus.elements.unshift(this.mainData.corpus.obj[nVal[0]])
-          }
-        }
-      }
-    },
-    'mainData.corpus.selectedElement' (nVal) {
-      if (!this.active || this.active[0] !== nVal) {
-        this.active = [nVal]
-      }
-    }
+  },
+  components: {
+    ToolsetLeftFilter,
+    ToolsetLeftBookmarks,
+    ToolsetLeftTree
   }
 }
 </script>
 
 <style scoped>
-  .v-treeview--dense >>> .v-treeview-node__root {
-    min-height: 25px!important;
-  }
-  .v-treeview--dense >>> .v-icon.v-icon::after {
-    -webkit-transform: scale(1.0);
-    transform: scale(1.0);
-  }
-  .ctree >>> .found {
-    font-weight: bold;
-  }
+#tree, #filter, #bookmarks {
+  height: 100%;
+}
+.tree-icon {
+  position: absolute;
+  right: 2px;
+  top: 2px;
+  background: #08690c;
+  color: #fff!important;
+  border-radius: 100%;
+  font-size: 13px;
+  padding: 2px;
+}
+.tree-icon-tree {
+  background: #1976d2;
+}
 </style>

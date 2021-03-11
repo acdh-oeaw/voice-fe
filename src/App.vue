@@ -37,72 +37,21 @@
 </template>
 
 <script>
+import mainDataFunc from './functions/MainData'
+
 export default {
   name: 'App',
   data: () => ({
     loading: false,
     publicPath: process.env.BASE_URL,
     dev: process.env.NODE_ENV === 'development',
-    version: process.env.VUE_APP_VERSION,
-    branch: process.env.VUE_APP_BRANCH,
-    mainData: {
-      apiUrl: process.env.VUE_APP_API_URL,
-      search: {
-        value: '',
-        lastValue: '',
-        searched: false,
-        loading: false,
-        searchValue: '',
-        results: {},
-        scrollPos: 0,
-        highlights: [],
-        foundXmlId: [],
-        view: {
-          type: 'voice'
-        }
-      },
-      corpus: {
-        selectedElement: null,
-        elements: [
-        ],
-        list: [
-        ],
-        baseJSON: {}
-      },
-      options: {
-        fullWidth: true,
-        dualView: true,
-        singleView: 'corpus'
-      },
-      views: {
-        voice: {
-          utI: { val: true, text: '1', title: 'utterance identifier', style: { color: '#000' } },
-          sId: { val: true, text: 'S1', title: 'speaker id', style: { color: '#000', 'font-weight': 'bold', display: 'none' } },
-          oT: { val: true, text: '<1>', title: 'overlap tags', style: { color: 'blue' } },
-          p: { val: true, text: '(.)', title: 'pauses', style: { color: 'brown' } },
-          cE: { val: true, text: '{...}', title: 'contextual events', style: { color: '#808080' } }, 
-          sM: { val: true, text: '<fast>', title: 'speaking modes', style: { color: '#AA0066' } },
-          sMls: { val: true, text: '<@>', title: 'speaking mode laughingly spoken', style: { color: '#AA0066' } },
-          vsN: { val: true, text: '<coughs>', title: 'vocal/speaker noise', style: { color: '#AA0066' } },
-          vsNl: { val: true, text: '@', title: 'vocal/speaker noise laughter', style: { color: '#AA0066' } },
-          spl: { val: true, text: '<spel>', title: 'spelled', style: { color: '#AA0066' } },
-          fLaT: { val: true, text: '<L1fr>', title: 'foreign language tags', style: { color: '#b13610' } },
-          oC: { val: true, text: '=', title: 'other continuations', style: { color: '#8700C1' } },
-          uiT: { val: true, text: '<un>', title: 'unintelligible tags', style: { color: '#00978E' } },
-          ono: { val: true, text: '<ono>', title: 'onomatopoeia', style: { color: '#61DDD2' } },
-          pvcT: { val: true, text: '<pvc>', title: 'pvc tags', style: { color: '#61DDD2' } },
-          gap: { val: true, text: '(gap)', title: 'gap', style: { color: '#000' } },
-          lie: { val: true, text: ':.?', title: '(Lengthening, Intonation, Emphasis)', style: { color: '#000' } },
-          ut: { val: true, text: '(word)', title: 'Uncertain transcription', style: { color: '#000' } },
-        }
-      },
-      wideScreen: false
-    }
+    mainData: mainDataFunc.initMainData()
   }),
   mounted () {
     this.resized()
     this.loadCorpus()
     window.addEventListener('resize', this.resized)
+    this.mainData.app = this
   },
   beforeDestroy () {
     window.removeEventListener('resize', this.resized)
@@ -169,16 +118,44 @@ export default {
             })
             return aObj
           }
+          let getSpetList = (cList) => {
+            let aList = []
+            cList.forEach(el => {
+              if (el.children) {
+                aList.push({
+                  id: el.id,
+                  label: el.label,
+                  children: getSpetList(el.children)
+                })
+              } else {
+                let aSpet = aList.filter(e => e.label === el.spet)
+                if (aSpet.length > 0) {
+                  aSpet[0].children.push(el)
+                } else {
+                  aList.push({
+                    id: el.domain + '-' + el.spet,
+                    label: el.spet,
+                    children: [el]
+                  })
+                }
+              }
+            })
+            return aList
+          }
           let aObj = {}
           this.$set(this.mainData.corpus, 'list', response.data.domains)
           this.$set(this.mainData.corpus, 'baseJSON', response.data)
           this.$set(this.mainData.corpus, 'obj', getCorpusObjs(this.mainData.corpus.list, aObj))
+          this.$set(this.mainData.corpus, 'listSpet', getSpetList(this.mainData.corpus.list))
           Object.keys(response.data.speakers).forEach((sn) => {
             let aSpeaker = response.data.speakers[sn]
             this.$set(aSpeaker, 'id', sn)
             Object.keys(aSpeaker.refs).forEach((rc) => {
               let aRef = aSpeaker.refs[rc]
               if (this.mainData.corpus.obj[rc]) {
+                if (this.mainData.filter.manualSelection.indexOf(this.mainData.corpus.obj[rc].id) < 0) {
+                  this.mainData.filter.manualSelection.push(this.mainData.corpus.obj[rc].id)
+                }
                 if (!this.mainData.corpus.obj[rc].speakers) {
                   this.$set(this.mainData.corpus.obj[rc], 'speakers', {})
                 }
@@ -196,6 +173,13 @@ export default {
     }
   },
   computed: {
+    filterActive () {
+      let f = this.mainData.filter
+      return f.active && (f.manualSelect || f.interactants || f.speakers || f.acquaintedness || f.powerRelations || f.durationOfSpeechEvent || f.words || f.onlyWidthAudio) ? true : false
+    },
+    filteredSeIds () {
+      return this.filterActive ? this.mainData.filter.filterSpeechEventsFunc.getFilteredIds(this.mainData.corpus, this.mainData.filter) : null
+    },
     currentRouteName() {
         return this.$route.name;
     },
@@ -260,6 +244,9 @@ export default {
   .flex-break {
     flex-basis: 100%;
     height: 0;
+  }
+  .fx-icon-red {
+    background: #b00!important;
   }
   @media (min-width: 1264px) {
     .container {

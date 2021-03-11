@@ -45,6 +45,8 @@ export default {
     loading: false,
     publicPath: process.env.BASE_URL,
     dev: process.env.NODE_ENV === 'development',
+    version: process.env.VUE_APP_VERSION,
+    branch: process.env.VUE_APP_BRANCH,
     mainData: mainDataFunc.initMainData()
   }),
   mounted () {

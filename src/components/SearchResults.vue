@@ -2,7 +2,7 @@
   <div class="d-flex flex-grow-1 flex-column">
     <div class="scroll-content">
       <div ref="viewarea" class="px-3 py-2" v-on:scroll="scrolling">
-        <div class="mb-2">Search Results - "{{ mainData.search.value }}"</div>
+        <div class="mb-2">Search Results - "{{ mainData.search.value }}" - Filter: {{ mainData.app.filterActive }}</div>
         <div v-if="mainData.search.loading">
           loading ...
         </div>
@@ -13,7 +13,7 @@
           <div>query: {{ mainData.search.results.query }}</div>
           <div v-if="mainData.search.results.status">status: {{ mainData.search.results.status }}</div>
           <div>xmlStatus: {{ mainData.search.results.xmlStatus }}</div>
-          <div>u: {{ mainData.search.results.u ? mainData.search.results.u.length : 'error' }}</div>
+          <div>u: {{ mainData.search.results.u ? filteredSearchResults.length + ' / ' + mainData.search.results.u.length : 'error' }}</div>
           <div>h: {{ mainData.search.highlights ? mainData.search.highlights.length : 'error' }}</div>
           <div>cql: {{ mainData.search.results.cql }}</div>
           <div>
@@ -25,15 +25,20 @@
           </div>
           <div class="mt-2" v-if="mainData.search.results.u">
             <div>
-              <div v-for="(uObj, uIdx) in searchResultsU" class="line-frm" :key="uIdx">
+              <div v-for="(uObj, uIdx) in searchResultsU" class="line-frm" :key="uObj.idx + '-' + uIdx">
                 <div @click="openDocument(uObj.xmlId)" class="line-document" v-if="uIdx < 1 || uObj.xmlId !== searchResultsU[uIdx-1].xmlId">
                   {{ uObj.xmlId }}
                 </div>
                 <div :class="'d-flex' + (mainData.search.view.type === 'xml' ? ' flex-wrap' : '')">
                   <div class="line-uid" v-if="show_utI">{{ uObj.uId.split('_')[0] + ':' + uObj.uId.split('_')[2] }}</div>
-                  <div class="line-speaker" v-if="xmlObjLines">{{ xmlObjLines[uIdx].speaker }}</div>
-                  <div class="flex-break" v-if="mainData.search.view.type === 'xml'"></div>
-                  <RenderLine :xmlObjLine="xmlObjLines[uIdx]" :highlight="uObj.highlight" :type="mainData.search.view.type" :mainData="mainData" v-if="xmlObjLines"/>
+                  <template v-if="xmlObjLines[uObj.idx] && xmlObjLines[uObj.idx].dom">
+                    <div class="line-speaker" v-if="xmlObjLines">{{ xmlObjLines[uObj.idx].speaker }}</div>
+                    <div class="flex-break" v-if="mainData.search.view.type === 'xml'"></div>
+                    <RenderLine :xmlObjLine="xmlObjLines[uObj.idx]" :highlight="uObj.highlight" :type="mainData.search.view.type" :mainData="mainData" v-if="xmlObjLines"/>
+                  </template>
+                  <div class="line-loading" v-else>
+                    Loading ... (TBD)
+                  </div>
                 </div>
               </div>
             </div>
@@ -69,9 +74,19 @@ export default {
     })
   },
   computed: {
+    filteredSearchResults () {
+      if (this.mainData.search.results && this.mainData.search.results.u && this.mainData.search.results.u.length > 0) {
+        if (this.mainData.app.filterActive) {
+          return this.mainData.filter.filterSpeechEventsFunc.getFilteredIds(this.mainData.search.results.u, this.mainData.filter, this.mainData.corpus)
+        }
+        return this.mainData.search.results.u
+      } else {
+        return []
+      }
+    },
     searchResultsU () {
       let ml = this.mainData.search.view.type === 'xml' ? 25 : 100
-      return this.mainData.search.results && this.mainData.search.results.u && this.mainData.search.results.u.length > 0 ? this.mainData.search.results.u.slice(0, ml) : []
+      return this.filteredSearchResults.slice(0, ml)
     },
     show_utI () {
       return this.mainData.search.view.type !== 'voice' || this.mainData.views.voice.utI.val
@@ -102,7 +117,8 @@ export default {
       if (this.mainData.search.results && this.mainData.search.results.u && this.mainData.search.results.u.length > 0) {
         // console.log('SearchResults - updateXmlObjLines', this.mainData.search.results.u)
         let parser = new DOMParser()
-        let aLines = this.mainData.search.results.u.map(aU => {
+        let aLines = this.mainData.search.results.u.map((aU, aI) => {
+          this.$set(aU, 'idx', aI)
           let uDom = null
           let speaker = null
           if (typeof aU.xml === 'string' && aU.xml.length > 5) {
@@ -176,5 +192,11 @@ export default {
 }
 .voice-switches > div {
   max-width: 700px;
+}
+.line-loading {
+  flex-grow: 1;
+  background: #f1f3ff;
+  padding: 0 4px;
+  font-style: italic;
 }
 </style>

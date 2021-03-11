@@ -7,7 +7,7 @@
       </v-tab>
       <v-tab href="#filter">
         Filter
-        <v-icon class="tree-icon" v-if="filterActive">mdi-exclamation-thick</v-icon>
+        <v-icon class="tree-icon" v-if="mainData.app.filterActive">mdi-exclamation-thick</v-icon>
       </v-tab>
       <v-tab href="#bookmarks">Bookmarks</v-tab>
     </v-tabs>
@@ -44,10 +44,6 @@ export default {
   methods: {
   },
   computed: {
-    filterActive () {
-      let f = this.mainData.filter
-      return f.manualSelect || f.interactants || f.speakers || f.acquaintedness || f.powerRelations || f.durationOfSpeechEvent || f.words || f.onlyWidthAudio
-    }
   },
   watch: {
   },

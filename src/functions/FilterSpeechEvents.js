@@ -7,6 +7,12 @@ const localFunctions = {
     if ((type.indexOf('all') > -1 || type.indexOf('manualSelect') > -1) && filter.manualSelect) {
       xmlIds = xmlIds.filter(e => filter.manualSelection.indexOf(e) > -1)
     }
+    if ((type.indexOf('all') > -1 || type.indexOf('domain') > -1) && filter.domain) {
+      xmlIds = xmlIds.filter(e =>  corpus.obj[e].domain === filter.domain)
+    }
+    if ((type.indexOf('all') > -1 || type.indexOf('spet') > -1) && filter.spet) {
+      xmlIds = xmlIds.filter(e =>  corpus.obj[e].spet === filter.spet)
+    }
     if ((type.indexOf('all') > -1 || type.indexOf('interactants') > -1) && filter.interactants) {
       xmlIds = xmlIds.filter(e =>  corpus.obj[e].interactantsNo >= filter.interactants.f && corpus.obj[e].interactantsNo <= filter.interactants.t)
     }
@@ -25,7 +31,7 @@ const localFunctions = {
     if ((type.indexOf('all') > -1 || type.indexOf('words') > -1) && filter.words) {
       xmlIds = xmlIds.filter(e =>  corpus.obj[e].words >= filter.words.f && corpus.obj[e].words <= filter.words.t)
     }
-    if ((type.indexOf('all') > -1 || type.indexOf('onlyWidthAudio') > -1) && filter.onlyWidthAudio) {
+    if ((type.indexOf('all') > -1 || type.indexOf('onlyWithAudio') > -1) && filter.onlyWithAudio) {
       xmlIds = xmlIds.filter(e => corpus.obj[e].audioAvailable)
     }
     // console.log('getFilteredIds', xmlIds, corpus)

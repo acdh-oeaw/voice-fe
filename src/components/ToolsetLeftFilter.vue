@@ -1,11 +1,11 @@
 <template>
   <div class="fill-height d-flex flex-column">
-    <div class="pa-2 flex-grow-1" style="overflow-y: scroll;">
-      <v-card class="mb-2 px-1">
+    <div class="pa-2 flex-grow-1" style="overflow-y: auto;">
+      <v-card class="mb-2 px-2 pb-1 inset-card-shadow">
         <div class="m-title">All Filters</div>
         <v-switch v-model="mainData.filter.active" dense hide-details class="mt-0" :label="mainData.filter.active ? 'On' : 'Off'"></v-switch>
       </v-card>
-      <v-card class="mb-2 px-1">
+      <v-card class="mb-2 px-2 pb-1 inset-card-shadow">
         <div class="m-title">Manual select</div>
         <v-switch v-model="mainData.filter.manualSelect" @change="mainData.filter.active = true" dense hide-details class="mt-0" :label="mainData.filter.manualSelect ? 'On: ' + (mainData.filter.manualSelection.length > 0 ? mainData.filter.manualSelection.length + ' element' + (mainData.filter.manualSelection.length > 1 ? 's' : '') + ' selected' : 'No element selected') : 'Off'"></v-switch>
         <div v-if="mainData.filter.manualSelect">
@@ -16,7 +16,31 @@
       <div class="my-3">
         Simple filter
       </div>
-      <v-card class="my-2 pa-1">
+      <v-card class="my-2 px-2 pb-1 inset-card-shadow">
+        <div class="d-flex">
+          <v-select
+            :items="itemsDomain"
+            item-text="title"
+            item-value="val"
+            label="Domain"
+            class="mb-3 mr-2"
+            hide-details
+            @change="mainData.filter.active = true"
+            v-model="mainData.filter.domain"
+          >
+          </v-select>
+          <v-select
+            :items="itemsSpet"
+            item-text="title"
+            item-value="val"
+            label="Spet"
+            class="mb-3 ml-2"
+            hide-details
+            @change="mainData.filter.active = true"
+            v-model="mainData.filter.spet"
+          >
+          </v-select>
+        </div>
         <v-select
           :items="itemsInteractants"
           item-text="title"
@@ -95,8 +119,8 @@
           v-model="mainData.filter.words"
         >
         </v-select>
-        <div class="m-title">Width Audio File</div>
-        <v-switch v-model="mainData.filter.onlyWidthAudio" @change="mainData.filter.active = true" dense hide-details class="mt-0" :label="mainData.filter.onlyWidthAudio ? 'On' : 'Off'"></v-switch>
+        <div class="m-title">With Audio File</div>
+        <v-switch v-model="mainData.filter.onlyWithAudio" @change="mainData.filter.active = true" dense hide-details class="mt-0" :label="mainData.filter.onlyWithAudio ? 'On' : 'Off'"></v-switch>
       </v-card>
     </div>
     <div>
@@ -136,6 +160,27 @@ export default {
       { val: {f: 7, t: 10}, title: '7 to 10' },
       { val: {f: 11, t: 14}, title: '11 to 14' },
       { val: {f: 15, t: Infinity}, title: '15 and more' }
+    ],
+    itemsDomain: [
+      { val: null, title: 'Off' },
+      { val: 'ED', title: 'ED' },
+      { val: 'LE', title: 'LE' },
+      { val: 'PB', title: 'PB' },
+      { val: 'PO', title: 'PO' },
+      { val: 'PR', title: 'PR' },
+    ],
+    itemsSpet: [
+      { val: null, title: 'Off' },
+      { val: 'con', title: 'con' },
+      { val: 'int', title: 'int' },
+      { val: 'sed', title: 'sed' },
+      { val: 'sve', title: 'sve' },
+      { val: 'wgd', title: 'wgd' },
+      { val: 'wsd', title: 'wsd' },
+      { val: 'mtg', title: 'mtg' },
+      { val: 'pan', title: 'pan' },
+      { val: 'qas', title: 'qas' },
+      { val: 'prc', title: 'prc' },
     ],
     itemsAcquaintedness: [
       { val: null, title: 'Off' },
@@ -203,5 +248,8 @@ export default {
 .no-filters {
   color: #777;
   background: #ddd;
+}
+.inset-card-shadow {
+  box-shadow: inset 0px 3px 1px -2px rgb(0 0 0 / 20%), inset 0px 2px 2px 0px rgb(0 0 0 / 14%), inset 0px 1px 5px 0px rgb(0 0 0 / 12%)!important;
 }
 </style>

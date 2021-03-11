@@ -15,7 +15,9 @@ const localFunctions = {
         powerRelations: null,
         durationOfSpeechEvent: null,
         words: null,
-        onlyWidthAudio: false,
+        domain: null,
+        spet: null,
+        onlyWithAudio: false,
         filterSpeechEventsFunc: filterSpeechEvents
       },
       search: {

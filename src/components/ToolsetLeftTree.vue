@@ -135,6 +135,14 @@ export default {
       if (!this.active || this.active[0] !== nVal) {
         this.active = [nVal]
       }
+    },
+    'mainData.options.treeShowFiltered' () {
+      if (this.mainData.app.filteredSeIds) {
+        let tFilteredSeIds = this.mainData.filter.manualSelection
+        this.$nextTick(() => {
+          this.mainData.filter.manualSelection = tFilteredSeIds
+        })
+      }
     }
   }
 }

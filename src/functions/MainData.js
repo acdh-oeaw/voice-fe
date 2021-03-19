@@ -36,6 +36,7 @@ const localFunctions = {
       },
       corpus: {
         selectedElement: null,
+        showCorpusHeader: false,
         elements: [
         ],
         list: [

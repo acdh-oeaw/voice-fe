@@ -47,7 +47,7 @@
           <v-icon v-if="item.audioAvailable">mdi-volume-high</v-icon>
         </template>
       </v-treeview>
-      <v-btn @click="mainData.corpus.selectedElement = null" small elevation="0" class="ma-3">VOICE Header</v-btn>
+      <v-btn @click="mainData.corpus.selectedElement = false; mainData.corpus.showCorpusHeader = true;" small elevation="0" class="ma-3">VOICE Header</v-btn>
     </div>
   </div>
 </template>
@@ -132,6 +132,9 @@ export default {
       }
     },
     'mainData.corpus.selectedElement' (nVal) {
+      if (nVal) {
+        this.mainData.corpus.showCorpusHeader = false
+      }
       if (!this.active || this.active[0] !== nVal) {
         this.active = [nVal]
       }

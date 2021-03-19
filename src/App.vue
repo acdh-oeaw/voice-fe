@@ -67,6 +67,7 @@ export default {
             cList.forEach(el => {
               if (el.speechEvents) {
                 el.id = el.label
+                el.title = (this.mainData.infos.domainInfos[el.label] && this.mainData.infos.domainInfos[el.label].title),
                 el.children = el.speechEvents
                 delete el.speechEvents
                 getCorpusObjs(el.children, aObj)
@@ -122,16 +123,19 @@ export default {
                 aList.push({
                   id: el.id,
                   label: el.label,
+                  title: el.title,
                   children: getSpetList(el.children)
                 })
               } else {
-                let aSpet = aList.filter(e => e.label === el.spet)
+                let aSpet = aList.filter(e => e.sId === el.spet)
                 if (aSpet.length > 0) {
                   aSpet[0].children.push(el)
                 } else {
                   aList.push({
                     id: el.domain + '-' + el.spet,
-                    label: el.spet,
+                    sId: el.spet,
+                    label: (this.mainData.infos.spetInfos[el.spet] && this.mainData.infos.spetInfos[el.spet].label) || el.spet,
+                    title: (this.mainData.infos.spetInfos[el.spet] && this.mainData.infos.spetInfos[el.spet].title),
                     children: [el]
                   })
                 }

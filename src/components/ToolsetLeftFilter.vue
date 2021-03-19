@@ -6,7 +6,7 @@
         <v-switch v-model="mainData.filter.active" dense hide-details class="mt-0" :label="mainData.filter.active ? 'On' : 'Off'"></v-switch>
       </v-card>
       <v-card class="mb-2 px-2 pb-1 inset-card-shadow">
-        <div class="m-title">Manual select</div>
+        <div class="m-title">Manual selection</div>
         <v-switch v-model="mainData.filter.manualSelect" @change="mainData.filter.active = true" dense hide-details class="mt-0" :label="mainData.filter.manualSelect ? 'On: ' + (mainData.filter.manualSelection.length > 0 ? mainData.filter.manualSelection.length + ' element' + (mainData.filter.manualSelection.length > 1 ? 's' : '') + ' selected' : 'No element selected') : 'Off'"></v-switch>
         <div v-if="mainData.filter.manualSelect">
           <v-icon :class="'fx-tree-icon' + (mainData.filter.manualSelection.length > 0 ? '' : ' fx-icon-red') + ' mr-2'" v-if="mainData.filter.manualSelect">mdi-check-bold</v-icon>
@@ -85,6 +85,12 @@
           @change="mainData.filter.active = true"
           v-model="mainData.filter.acquaintedness"
         >
+          <template v-slot:append-outer>
+            <v-tooltip top max-width="300">
+              <template v-slot:activator="{ on, attrs }"><v-icon v-bind="attrs" v-on="on">mdi-information-outline</v-icon></template>
+              <span>Acquaintedness indicates whether participants (excluding non-participants and researchers) have met before (at least once).</span>
+            </v-tooltip>
+          </template>
         </v-select>
         <v-select
           :items="itemsPowerRelations"
@@ -96,6 +102,12 @@
           @change="mainData.filter.active = true"
           v-model="mainData.filter.powerRelations"
         >
+          <template v-slot:append-outer>
+            <v-tooltip top max-width="300">
+              <template v-slot:activator="{ on, attrs }"><v-icon v-bind="attrs" v-on="on">mdi-information-outline</v-icon></template>
+              <span>Power relations is an approximate classification indicating the span of social/hierarchical status among participants in any given speech event. This classification does not apply to non-participants and researchers.</span>
+            </v-tooltip>
+          </template>
         </v-select>
         <v-select
           :items="itemsDurationOfSpeechEvent"

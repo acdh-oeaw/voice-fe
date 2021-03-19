@@ -4,7 +4,11 @@
       <div class="fx-bb mb-3">
         <v-card class="mx-2 mb-2 px-1" flat>
           <div class="d-flex">
-            <v-switch v-model="mainData.options.treeShowSpet" dense hide-details class="mt-0 mr-3" label="spet"></v-switch>
+            <v-switch v-model="mainData.options.treeShowSpet" dense hide-details class="mt-0 mr-1" label="spet"></v-switch>
+            <v-tooltip top max-width="300">
+              <template v-slot:activator="{ on, attrs }"><v-icon v-bind="attrs" v-on="on" class="mr-3">mdi-information-outline</v-icon></template>
+              <span>Display sub-categorisation into speech event types.</span>
+            </v-tooltip>
             <v-switch v-model="mainData.options.treeShowFiltered" dense hide-details class="mt-0 mr-3 s-small-font"
               label="Hide filtered Speech Events"
               v-if="mainData.app.filteredSeIds"
@@ -107,7 +111,7 @@ export default {
         }
         aList = aFilter(aList)
       }
-      console.log(aList)
+      // console.log(aList)
       return aList
     }
   },

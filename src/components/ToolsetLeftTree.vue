@@ -4,15 +4,18 @@
       <div class="fx-bb mb-3">
         <v-card class="mx-2 mb-2 px-1" flat>
           <div class="d-flex">
-            <v-switch v-model="mainData.options.treeShowSpet" dense hide-details class="mt-0 mr-1" label="spet"></v-switch>
-            <v-tooltip top max-width="300">
-              <template v-slot:activator="{ on, attrs }"><v-icon v-bind="attrs" v-on="on" class="mr-3">mdi-information-outline</v-icon></template>
-              <span>Display sub-categorisation into speech event types.</span>
-            </v-tooltip>
+            <v-switch v-model="mainData.options.treeShowSpet" dense hide-details class="mt-0 mr-3" label="spet"></v-switch>
             <v-switch v-model="mainData.options.treeShowFiltered" dense hide-details class="mt-0 mr-3 s-small-font"
               label="Hide filtered Speech Events"
               v-if="mainData.app.filteredSeIds"
             ></v-switch>
+            <v-tooltip top max-width="300">
+              <template v-slot:activator="{ on, attrs }"><v-icon v-bind="attrs" v-on="on" class="ml-auto">mdi-information-outline</v-icon></template>
+              <div class="py-1">
+                <p>Corpus texts to which filter choice applies are marked in black print in the corpus tree. Displayed in bold grey print are corpus texts containing applicable search results beyond the chosen filters.</p>
+                <p class="mb-0"><b>Spet Shifter:</b> Display sub-categorisation into speech event types.</p>
+              </div>
+            </v-tooltip>
           </div>
         </v-card>
       </div>

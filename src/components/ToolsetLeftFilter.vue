@@ -15,6 +15,13 @@
       </v-card>
       <div class="my-3">
         Simple filter
+        <v-tooltip top max-width="300">
+          <template v-slot:activator="{ on, attrs }"><v-icon v-bind="attrs" v-on="on">mdi-information-outline</v-icon></template>
+          <div class="py-1">
+            <p class="mb-0"><b>Simple filter:</b> Choose corpus texts according to meta-data categories.</p>
+            <!-- <p class="mt-1 mb-0"><b>Expert filter:</b> This feature allows to combine different filters. Note of caution: Some combinations may drastically reduce the number of corpus texts selected.</p> -->
+          </div>
+        </v-tooltip>
       </div>
       <v-card class="my-2 px-2 pb-1 inset-card-shadow">
         <div class="d-flex">
@@ -54,7 +61,7 @@
           <template v-slot:append-outer>
             <v-tooltip top max-width="300">
               <template v-slot:activator="{ on, attrs }"><v-icon v-bind="attrs" v-on="on">mdi-information-outline</v-icon></template>
-              <span>All speakers except for researchers and non-participants.</span>
+              <div class="py-1">All speakers except for researchers and non-participants.</div>
             </v-tooltip>
           </template>
         </v-select>
@@ -71,7 +78,7 @@
           <template v-slot:append-outer>
             <v-tooltip top max-width="300">
               <template v-slot:activator="{ on, attrs }"><v-icon v-bind="attrs" v-on="on">mdi-information-outline</v-icon></template>
-              <span>All persons who say something in the course of a speech event. The number of speakers thus equals the number of identified speakers in the transcript.</span>
+              <div class="py-1">All persons who say something in the course of a speech event. The number of speakers thus equals the number of identified speakers in the transcript.</div>
             </v-tooltip>
           </template>
         </v-select>
@@ -88,7 +95,7 @@
           <template v-slot:append-outer>
             <v-tooltip top max-width="300">
               <template v-slot:activator="{ on, attrs }"><v-icon v-bind="attrs" v-on="on">mdi-information-outline</v-icon></template>
-              <span>Acquaintedness indicates whether participants (excluding non-participants and researchers) have met before (at least once).</span>
+              <div class="py-1">Acquaintedness indicates whether participants (excluding non-participants and researchers) have met before (at least once).</div>
             </v-tooltip>
           </template>
         </v-select>
@@ -105,7 +112,7 @@
           <template v-slot:append-outer>
             <v-tooltip top max-width="300">
               <template v-slot:activator="{ on, attrs }"><v-icon v-bind="attrs" v-on="on">mdi-information-outline</v-icon></template>
-              <span>Power relations is an approximate classification indicating the span of social/hierarchical status among participants in any given speech event. This classification does not apply to non-participants and researchers.</span>
+              <div class="py-1">Power relations is an approximate classification indicating the span of social/hierarchical status among participants in any given speech event. This classification does not apply to non-participants and researchers.</div>
             </v-tooltip>
           </template>
         </v-select>

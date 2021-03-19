@@ -23,7 +23,7 @@ const localFunctions = {
       xmlIds = xmlIds.filter(e =>  corpus.obj[e].relationAcquaintedness === filter.acquaintedness)
     }
     if ((type.indexOf('all') > -1 || type.indexOf('powerRelations') > -1) && filter.powerRelations) {
-      xmlIds = xmlIds.filter(e =>  corpus.obj[e].relationPower >= filter.powerRelations)
+      xmlIds = xmlIds.filter(e =>  corpus.obj[e].relationPower === filter.powerRelations)
     }
     if ((type.indexOf('all') > -1 || type.indexOf('durationOfSpeechEvent') > -1) && filter.durationOfSpeechEvent) {
       xmlIds = xmlIds.filter(e =>  corpus.obj[e].duration >= filter.durationOfSpeechEvent.f && corpus.obj[e].duration < filter.durationOfSpeechEvent.t)

@@ -217,7 +217,7 @@ export default {
     ],
     itemsDurationOfSpeechEvent: [
       { val: null, title: 'Off' },
-      { val: {f: 0, t: 29 * 60}, title: '0 to 29 min' },
+      { val: {f: 0, t: 30 * 60}, title: '0 to 29 min' },
       { val: {f: 30 * 60, t: 60 * 60}, title: '30 to 59 min' },
       { val: {f: 60 * 60, t: 120 * 60}, title: '1 hour to 1 hour 59 min' },
       { val: {f: 120 * 60, t: Infinity}, title: '2 hours and more' }

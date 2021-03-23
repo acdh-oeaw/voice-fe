@@ -9,6 +9,13 @@
               label="Hide filtered Speech Events"
               v-if="mainData.app.filteredSeIds"
             ></v-switch>
+            <v-tooltip top max-width="300">
+              <template v-slot:activator="{ on, attrs }"><v-icon v-bind="attrs" v-on="on" class="ml-auto">mdi-information-outline</v-icon></template>
+              <div class="py-1">
+                <p>Corpus texts to which filter choice applies are marked in black print in the corpus tree. Displayed in bold grey print are corpus texts containing applicable search results beyond the chosen filters.</p>
+                <p class="mb-0"><b>Spet Shifter:</b> Display sub-categorisation into speech event types.</p>
+              </div>
+            </v-tooltip>
           </div>
         </v-card>
       </div>
@@ -40,7 +47,7 @@
           <v-icon v-if="item.audioAvailable">mdi-volume-high</v-icon>
         </template>
       </v-treeview>
-      <v-btn @click="mainData.corpus.selectedElement = null" small elevation="0" class="ma-3">VOICE Header</v-btn>
+      <v-btn @click="mainData.corpus.selectedElement = false; mainData.corpus.showCorpusHeader = true;" small elevation="0" class="ma-3">VOICE Header</v-btn>
     </div>
   </div>
 </template>
@@ -107,7 +114,7 @@ export default {
         }
         aList = aFilter(aList)
       }
-      console.log(aList)
+      // console.log(aList)
       return aList
     }
   },
@@ -125,8 +132,19 @@ export default {
       }
     },
     'mainData.corpus.selectedElement' (nVal) {
+      if (nVal) {
+        this.mainData.corpus.showCorpusHeader = false
+      }
       if (!this.active || this.active[0] !== nVal) {
         this.active = [nVal]
+      }
+    },
+    'mainData.options.treeShowFiltered' () {
+      if (this.mainData.app.filteredSeIds) {
+        let tFilteredSeIds = this.mainData.filter.manualSelection
+        this.$nextTick(() => {
+          this.mainData.filter.manualSelection = tFilteredSeIds
+        })
       }
     }
   }

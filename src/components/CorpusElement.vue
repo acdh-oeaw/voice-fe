@@ -87,6 +87,8 @@ export default {
                   if (!response.data.error) {
                     lElement.header = response.data.xml
                     lElement.headerLoaded = true
+                    lElement.headerObj = { loading: true }
+                    this.mainData.corpus.saxParserFunc.parseIt(response.data.xml, lElement.headerObj)
                   } else {
                     alert(response.data.error)
                     console.log(response.data.error, response)

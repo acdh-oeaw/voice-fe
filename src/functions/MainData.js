@@ -1,4 +1,5 @@
 import filterSpeechEvents from './FilterSpeechEvents'
+import saxParser from './SaxParser'
 
 const localFunctions = {
   initMainData () {
@@ -41,7 +42,8 @@ const localFunctions = {
         ],
         list: [
         ],
-        baseJSON: {}
+        baseJSON: {},
+        saxParserFunc: saxParser
       },
       options: {
         fullWidth: true,

@@ -9,7 +9,7 @@ export default {
   name: 'RenderLine',
   props: {
     'xmlObjLine': Object,
-    'highlight': Array,
+    'highlight': Map,
     'type': String,
     'mainData': Object
   },
@@ -88,7 +88,7 @@ export default {
                   }
                 }
               })
-              if (this.highlight && elm.attributes['xml:id'] && elm.attributes['xml:id'].value && this.highlight.indexOf(elm.attributes['xml:id'].value) > -1) {
+                if (this.highlight && elm.attributes['xml:id'] && elm.attributes['xml:id'].value && this.highlight.has(elm.attributes['xml:id'].value)) {
                 aClasses.push('highlight')
               }
               if (elm.tagName === 'shift' && elm.attributes['new'] && elm.attributes['new'].value === 'neutral') {

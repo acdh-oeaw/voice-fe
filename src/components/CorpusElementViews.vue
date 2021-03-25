@@ -140,14 +140,21 @@ export default {
               }
             }
           }
-          return {
+          const ret = {
             dom: dom,
             uId: dom && dom.tagName === 'u' && dom.attributes['xml:id'] ? dom.attributes['xml:id'].value : null,
             speaker: speaker,
             gap: gap.length > 0 ? gap : null,
             text: null,
-            textHeight: this.element.lineHeight[this.view] && this.element.lineHeight[this.view][i] ? this.element.lineHeight[this.view][i] : 24
+            textHeight: this.element.lineHeight[this.view] && this.element.lineHeight[this.view][i] ? this.element.lineHeight[this.view][i] : 24,
+            voice: null,
+            plain: null,
+            pos: null,
+            "xml-view": null
           }
+          Object.seal(ret)
+          Object.preventExtensions(ret)
+          return ret
         })
         this.xmlObjLines = aLines
         console.log('xmlObjLines', performance.now() - t1)

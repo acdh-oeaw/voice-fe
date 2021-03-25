@@ -15,7 +15,7 @@
           <div v-if="mainData.search.results.status">status: {{ mainData.search.results.status }}</div>
           <div>xmlStatus: {{ mainData.search.results.xmlStatus }}</div>
           <div>{{ mainData.search.results.hits }} hits in {{ mainData.search.results.u ? filteredSearchResults.length + ' / ' + mainData.search.results.u.length : 'error' }} utterances</div>
-          <div>highlighted tokens: {{ mainData.search.highlights ? mainData.search.highlights.length : 'error' }}</div>
+          <div>highlighted tokens: {{ mainData.search.highlights ? mainData.search.highlights.size : 'error' }}</div>
           <div>
             <v-select hide-details
               label="Style"
@@ -117,8 +117,7 @@ export default {
       if (this.mainData.search.results && this.mainData.search.results.u && this.mainData.search.results.u.length > 0) {
         // console.log('SearchResults - updateXmlObjLines', this.mainData.search.results.u)
         let parser = new DOMParser()
-        let aLines = this.mainData.search.results.u.map((aU, aI) => {
-          this.$set(aU, 'idx', aI)
+        let aLines = this.mainData.search.results.u.map(aU => {
           let uDom = null
           let speaker = null
           if (typeof aU.xml === 'string' && aU.xml.length > 5) {
@@ -128,13 +127,20 @@ export default {
           if (speaker && typeof speaker === 'string') {
             speaker = speaker.split('_').slice(-1)[0]
           }
-          return {
+          const ret = {
             dom: uDom,
             xml: aU.xml,
             speaker: speaker,
             text: null,
-            textHeight: 24
+            textHeight: 24,
+            voice: null,
+            plain: null,
+            pos: null,
+            "xml-view": null
           }
+          Object.seal(ret)
+          Object.preventExtensions(ret)
+          return ret
         })
         this.xmlObjLines = aLines
         // console.log('updateXmlObjLines', this.xmlObjLines[0].dom.outerHTML, this.mainData.search.results.u[0].xml)

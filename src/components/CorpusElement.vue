@@ -57,13 +57,6 @@ export default {
     aElement () {
       return this.mainData.corpus.selectedElement && this.mainData.corpus.obj[this.mainData.corpus.selectedElement]
     },
-    aElementDev () {
-      let aElDev = {}
-      Object.keys(this.aElement).forEach(p => {
-        aElDev[p] = (p === 'xml' || p === 'header') ? ('size ' + this.aElement[p].length.toLocaleString() + ' Byte') : this.aElement[p]
-      })
-      return aElDev
-    },
     teiHeader () {
       if (this.mainData.corpus.baseJSON.teiHeader) {
         return this.mainData.corpus.baseJSON.teiHeader.replaceAll(/(class=")([0-9a-z-]+)(")/gm, '$1th-$2$3')
@@ -114,18 +107,19 @@ export default {
                   if (!response.data.error) {
                     lElement.xml = response.data.xml
                     lElement.xmlLoaded = true
+                    lElement.bodyObj = { loading: true }
                     if (!lElement.headerLoaded && !lElement.headerLoading) {
                       console.log('extract header from xml file')
-                      let parser = new DOMParser()
-                      let xmlDoc = parser.parseFromString(lElement.xml,"application/xml")
-                      let aHeader = xmlDoc.getElementsByTagName('teiHeader')
-                      if (aHeader && aHeader[0]) {
-                        aHeader = aHeader[0]
-                        lElement.header = aHeader.outerHTML.replace(/<([a-zA-Z0-9 ]+)(?:xml)ns=".*"(.*)>/g, '<$1$2>')
+                      lElement.headerObj = { loading: true }
+                      let [headerXML] = this.mainData.corpus.saxParserFunc.parseIt(response.data.xml, lElement.headerObj, lElement.bodyObj)
+                      if (headerXML && headerXML) {
+                        lElement.header = headerXML
                         lElement.headerLoaded = true
                       } else {
                         alert('Can\'t extract header!');
                       }
+                    } else {
+                      this.mainData.corpus.saxParserFunc.parseIt(response.data.xml, null, lElement.bodyObj)
                     }
                   } else {
                     alert(response.data.error)

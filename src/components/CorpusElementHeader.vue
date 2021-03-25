@@ -1,128 +1,122 @@
 <template>
   <div class="header">
-    <h1>Header: {{ headerData.id }}</h1>
-    <h2 v-if="headerData.title">{{ headerData.title.textContent.charAt(0).toUpperCase() + headerData.title.textContent.slice(1) }}</h2>
-    <hr/>
-    <h3 v-if="headerData.edition">{{ headerData.edition.textContent }}</h3>
-    <div class="recording" v-if="headerData.recording.dom && headerData.recording.dom.length > 0">
-      <h3>Recording</h3>
-      <table class="rec-entries ml-2">
-        <tbody>
-          <tr v-if="headerData.recording.duration">
-            <th>Duration:</th>
-            <td>{{ headerData.recording.duration[1] + ':' + headerData.recording.duration[2] + ':' + headerData.recording.duration[3] }}</td>
-          </tr>
-          <template v-for="(re, i) in headerData.recording.dom">
-            <tr :key="'re' + i" v-if="re.tagName === 'date'">
-              <th>Date:</th>
-              <td>{{ re.textContent }}</td>
+    <h1>Header: {{ mainData.corpus.selectedElement }}</h1>
+    <div v-if="element && element.headerObj">
+      <h2 v-if="element.headerObj.data.title">{{ element.headerObj.data.title.charAt(0).toUpperCase() + element.headerObj.data.title.slice(1) }}</h2>
+      <hr/>
+      <h3 v-if="element.headerObj.data.edition">{{ element.headerObj.data.edition }}</h3>
+      <div class="recording" v-if="element.headerObj.data.recordingDuration || element.headerObj.data.recordingInfos">
+        <h3>Recording</h3>
+        <table class="rec-entries ml-2">
+          <tbody>
+            <tr v-if="element.headerObj.data.recordingDuration">
+              <th>Duration:</th>
+              <td>{{ element.headerObj.data.recordingDuration[1] + ':' + element.headerObj.data.recordingDuration[2] + ':' + element.headerObj.data.recordingDuration[3] }}</td>
             </tr>
-            <tr :key="'re' + i" v-else-if="re.tagName === 'equipment'">
-              <th>Equipment:</th>
-              <td>{{ re.textContent }}</td>
+            <template v-for="(re, i) in element.headerObj.data.recordingInfos">
+              <tr :key="'re' + i" v-if="i === 'date'">
+                <th>Date:</th>
+                <td>{{ re }}</td>
+              </tr>
+              <tr :key="'re' + i" v-else-if="i === 'equipment'">
+                <th>Equipment:</th>
+                <td>{{ re }}</td>
+              </tr>
+              <tr :key="'re' + i" v-else-if="i === 'resps'">
+                <th>{{ re[0] === 'recording' ? 'Recorded by' : (re[0]) ? re[0] : '?' }}:</th>
+                <td>{{ re[1].join(', ') }}</td>
+              </tr>
+            </template>
+          </tbody>
+        </table>
+      </div>
+      <div class="text-class" v-if="headerData.textClass && headerData.textClass.length > 0">
+        <h3>Text Classification</h3>
+        <table class="cat-refs ml-2">
+          <tbody>
+            <tr v-for="(tc, i) in headerData.textClass" :key="'tc' + i">
+              <th>{{ tc.h }}:</th>
+              <td>{{ tc.d }}</td>
             </tr>
-            <tr :key="'re' + i" v-else-if="re.tagName === 'respStmt' && re.querySelector('resp') && re.querySelector('resp').textContent === 'recording'">
-              <th>Recorded by:</th>
-              <td>{{ respStmtList(re) }}</td>
+          </tbody>
+        </table>
+      </div>
+      <div class="setting-desc" v-if="headerData.settingDesc">
+        <h3>Setting</h3>
+        <table class="setting-descs ml-2">
+          <tbody>
+            <tr v-if="headerData.settingDesc.countryCode">
+              <th>Country-Code:</th>
+              <td>{{ headerData.settingDesc.countryCode.textContent }}</td>
             </tr>
-            <tr :key="'re' + i" v-else-if="re.tagName === 'respStmt'">
-              <th>{{ re.querySelector('resp') ? re.querySelector('resp').textContent : 'Responsibility' }}:</th>
-              <td>{{ respStmtList(re) }}</td>
+            <tr v-if="headerData.settingDesc.city">
+              <th>City:</th>
+              <td>{{ headerData.settingDesc.city.textContent }}</td>
             </tr>
-            <tr :key="'re' + i" v-else>
-              <th>?:</th>
-              <td>{{ re.textContent }}</td>
+            <tr v-if="headerData.settingDesc.locale">
+              <th>Locale:</th>
+              <td>{{ headerData.settingDesc.locale.textContent }}</td>
             </tr>
-          </template>
-        </tbody>
-      </table>
-    </div>
-    <div class="text-class" v-if="headerData.textClass && headerData.textClass.length > 0">
-      <h3>Text Classification</h3>
-      <table class="cat-refs ml-2">
-        <tbody>
-          <tr v-for="(tc, i) in headerData.textClass" :key="'tc' + i">
-            <th>{{ tc.h }}:</th>
-            <td>{{ tc.d }}</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-    <div class="setting-desc" v-if="headerData.settingDesc">
-      <h3>Setting</h3>
-      <table class="setting-descs ml-2">
-        <tbody>
-          <tr v-if="headerData.settingDesc.countryCode">
-            <th>Country-Code:</th>
-            <td>{{ headerData.settingDesc.countryCode.textContent }}</td>
-          </tr>
-          <tr v-if="headerData.settingDesc.city">
-            <th>City:</th>
-            <td>{{ headerData.settingDesc.city.textContent }}</td>
-          </tr>
-          <tr v-if="headerData.settingDesc.locale">
-            <th>Locale:</th>
-            <td>{{ headerData.settingDesc.locale.textContent }}</td>
-          </tr>
-          <tr v-if="headerData.settingDesc.activity">
-            <th>Activity:</th>
-            <td>{{ headerData.settingDesc.activity.textContent }}</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-    <div class="partic-desc" v-if="headerData.particDesc">
-      <h3>Speaker Information</h3>
-      <table class="list-person ml-2">
-        <tbody>
-          <template v-if="headerData.particDesc.personGrp && headerData.particDesc.personGrp.length > 0">
-            <tr class="person" v-for="(pg, i) in headerData.particDesc.personGrp" :key="'pdpg' + i">
-              <th colspan="2">{{ pg.h }}</th>
-              <td colspan="4">{{ pg.d }}</td>
+            <tr v-if="headerData.settingDesc.activity">
+              <th>Activity:</th>
+              <td>{{ headerData.settingDesc.activity.textContent }}</td>
             </tr>
-          </template>
-          <template v-if="headerData.particDesc.personIdentified && headerData.particDesc.personIdentified.length > 0">
-            <tr><th colspan="6">Identified</th></tr>
-            <tr><th>ID</th><th>Sex</th><th>Age</th><th>L1</th><th>Role</th><th>Occupation</th></tr>
-            <tr v-for="(pi, i) in headerData.particDesc.personIdentified" :key="'pdpi' + i">
-              <th>{{ pi.id }}</th>
-              <td>{{ pi.sex }}</td>
-              <td>{{ pi.age }}</td>
-              <td>{{ pi.l1 }}</td>
-              <td>{{ pi.role }}</td>
-              <td>{{ pi.occupation }}</td>
+          </tbody>
+        </table>
+      </div>
+      <div class="partic-desc" v-if="headerData.particDesc">
+        <h3>Speaker Information</h3>
+        <table class="list-person ml-2">
+          <tbody>
+            <template v-if="headerData.particDesc.personGrp && headerData.particDesc.personGrp.length > 0">
+              <tr class="person" v-for="(pg, i) in headerData.particDesc.personGrp" :key="'pdpg' + i">
+                <th colspan="2">{{ pg.h }}</th>
+                <td colspan="4">{{ pg.d }}</td>
+              </tr>
+            </template>
+            <template v-if="headerData.particDesc.personIdentified && headerData.particDesc.personIdentified.length > 0">
+              <tr><th colspan="6">Identified</th></tr>
+              <tr><th>ID</th><th>Sex</th><th>Age</th><th>L1</th><th>Role</th><th>Occupation</th></tr>
+              <tr v-for="(pi, i) in headerData.particDesc.personIdentified" :key="'pdpi' + i">
+                <th>{{ pi.id }}</th>
+                <td>{{ pi.sex }}</td>
+                <td>{{ pi.age }}</td>
+                <td>{{ pi.l1 }}</td>
+                <td>{{ pi.role }}</td>
+                <td>{{ pi.occupation }}</td>
+              </tr>
+            </template>
+            <template v-if="headerData.particDesc.personNotIdentified && headerData.particDesc.personNotIdentified.length > 0">
+              <tr><th colspan="6">Speakers Not Identified</th></tr>
+              <tr><th colspan="6">{{ headerData.particDesc.personNotIdentified.join(', ') }}</th></tr>
+            </template>
+            <template v-if="headerData.particDesc.relationGrp && headerData.particDesc.relationGrp.length > 0">
+              <tr class="person" v-for="(rg, i) in headerData.particDesc.relationGrp" :key="'pdrg' + i">
+                <th colspan="2">{{ rg.h }}</th>
+                <td colspan="4">{{ rg.d }}</td>
+              </tr>
+            </template>
+          </tbody>
+        </table>
+      </div>
+      <div class="revision-desc" v-if="headerData.revisionDesc">
+        <h3>Creation History</h3>
+        <table class="changes ml-2">
+          <tbody>
+            <tr v-for="(rd, i) in headerData.revisionDesc" :key="'rd' + i">
+              <th>{{ rd.txt }}:</th>
+              <td>{{ rd.who }}</td>
             </tr>
-          </template>
-          <template v-if="headerData.particDesc.personNotIdentified && headerData.particDesc.personNotIdentified.length > 0">
-            <tr><th colspan="6">Speakers Not Identified</th></tr>
-            <tr><th colspan="6">{{ headerData.particDesc.personNotIdentified.join(', ') }}</th></tr>
-          </template>
-          <template v-if="headerData.particDesc.relationGrp && headerData.particDesc.relationGrp.length > 0">
-            <tr class="person" v-for="(rg, i) in headerData.particDesc.relationGrp" :key="'pdrg' + i">
-              <th colspan="2">{{ rg.h }}</th>
-              <td colspan="4">{{ rg.d }}</td>
-            </tr>
-          </template>
-        </tbody>
-      </table>
-    </div>
-    <div class="revision-desc" v-if="headerData.revisionDesc">
-      <h3>Creation History</h3>
-      <table class="changes ml-2">
-        <tbody>
-          <tr v-for="(rd, i) in headerData.revisionDesc" :key="'rd' + i">
-            <th>{{ rd.txt }}:</th>
-            <td>{{ rd.who }}</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-    <div class="notes-stmt" v-if="headerData.notes && headerData.notes.length > 0">
-      <h3>Event Description</h3>
-      <div class="note ml-2 mb-2"
-        v-for="(n, i) in headerData.notes" :key="'n' + i"
-      >
-        {{ n.textContent }}
+          </tbody>
+        </table>
+      </div>
+      <div class="notes-stmt" v-if="headerData.notes && headerData.notes.length > 0">
+        <h3>Event Description</h3>
+        <div class="note ml-2 mb-2"
+          v-for="(n, i) in headerData.notes" :key="'n' + i"
+        >
+          {{ n.textContent }}
+        </div>
       </div>
     </div>
   </div>
@@ -138,7 +132,7 @@ export default {
   data: () => ({
   }),
   mounted () {
-    // console.log('CorpusElementHeader', this.element, {x: this.headerDom})
+    console.log('CorpusElementHeader', this.element, {x: this.headerDom})
   },
   beforeDestroy () {
   },
@@ -151,13 +145,6 @@ export default {
     headerData () {
       let recTmp = this.headerDom.querySelector('recordingStmt recording')
       let hData = {
-        id: this.mainData.corpus.selectedElement,
-        title: this.headerDom.querySelector('titleStmt title'),
-        edition: this.headerDom.querySelector('edition'),
-        recording: {
-          dom: this.headerDom.querySelectorAll('recordingStmt recording > *'),
-          duration: recTmp && recTmp.attributes && recTmp.attributes.dur ? [...recTmp.attributes.dur.value.matchAll(/T(.+)H(.+)M(.+)S/gm)][0] : null
-        },
         textClass: (() => {
           let textClass = []
           let catRef = this.headerDom.querySelectorAll('textClass > catRef')

@@ -14,7 +14,12 @@
           <div>cql: {{ mainData.search.results.cql }}</div>
           <div v-if="mainData.search.results.status">status: {{ mainData.search.results.status }}</div>
           <div>xmlStatus: {{ mainData.search.results.xmlStatus }}</div>
-          <div>{{ mainData.search.results.hits }} hits in {{ mainData.search.results.u ? filteredSearchResults.length + ' / ' + mainData.search.results.u.length : 'error' }} utterances</div>
+          <div v-if="mainData.search.results.u">
+            <span :title="'unfiltered hits: ' + mainData.search.results.hits" class="cur-help">{{ filteredHits }}</span> hits in <span :title="'unfiltered utterances: ' + mainData.search.results.u.length" class="cur-help">{{ filteredSearchResults.length }}</span> utterances
+          </div>
+          <div v-else>
+            error
+          </div>
           <div>highlighted tokens: {{ mainData.search.highlights ? mainData.search.highlights.size : 'error' }}</div>
           <div>
             <v-select hide-details
@@ -83,6 +88,9 @@ export default {
       } else {
         return []
       }
+    },
+    filteredHits () {
+      return this.filteredSearchResults.reduce((a, c) => a + (c.hits || 0), 0)
     },
     searchResultsU () {
       let ml = this.mainData.search.view.type === 'xml' ? 25 : 100
@@ -205,7 +213,6 @@ export default {
   padding: 0 4px;
   font-style: italic;
 }
-
 .u-hits {
   font-size: xx-small;
   display: inline-block;

@@ -254,6 +254,9 @@ export default {
   .fx-icon-red {
     background: #b00!important;
   }
+  .cur-help {
+    cursor: help;
+  }
   @media (min-width: 1264px) {
     .container {
       max-width: 1785px!important;

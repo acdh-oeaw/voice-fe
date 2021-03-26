@@ -61,6 +61,7 @@ export default {
             })
             .then((response) => {
               if (response.data && response.data.u) {
+                // console.log(response)
                 response.data.u.forEach((aU, aI) => {
                   const highlights = aU.highlight
                   aU.highlight = new Map()

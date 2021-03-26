@@ -30,8 +30,19 @@
         size="64"
       ></v-progress-circular>
     </v-overlay>
-    <v-footer>      
-      Version: {{ version }}
+    <v-footer color="white" class="py-0 footer">
+      <v-container class="py-0 px-2 text-right">
+        <div class="d-flex justify-space-between">
+          <div>
+            <v-chip class="mx-1 mb-1" label small>Version: {{ version }}</v-chip>
+            <v-chip class="mx-1 mb-1" label small>API: {{ apiVersion }}</v-chip>
+          </div>
+          <div>
+            <v-chip class="mx-1 mb-1" label link small color="primary">Privacy Policy</v-chip>
+            <v-chip class="mx-1 mb-1" label link small color="primary">Site Notice</v-chip>
+          </div>
+        </div>
+      </v-container>
     </v-footer>
   </v-app>
 </template>
@@ -46,6 +57,7 @@ export default {
     publicPath: process.env.BASE_URL,
     dev: process.env.NODE_ENV === 'development',
     version: process.env.VUE_APP_VERSION,
+    apiVersion: '?',
     branch: process.env.VUE_APP_BRANCH,
     mainData: mainDataFunc.initMainData()
   }),
@@ -64,6 +76,14 @@ export default {
     },
     loadCorpus () {
       this.loading = true
+      this.$http
+        .get(this.mainData.apiUrl)
+        .then((response) => {
+          this.apiVersion = response.bodyText
+        })
+        .catch((err) => {
+          console.log(err)
+        })
       this.$http
         .get('/corpustree.json')
         .then((response) => {
@@ -197,6 +217,10 @@ export default {
 </script>
 
 <style>
+  .footer {
+    font-size: 0.9rem;
+    margin-top: -5px;
+  }
   .img-fluid {
     max-width: 100%;
     height: auto;

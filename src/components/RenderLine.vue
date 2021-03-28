@@ -163,9 +163,9 @@ export default {
                   }
                   if (elm.attributes['new'].value === 'neutral') {
                     if (elm.attributes['corresp'] && elm.attributes['corresp'].value && this.xmlIdCache[elm.attributes['corresp'].value]) {
-                      aTxt += '/' + (nList[this.xmlIdCache[elm.attributes['corresp'].value]] || this.xmlIdCache[elm.attributes['corresp'].value])
+                      aTxt += '/' + (nList[this.xmlIdCache[elm.attributes['corresp'].value]] || this.xmlIdCache[elm.attributes['corresp'].value].replace(/^([^_]+)_(.+)/, '$1 $2'))
                     } else {
-                      aTxt += '/' + elm.attributes['new'].value
+                      aTxt += '/' + elm.attributes['new'].value.replace(/^([^_]+)_(.+)/, '$1 $2')
                     }
                   } else if (elm.attributes['new'].value === 'normal') {
                     aTxt += '/@'
@@ -173,7 +173,7 @@ export default {
                     if (elm.attributes['xml:id'] && elm.attributes['xml:id'].value) {
                       this.xmlIdCache['#' + elm.attributes['xml:id'].value] = elm.attributes['new'].value
                     }
-                    aTxt += nList[elm.attributes['new'].value] || elm.attributes['new'].value
+                    aTxt += nList[elm.attributes['new'].value] || elm.attributes['new'].value.replace(/^([^_]+)_(.+)/, '$1 $2')
                   }
                 }
                 aTxt += '&gt; '

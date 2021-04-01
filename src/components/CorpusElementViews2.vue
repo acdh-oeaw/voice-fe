@@ -1,14 +1,19 @@
 <template>
-  <div ref="viewarea" class="viewarea linescroll">
+  <div ref="viewarea" class="viewarea linescroll" v-on:scroll="scrolling()">
     <template
       v-for="(aLine, aIdx) in element.bodyObj.data.u.list"
     >
-      <div class="d-flex line-frm" :key="'u' + element.id + 'l' + aIdx">
+      <div class="d-flex line-frm" ref="lines"
+        :data-uid="aIdx"
+        :key="'u' + element.id + 'l' + aIdx"
+        :style="'min-height:' + aLine.posHeight + 'px;'"
+      >
         <div class="line-nr" v-if="show_utI">{{ aIdx + 1 }}</div>
         <div class="line-speaker" v-if="show_sId">{{ aLine.speaker }}</div>
-        <div>{{ aLine.obj.text }}</div>
+        <div v-if="inView.indexOf(aIdx) > - 1" v-html="aLine.pos"></div>
+        <div v-else>{{ aLine.obj.text }}</div>
       </div>
-      <div class="line-gap" :key="'u' + element.id + 'lg' + aIdx" v-if="show_gap && aLine.gap">
+      <div class="line-gap" ref="lines" :key="'u' + element.id + 'lg' + aIdx" v-if="show_gap && aLine.gap">
         {{ aLine.gap }}
       </div>
     </template>
@@ -26,12 +31,13 @@ export default {
     'view': String
   },
   data: () => ({
-    xmlObjLines: null,
+    inView: [],
     lastElement: null
   }),
   mounted () {
     console.log('CorpusElementViews2', this.element)
     this.lastElement = this.element
+    this.scrolling()
   },
   beforeDestroy () {
   },
@@ -47,10 +53,35 @@ export default {
     },
   },
   methods: {
+    scrolling () {
+      if (this.$refs && this.$refs.viewarea && this.$refs.lines) {
+        let vT = this.$refs.viewarea.scrollTop
+        let vH = this.$refs.viewarea.clientHeight
+        this.inView = []
+        this.$refs.lines.forEach((line) => {
+          let aH = line.offsetHeight || 0
+          let aT = line.offsetTop
+          if (aT + aH >= vT && aT <= vT + vH) {
+            if (line.dataset && line.dataset.uid) {
+              let uId = parseInt(line.dataset.uid)
+              let aU = this.element.bodyObj.data.u.list[uId]
+              if (aU.posHeight !== aH) {
+                aU.posHeight = aH
+              }
+              if (!aU.pos) {
+                aU.pos = '<span><span>' + aU.obj.text + '</span> <span style="color: #aaa">(<u>rendered</u> <span style="color: #999;"><i>test</i></span>)</span></span>'
+              }
+              this.inView.push(uId)
+            }
+          }
+        })
+      }
+    }
   },
   watch: {
     'element.id' () {
       this.lastElement = this.element
+      this.scrolling()
     },
   },
   components: {

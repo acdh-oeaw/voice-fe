@@ -22,6 +22,7 @@
 
 <script>
 import RenderLine from './RenderLine';
+import renderer from '../functions/Renderer'
 
 export default {
   name: 'CorpusElementViews2',
@@ -69,7 +70,7 @@ export default {
                 aU.posHeight = aH
               }
               if (!aU.pos) {
-                aU.pos = '<span><span>' + aU.obj.text + '</span> <span style="color: #aaa">(<u>rendered</u> <span style="color: #999;"><i>test</i></span>)</span></span>'
+                aU.pos = renderer.renderUtterance(aU.obj, this.element.bodyObj.xmlObj, 'plain', this.mainData.search.highlights)
               }
               this.inView.push(uId)
             }

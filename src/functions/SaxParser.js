@@ -22,6 +22,9 @@ const localFunctions = {
   },
   getPlainText (o) {
     let val = ''
+    if (o.type === 'tag' && o.attributes && o.attributes['voice:syl']) {
+      val += '@'.repeat(parseInt(o.attributes['voice:syl']))
+    }
     if (o.children) {
       o.children.forEach(c => {
         if (c.type === 'text') {
@@ -30,12 +33,13 @@ const localFunctions = {
           if (c.children) {
             val += localFunctions.getPlainText(c)
           }
-          // ToDo: Real Plain Text spaces!
-          val += ' '
         }
       })
     }
-    return val.trim()
+    if ((o.tag === 'w' || o.tag === 'emph') && (!o.attributes['part'] || (o.attributes['part'] === 'F'))) {
+      val = val.trim () + ' '
+    }
+    return val
   },
   getRespStmtList (o) {
     let l = []
@@ -128,7 +132,7 @@ const localFunctions = {
         }
         if (body && o.tag === 'u') {
           aObj.xml = xml.substr(uStartPosition, parser.position - uStartPosition)
-          aObj.text = localFunctions.getPlainText(o)
+          aObj.text = localFunctions.getPlainText(o).trim()
         }
       }
       parser.onclosetag = (tag) => {

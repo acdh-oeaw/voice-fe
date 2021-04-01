@@ -74,7 +74,7 @@ export default {
           aTxt = CorpusElementXml.methods.w3CodeColor(aXml.join('\n'))
         } else {
         domArray.forEach((elm, idx, domArray) => {
-            if (elm.nodeType === 1) { // ELEMENT_NODE
+          if (elm.nodeType === 1) { // ELEMENT_NODE
             let trimThis = !(elm.attributes && elm.attributes['xml:space'] && elm.attributes['xml:space'].value === 'preserve')
             let aClasses = ['tag-' + elm.tagName]
             let attrClasses = {'type': {}, 'n': { has: true }, 'voice:desc': {}, 'reason': {}, 'new': {}}

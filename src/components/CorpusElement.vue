@@ -19,6 +19,9 @@
         <div v-else-if="vTab === 'textheader'">
           <CorpusElementHeader :element="aElement" :mainData="mainData" v-if="aElement && aElement.header" />
         </div>
+        <div v-else-if="vTab === 'pos'">
+          <CorpusElementViews2 :view="vTab" :element="aElement" :mainData="mainData" v-if="aElement && aElement.xml" />
+        </div>
         <div v-else>
           <CorpusElementViews :view="vTab" :element="aElement" :mainData="mainData" v-if="aElement && aElement.xml" />
         </div>
@@ -35,6 +38,7 @@
 import Audioplayer from './Audioplayer';
 import CorpusElementHeader from './CorpusElementHeader';
 import CorpusElementViews from './CorpusElementViews';
+import CorpusElementViews2 from './CorpusElementViews2';
 import CorpusElementXml from './CorpusElementXml';
 import RenderSelect from './RenderSelect';
 
@@ -155,6 +159,7 @@ export default {
     Audioplayer,
     CorpusElementHeader,
     CorpusElementViews,
+    CorpusElementViews2,
     CorpusElementXml,
     RenderSelect
   }

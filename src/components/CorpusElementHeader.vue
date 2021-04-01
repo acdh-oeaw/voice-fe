@@ -30,54 +30,54 @@
           </tbody>
         </table>
       </div>
-      <div class="text-class" v-if="headerData.textClass && headerData.textClass.length > 0">
+      <div class="text-class" v-if="element.headerObj.data.textClass && element.headerObj.data.textClass.length > 0">
         <h3>Text Classification</h3>
         <table class="cat-refs ml-2">
           <tbody>
-            <tr v-for="(tc, i) in headerData.textClass" :key="'tc' + i">
+            <tr v-for="(tc, i) in element.headerObj.data.textClass" :key="'tc' + i">
               <th>{{ tc.h }}:</th>
               <td>{{ tc.d }}</td>
             </tr>
           </tbody>
         </table>
       </div>
-      <div class="setting-desc" v-if="headerData.settingDesc">
+      <div class="setting-desc" v-if="Object.keys(element.headerObj.data.settingDesc).length > 0">
         <h3>Setting</h3>
         <table class="setting-descs ml-2">
           <tbody>
-            <tr v-if="headerData.settingDesc.countryCode">
+            <tr v-if="element.headerObj.data.settingDesc.countryCode">
               <th>Country-Code:</th>
-              <td>{{ headerData.settingDesc.countryCode.textContent }}</td>
+              <td>{{ element.headerObj.data.settingDesc.countryCode }}</td>
             </tr>
-            <tr v-if="headerData.settingDesc.city">
+            <tr v-if="element.headerObj.data.settingDesc.city">
               <th>City:</th>
-              <td>{{ headerData.settingDesc.city.textContent }}</td>
+              <td>{{ element.headerObj.data.settingDesc.city }}</td>
             </tr>
-            <tr v-if="headerData.settingDesc.locale">
+            <tr v-if="element.headerObj.data.settingDesc.locale">
               <th>Locale:</th>
-              <td>{{ headerData.settingDesc.locale.textContent }}</td>
+              <td>{{ element.headerObj.data.settingDesc.locale }}</td>
             </tr>
-            <tr v-if="headerData.settingDesc.activity">
+            <tr v-if="element.headerObj.data.settingDesc.activity">
               <th>Activity:</th>
-              <td>{{ headerData.settingDesc.activity.textContent }}</td>
+              <td>{{ element.headerObj.data.settingDesc.activity }}</td>
             </tr>
           </tbody>
         </table>
       </div>
-      <div class="partic-desc" v-if="headerData.particDesc">
+      <div class="partic-desc" v-if="element.headerObj.data.particDesc">
         <h3>Speaker Information</h3>
         <table class="list-person ml-2">
           <tbody>
-            <template v-if="headerData.particDesc.personGrp && headerData.particDesc.personGrp.length > 0">
-              <tr class="person" v-for="(pg, i) in headerData.particDesc.personGrp" :key="'pdpg' + i">
+            <template v-if="element.headerObj.data.particDesc.personGrp.length > 0">
+              <tr class="person" v-for="(pg, i) in element.headerObj.data.particDesc.personGrp" :key="'pdpg' + i">
                 <th colspan="2">{{ pg.h }}</th>
                 <td colspan="4">{{ pg.d }}</td>
               </tr>
             </template>
-            <template v-if="headerData.particDesc.personIdentified && headerData.particDesc.personIdentified.length > 0">
+            <template v-if="element.headerObj.data.particDesc.personIdentified.length > 0">
               <tr><th colspan="6">Identified</th></tr>
               <tr><th>ID</th><th>Sex</th><th>Age</th><th>L1</th><th>Role</th><th>Occupation</th></tr>
-              <tr v-for="(pi, i) in headerData.particDesc.personIdentified" :key="'pdpi' + i">
+              <tr v-for="(pi, i) in element.headerObj.data.particDesc.personIdentified" :key="'pdpi' + i">
                 <th>{{ pi.id }}</th>
                 <td>{{ pi.sex }}</td>
                 <td>{{ pi.age }}</td>
@@ -86,12 +86,12 @@
                 <td>{{ pi.occupation }}</td>
               </tr>
             </template>
-            <template v-if="headerData.particDesc.personNotIdentified && headerData.particDesc.personNotIdentified.length > 0">
+            <template v-if="element.headerObj.data.particDesc.personNotIdentified.length > 0">
               <tr><th colspan="6">Speakers Not Identified</th></tr>
-              <tr><th colspan="6">{{ headerData.particDesc.personNotIdentified.join(', ') }}</th></tr>
+              <tr><th colspan="6">{{ element.headerObj.data.particDesc.personNotIdentified.join(', ') }}</th></tr>
             </template>
-            <template v-if="headerData.particDesc.relationGrp && headerData.particDesc.relationGrp.length > 0">
-              <tr class="person" v-for="(rg, i) in headerData.particDesc.relationGrp" :key="'pdrg' + i">
+            <template v-if="element.headerObj.data.particDesc.relationGrp && element.headerObj.data.particDesc.relationGrp.length > 0">
+              <tr class="person" v-for="(rg, i) in element.headerObj.data.particDesc.relationGrp" :key="'pdrg' + i">
                 <th colspan="2">{{ rg.h }}</th>
                 <td colspan="4">{{ rg.d }}</td>
               </tr>
@@ -99,23 +99,23 @@
           </tbody>
         </table>
       </div>
-      <div class="revision-desc" v-if="headerData.revisionDesc">
+      <div class="revision-desc" v-if="element.headerObj.data.revisionDesc">
         <h3>Creation History</h3>
         <table class="changes ml-2">
           <tbody>
-            <tr v-for="(rd, i) in headerData.revisionDesc" :key="'rd' + i">
+            <tr v-for="(rd, i) in element.headerObj.data.revisionDesc" :key="'rd' + i">
               <th>{{ rd.txt }}:</th>
               <td>{{ rd.who }}</td>
             </tr>
           </tbody>
         </table>
       </div>
-      <div class="notes-stmt" v-if="headerData.notes && headerData.notes.length > 0">
+      <div class="notes-stmt" v-if="element.headerObj.data.notes.length > 0">
         <h3>Event Description</h3>
         <div class="note ml-2 mb-2"
-          v-for="(n, i) in headerData.notes" :key="'n' + i"
+          v-for="(n, i) in element.headerObj.data.notes" :key="'n' + i"
         >
-          {{ n.textContent }}
+          {{ n }}
         </div>
       </div>
     </div>
@@ -132,121 +132,13 @@ export default {
   data: () => ({
   }),
   mounted () {
-    console.log('CorpusElementHeader', this.element, {x: this.headerDom})
+    console.log('CorpusElementHeader', this.element)
   },
   beforeDestroy () {
   },
   computed: {
-    headerDom () {
-      let parser = new DOMParser()
-      let xmlDoc = parser.parseFromString(this.element.header,"application/xml")
-      return xmlDoc
-    },
-    headerData () {
-      let recTmp = this.headerDom.querySelector('recordingStmt recording')
-      let hData = {
-        textClass: (() => {
-          let textClass = []
-          let catRef = this.headerDom.querySelectorAll('textClass > catRef')
-          if (catRef && catRef[0] && catRef[0].attributes && catRef[0].attributes.target && catRef[0].attributes.target.value) {
-            let catRefs = catRef[0].attributes.target.value.split(' ').map(v => v.substring(1))
-            this.headerDom.querySelectorAll('taxonomy category').forEach(cat => {
-              if (cat.attributes && cat.attributes['xml:id'] && cat.attributes['xml:id'].value && catRefs.indexOf(cat.attributes['xml:id'].value) > -1) {
-                textClass.push({h: cat.parentElement.querySelector('catDesc').textContent, d: cat.querySelector('catDesc').textContent })
-              }
-            })
-          }
-          return textClass
-        }) (),
-        settingDesc: {
-          countryCode: this.headerDom.querySelector('name[type="country"]'),
-          city: this.headerDom.querySelector('name[type="city"]'),
-          locale: this.headerDom.querySelector('locale'),
-          activity: this.headerDom.querySelector('activity')
-        },
-        particDesc: {
-          personGrp: (() => {
-            let pGrp = []
-            this.headerDom.querySelectorAll('particDesc personGrp').forEach(pg => {
-              pGrp.push({
-                h: pg.attributes.role ? {speakers: 'Speakers', audience: 'Audience', interactants: 'Interactants'}[pg.attributes.role.value] || pg.attributes.role.value  : '?',
-                d: pg.attributes.size && pg.attributes.size.value ? pg.attributes.size.value : 'unknown'
-              })
-            })
-            return pGrp
-          }) (),
-          personIdentified: (() => {
-            let pIdent = []
-            this.headerDom.querySelectorAll('particDesc listPerson[type="identified"] > person').forEach(p => {
-              pIdent.push({
-                id: p.attributes['xml:id'].value.split('_')[1],
-                sex: ['male', 'female'][p.querySelector('sex').attributes.value.value - 1] || 'unknown',
-                age: ['unknown', '17-24', '25-34', '35-49', '50+'][p.querySelector('age').attributes.value.value] || 'N/A',
-                l1: p.querySelector('langKnown[level="L1"]').attributes.tag.value,
-                role: p.attributes['role'].value,
-                occupation: p.querySelector('occupation') && p.querySelector('occupation').textContent ? p.querySelector('occupation').textContent : ' '
-              })
-            })
-            pIdent.sort((a, b) => {
-              if ( a.id < b.id ){ return -1 }
-              if ( a.id > b.id ){ return 1 }
-              return 0
-            })
-            return pIdent
-          }) (),
-          personNotIdentified: (() => {
-            let pNotIdent = []
-            this.headerDom.querySelectorAll('particDesc listPerson[type="not_identified"] > person').forEach(p => {
-              pNotIdent.push(p.attributes['xml:id'].value.split('_')[1])
-            })
-            return pNotIdent.sort()
-          }) (),
-          relationGrp: (() => {
-            let rGrp = []
-            this.headerDom.querySelectorAll('relationGrp relation').forEach(r => {
-              rGrp.push({
-                h: r.attributes.type ? {acquaintedness: 'Acquaintedness', power: 'Power relations'}[r.attributes.type.value] || r.attributes.type.value : '?',
-                d: r.attributes.name.value.split('_').join(' ')
-              })
-            })
-            return rGrp.sort()
-          }) ()
-
-        },
-        revisionDesc: (() => {
-          let rDescs = []
-          this.headerDom.querySelectorAll('revisionDesc change').forEach(c => {
-            rDescs.push({
-              when: c.attributes.when.value,
-              who: c.attributes.who.value,
-              txt: c.textContent
-            })
-          })
-          rDescs.sort((a, b) => {
-            if ( a.when > b.when ){ return -1 }
-            if ( a.when < b.when ){ return 1 }
-            if ( a.who < b.who ){ return -1 }
-            if ( a.who > b.who ){ return 1 }
-            return 0
-          })
-          return rDescs
-        }) (),
-        notes: this.headerDom.querySelectorAll('notesStmt note')
-      }
-      console.log(hData)
-      return hData
-    }
   },
   methods: {
-    respStmtList (d) {
-      let al = []
-      ;[].slice.call(d.children).forEach(c => {
-        if (c.tagName !== 'resp') {
-          al.push(c.textContent)
-        }
-      })
-      return al.join(', ')
-    }
   },
   watch: {
   },

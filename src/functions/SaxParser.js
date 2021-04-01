@@ -20,6 +20,23 @@ const localFunctions = {
     }
     return val
   },
+  getPlainText (o) {
+    let val = ''
+    if (o.children) {
+      o.children.forEach(c => {
+        if (c.type === 'text') {
+          val += c.value
+        } else {
+          if (c.children) {
+            val += localFunctions.getPlainText(c)
+          }
+          // ToDo: Real Plain Text spaces!
+          val += ' '
+        }
+      })
+    }
+    return val.trim()
+  },
   getRespStmtList (o) {
     let l = []
     let r = []
@@ -45,9 +62,11 @@ const localFunctions = {
   parseIt (xml, header = null, body = null) {
     let sTime = performance.now()
     let headerStartPosition = 0
+    let uStartPosition = 0
     let headerXML = null
     let headerObj = null
     let bodyObj = null
+    let uList = []
     if (header || body) {
       if (header) {
         header.data = {}
@@ -79,6 +98,10 @@ const localFunctions = {
         if (node.name === 'teiheader') {
           headerStartPosition = parser.startTagPosition - 1
         }
+        if (node.name === 'u') {
+          uStartPosition = parser.startTagPosition - 1
+          uList.push(aObj)
+        }
       }
       parser.ontext = (txt) => {
         let aTxt = txt.trim()
@@ -102,6 +125,10 @@ const localFunctions = {
         }
         if (body && o.tag === 'body') {
           bodyObj = aObj
+        }
+        if (body && o.tag === 'u') {
+          aObj.xml = xml.substr(uStartPosition, parser.position - uStartPosition)
+          aObj.text = localFunctions.getPlainText(o)
         }
       }
       parser.onclosetag = (tag) => {
@@ -130,7 +157,12 @@ const localFunctions = {
         }
         if (body) {
           body.loading = false
-          body.xmlObj = {obj: bodyObj, list: aObjList}
+          body.xmlObj = {
+            obj: bodyObj,
+            list: aObjList,
+            uList
+          }
+          body.data = parseBody(body.xmlObj)
         }
         console.log('Sax Parser - parseIt', parseInt(performance.now() - sTime), 'ms', { header, body, xml })
       }
@@ -138,6 +170,68 @@ const localFunctions = {
     }
     return [headerXML]
   }
+}
+
+function parseBody (xmlObj) {
+  let data = {
+    u: {
+      obj: {},
+      list: []
+    }
+  }
+  xmlObj.uList.forEach((o) => {
+    let gap = ''
+    let oSiblings = xmlObj.list[o.parent].children
+    let oPos = oSiblings.indexOf(o)
+    if (oPos === oSiblings.length - 1) {
+      let opSiblings = xmlObj.list[xmlObj.list[o.parent].parent].children
+      let opPos = opSiblings.indexOf(xmlObj.list[o.parent])
+      let g = opPos > -1 && opSiblings[opPos + 1] && opSiblings[opPos + 1].tag === 'gap' && opSiblings[opPos + 1]
+      if (g) {
+        if (g.attributes.reason) {
+          gap += '('
+          if (g.attributes.reason === 'not_transcribed') {
+            gap += 'gap'
+          } else if (g.attributes.reason === 'not_recorded') {
+            gap += 'nrec'
+          }
+          let nU = opSiblings[opPos + 2] && opSiblings[opPos + 2].type === 'tag' && opSiblings[opPos + 2]
+          if (nU && xmlObj.list[o.parent].attributes['voice:end'] && nU.attributes['voice:start']) {
+            let fTime = dur2sec(xmlObj.list[o.parent].attributes['voice:end'])
+            let tTime = dur2sec(nU.attributes['voice:start'])
+            gap += ' ' + sec2dur(tTime - fTime, 0)
+          }
+          gap += ')'
+          if (g.attributes['voice:desc']) {
+            gap += ' {' + g.attributes['voice:desc'] + '}'
+          }
+        }
+      }
+    }
+    let u = {
+      uId: o.attributes['xml:id'] ? o.attributes['xml:id'] : null,
+      obj: o,
+      speaker: o.attributes.who ? o.attributes.who.split('_').slice(-1)[0] : null,
+      gap: gap.length > 0 ? gap : null,
+      text: null,
+      textHeight: 24,
+      voice: null,
+      voiceHeight: 24,
+      plain: null,
+      plainHeight: 24,
+      pos: null,
+      posHeight: 24,
+      xmlView: null,
+      xmlHeight: 24
+    }
+    // console.log(o)
+    if (u.uId) {
+      data.u.obj[u.uId] = u
+    }
+    data.u.list.push(u)
+  })
+  console.log('parseBody', data)
+  return data
 }
 
 function parseHeader (xmlObj) {
@@ -250,6 +344,29 @@ function parseHeader (xmlObj) {
   data.particDesc.relationGrp.sort((a, b) => a.h < b.h ? -1 : a.h > b.h ? 1 : 0)
   data.revisionDesc.sort((a, b) => a.when > b.when ? -1 : a.when < b.when ? 1 : a.who < b.who ? -1 : a.who > b.who ? 1 : 0)
   return data
+}
+
+function dur2sec (hms) {
+  var s = 0.0
+  if (hms && hms.indexOf(':') > -1) {
+    var a = hms.split(':')
+    if (a.length > 2) { s += parseFloat(a[a.length - 3]) * 60 * 60 }
+    if (a.length > 1) { s += parseFloat(a[a.length - 2]) * 60 }
+    if (a.length > 0) { s += parseFloat(a[a.length - 1]) }
+  } else {
+    s = parseFloat(hms)
+  }
+  return ((isNaN(s)) ? 0.0 : s)
+}
+
+function sec2dur (sec) {
+  var v = ''
+  if (sec < 0) { sec = -sec; v = '-' }
+  var h = parseInt(sec / 3600)
+  sec %= 3600
+  var m = parseInt(sec / 60)
+  var s = sec % 60
+  return v + ('0' + h).slice(-2) + ':' + ('0' + m).slice(-2) + ':' + ('0' + s.toFixed(0)).slice(-2)
 }
 
 export default localFunctions

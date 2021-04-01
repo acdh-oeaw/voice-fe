@@ -115,36 +115,18 @@ export default {
         let parser = new DOMParser()
         let xmlDoc = parser.parseFromString(xmlS,"application/xml")
         let aLines = [].slice.call(xmlDoc.getElementsByTagName('u')).map((dom, i) => {
-          let speaker = dom.attributes && dom.attributes.who && dom.attributes.who.nodeValue ? dom.attributes.who.nodeValue : null
-          if (speaker && typeof speaker === 'string') {
-            speaker = speaker.split('_').slice(-1)[0]
-          }
+          let uId = dom && dom.tagName === 'u' && dom.attributes['xml:id'] ? dom.attributes['xml:id'].value : null
+          let speaker = null
           let gap = ''
-          if (dom && !dom.nextElementSibling && dom.parentElement && dom.parentElement.nextElementSibling && dom.parentElement.nextElementSibling.tagName === 'gap') {
-            let aDom = dom.parentElement.nextElementSibling
-            if (aDom.attributes && aDom.attributes['reason']) {
-              gap += '('
-              if (aDom.attributes['reason'].value === 'not_transcribed') {
-                gap += 'gap'
-              } else if (aDom.attributes['reason'].value === 'not_recorded') {
-                gap += 'nrec'
-              }
-              if (dom.parentElement.attributes['voice:end'] && aDom.nextElementSibling && aDom.nextElementSibling.attributes['voice:start']) {
-                let fTime = this.dur2sec(dom.parentElement.attributes['voice:end'].value)
-                let tTime = this.dur2sec(aDom.nextElementSibling.attributes['voice:start'].value)
-                gap += ' ' + this.sec2dur(tTime - fTime, 0)
-              }
-              gap += ')'
-              if (aDom.attributes['voice:desc'] && aDom.attributes['voice:desc'].value) {
-                gap += ' {' + aDom.attributes['voice:desc'].value + '}'
-              }
-            }
+          if (uId && this.element.bodyObj.data.u.obj[uId]) {
+            speaker = this.element.bodyObj.data.u.obj[uId].speaker
+            gap = this.element.bodyObj.data.u.obj[uId].gap
           }
           const ret = {
             dom: dom,
-            uId: dom && dom.tagName === 'u' && dom.attributes['xml:id'] ? dom.attributes['xml:id'].value : null,
+            uId: uId,
             speaker: speaker,
-            gap: gap.length > 0 ? gap : null,
+            gap: gap,
             text: null,
             textHeight: this.element.lineHeight[this.view] && this.element.lineHeight[this.view][i] ? this.element.lineHeight[this.view][i] : 24,
             voice: null,
@@ -157,7 +139,7 @@ export default {
           return ret
         })
         this.xmlObjLines = aLines
-        console.log('xmlObjLines', performance.now() - t1)
+        console.log('xmlObjLines', parseInt(performance.now() - t1), 'ms', this.element, this.xmlObjLines)
       } else {
         this.xmlObjLines = null
       }

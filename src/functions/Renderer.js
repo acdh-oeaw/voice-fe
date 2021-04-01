@@ -28,7 +28,7 @@ function renderingUtterance(uObj, xmlObj, type, highlight, xmlIdCache) {
     } else {
       let aClasses = ['tag-' + uObj.tag]
       let attrClasses = {'type': {}, 'n': { has: true }, 'voice:desc': {}, 'reason': {}, 'new': {}}
-      if (uObj.attributes && uObj.attributes.length > 0) {
+      if (uObj.attributes && Object.keys(uObj.attributes).length > 0) {
         Object.keys(attrClasses).forEach(a => {
           if (uObj.attributes[a]) {
             let cn = a.replace(/:/g, '-')

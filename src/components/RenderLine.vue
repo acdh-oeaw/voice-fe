@@ -16,7 +16,8 @@ export default {
   data: () => ({
     aText: '',
     aType: 'plain',
-    xmlIdCache: {}
+    xmlIdCache: {},
+    shouldAddSpace: ''
   }),
   mounted () {
     // console.log('CorpusElementViews', this.xmlObjLine)
@@ -78,6 +79,10 @@ export default {
             let trimThis = !(elm.attributes && elm.attributes['xml:space'] && elm.attributes['xml:space'].value === 'preserve')
             let aClasses = ['tag-' + elm.tagName]
             let attrClasses = {'type': {}, 'n': { has: true }, 'voice:desc': {}, 'reason': {}, 'new': {}}
+            if ((!elm.attributes['part'] || elm.attributes['part'].value === 'I') && this.shouldAddSpace === ' ') {
+               aTxt += ' '
+               this.shouldAddSpace = ''
+            }
             if (elm.attributes) {
               Object.keys(attrClasses).forEach(a => {
                 if (elm.attributes[a] && elm.attributes[a].value) {
@@ -158,9 +163,9 @@ export default {
                   }
                   if (elm.attributes['new'].value === 'neutral') {
                     if (elm.attributes['corresp'] && elm.attributes['corresp'].value && this.xmlIdCache[elm.attributes['corresp'].value]) {
-                      aTxt += '/' + (nList[this.xmlIdCache[elm.attributes['corresp'].value]] || this.xmlIdCache[elm.attributes['corresp'].value])
+                      aTxt += '/' + (nList[this.xmlIdCache[elm.attributes['corresp'].value]] || this.xmlIdCache[elm.attributes['corresp'].value].replace(/^([^_]+)_(.+)/, '$1 $2'))
                     } else {
-                      aTxt += '/' + elm.attributes['new'].value
+                      aTxt += '/' + elm.attributes['new'].value.replace(/^([^_]+)_(.+)/, '$1 $2')
                     }
                   } else if (elm.attributes['new'].value === 'normal') {
                     aTxt += '/@'
@@ -168,7 +173,7 @@ export default {
                     if (elm.attributes['xml:id'] && elm.attributes['xml:id'].value) {
                       this.xmlIdCache['#' + elm.attributes['xml:id'].value] = elm.attributes['new'].value
                     }
-                    aTxt += nList[elm.attributes['new'].value] || elm.attributes['new'].value
+                    aTxt += nList[elm.attributes['new'].value] || elm.attributes['new'].value.replace(/^([^_]+)_(.+)/, '$1 $2')
                   }
                 }
                 aTxt += '&gt; '
@@ -287,13 +292,10 @@ export default {
               }
             }
             aTxt += '</span>'
-            if ((elm.tagName === 'w' || elm.tagName === 'emph') &&
-                (!elm.attributes['part'] ||
-                (elm.attributes['part'] && elm.attributes['part'].value === 'F')) &&
-                idx !== domArray.length - 2
-               ) {
-              aTxt += ' '
-            }
+            if (elm.tagName === 'w') {
+               if (!elm.attributes['part'] || elm.attributes['part'].value === 'F') {
+               this.shouldAddSpace = ' '
+            }}
           } else if (elm.nodeType === 3) { // TEXT_NODE
             let bTxt = elm.textContent.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').trim()
             if (trimIt) {

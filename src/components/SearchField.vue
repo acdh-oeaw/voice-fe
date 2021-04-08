@@ -35,9 +35,11 @@ export default {
     search(clear = false) {
       const self = this
       if (clear) {
-        this.mainData.search.value = "";
+        this.mainData.search.value = ''
+        this.mainData.search.lastValue = ''
+        this.refreshHighlighting()
       }
-      this.mainData.options.singleView = "search";
+      this.mainData.options.singleView = 'search'
       if (
         !this.mainData.search.loading &&
         (this.mainData.search.lastValue !== this.mainData.search.value ||
@@ -48,15 +50,16 @@ export default {
         Object.seal(highlights)
         Object.preventExtensions(highlights)
         this.mainData.search.highlights = highlights
+        this.refreshHighlighting()
         this.mainData.search.foundXmlId = []
         this.mainData.search.lastValue = this.mainData.search.value
         if (
           this.mainData.search.value &&
           this.mainData.search.value.length > 0
         ) {
-          this.mainData.search.loading = true;
+          this.mainData.search.loading = true
           this.$http
-            .get(this.mainData.apiUrl + "search/", {
+            .get(this.mainData.apiUrl + 'search/', {
               params: { q: this.mainData.search.value },
             })
             .then((response) => {
@@ -71,7 +74,7 @@ export default {
                   aU.idx = aI
                 })
                 self.deepSeal(response.data)
-                this.mainData.search.results = response.data;
+                this.mainData.search.results = response.data
                 if (
                   this.mainData.search.results &&
                   this.mainData.search.results.u
@@ -83,48 +86,63 @@ export default {
                         aU.highlight.forEach((v, k) => {highlights.set(k, v)})
                     }
                     if (this.mainData.search.foundXmlId.indexOf(aU.xmlId) < 0) {
-                      this.mainData.search.foundXmlId.push(aU.xmlId);
+                      this.mainData.search.foundXmlId.push(aU.xmlId)
                     }
                   })
                   Object.seal(highlights)
                   Object.preventExtensions(highlights)
                   this.mainData.search.highlights = highlights
+                  this.refreshHighlighting()
                 }
-                this.mainData.search.searched = true;
+                this.mainData.search.searched = true
               }
-              this.mainData.search.scrollPos = 0;
-              this.mainData.search.loading = false;
-              console.log("search", response.data, this.mainData.search);
+              this.mainData.search.scrollPos = 0
+              this.mainData.search.loading = false
+              console.log('search', response.data, this.mainData.search)
             })
             .catch((err) => {
-              console.log(err);
-              this.mainData.search.loading = false;
-            });
+              console.log(err)
+              this.mainData.search.loading = false
+            })
         }
       }
     },
+    refreshHighlighting () {
+      console.log('refreshHighlighting', this.mainData.search.highlights, this.mainData, this.mainData.corpus.elements)
+      let views = ['voice', 'plain', 'pos', 'xml-view']
+      this.mainData.corpus.elements.forEach(e => {
+        console.log(e.bodyObj.data.u)
+        e.bodyObj.data.u.list.forEach(u => {
+          views.forEach(v => {
+            if (u[v]) {
+              u[v] = ''
+            }
+          })
+        })
+      })
+    },
     deepSeal(o) {
       const self = this
-      Object.seal(o);
-      Object.preventExtensions(o);
+      Object.seal(o)
+      Object.preventExtensions(o)
       if (o === undefined) {
-        return o;
+        return o
       }
 
       Object.getOwnPropertyNames(o).forEach(function (prop) {
         if (
           o[prop] !== null &&
-          (typeof o[prop] === "object" || typeof o[prop] === "function") &&
+          (typeof o[prop] === 'object' || typeof o[prop] === 'function') &&
           !Object.isSealed(o[prop])
         ) {
-          self.deepSeal(o[prop]);
+          self.deepSeal(o[prop])
         }
-      });
+      })
 
-      return o;
+      return o
     },
   },
-};
+}
 </script>
 
 <style scoped>

@@ -19,11 +19,8 @@
         <div v-else-if="vTab === 'textheader'">
           <CorpusElementHeader :element="aElement" :mainData="mainData" v-if="aElement && aElement.header" />
         </div>
-        <div v-else-if="vTab === 'pos'">
-          <CorpusElementViews2 :view="vTab" :element="aElement" :mainData="mainData" :type="'voice'" v-if="aElement && aElement.xml" />
-        </div>
         <div v-else>
-          <CorpusElementViews :view="vTab" :element="aElement" :mainData="mainData" v-if="aElement && aElement.xml" />
+          <CorpusElementViews2 :view="vTab" :element="aElement" :mainData="mainData" :type="vTab" v-if="aElement && aElement.xml" />
         </div>
       </div>
     </div>

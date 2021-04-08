@@ -6,7 +6,7 @@
       <div class="d-flex line-frm" ref="lines"
         :data-uid="aIdx"
         :key="'u' + element.id + 'l' + aIdx"
-        :style="'min-height:' + aLine[type + 'Height'] + 'px;'"
+        :style="inView.indexOf(aIdx) === - 1 ? 'min-height:' + aLine[type + 'Height'] + 'px;' : null"
       >
         <div class="line-nr" v-if="show_utI">{{ aIdx + 1 }}</div>
         <div class="line-speaker" v-if="show_sId">{{ aLine.speaker }}</div>
@@ -33,12 +33,11 @@ export default {
     'type': String
   },
   data: () => ({
-    inView: [],
-    lastElement: null
+    inView: []
   }),
   mounted () {
     console.log('CorpusElementViews2', this.element)
-    this.lastElement = this.element
+    this.scroll2TopLine(this.element.aTopLineUId)
     this.scrolling()
   },
   beforeDestroy () {
@@ -66,11 +65,36 @@ export default {
     }
   },
   methods: {
+    scroll2TopLine (toUid, dg = 0) {
+      if (toUid) {
+        if (this.$refs && this.$refs.viewarea && this.$refs.lines && dg > 2) {
+          if (this.$refs.lines.some((line) => {
+            if (line.dataset && line.dataset.uid) {
+              let uId = parseInt(line.dataset.uid)
+              let aU = this.element.bodyObj.data.u.list[uId]
+              if (aU && aU.uId === toUid) {
+                this.$refs.viewarea.scrollTop = line.offsetTop + 5
+                return true
+              }
+            }
+          })) {
+            this.scrolling()
+            return true
+          }
+        }
+        if (dg < 6) {
+          this.$nextTick(() => {
+            this.scroll2TopLine(toUid, dg + 1)
+          })
+        }
+      }
+    },
     scrolling () {
       if (this.$refs && this.$refs.viewarea && this.$refs.lines) {
         let vT = this.$refs.viewarea.scrollTop
         let vH = this.$refs.viewarea.clientHeight
         this.inView = []
+        let i = 0
         this.$refs.lines.forEach((line) => {
           let aH = line.offsetHeight || 0
           let aT = line.offsetTop
@@ -85,16 +109,39 @@ export default {
                 aU[this.type] = renderer.renderUtterance(aU.obj, this.element.bodyObj.xmlObj, this.type, this.mainData.search.highlights)
               }
               this.inView.push(uId)
+              i += 1
             }
           }
         })
+        if (this.inView[1]) {
+          this.element.aTopLineUId = this.element.bodyObj.data.u.list[this.inView[0]].uId
+        }
       }
     }
   },
   watch: {
-    'element.id' () {
-      this.lastElement = this.element
+    'mainData.views.voice': {
+      deep: true,
+      handler() {
+        this.scrolling()
+      }
+    },
+    'mainData.search.lastValue' () {
       this.scrolling()
+    },
+    'mainData.search.loading' (nv) {
+      if (!nv) {
+        this.scrolling()
+      }
+    },
+    'type' () {
+      this.scrolling()
+    },
+    'element.id' () {
+      this.$nextTick(() => {
+        this.scroll2TopLine(this.element.aTopLineUId)
+        this.scrolling()
+      })
     },
   },
   components: {

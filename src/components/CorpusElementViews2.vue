@@ -6,11 +6,11 @@
       <div class="d-flex line-frm" ref="lines"
         :data-uid="aIdx"
         :key="'u' + element.id + 'l' + aIdx"
-        :style="'min-height:' + aLine.posHeight + 'px;'"
+        :style="'min-height:' + aLine[type + 'Height'] + 'px;'"
       >
         <div class="line-nr" v-if="show_utI">{{ aIdx + 1 }}</div>
         <div class="line-speaker" v-if="show_sId">{{ aLine.speaker }}</div>
-        <div v-if="inView.indexOf(aIdx) > - 1" v-html="aLine.pos"></div>
+        <div v-if="inView.indexOf(aIdx) > - 1" v-html="aLine[type]" :class="classes"></div>
         <div v-else>{{ aLine.obj.text }}</div>
       </div>
       <div class="line-gap" ref="lines" :key="'u' + element.id + 'lg' + aIdx" v-if="show_gap && aLine.gap">
@@ -29,7 +29,8 @@ export default {
   props: {
     'mainData': Object,
     'element': Object,
-    'view': String
+    'view': String,
+    'type': String
   },
   data: () => ({
     inView: [],
@@ -52,6 +53,17 @@ export default {
     show_gap () {
       return this.view !== 'voice' || this.mainData.views.voice.gap.val
     },
+    classes () {
+      let aClasses = 'line-con typ-' + this.type
+      if (this.type === 'voice') {
+        Object.keys(this.mainData.views.voice).forEach(vo => {
+          if (this.mainData.views.voice[vo].val) {
+            aClasses += ' s-' + vo.toLowerCase()
+          }
+        })
+      }
+      return aClasses
+    }
   },
   methods: {
     scrolling () {
@@ -66,11 +78,11 @@ export default {
             if (line.dataset && line.dataset.uid) {
               let uId = parseInt(line.dataset.uid)
               let aU = this.element.bodyObj.data.u.list[uId]
-              if (aU.posHeight !== aH) {
-                aU.posHeight = aH
+              if (aU[this.type + 'Height'] !== aH) {
+                aU[this.type + 'Height'] = aH
               }
-              if (!aU.pos) {
-                aU.pos = renderer.renderUtterance(aU.obj, this.element.bodyObj.xmlObj, 'plain', this.mainData.search.highlights)
+              if (!aU[this.type]) {
+                aU[this.type] = renderer.renderUtterance(aU.obj, this.element.bodyObj.xmlObj, this.type, this.mainData.search.highlights)
               }
               this.inView.push(uId)
             }
@@ -122,5 +134,166 @@ export default {
 .line-speaker {
   min-width: 4rem;
   font-weight: bold;
+}
+
+.line-con >>> .highlight {
+  background: #ff0;
+}
+.line-con >>> .tag-parsererror {
+  color: #d00;
+  font-weight: bold;
+}
+
+/*********/
+/* Voice */
+/*********/
+.line-con.typ-voice >>> .fx-overlap,
+.line-con.typ-voice >>> .type-overlap {
+  color: blue;
+}
+.line-con.typ-voice:not(.s-ot) >>> .fx-overlap {
+  display: none;
+}
+
+.line-con.typ-voice >>> .tag-pause {
+  color: brown;
+}
+.line-con.typ-voice:not(.s-p) >>> .tag-pause {
+  display: none;
+}
+
+.line-con.typ-voice >>> .tag-incident {
+  color: #808080;
+}
+.line-con.typ-voice:not(.s-ce) >>> .tag-incident {
+  display: none;
+}
+
+.line-con.typ-voice >>> .tag-shift {
+  color: #AA0066;
+}
+.line-con.typ-voice:not(.s-sm) >>> .tag-shift:not(.new-laugh):not(.neutral-laugh) {
+  display: none;
+}
+
+.line-con.typ-voice:not(.s-smls) >>> .new-laugh,
+.line-con.typ-voice:not(.s-smls) >>> .neutral-laugh {
+  display: none;
+}
+
+.line-con.typ-voice >>> .tag-vocal {
+  color: #AA0066;
+}
+.line-con.typ-voice:not(.s-vsn) >>> .tag-vocal:not(.voice-desc-laughing) {
+  display: none;
+}
+
+.line-con.typ-voice:not(.s-vsnl) >>> .tag-vocal.voice-desc-laughing {
+  display: none;
+}
+
+.line-con.typ-voice >>> .fx-spel {
+  color: #AA0066;
+}
+.line-con.typ-voice:not(.s-spl) >>> .fx-spel {
+  display: none;
+}
+
+.line-con.typ-voice >>> .tag-foreign.type-LN, .line-con.typ-voice >>> .tag-foreign.type-L1, .line-con.typ-voice >>> .tag-foreign.type-LQ {
+  color: #b13610;
+}
+
+.line-con.typ-voice:not(.s-flat) >>> .fx-foreign {
+  display: none;
+}
+.line-con.typ-voice:not(.s-flat) >>> .fx-foreign-t {
+  display: none;
+}
+
+.line-con.typ-voice:not(.s-oc) >>> .fx-other-continuation {
+  display: none;
+}
+
+.line-con.typ-voice >>> .tag-supplied.reason-unintelligible {
+  color: #00978E;
+}
+.line-con.typ-voice:not(.s-uit) >>> .fx-unintelligible-tag {
+  display: none;
+}
+
+.line-con.typ-voice >>> .fx-ono {
+  color: #61DDD2;
+}
+.line-con.typ-voice:not(.s-ono) >>> .fx-ono {
+  display: none;
+}
+
+.line-con.typ-voice >>> .fx-pvct {
+  color: #61DDD2;
+}
+.line-con.typ-voice:not(.s-pvct) >>> .fx-pvct {
+  display: none;
+}
+
+.line-con.typ-voice >>> .fx-ipa {
+  color: #61DDD2;
+}
+
+.line-con.typ-voice >>> .tag-emph {
+  text-transform: uppercase;
+}
+
+.line-con.typ-voice >>> .type-other_continuation {
+  color: #8700C1;
+}
+
+.line-con.typ-voice:not(.s-ut) >>> .tag-unclear {
+  text-transform: lowercase;
+}
+.line-con.typ-voice:not(.s-ut) >>> .fx-unclear {
+  display: none;
+}
+
+.line-con.typ-voice:not(.s-lie) >>> .type-lengthening,
+.line-con.typ-voice:not(.s-lie) >>> .type-intonation,
+.line-con.typ-voice:not(.s-lie) >>> .tag-emph {
+  display: none;
+}
+
+/*********/
+/* Plain */
+/*********/
+.line-con.typ-plain >>> .has-n {
+  color: #00f;
+}
+
+/*******/
+/* Pos */
+/*******/
+
+/*******/
+/* XML */
+/*******/
+
+.line-con.typ-xml-view {
+  font-family: Consolas, "Courier New", monospace;
+  white-space: pre-wrap;
+  position: relative;
+  border-top: 1px solid #bbb;
+}
+.line-con.typ-xml-view >>> .tc {
+  color: mediumblue;
+}
+.line-con.typ-xml-view >>> .tnc {
+  color: brown;
+}
+.line-con.typ-xml-view >>> .ac {
+  color: red;
+}
+.line-con.typ-xml-view >>> .avc {
+  color: mediumblue;
+}
+.line-con.typ-xml-view >>> .cc {
+  color: green;
 }
 </style>

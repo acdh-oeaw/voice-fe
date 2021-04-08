@@ -6,11 +6,11 @@
       <div class="d-flex line-frm" ref="lines"
         :data-uid="aIdx"
         :key="'u' + element.id + 'l' + aIdx"
-        :style="inView.indexOf(aIdx) === - 1 ? 'min-height:' + aLine[type + 'Height'] + 'px;' : null"
+        :style="inView.indexOf(aIdx) === - 1 ? 'min-height:' + aLine[view + 'Height'] + 'px;' : null"
       >
         <div class="line-nr" v-if="show_utI">{{ aIdx + 1 }}</div>
         <div class="line-speaker" v-if="show_sId">{{ aLine.speaker }}</div>
-        <div v-if="inView.indexOf(aIdx) > - 1" v-html="aLine[type]" :class="classes"></div>
+        <div v-if="inView.indexOf(aIdx) > - 1" v-html="aLine[view]" :class="classes"></div>
         <div v-else>{{ aLine.obj.text }}</div>
       </div>
       <div class="line-gap" ref="lines" :key="'u' + element.id + 'lg' + aIdx" v-if="show_gap && aLine.gap">
@@ -21,7 +21,6 @@
 </template>
 
 <script>
-import RenderLine from './RenderLine';
 import renderer from '../functions/Renderer'
 
 export default {
@@ -29,8 +28,7 @@ export default {
   props: {
     'mainData': Object,
     'element': Object,
-    'view': String,
-    'type': String
+    'view': String
   },
   data: () => ({
     inView: []
@@ -53,8 +51,8 @@ export default {
       return this.view !== 'voice' || this.mainData.views.voice.gap.val
     },
     classes () {
-      let aClasses = 'line-con typ-' + this.type
-      if (this.type === 'voice') {
+      let aClasses = 'line-con typ-' + this.view
+      if (this.view === 'voice') {
         Object.keys(this.mainData.views.voice).forEach(vo => {
           if (this.mainData.views.voice[vo].val) {
             aClasses += ' s-' + vo.toLowerCase()
@@ -94,7 +92,6 @@ export default {
         let vT = this.$refs.viewarea.scrollTop
         let vH = this.$refs.viewarea.clientHeight
         this.inView = []
-        let i = 0
         this.$refs.lines.forEach((line) => {
           let aH = line.offsetHeight || 0
           let aT = line.offsetTop
@@ -102,14 +99,13 @@ export default {
             if (line.dataset && line.dataset.uid) {
               let uId = parseInt(line.dataset.uid)
               let aU = this.element.bodyObj.data.u.list[uId]
-              if (aU[this.type + 'Height'] !== aH) {
-                aU[this.type + 'Height'] = aH
+              if (aU[this.view + 'Height'] !== aH) {
+                aU[this.view + 'Height'] = aH
               }
-              if (!aU[this.type]) {
-                aU[this.type] = renderer.renderUtterance(aU.obj, this.element.bodyObj.xmlObj, this.type, this.mainData.search.highlights)
+              if (!aU[this.view]) {
+                aU[this.view] = renderer.renderUtterance(aU.obj, this.element.bodyObj.xmlObj, this.view, this.mainData.search.highlights)
               }
               this.inView.push(uId)
-              i += 1
             }
           }
         })
@@ -134,7 +130,7 @@ export default {
         this.scrolling()
       }
     },
-    'type' () {
+    'view' () {
       this.scrolling()
     },
     'element.id' () {
@@ -145,7 +141,6 @@ export default {
     },
   },
   components: {
-    RenderLine
   }
 }
 </script>

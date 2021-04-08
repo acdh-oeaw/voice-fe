@@ -121,14 +121,13 @@ export default {
         })
       })
     },
-    deepSeal(o) {
+    deepSeal (o) {
       const self = this
       Object.seal(o)
       Object.preventExtensions(o)
       if (o === undefined) {
         return o
       }
-
       Object.getOwnPropertyNames(o).forEach(function (prop) {
         if (
           o[prop] !== null &&
@@ -138,7 +137,6 @@ export default {
           self.deepSeal(o[prop])
         }
       })
-
       return o
     },
   },

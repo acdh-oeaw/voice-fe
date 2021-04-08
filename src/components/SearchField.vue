@@ -74,7 +74,8 @@ export default {
                 this.mainData.search.results = response.data;
                 if (
                   this.mainData.search.results &&
-                  this.mainData.search.results.u
+                  this.mainData.search.results.u &&
+                  this.mainData.search.results.u.length > 0
                 ) {
                   let highlights = new Map()
                   this.mainData.search.highlights.forEach((v, k) => {highlights.set(k, v)})
@@ -89,8 +90,13 @@ export default {
                   Object.seal(highlights)
                   Object.preventExtensions(highlights)
                   this.mainData.search.highlights = highlights
+                } else {
+                  this.$matomo && this.$matomo.trackSiteSearch(this.mainData.search.value, 'search no response data', 0)
                 }
                 this.mainData.search.searched = true;
+                this.$matomo && this.$matomo.trackSiteSearch(this.mainData.search.value, 'search success', this.mainData.search.results.hits)
+              } else {
+                this.$matomo && this.$matomo.trackSiteSearch(this.mainData.search.value, 'search no response data', 0)
               }
               this.mainData.search.scrollPos = 0;
               this.mainData.search.loading = false;
@@ -98,7 +104,14 @@ export default {
             })
             .catch((err) => {
               console.log(err);
+              this.mainData.search.results = {}
+              this.mainData.search.results.xmlStatus = err.body ? err.body.xmlStatus : undefined
+              if (this.mainData.search.results.xmlStatus && err.body && err.body.error) {
+                this.mainData.search.results.xmlStatus.errors.push(err.body.error)
+                this.mainData.search.results.query = this.mainData.search.value
+              } 
               this.mainData.search.loading = false;
+              this.$matomo && this.$matomo.trackSiteSearch(this.mainData.search.value, 'search error', 0)
             });
         }
       }

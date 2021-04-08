@@ -6,12 +6,9 @@
         <div v-if="mainData.search.loading">
           loading ...
         </div>
-        <div v-else-if="!mainData.search.searched">
-          Noch keine Suche durchgeführt ...
-        </div>
-        <div v-else-if="mainData.search.results">
+        <div v-else-if="mainData.search.results && mainData.search.results.query">
           <div>query: {{ mainData.search.results.query }}</div>
-          <div>cql: {{ mainData.search.results.cql }}</div>
+          <div v-if="mainData.search.results.cql">cql: {{ mainData.search.results.cql }}</div>
           <div v-if="mainData.search.results.status">status: {{ mainData.search.results.status }}</div>
           <div>xmlStatus: {{ mainData.search.results.xmlStatus }}</div>
           <div v-if="mainData.search.results.u">
@@ -20,8 +17,8 @@
           <div v-else>
             error
           </div>
-          <div>highlighted tokens: {{ mainData.search.highlights ? mainData.search.highlights.size : 'error' }}</div>
-          <div>
+          <div v-if="mainData.search.highlights && mainData.search.highlights.size > 0">highlighted tokens: {{ mainData.search.highlights.size }}</div>
+          <div v-if="mainData.search.results.u && mainData.search.results.u.length > 0">
             <v-select hide-details
               label="Style"
               :items="['voice', 'plain', 'pos', 'xml']"
@@ -51,6 +48,9 @@
               <b>Weitere Ergebnisse ausgeblendet ... (ToDo)</b>
             </div>
           </div>
+        </div>
+        <div v-else-if="!mainData.search.searched">
+          Noch keine Suche durchgeführt ...
         </div>
       </div>
     </div>

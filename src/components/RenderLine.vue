@@ -3,7 +3,7 @@
 </template>
 
 <script>
-import CorpusElementXml from './CorpusElementXml';
+import renderer from '../functions/Renderer'
 
 export default {
   name: 'RenderLine',
@@ -72,7 +72,7 @@ export default {
           if (lS > 0) {
             aXml = aXml.map((l, i) => i > 0 ? l.substring(lS) : l)
           }
-          aTxt = CorpusElementXml.methods.w3CodeColor(aXml.join('\n'))
+          aTxt = renderer.w3CodeColor(aXml.join('\n'))
         } else {
         domArray.forEach((elm, idx, domArray) => {
           if (elm.nodeType === 1) { // ELEMENT_NODE

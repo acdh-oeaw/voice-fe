@@ -137,6 +137,7 @@ export default {
             this.lastParsedLine = i
           }
           const ret = {
+            uId: aU.uId,
             xml: aU.xml,
             uObj,
             voice: null,
@@ -146,7 +147,7 @@ export default {
             pos: null,
             posHeight: 24,
             'xml-view': null,
-            'xml-viewHeight': 24
+            'xml-viewHeight': 300
           }
           Object.seal(ret)
           Object.preventExtensions(ret)
@@ -163,9 +164,49 @@ export default {
     },
     loadNext () {
       if (!this.loadingNext) {
-        console.log('loadNext')
-        this.loadingNext = true
-        // ToDo: Load next 50 entries
+        let loadList = this.filteredSearchResults.slice(this.lastParsedLine + 1, this.lastParsedLine + 101).map(u => u.uId)
+        if (loadList.length > 0) {
+          this.loadingNext = true
+          this.$http
+            .get(this.mainData.apiUrl + 'xml/*/uid/' + loadList.join(';'))
+            .then((response) => {
+              if (response.data && response.data.u) {
+                response.data.u.forEach(aU => {
+                  let xolObj = null
+                  this.xmlObjLines.some(xol => {
+                    if (xol.uId === aU.uId) {
+                      xolObj = xol
+                      return true
+                    }
+                  })
+                  if (xolObj) {
+                    if (typeof aU.xml === 'string' && aU.xml.length > 5) {
+                      let uObj = {
+                        loading: true,
+                        obj: {},
+                        list: []
+                      }
+                      this.mainData.corpus.saxParserFunc.parseIt(aU.xml, null, null, uObj)
+                      this.deepSeal(uObj)
+                      xolObj.xml = aU.xml
+                      Object.seal(xolObj.xml)
+                      Object.preventExtensions(xolObj.xml)
+                      xolObj.uObj = uObj
+                    }
+                  }
+                })
+              }
+              this.lastParsedLine += 100
+              this.$nextTick(() => {
+                this.scrolling()
+                this.loadingNext = false
+              })
+            })
+            .catch((err) => {
+              console.log(err)
+              this.loadingNext = false
+            })
+        }
       }
     },
     deepSeal (o) {
@@ -238,6 +279,14 @@ export default {
   font-size: xx-small;
   display: inline-block;
   text-align: center;
+}
+
+.line-con >>> .highlight {
+  background: #ff0;
+}
+.line-con >>> .tag-parsererror {
+  color: #d00;
+  font-weight: bold;
 }
 
 /*********/

@@ -33,7 +33,8 @@ const localFunctions = {
         foundXmlId: [],
         view: {
           type: 'voice'
-        }
+        },
+        now: false
       },
       corpus: {
         selectedElement: null,

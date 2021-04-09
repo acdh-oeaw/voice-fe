@@ -74,7 +74,6 @@ export default {
           this.scroll2TopLine(this.mainData.corpus.goToUtterance, 0, 150)
           this.$nextTick(() => {
             _.debounce(() => {
-              console.log('xxx', this.mainData.corpus.goToUtterance)
               this.mainData.corpus.goToUtterance = null
             }, 100)()
           })

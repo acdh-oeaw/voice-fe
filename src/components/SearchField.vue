@@ -30,8 +30,16 @@ export default {
   data: () => ({
     dev: process.env.NODE_ENV === "development",
   }),
-  mounted() {},
+  mounted() {
+    this.searchNowTest()
+  },
   methods: {
+    searchNowTest () {
+      if (this.mainData.search.now) {
+        this.mainData.search.now = false
+        this.search(false)
+      }
+    },
     search(clear = false) {
       const self = this
       if (clear) {
@@ -140,6 +148,11 @@ export default {
       return o
     },
   },
+  watch: {
+    'mainData.search.now' () {
+      this.searchNowTest()
+    }
+  }
 }
 </script>
 

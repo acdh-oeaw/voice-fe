@@ -3,10 +3,11 @@
     <template
       v-for="(aLine, aIdx) in element.bodyObj.data.u.list"
     >
-      <div class="d-flex line-frm" ref="lines"
+      <div ref="lines"
         :data-uid="aIdx"
         :key="'u' + element.id + 'l' + aIdx"
-        :style="inView.indexOf(aIdx) === - 1 ? 'min-height:' + aLine[view + 'Height'] + 'px;' : null"
+        :style="inView.indexOf(aIdx) === -1 ? 'min-height:' + aLine[view + 'Height'] + 'px;' : null"
+        :class="'d-flex line-frm' + (mainData.corpus.goToUtterance === aLine.uId ? ' jump' : '')"
       >
         <div class="line-nr" v-if="show_utI">{{ aIdx + 1 }}</div>
         <div class="line-speaker" v-if="show_sId">{{ aLine.speaker }}</div>
@@ -22,6 +23,7 @@
 
 <script>
 import renderer from '../functions/Renderer'
+var _ = require('lodash')
 
 export default {
   name: 'CorpusElementViews',
@@ -37,6 +39,7 @@ export default {
     console.log('CorpusElementViews', this.element)
     this.scroll2TopLine(this.element.aTopLineUId)
     this.scrolling()
+    this.goToUtterance()
   },
   beforeDestroy () {
   },
@@ -63,7 +66,22 @@ export default {
     }
   },
   methods: {
-    scroll2TopLine (toUid, dg = 0) {
+    goToUtterance () {
+      if (this.mainData.corpus.goToUtterance) {
+        let eId = this.mainData.corpus.goToUtterance.split('_')[0]
+        if (eId === this.element.id) {
+          // console.log('goToUtterance', this.element.id, this.mainData.corpus.goToUtterance)
+          this.scroll2TopLine(this.mainData.corpus.goToUtterance, 0, 150)
+          this.$nextTick(() => {
+            _.debounce(() => {
+              console.log('xxx', this.mainData.corpus.goToUtterance)
+              this.mainData.corpus.goToUtterance = null
+            }, 100)()
+          })
+        }
+      }
+    },
+    scroll2TopLine (toUid, dg = 0, add2Top = 0) {
       if (toUid) {
         if (this.$refs && this.$refs.viewarea && this.$refs.lines && dg > 2) {
           if (this.$refs.lines.some((line) => {
@@ -71,7 +89,7 @@ export default {
               let uId = parseInt(line.dataset.uid)
               let aU = this.element.bodyObj.data.u.list[uId]
               if (aU && aU.uId === toUid) {
-                this.$refs.viewarea.scrollTop = line.offsetTop + 5
+                this.$refs.viewarea.scrollTop = line.offsetTop + 5 - add2Top
                 return true
               }
             }
@@ -82,7 +100,7 @@ export default {
         }
         if (dg < 6) {
           this.$nextTick(() => {
-            this.scroll2TopLine(toUid, dg + 1)
+            this.scroll2TopLine(toUid, dg + 1, add2Top)
           })
         }
       }
@@ -116,6 +134,9 @@ export default {
     }
   },
   watch: {
+    'mainData.corpus.goToUtterance' () {
+      this.goToUtterance()
+    },
     'mainData.views.voice': {
       deep: true,
       handler() {
@@ -163,6 +184,11 @@ export default {
 .line-frm {
   border-top: 1px solid #ddd;
   padding: 2px 0.5rem;
+  transition: background-color 3s;
+}
+.line-frm.jump {
+  background-color: #eef;
+  transition: background-color 0s;
 }
 .line-gap {
   color: #222;

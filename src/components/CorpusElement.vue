@@ -21,6 +21,9 @@
         </div>
         <div v-else>
           <CorpusElementViews :view="vTab" :element="aElement" :mainData="mainData" :type="vTab" v-if="aElement && aElement.xml" />
+          <div class="pa-4" v-else>
+            Loading ...
+          </div>
         </div>
       </div>
     </div>
@@ -149,6 +152,11 @@ export default {
     },
     vTab () {
       this.loadElementData()
+    },
+    'mainData.corpus.goToUtterance' (uId) {
+      if (uId && ['voice', 'plain', 'pos'].indexOf(this.vTab) === -1) {
+        this.vTab = 'voice'
+      }
     }
   },
   components: {

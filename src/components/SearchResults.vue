@@ -28,7 +28,7 @@
               v-model="mainData.search.view.type"
             ></v-select>
           </div>
-          <SearchResultsView :mainData="mainData" :view="mainData.search.view.type" :filteredSearchResults="filteredSearchResults" :scrollerRef="$refs.viewarea" />
+          <SearchResultsView @goToUtterance="goToUtterance" :mainData="mainData" :view="mainData.search.view.type" :filteredSearchResults="filteredSearchResults" :scrollerRef="$refs.viewarea" />
         </div>
       </div>
     </div>
@@ -70,9 +70,14 @@ export default {
     }
   },
   methods: {
-    openDocument (xmlId) {
-      console.log('openDocument', xmlId)
+    goToUtterance (u) {
+      let xmlId = u.split('_')[0]
+      this.openDocument(xmlId, u)
+    },
+    openDocument (xmlId, uId = null) {
+      console.log('openDocument', xmlId, uId)
       this.mainData.corpus.selectedElement = xmlId
+      this.mainData.corpus.goToUtterance = uId
       if (xmlId) {
         this.mainData.options.singleView = 'corpus'
         if (this.mainData.corpus.elements.filter(e => e.id === xmlId).length === 0) {

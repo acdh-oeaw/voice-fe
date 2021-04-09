@@ -10,7 +10,7 @@
           {{ uObj.xmlId }}
         </div>
         <div :class="'d-flex' + (mainData.search.view.type === 'xml-view' ? ' flex-wrap' : '')" v-if="xmlObjLines">
-          <div class="line-uid" v-if="show_utI">{{ uObj.uId.split('_')[0] + ':' + uObj.uId.split('_')[2] }} <span class="u-hits">Hits:<br/>{{uObj.hits}}</span></div>
+          <div class="line-uid" v-if="show_utI"><button @click="goToUtterance(uObj.uId)" class="c-uid">{{ uObj.uId.split('_')[0] + ':' + uObj.uId.split('_')[2] }}</button> <span class="u-hits">Hits:<br/>{{uObj.hits}}</span></div>
           <template v-if="!xmlObjLines[uObj.idx].uObj.loading">
             <div class="line-speaker" v-if="xmlObjLines[uObj.idx].uObj.obj.attributes && xmlObjLines[uObj.idx].uObj.obj.attributes.who">{{ xmlObjLines[uObj.idx].uObj.obj.attributes.who.split('_').slice(-1)[0] }}</div>
             <div class="flex-break" v-if="mainData.search.view.type === 'xml-view'"></div>
@@ -54,7 +54,9 @@ export default {
     }
   },
   beforeDestroy () {
-    this.scrollerRef.removeEventListener('scroll', this.scrolling)
+    if (this.scrollerRef) {
+      this.scrollerRef.removeEventListener('scroll', this.scrolling)
+    }
   },
   computed: {
     searchResultsU () {
@@ -76,6 +78,9 @@ export default {
     }
   },
   methods: {
+    goToUtterance (u) {
+      this.$emit('goToUtterance', u)
+    },
     scrolling () {
       if (this.scrollerRef) {
         let vT = this.scrollerRef.scrollTop
@@ -264,6 +269,12 @@ export default {
 }
 .line-uid {
   min-width: 8.5rem;
+}
+.c-uid {
+  cursor: pointer;
+}
+.c-uid:hover, .c-uid:focus {
+  background: #eef;
 }
 .line-speaker {
   min-width: 4rem;

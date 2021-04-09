@@ -37,6 +37,7 @@ const localFunctions = {
       },
       corpus: {
         selectedElement: null,
+        goToUtterance: null,
         showCorpusHeader: false,
         elements: [
         ],

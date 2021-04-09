@@ -2,6 +2,12 @@
   <div class="flex-grow-1 d-flex flex-column">
     <div class="scroll-content flex-grow-1">
       <div ref="viewarea" class="px-3 py-2">
+        <template v-for="(err, i) in mainData.search.errors">
+          <v-alert prominent type="error" dismissible :key="'err' + i">
+            <b>Error</b> ({{ err.status }}): <b>{{ err.txt }}</b><br>
+            Query: {{ err.q }}
+          </v-alert>
+        </template>
         <div class="mb-2">Search Results - "{{ mainData.search.value }}" - Filter: {{ mainData.app.filterActive }}</div>
         <div v-if="mainData.search.loading">
           loading ...
@@ -10,6 +16,12 @@
           Noch keine Suche durchgeführt ...
         </div>
         <div v-else-if="mainData.search.results">
+          <v-alert prominent type="warning" dismissible v-if="mainData.search.results.hits === 0">
+            Nothing found
+          </v-alert>
+          <v-alert prominent type="warning" dismissible v-else-if="filteredHits === 0">
+            Nothing found with actual filter. (Without filter: {{ mainData.search.results.hits }} Hits)
+          </v-alert>
           <div>query: {{ mainData.search.results.query }}</div>
           <div>cql: {{ mainData.search.results.cql }}</div>
           <div v-if="mainData.search.results.status">status: {{ mainData.search.results.status }}</div>

@@ -34,6 +34,7 @@ const localFunctions = {
         view: {
           type: 'voice'
         },
+        errors: [],
         now: false
       },
       corpus: {

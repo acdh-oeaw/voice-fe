@@ -209,6 +209,7 @@ export default {
             })
             .catch((err) => {
               console.log(err)
+              this.mainData.search.errors.push({ status: err.status, txt: err.body.error, q: err.body.query })
               this.loadingNext = false
             })
         }

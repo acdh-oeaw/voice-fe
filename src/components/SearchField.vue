@@ -48,6 +48,7 @@ export default {
         this.refreshHighlighting()
       }
       this.mainData.options.singleView = 'search'
+      this.mainData.search.errors = []
       if (
         !this.mainData.search.loading &&
         (this.mainData.search.lastValue !== this.mainData.search.value ||
@@ -110,6 +111,7 @@ export default {
             })
             .catch((err) => {
               console.log(err)
+              this.mainData.search.errors.push({ status: err.status, txt: err.body.error, q: err.body.query })
               this.mainData.search.loading = false
             })
         }

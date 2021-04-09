@@ -12,7 +12,7 @@ context('isLoading', () => {
     it('type search', () => {
       cy.get('input[type=text]')
         .type('translation')
-      cy.get('a')
+      cy.get('button')
         .contains('Search')
         .click()
       cy.get('img.logo-small')

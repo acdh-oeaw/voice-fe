@@ -11,8 +11,8 @@
       >
         <div class="line-nr" v-if="show_utI">{{ aIdx + 1 }}</div>
         <div class="line-speaker" v-if="show_sId">{{ aLine.speaker }}</div>
-        <div v-if="inView.indexOf(aIdx) > - 1" v-html="aLine[view]" :class="classes"></div>
-        <div v-else>{{ aLine.obj.text }}</div>
+        <div v-if="inView.indexOf(aIdx) > - 1" v-html="aLine[view]" :class="classes" data-testid="lineContent"></div>
+        <div v-else data-testid="lineContent">{{ aLine.obj.text }}</div>
       </div>
       <div class="line-gap" ref="lines" :key="'u' + element.id + 'lg' + aIdx" v-if="show_gap && aLine.gap">
         {{ aLine.gap }}

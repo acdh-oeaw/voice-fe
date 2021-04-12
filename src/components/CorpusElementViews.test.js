@@ -1,14 +1,38 @@
 /* eslint-disable no-undef */
 import { render, fireEvent, within } from '@testing-library/vue'
-import Mustache from 'mustache'
-import RenderLine from './RenderLine.vue'
+import parser from '../functions/SaxParser'
+import CorpusElementViews from './CorpusElementViews.vue'
 
-test('render a line', async () => {
-   const { getByTestId } = render(RenderLine)
-   expect(getByTestId('lineContent')).toBeEmptyDOMElement()
+test('render a view', async () => {
+   const { getByTestId } = render(CorpusElementViews, {
+    props: {
+        element: {
+            aTopLineUId: 'testid',
+            id: '',
+            bodyObj: {
+                data: {u: {list: [{
+                    uId: 'testid',
+                    obj: {}
+                }]}},
+                xmlObj: {}
+            },
+        },
+        view: 'voice',
+        mainData: {
+            corpus: {},
+            views: {voice: {
+            utI: {val: 'testid'},
+            sId: {val: 'testspeaker'},
+            gap: {val: false},
+            }},
+            search: {highlights: []}
+        }
+    }
+})
+   expect(getByTestId('lineContent')).toContainHTML('<div data-testid="lineContent" />')
 })
 
-test('render a line <u><w>test</w></u>', async () => {
+test('render a view <u><w>test</w></u>', async () => {
     const { getByTestId /*, debug*/ } = renderUtterance('<u><w>test</w></u>')
     // debug()
     const line = getByTestId('lineContent')
@@ -19,7 +43,7 @@ test('render a line <u><w>test</w></u>', async () => {
     expect(line).toContainHTML('<span class="tag-w">test</span>')
 })
 
-test('render a line <u><w part="I">te</w><emph><w part="F">st</w></emph><w>next</w></u>', async () => {
+test('render a view <u><w part="I">te</w><emph><w part="F">st</w></emph><w>next</w></u>', async () => {
     const { getByTestId /*, debug*/ } = renderUtterance('<u><w part="I">te</w><emph><w part="F">st</w></emph><w>next</w></u>')
     // debug()
     const line = getByTestId('lineContent')
@@ -32,7 +56,7 @@ test('render a line <u><w part="I">te</w><emph><w part="F">st</w></emph><w>next<
     expect(line).toContainHTML('<span class="tag-w">te</span><span class="tag-emph"><span class="tag-w">st</span></span> <span class="tag-w">next</span>')
 })
 
-test('render a line <u><w>before</w><emph><w part="I">re</w></emph><w part="F">integration<c function="fall" type="intonation"/></w><w>next</w></u>', async () => {
+test('render a view <u><w>before</w><emph><w part="I">re</w></emph><w part="F">integration<c function="fall" type="intonation"/></w><w>next</w></u>', async () => {
     const { getByTestId /*, debug*/ } = renderUtterance('<u><w>before</w><emph><w part="I">re</w></emph><w part="F">integration<c function="fall" type="intonation"/></w><w>next</w></u>')
     // debug()
     const line = getByTestId('lineContent')
@@ -45,24 +69,32 @@ test('render a line <u><w>before</w><emph><w part="I">re</w></emph><w part="F">i
     expect(line).toContainHTML('<span class="tag-w">before</span> <span class="tag-emph"><span class="tag-w">re</span></span><span class="tag-w">integration<span class="tag-c type-intonation">.</span></span> <span class="tag-w">next</span>')
 })
 
-const TEIWrapper = `<TEI xmlns="http://www.tei-c.org/ns/1.0"
-      xmlns:voice="http://www.univie.ac.at/voice/ns/1.0"
-      xmlns:xi="http://www.w3.org/2001/XInclude"
-      version="5">
-      {{{testXml}}}
-</TEI>`
-
-Mustache.parse(TEIWrapper)
-
 function renderUtterance(utteranceXML) {
-    const xmlFixture = Mustache.render(TEIWrapper, {testXml: utteranceXML})
-    return render(RenderLine, {
+    const parsed = {}
+    parser.parseIt(utteranceXML, null, null, parsed)
+    return render(CorpusElementViews, {
         props: {
-            xmlObjLine: {
-                dom: (new DOMParser()).parseFromString(xmlFixture, "application/xml").getElementsByTagName('u')[0]
+            element: {
+                aTopLineUId: 'testid',
+                id: '',
+                bodyObj: {
+                    data: {u: {list: [{
+                        uId: 'testid',
+                        ...parsed
+                    }]}},
+                    xmlObj: parsed
+                },
             },
-            type: 'voice',
-            mainData: {views: {voice: [] }}
+            view: 'voice',
+            mainData: {
+                corpus: {},
+                views: {voice: {
+                utI: {val: 'testid'},
+                sId: {val: 'testspeaker'},
+                gap: {val: false},
+                }},
+                search: {highlights: []}
+            }
         }
     })
 }

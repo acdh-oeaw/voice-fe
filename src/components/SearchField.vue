@@ -30,14 +30,25 @@ export default {
   data: () => ({
     dev: process.env.NODE_ENV === "development",
   }),
-  mounted() {},
+  mounted() {
+    this.searchNowTest()
+  },
   methods: {
+    searchNowTest () {
+      if (this.mainData.search.now) {
+        this.mainData.search.now = false
+        this.search(false)
+      }
+    },
     search(clear = false) {
       const self = this
       if (clear) {
-        this.mainData.search.value = "";
+        this.mainData.search.value = ''
+        this.mainData.search.lastValue = ''
+        this.refreshHighlighting()
       }
-      this.mainData.options.singleView = "search";
+      this.mainData.options.singleView = 'search'
+      this.mainData.search.errors = []
       if (
         !this.mainData.search.loading &&
         (this.mainData.search.lastValue !== this.mainData.search.value ||
@@ -48,15 +59,16 @@ export default {
         Object.seal(highlights)
         Object.preventExtensions(highlights)
         this.mainData.search.highlights = highlights
+        this.refreshHighlighting()
         this.mainData.search.foundXmlId = []
         this.mainData.search.lastValue = this.mainData.search.value
         if (
           this.mainData.search.value &&
           this.mainData.search.value.length > 0
         ) {
-          this.mainData.search.loading = true;
+          this.mainData.search.loading = true
           this.$http
-            .get(this.mainData.apiUrl + "search/", {
+            .get(this.mainData.apiUrl + 'search/', {
               params: { q: this.mainData.search.value },
             })
             .then((response) => {
@@ -71,7 +83,7 @@ export default {
                   aU.idx = aI
                 })
                 self.deepSeal(response.data)
-                this.mainData.search.results = response.data;
+                this.mainData.search.results = response.data
                 if (
                   this.mainData.search.results &&
                   this.mainData.search.results.u &&
@@ -84,60 +96,73 @@ export default {
                         aU.highlight.forEach((v, k) => {highlights.set(k, v)})
                     }
                     if (this.mainData.search.foundXmlId.indexOf(aU.xmlId) < 0) {
-                      this.mainData.search.foundXmlId.push(aU.xmlId);
+                      this.mainData.search.foundXmlId.push(aU.xmlId)
                     }
                   })
                   Object.seal(highlights)
                   Object.preventExtensions(highlights)
                   this.mainData.search.highlights = highlights
+                  this.refreshHighlighting()
                 } else {
                   this.$matomo && this.$matomo.trackSiteSearch(this.mainData.search.value, 'search no response data', 0)
                 }
-                this.mainData.search.searched = true;
+                this.mainData.search.searched = true
                 this.$matomo && this.$matomo.trackSiteSearch(this.mainData.search.value, 'search success', this.mainData.search.results.hits)
               } else {
                 this.$matomo && this.$matomo.trackSiteSearch(this.mainData.search.value, 'search no response data', 0)
               }
-              this.mainData.search.scrollPos = 0;
-              this.mainData.search.loading = false;
-              console.log("search", response.data, this.mainData.search);
+              this.mainData.search.scrollPos = 0
+              this.mainData.search.loading = false
+              console.log('search', response.data, this.mainData.search)
             })
             .catch((err) => {
-              console.log(err);
-              this.mainData.search.results = {}
-              this.mainData.search.results.xmlStatus = err.body ? err.body.xmlStatus : undefined
-              if (this.mainData.search.results.xmlStatus && err.body && err.body.error) {
-                this.mainData.search.results.xmlStatus.errors.push(err.body.error)
-                this.mainData.search.results.query = this.mainData.search.value
-              } 
-              this.mainData.search.loading = false;
+              console.log(err)
+              this.mainData.search.errors.push({ status: err.status, txt: err.body.error, q: err.body.query })
               this.$matomo && this.$matomo.trackSiteSearch(this.mainData.search.value, 'search error', 0)
-            });
+              this.mainData.search.loading = false
+            })
         }
       }
     },
-    deepSeal(o) {
+    refreshHighlighting () {
+      console.log('refreshHighlighting', this.mainData.search.highlights, this.mainData, this.mainData.corpus.elements)
+      let views = ['voice', 'plain', 'pos', 'xml-view']
+      this.mainData.corpus.elements.forEach(e => {
+        console.log(e.bodyObj.data.u)
+        e.bodyObj.data.u.list.forEach(u => {
+          views.forEach(v => {
+            if (u[v]) {
+              u[v] = ''
+            }
+          })
+        })
+      })
+    },
+    deepSeal (o) {
       const self = this
-      Object.seal(o);
-      Object.preventExtensions(o);
+      Object.seal(o)
+      Object.preventExtensions(o)
       if (o === undefined) {
-        return o;
+        return o
       }
-
       Object.getOwnPropertyNames(o).forEach(function (prop) {
         if (
           o[prop] !== null &&
-          (typeof o[prop] === "object" || typeof o[prop] === "function") &&
+          (typeof o[prop] === 'object' || typeof o[prop] === 'function') &&
           !Object.isSealed(o[prop])
         ) {
-          self.deepSeal(o[prop]);
+          self.deepSeal(o[prop])
         }
-      });
-
-      return o;
+      })
+      return o
     },
   },
-};
+  watch: {
+    'mainData.search.now' () {
+      this.searchNowTest()
+    }
+  }
+}
 </script>
 
 <style scoped>

@@ -9,8 +9,8 @@
     <div class="text-center py-10 indigo lighten-5">
       <h3 class="text-h5 font-weight-bold">Explore VOICE</h3>
       <div class="d-flex align-center search-frm mt-4">
-        <v-text-field v-model="mainData.search.value" label="Search the VOICE Corpus" class="mr-3"></v-text-field>
-        <v-btn to="/tool" color="indigo darken-4 white--text">Search</v-btn>
+        <v-text-field @keyup.enter.native="search" v-model="mainData.search.value" label="Search the VOICE Corpus" class="mr-3"></v-text-field>
+        <v-btn @click="search" color="indigo darken-4 white--text">Search</v-btn>
       </div>
       or
       <div class="mt-4">
@@ -29,6 +29,14 @@ export default {
   data: () => ({
     publicPath: process.env.BASE_URL
   }),
+  mounted () {
+  },
+  methods: {
+    search () {
+      this.$router.push('/tool')
+      this.mainData.search.now = true
+    }
+  },
 }
 </script>
 

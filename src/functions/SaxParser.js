@@ -63,7 +63,7 @@ const localFunctions = {
     }
     return d
   },
-  parseIt (xml, header = null, body = null) {
+  parseIt (xml, header = null, body = null, singleU = null) {
     let sTime = performance.now()
     let headerStartPosition = 0
     let uStartPosition = 0
@@ -71,7 +71,7 @@ const localFunctions = {
     let headerObj = null
     let bodyObj = null
     let uList = []
-    if (header || body) {
+    if (header || body || singleU) {
       if (header) {
         header.data = {}
       }
@@ -130,7 +130,7 @@ const localFunctions = {
         if (body && o.tag === 'body') {
           bodyObj = aObj
         }
-        if (body && o.tag === 'u') {
+        if ((body || singleU) && o.tag === 'u') {
           aObj.xml = xml.substr(uStartPosition, parser.position - uStartPosition)
           aObj.text = localFunctions.getPlainText(o).trim()
         }
@@ -150,10 +150,10 @@ const localFunctions = {
           tree: [...aTree],
           parent: aObj
         })
-        console.log('onprocessinginstruction', node)
+        // console.log('onprocessinginstruction', node)
       }
       parser.onend = () => {
-        console.log('onend', aObj)
+        // console.log('onend', aObj)
         if (header) {
           header.loading = false
           header.xmlObj = {obj: headerObj, list: aObjList}
@@ -168,7 +168,12 @@ const localFunctions = {
           }
           body.data = parseBody(body.xmlObj)
         }
-        console.log('Sax Parser - parseIt', parseInt(performance.now() - sTime), 'ms', { header, body, xml })
+        if (singleU) {
+          singleU.loading = false
+          singleU.list = aObjList
+          singleU.obj = uList[0]
+        }
+        // console.log('Sax Parser - parseIt', parseInt(performance.now() - sTime), 'ms', { header, body, xml })
       }
       parser.write(xml).close()
     }
@@ -234,7 +239,7 @@ function parseBody (xmlObj) {
     }
     data.u.list.push(u)
   })
-  console.log('parseBody', data)
+  // console.log('parseBody', data)
   return data
 }
 

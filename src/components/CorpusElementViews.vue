@@ -1,26 +1,29 @@
 <template>
   <div ref="viewarea" class="viewarea linescroll" v-on:scroll="scrolling()">
-    <div class="line-viewarea" :style="'height: ' + (height) + 'px;'" v-if="xmlObjLines">
-      <div class="line-viewarea" :style="'top: ' + lineTopPx + 'px;'">
-        <template
-          v-for="(aLine, aIdx) in visibleXmlObjLines"
-        >
-          <div class="d-flex line-frm" :key="'l' + aIdx">
-            <div class="line-nr" v-if="show_utI">{{ lineTop + aIdx + 1 }}</div>
-            <div class="line-speaker" v-if="show_sId">{{ aLine.speaker }}</div>
-            <RenderLine :xmlObjLine="aLine" :type="view" :highlight="mainData.search.highlights" :mainData="mainData" />
-          </div>
-          <div class="line-gap" :key="'lg' + aIdx" v-if="show_gap && aLine.gap">
-            {{ aLine.gap }}
-          </div>
-        </template>
+    <template
+      v-for="(aLine, aIdx) in element.bodyObj.data.u.list"
+    >
+      <div ref="lines"
+        :data-uid="aIdx"
+        :key="'u' + element.id + 'l' + aIdx"
+        :style="inView.indexOf(aIdx) === -1 ? 'min-height:' + aLine[view + 'Height'] + 'px;' : null"
+        :class="'d-flex line-frm' + (mainData.corpus.goToUtterance === aLine.uId ? ' jump' : '')"
+      >
+        <div class="line-nr" v-if="show_utI">{{ aIdx + 1 }}</div>
+        <div class="line-speaker" v-if="show_sId">{{ aLine.speaker }}</div>
+        <div v-if="inView.indexOf(aIdx) > - 1" v-html="aLine[view]" :class="classes" data-testid="lineContent"></div>
+        <div v-else data-testid="lineContent">{{ aLine.obj.text }}</div>
       </div>
-    </div>
+      <div class="line-gap" ref="lines" :key="'u' + element.id + 'lg' + aIdx" v-if="show_gap && aLine.gap">
+        {{ aLine.gap }}
+      </div>
+    </template>
   </div>
 </template>
 
 <script>
-import RenderLine from './RenderLine';
+import renderer from '../functions/Renderer'
+var _ = require('lodash')
 
 export default {
   name: 'CorpusElementViews',
@@ -30,20 +33,13 @@ export default {
     'view': String
   },
   data: () => ({
-    lineTop: 0,
-    lineLenght: 100,
-    extraHeight: 5,
-    xmlObjLines: null,
-    lastElement: null,
-    scrollReady: false
+    inView: []
   }),
   mounted () {
-    console.log('CorpusElementViews', this.element, this.xmlObjLines)
-    this.updateXmlObjLines()
-    this.$nextTick(() => {
-      this.loadScrollPos()
-    })
-    this.lastElement = this.element
+    console.log('CorpusElementViews', this.element)
+    this.scroll2TopLine(this.element.aTopLineUId)
+    this.scrolling()
+    this.goToUtterance()
   },
   beforeDestroy () {
   },
@@ -57,169 +53,114 @@ export default {
     show_gap () {
       return this.view !== 'voice' || this.mainData.views.voice.gap.val
     },
-    height () {
-      return this.xmlObjLines ? this.xmlObjLines.reduce((a,b) => a + b.textHeight + this.extraHeight, 0) : 100
-    },
-    lineTopPx () {
-      return this.xmlObjLines ? this.xmlObjLines.slice(0, this.lineTop).reduce((a,b) => a + b.textHeight, 0) + this.extraHeight * this.lineTop : 0
-    },
-    visibleXmlObjLines () {
-      return this.xmlObjLines && this.xmlObjLines.slice(this.lineTop, this.lineTop + this.lineLenght + 1)
+    classes () {
+      let aClasses = 'line-con typ-' + this.view
+      if (this.view === 'voice') {
+        Object.keys(this.mainData.views.voice).forEach(vo => {
+          if (this.mainData.views.voice[vo].val) {
+            aClasses += ' s-' + vo.toLowerCase()
+          }
+        })
+      }
+      return aClasses
     }
   },
   methods: {
-    scrollGetALine (aTop, aBottom) {
-        let aTopLine = 0
-        let aBottomLine = 0
-        let aLinePx = 0
-        this.xmlObjLines.forEach(l => {
-          if (aLinePx < aTop) {
-            aTopLine += 1
+    goToUtterance () {
+      if (this.mainData.corpus.goToUtterance) {
+        let eId = this.mainData.corpus.goToUtterance.split('_')[0]
+        if (eId === this.element.id) {
+          // console.log('goToUtterance', this.element.id, this.mainData.corpus.goToUtterance)
+          this.scroll2TopLine(this.mainData.corpus.goToUtterance, 0, 150)
+          this.$nextTick(() => {
+            _.debounce(() => {
+              this.mainData.corpus.goToUtterance = null
+            }, 100)()
+          })
+        }
+      }
+    },
+    scroll2TopLine (toUid, dg = 0, add2Top = 0) {
+      if (toUid) {
+        if (this.$refs && this.$refs.viewarea && this.$refs.lines && dg > 2) {
+          if (this.$refs.lines.some((line) => {
+            if (line.dataset && line.dataset.uid) {
+              let uId = parseInt(line.dataset.uid)
+              let aU = this.element.bodyObj.data.u.list[uId]
+              if (aU && aU.uId === toUid) {
+                this.$refs.viewarea.scrollTop = line.offsetTop + 5 - add2Top
+                return true
+              }
+            }
+          })) {
+            this.scrolling()
+            return true
           }
-          if (aLinePx < aBottom) {
-            aBottomLine += 1
-          }
-          aLinePx += l.textHeight + this.extraHeight
-        })
-        return {aTopLine, aBottomLine}
-        // console.log(aTopLine, aBottomLine, aLinePx)
+        }
+        if (dg < 6) {
+          this.$nextTick(() => {
+            this.scroll2TopLine(toUid, dg + 1, add2Top)
+          })
+        }
+      }
     },
     scrolling () {
-      if (this.xmlObjLines && this.$refs && this.$refs.viewarea) {
-        let aTop = this.$refs.viewarea.scrollTop
-        this.element.scrollPos[this.view] = aTop
-        let aBottom = this.$refs.viewarea.scrollTop + this.$refs.viewarea.clientHeight
-        let aLines = this.scrollGetALine(aTop, aBottom)
-        if (this.scrollReady) {
-          // console.log('setTop', aLines.aTopLine)
-          this.$set(this.element, 'aTopLine', aLines.aTopLine)
-          this.$set(this.element, 'aTopLineUId', this.xmlObjLines[aLines.aTopLine].uId)
-        }
-        if (aLines.aTopLine <= this.lineTop) {
-          this.lineTop = Math.floor(aLines.aTopLine - (this.lineLenght / 2 + (aLines.aBottomLine - aLines.aTopLine) / 2))
-          if (this.lineTop < 0) {
-            this.lineTop = 0
+      if (this.$refs && this.$refs.viewarea && this.$refs.lines) {
+        let vT = this.$refs.viewarea.scrollTop
+        let vH = this.$refs.viewarea.clientHeight
+        this.inView = []
+        this.$refs.lines.forEach((line) => {
+          let aH = line.offsetHeight || 0
+          let aT = line.offsetTop
+          if (aT + aH >= vT && aT <= vT + vH) {
+            if (line.dataset && line.dataset.uid) {
+              let uId = parseInt(line.dataset.uid)
+              let aU = this.element.bodyObj.data.u.list[uId]
+              if (aU[this.view + 'Height'] !== aH) {
+                aU[this.view + 'Height'] = aH
+              }
+              if (!aU[this.view]) {
+                aU[this.view] = renderer.renderUtterance(aU.obj, this.element.bodyObj.xmlObj, this.view, this.mainData.search.highlights)
+              }
+              this.inView.push(uId)
+            }
           }
-        } else if (aLines.aBottomLine >= this.lineTop + this.lineLenght) {
-          this.lineTop = Math.ceil(aLines.aTopLine - (this.lineLenght / 3))
-          if (this.lineTop + this.lineLenght > this.xmlObjLines.length - 1) {
-            this.lineTop = this.xmlObjLines.length - 1 - this.lineLenght
-          }
-        }
-      }
-    },
-    updateXmlObjLines () {
-      let xmlS = this.element && this.element.xml
-      if (xmlS) {
-        let t1 = performance.now()
-        let parser = new DOMParser()
-        let xmlDoc = parser.parseFromString(xmlS,"application/xml")
-        let aLines = [].slice.call(xmlDoc.getElementsByTagName('u')).map((dom, i) => {
-          let uId = dom && dom.tagName === 'u' && dom.attributes['xml:id'] ? dom.attributes['xml:id'].value : null
-          let speaker = null
-          let gap = ''
-          if (uId && this.element.bodyObj.data.u.obj[uId]) {
-            speaker = this.element.bodyObj.data.u.obj[uId].speaker
-            gap = this.element.bodyObj.data.u.obj[uId].gap
-          }
-          const ret = {
-            dom: dom,
-            uId: uId,
-            speaker: speaker,
-            gap: gap,
-            text: null,
-            textHeight: this.element.lineHeight[this.view] && this.element.lineHeight[this.view][i] ? this.element.lineHeight[this.view][i] : 24,
-            voice: null,
-            plain: null,
-            pos: null,
-            "xml-view": null
-          }
-          Object.seal(ret)
-          Object.preventExtensions(ret)
-          return ret
         })
-        this.xmlObjLines = aLines
-        console.log('xmlObjLines', parseInt(performance.now() - t1), 'ms', this.element, this.xmlObjLines)
-      } else {
-        this.xmlObjLines = null
-      }
-    },
-    loadScrollPos (dg = 5) {
-      if (this.$refs && this.$refs.viewarea && this.element.aTopLine) {
-        let aLinePx = this.xmlObjLines ? this.xmlObjLines.slice(0, this.element.aTopLine).reduce((a,b) => a + b.textHeight + this.extraHeight, 0) : 0
-        this.$refs.viewarea.scrollTop = aLinePx
-        // console.log(this.element.aTopLine, aLinePx, this.scrollGetALine(aLinePx).aTopLine)
-        if (dg >= 0) {
-          this.$nextTick(() => {
-            this.loadScrollPos(dg - 1)
-          })
-        } else {
-          this.scrollReady = true
+        if (this.inView[1]) {
+          this.element.aTopLineUId = this.element.bodyObj.data.u.list[this.inView[0]].uId
         }
-        // this.$refs.viewarea.scrollTop = this.element.scrollPos[this.view]
-      } else {
-        this.scrollReady = true
       }
-    },
-    cacheHeights (v, el) {
-      if (v && this.xmlObjLines && this.xmlObjLines.length > 0 && el.lineHeight[v]) {
-        this.$set(el.lineHeight, v, Array.from(this.xmlObjLines.map(l => l.textHeight)))
-        console.log('cacheHeights')
-      }
-    },
-    dur2sec (hms) {
-      var s = 0.0
-      if (hms && hms.indexOf(':') > -1) {
-        var a = hms.split(':')
-        if (a.length > 2) { s += parseFloat(a[a.length - 3]) * 60 * 60 }
-        if (a.length > 1) { s += parseFloat(a[a.length - 2]) * 60 }
-        if (a.length > 0) { s += parseFloat(a[a.length - 1]) }
-      } else {
-        s = parseFloat(hms)
-      }
-      return ((isNaN(s)) ? 0.0 : s)
-    },
-    sec2dur (sec) {
-      var v = ''
-      if (sec < 0) { sec = -sec; v = '-' }
-      var h = parseInt(sec / 3600)
-      sec %= 3600
-      var m = parseInt(sec / 60)
-      var s = sec % 60
-      return v + ('0' + h).slice(-2) + ':' + ('0' + m).slice(-2) + ':' + ('0' + s.toFixed(0)).slice(-2)
     }
   },
   watch: {
-    'element.id' () {
-      if (this.lastElement) {
-        this.cacheHeights(this.view, this.lastElement)
+    'mainData.corpus.goToUtterance' () {
+      this.goToUtterance()
+    },
+    'mainData.views.voice': {
+      deep: true,
+      handler() {
+        this.scrolling()
       }
-      this.scrollReady = false
-      this.loadScrollPos()
-      this.updateXmlObjLines()
-      this.lastElement = this.element
+    },
+    'mainData.search.lastValue' () {
+      this.scrolling()
+    },
+    'mainData.search.loading' (nv) {
+      if (!nv) {
+        this.scrolling()
+      }
+    },
+    'view' () {
+      this.scrolling()
+    },
+    'element.id' () {
       this.$nextTick(() => {
+        this.scroll2TopLine(this.element.aTopLineUId)
         this.scrolling()
       })
     },
-    view (nVal, oVal) {
-      this.cacheHeights(oVal, this.element)
-      this.scrollReady = false
-      this.loadScrollPos()
-      this.updateXmlObjLines()
-      this.$nextTick(() => {
-        this.scrolling()
-      })
-    }
-    // element: {
-    //   deep: true,
-    //   handler() {
-    //     this.updateXmlObjLines()
-    //   }
-    // }
   },
   components: {
-    RenderLine
   }
 }
 </script>
@@ -242,6 +183,11 @@ export default {
 .line-frm {
   border-top: 1px solid #ddd;
   padding: 2px 0.5rem;
+  transition: background-color 3s;
+}
+.line-frm.jump {
+  background-color: #eef;
+  transition: background-color 0s;
 }
 .line-gap {
   color: #222;
@@ -255,5 +201,166 @@ export default {
 .line-speaker {
   min-width: 4rem;
   font-weight: bold;
+}
+
+.line-con >>> .highlight {
+  background: #ff0;
+}
+.line-con >>> .tag-parsererror {
+  color: #d00;
+  font-weight: bold;
+}
+
+/*********/
+/* Voice */
+/*********/
+.line-con.typ-voice >>> .fx-overlap,
+.line-con.typ-voice >>> .type-overlap {
+  color: blue;
+}
+.line-con.typ-voice:not(.s-ot) >>> .fx-overlap {
+  display: none;
+}
+
+.line-con.typ-voice >>> .tag-pause {
+  color: brown;
+}
+.line-con.typ-voice:not(.s-p) >>> .tag-pause {
+  display: none;
+}
+
+.line-con.typ-voice >>> .tag-incident {
+  color: #808080;
+}
+.line-con.typ-voice:not(.s-ce) >>> .tag-incident {
+  display: none;
+}
+
+.line-con.typ-voice >>> .tag-shift {
+  color: #AA0066;
+}
+.line-con.typ-voice:not(.s-sm) >>> .tag-shift:not(.new-laugh):not(.neutral-laugh) {
+  display: none;
+}
+
+.line-con.typ-voice:not(.s-smls) >>> .new-laugh,
+.line-con.typ-voice:not(.s-smls) >>> .neutral-laugh {
+  display: none;
+}
+
+.line-con.typ-voice >>> .tag-vocal {
+  color: #AA0066;
+}
+.line-con.typ-voice:not(.s-vsn) >>> .tag-vocal:not(.voice-desc-laughing) {
+  display: none;
+}
+
+.line-con.typ-voice:not(.s-vsnl) >>> .tag-vocal.voice-desc-laughing {
+  display: none;
+}
+
+.line-con.typ-voice >>> .fx-spel {
+  color: #AA0066;
+}
+.line-con.typ-voice:not(.s-spl) >>> .fx-spel {
+  display: none;
+}
+
+.line-con.typ-voice >>> .tag-foreign.type-LN, .line-con.typ-voice >>> .tag-foreign.type-L1, .line-con.typ-voice >>> .tag-foreign.type-LQ {
+  color: #b13610;
+}
+
+.line-con.typ-voice:not(.s-flat) >>> .fx-foreign {
+  display: none;
+}
+.line-con.typ-voice:not(.s-flat) >>> .fx-foreign-t {
+  display: none;
+}
+
+.line-con.typ-voice:not(.s-oc) >>> .fx-other-continuation {
+  display: none;
+}
+
+.line-con.typ-voice >>> .tag-supplied.reason-unintelligible {
+  color: #00978E;
+}
+.line-con.typ-voice:not(.s-uit) >>> .fx-unintelligible-tag {
+  display: none;
+}
+
+.line-con.typ-voice >>> .fx-ono {
+  color: #61DDD2;
+}
+.line-con.typ-voice:not(.s-ono) >>> .fx-ono {
+  display: none;
+}
+
+.line-con.typ-voice >>> .fx-pvct {
+  color: #61DDD2;
+}
+.line-con.typ-voice:not(.s-pvct) >>> .fx-pvct {
+  display: none;
+}
+
+.line-con.typ-voice >>> .fx-ipa {
+  color: #61DDD2;
+}
+
+.line-con.typ-voice >>> .tag-emph {
+  text-transform: uppercase;
+}
+
+.line-con.typ-voice >>> .type-other_continuation {
+  color: #8700C1;
+}
+
+.line-con.typ-voice:not(.s-ut) >>> .tag-unclear {
+  text-transform: lowercase;
+}
+.line-con.typ-voice:not(.s-ut) >>> .fx-unclear {
+  display: none;
+}
+
+.line-con.typ-voice:not(.s-lie) >>> .type-lengthening,
+.line-con.typ-voice:not(.s-lie) >>> .type-intonation,
+.line-con.typ-voice:not(.s-lie) >>> .tag-emph {
+  display: none;
+}
+
+/*********/
+/* Plain */
+/*********/
+.line-con.typ-plain >>> .has-n {
+  color: #00f;
+}
+
+/*******/
+/* Pos */
+/*******/
+
+/*******/
+/* XML */
+/*******/
+
+.line-con.typ-xml-view {
+  font-family: Consolas, "Courier New", monospace;
+  white-space: pre-wrap;
+  position: relative;
+  border-top: 1px solid #bbb;
+}
+.line-con.typ-xml-view >>> .tc {
+  color: mediumblue;
+}
+.line-con.typ-xml-view >>> .tnc {
+  color: brown;
+}
+.line-con.typ-xml-view >>> .ac {
+  color: red;
+}
+.line-con.typ-xml-view >>> .avc {
+  color: mediumblue;
+}
+.line-con.typ-xml-view >>> .cc {
+  color: green;
 }
 </style>

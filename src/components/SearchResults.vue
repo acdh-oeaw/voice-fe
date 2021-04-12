@@ -41,7 +41,6 @@
                 </div>
                   </div>
                 </div>
-    </div>
     <div class="voice-switches" v-if="mainData.search.view.type === 'voice' && mainData.search.results && mainData.search.results.u && mainData.search.results.u.length > 0">
       <RenderSelect :mainData="mainData" class="d-flex flex-wrap justify-space-around" />
     </div>

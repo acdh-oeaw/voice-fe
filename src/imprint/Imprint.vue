@@ -20,7 +20,7 @@
             <v-chip class="mx-1 mb-1" label small>API: {{ apiVersion }}</v-chip>
           </div>
           <div>
-            <v-chip class="mx-1 mb-1" label link small color="primary">Privacy Policy</v-chip>
+            <v-chip class="mx-1 mb-1" label link small color="primary" href="https://www.oeaw.ac.at/en/oeaw/data-protection">Privacy Policy</v-chip>
           </div>
         </div>
       </v-container>
@@ -59,9 +59,6 @@ export default {
   computed: {
     imprint () {
       return `{{ imprint }}`
-    },
-    dualViewPossible () {
-      return this.mainData.wideScreen && this.mainData.options.fullWidth
     }
   }
 }

@@ -38,8 +38,8 @@
             <v-chip class="mx-1 mb-1" label small>API: {{ apiVersion }}</v-chip>
           </div>
           <div>
-            <v-chip class="mx-1 mb-1" label link small color="primary">Privacy Policy</v-chip>
-            <v-chip class="mx-1 mb-1" label link small color="primary">Site Notice</v-chip>
+            <v-chip class="mx-1 mb-1" label link small color="primary" href="https://www.oeaw.ac.at/en/oeaw/data-protection">Privacy Policy</v-chip>
+            <v-chip class="mx-1 mb-1" label link small color="primary" href="/imprint.html">Site Notice</v-chip>
           </div>
         </div>
       </v-container>

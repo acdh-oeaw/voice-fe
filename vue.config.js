@@ -1,6 +1,10 @@
 const GitRevisionPlugin = require('git-revision-webpack-plugin')
 
 module.exports = {
+  'pages': {
+    'index': 'src/main.js',
+    'imprint': 'src/imprint/main.js'
+  },
   'chainWebpack': config => {
     config.plugin('define').tap(args => {
       const gitRevisionPlugin = new GitRevisionPlugin({

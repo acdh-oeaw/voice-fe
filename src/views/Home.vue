@@ -9,7 +9,7 @@
     <div class="text-center py-10 indigo lighten-5" v-if="hideCookieConsent">
       <h3 class="text-h5 font-weight-bold">Explore VOICE</h3>
       <div class="d-flex align-center search-frm mt-4">
-        <v-text-field @keyup.enter.native="search" v-model="mainData.search.value" label="Search the VOICE Corpus" class="mr-3"></v-text-field>
+        <v-text-field @keyup.enter.native="search" v-model="mainData.search.value" label="Search the VOICE Corpus" class="mr-3" data-testid="quickSearch"></v-text-field>
         <v-btn @click="search" color="indigo darken-4 white--text">Search</v-btn>
       </div>
       or
@@ -24,8 +24,8 @@
       We need your consent to gather this information.<br/>
       The way you use our website is expecially valueable for our beta phase.</p>
       <p>You can find more inforamation in the "Data privacy notice" of our "Site Notice".</p>
-      <v-btn color="indigo darken-4 white--text" v-bind:x-large="true" v-on:click="cookiesAndTrackingAccepted">I accept</v-btn><br/><br/>
-      <v-btn color="indigo darken-4 white--text" v-bind:small="true" v-on:click="cookiesAndTrackingRejected">I dont't want this</v-btn>
+      <v-btn color="indigo darken-4 white--text" v-bind:x-large="true" v-on:click="cookiesAndTrackingAccepted" data-testid="acceptTracking">I accept</v-btn><br/><br/>
+      <v-btn color="indigo darken-4 white--text" v-bind:small="true" v-on:click="cookiesAndTrackingRejected" data-testid="rejectTracking">I dont't want this</v-btn>
     </div>
   </div>
 </template>

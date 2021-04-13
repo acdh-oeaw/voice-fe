@@ -38,9 +38,9 @@
             <v-chip class="mx-1 mb-1" label small>API: {{ apiVersion }}</v-chip>
           </div>
           <div>
-            <v-chip class="mx-1 mb-1" label link small v-on:click="revokeCookieAndTrackingConsent" v-if="userOptedTracking">Stop tracking me</v-chip>
-            <v-chip class="mx-1 mb-1" label link small color="primary" href="https://www.oeaw.ac.at/en/oeaw/data-protection">Privacy Policy</v-chip>
-            <v-chip class="mx-1 mb-1" label link small color="primary" href="/imprint.html">Site Notice</v-chip>
+            <v-chip class="mx-1 mb-1" label link small v-on:click="revokeCookieAndTrackingConsent" v-if="userOptedTracking" data-testid="revokeTracking">Stop tracking me</v-chip>
+            <v-chip class="mx-1 mb-1" label link small color="primary" href="https://www.oeaw.ac.at/en/oeaw/data-protection" data-testid="privacyPolicy">Privacy Policy</v-chip>
+            <v-chip class="mx-1 mb-1" label link small color="primary" href="/imprint.html" data-testid="siteNotice">Site Notice</v-chip>
           </div>
         </div>
       </v-container>

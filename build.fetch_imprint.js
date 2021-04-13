@@ -7,7 +7,7 @@ const imprintVue = './src/imprint/Imprint.vue'
 module.exports = (api, options) => {
     api.registerCommand('build:fetchImprint', async (args) => {
       try {
-        var snippet = await getImprintHTML(),
+        var snippet = await getImprintHTML(16630, "py-10"),
             htmlTemplate = await (await fs.readFile(imprintHTML)).toString('UTF-8'),
             html = htmlTemplate.replace(/\{\{\s*imprint\s*\}\}/g, snippet),
             vueTemplate = await (await fs.readFile(imprintVue)).toString('UTF-8'),

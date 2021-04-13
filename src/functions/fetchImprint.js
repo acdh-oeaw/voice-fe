@@ -3,8 +3,8 @@ const https = require('https')
 const sax = require('sax')
 
 const localFunctions = {
-    getImprintHTML: async function() {
-        const data = await httpGet('https://shared.acdh.oeaw.ac.at/acdh-common-assets/api/imprint.php?serviceID=16630', processResult)
+    getImprintHTML: async function(id, addClasses) {
+        const data = await httpGet(`https://shared.acdh.oeaw.ac.at/acdh-common-assets/api/imprint.php?serviceID=${id}`, (rawData, onlyAttr, val, onlyTopTag) => {processResult(rawData, onlyAttr, val, onlyTopTag, addClasses)})
         return data
     }
 }
@@ -50,7 +50,7 @@ return new Promise ((resolve, reject) => {
 })
 }
 
-function processResult(rawData, onlyAttr, val, onlyTopTag) {
+function processResult(rawData, onlyAttr, val, onlyTopTag, addClasses) {
   const parser = sax.parser(false, {lowercase: true})
   let res = ''
   let tagname = []
@@ -71,6 +71,12 @@ function processResult(rawData, onlyAttr, val, onlyTopTag) {
     if (ignore || node.name === '____') {return}
     if (isSelfClosing) {
       res += `<${node.name}${serializeAttr(node.attributes)}/>`
+    } else if (tagname.length === 1) {
+      if (node.attributes.class) {
+        res += `<${node.name}${serializeAttr(node.attributes, addClasses)}>`
+      } else {
+        res += `<${node.name}${serializeAttr(node.attributes)} class="${addClasses}">`
+      }
     } else {
       res += `<${node.name}${serializeAttr(node.attributes)}>`
     }
@@ -88,10 +94,14 @@ function processResult(rawData, onlyAttr, val, onlyTopTag) {
   return res
 }
 
-function serializeAttr(attributes) {
+function serializeAttr(attributes, addClasses) {
   let res = ''
   for (let attr of Object.keys(attributes)) {
-    res += ` ${attr}="${attributes[attr]}"`
+    if (attr == 'class' && addClasses) {
+      res += ` ${attr}="${attributes[attr]} ${addClasses}"`
+    } else {
+      res += ` ${attr}="${attributes[attr]}"`
+    }
   }
   return res
 }

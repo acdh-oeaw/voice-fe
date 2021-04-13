@@ -45,7 +45,7 @@ export default {
     apiVersion: '?',
     branch: process.env.VUE_APP_BRANCH,
     userOptedTracking: false,
-    matomoId: `You opted out of tracking so there is no ID.`
+    matomoId: `You opted out of tracking so there is no ID`
   }),
   mounted () { 
       this.$http

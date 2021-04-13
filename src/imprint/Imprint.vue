@@ -1,10 +1,14 @@
 <template>
   <v-app>
     <v-container class="home-width">
-      <img :src="publicPath + 'images/vc-logo-0-676.png'" class="img-fluid w-100 mt-7" />
+      <a href="/"><img :src="publicPath + 'images/vc-logo-0-676.png'" class="img-fluid w-100 mt-7" /></a>
     </v-container>
     <v-main>
-      <div v-html="imprint"/>
+      <v-container>
+        <div v-html="imprint"/>
+        <div>Your visitor ID is: {{ matomoId }}. If you have any questions regarding the data we collected about your visits
+             you need to send us this ID. We do not collect any other data that enables us to identify you.</div>
+      </v-container>
     </v-main>
     <v-overlay :value="loading">
       <v-progress-circular
@@ -40,7 +44,8 @@ export default {
     version: process.env.VUE_APP_VERSION,
     apiVersion: '?',
     branch: process.env.VUE_APP_BRANCH,
-    userOptedTracking: false
+    userOptedTracking: false,
+    matomoId: `You opted out of tracking so there is no ID.`
   }),
   mounted () { 
       this.$http
@@ -66,6 +71,7 @@ export default {
     checkMatomo() {
       if (this.$matomo) {
         this.userOptedTracking = this.$matomo && !this.$matomo.isUserOptedOut()
+        this.matomoId = this.$matomo && this.$matomo.hasRememberedConsent() ? this.$matomo.getVisitorId() : this.matomoId
       }
     }
   },

@@ -38,6 +38,7 @@
             <v-chip class="mx-1 mb-1" label small>API: {{ apiVersion }}</v-chip>
           </div>
           <div>
+            <v-chip class="mx-1 mb-1" label link small v-on:click="revokeCookieAndTrackingConsent" v-if="userOptedTracking">Stop tracking me</v-chip>
             <v-chip class="mx-1 mb-1" label link small color="primary" href="https://www.oeaw.ac.at/en/oeaw/data-protection">Privacy Policy</v-chip>
             <v-chip class="mx-1 mb-1" label link small color="primary" href="/imprint.html">Site Notice</v-chip>
           </div>
@@ -59,7 +60,8 @@ export default {
     version: process.env.VUE_APP_VERSION,
     apiVersion: '?',
     branch: process.env.VUE_APP_BRANCH,
-    mainData: mainDataFunc.initMainData()
+    mainData: mainDataFunc.initMainData(),
+    userOptedTracking: true
   }),
   mounted () {
     this.resized()
@@ -69,6 +71,9 @@ export default {
   },
   beforeDestroy () {
     window.removeEventListener('resize', this.resized)
+  },
+  timers: {
+     checkMatomo: { time: 400, autostart: true, repeat: true }
   },
   methods: {
     resized () {
@@ -196,6 +201,14 @@ export default {
           console.log(err)
           this.loading = false
         })
+    },
+    revokeCookieAndTrackingConsent () {
+      this.$matomo && this.$matomo.forgetConsentGiven() && this.$matomo.orgetCookieConsentGiven() && this.$matomo.optUserOut()
+    },
+    checkMatomo() {
+      if (this.$matomo) {
+        this.userOptedTracking = this.$matomo && !this.$matomo.isUserOptedOut()
+      }
     }
   },
   computed: {

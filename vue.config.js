@@ -1,9 +1,12 @@
 const GitRevisionPlugin = require('git-revision-webpack-plugin')
+const webpack = require('webpack')
+const fs = require('fs')
 
 module.exports = {
   'pages': {
     'index': 'src/main.js',
-    'imprint': 'src/imprint/main.js'
+    'imprint': 'src/imprint/main.js',
+    'dependency-license-report': 'src/dependency-license-report/main.js'
   },
   'chainWebpack': config => {
     config.plugin('define').tap(args => {
@@ -15,6 +18,14 @@ module.exports = {
       args[0]['process.env']['VUE_APP_BRANCH'] = JSON.stringify(gitRevisionPlugin.branch())
       return args
     })
+    const license = fs.readFileSync('LICENSE', 'utf8')
+    config.plugin('banner').use(webpack.BannerPlugin, [`
+@source https://github.com/acdh-oeaw/voice-fe
+
+@licstart The following is the entire license notice for the JavaScript code in this file
+${license}
+@licend The above is the entire license notice for the JavaScript code in this file
+  `])
   },
   "transpileDependencies": [
     "vuetify"

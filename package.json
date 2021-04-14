@@ -1,6 +1,19 @@
 {
   "name": "voice-fe",
-  "version": "0.1.0",
+  "version": "0.5.0",
+  "author": {
+    "name": "Hans Christian Breuer",
+    "email": "hcbruer79@nomail.gitlab",
+    "url": "https://gitlab.com/hcbreuer79"
+  },
+  "contributors": [
+    {
+      "name": "Omar Siam",
+      "email": "omar.siam@oeaw.ac.at",
+      "url": "https://www.oeaw.ac.at/acdh/team/current-team/omar-siam"
+    }
+  ],
+  "license": "MIT",
   "private": true,
   "engines": {
     "node": "12.x",
@@ -8,13 +21,14 @@
   },
   "scripts": {
     "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build:fetchImprint && vue-cli-service build",
+    "build": "vue-cli-service build:fetchImprint && node_modules/.bin/license-report --output=html --config dependency-license-report-config.json > public/dependency-license-report.html && vue-cli-service build",
     "lint": "vue-cli-service lint",
     "start": "node server.js",
     "test": "NODE_ENV=production vue-cli-service test:e2e --headless --env PORT=8080",
     "test:unit": "vue-cli-service test:unit"
   },
   "comments": {
+    "license-report": "there is currently a bug in 4.5.0 and the dependency is on the pull request that should fix that. Update when 4.6.0 is out",
     "mode test and cypress": "mode test has a special meaning in vue",
     "mode test and cypress_2": "buildpack sets NODE_ENV test in test step",
     "docker test command line": "docker run --rm -v $(pwd):/tmp/app registry.gitlab.com/acdh-oeaw/docker/herokuish-for-cypress/master /bin/herokuish buildpack test",
@@ -52,6 +66,7 @@
     "eslint-plugin-vue": "^5.0.0",
     "git-revision-webpack-plugin": "^3.0.6",
     "jest": "^26.6.3",
+    "license-report": "joshuapassos/license-report#2faa7a1",
     "sass": "^1.32.7",
     "sass-loader": "^8.0.0",
     "vue-cli-plugin-vuetify": "^2.1.0",

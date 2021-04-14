@@ -118,4 +118,5 @@ function jsonFormat(tokens, req, res) {
     });
 }
 
+console.log(`{"listening on port": "${port}"}`)
 server.start(port)

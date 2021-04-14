@@ -33,12 +33,19 @@
             error
           </div>
           <div>highlighted tokens: {{ mainData.search.highlights ? mainData.search.highlights.size : 'error' }}</div>
-          <div>
+          <div class="my-1">To view a search result in the corresponding corpus text, click on the utterance ID in the left column.</div>
+          <div class="d-flex">
             <v-select hide-details
               label="Style"
               :items="['voice', 'plain', 'pos', 'xml-view']"
               v-model="mainData.search.view.type"
             ></v-select>
+            <v-checkbox
+              label="kwic"
+              class="ml-2"
+              :disabled="mainData.search.view.type === 'xml-view'"
+              v-model="mainData.search.view.kwic"
+            ></v-checkbox>
           </div>
           <SearchResultsView @goToUtterance="goToUtterance" :mainData="mainData" :view="mainData.search.view.type" :filteredSearchResults="filteredSearchResults" :scrollerRef="$refs.viewarea" />
         </div>

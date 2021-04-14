@@ -4,7 +4,7 @@
       <div ref="lines"
         v-for="(uObj, uIdx) in searchResultsU" class="line-frm" :key="uObj.idx + '-' + uIdx"
         :data-uid="uIdx"
-        :style="inView.indexOf(uIdx) === -1 && xmlObjLines[uObj.idx] ? 'min-height:' + xmlObjLines[uObj.idx][view + 'Height'] + 'px;' : null"
+        :style="inView.indexOf(uIdx) === -1 && xmlObjLines[uObj.idx] ? 'min-height:' + xmlObjLines[uObj.idx][(mainData.search.view.kwic && mainData.search.view.type !== 'xml-view' ? 'kwic' : view) + 'Height'] + 'px;' : null"
       >
         <div @click="openDocument(uObj.xmlId)" class="line-document" v-if="uIdx < 1 || uObj.xmlId !== searchResultsU[uIdx-1].xmlId">
           {{ uObj.xmlId }}
@@ -14,8 +14,13 @@
           <template v-if="!xmlObjLines[uObj.idx].uObj.loading">
             <div class="line-speaker" v-if="xmlObjLines[uObj.idx].uObj.obj.attributes && xmlObjLines[uObj.idx].uObj.obj.attributes.who">{{ xmlObjLines[uObj.idx].uObj.obj.attributes.who.split('_').slice(-1)[0] }}</div>
             <div class="flex-break" v-if="mainData.search.view.type === 'xml-view'"></div>
-            <div v-if="inView.indexOf(uIdx) > - 1" v-html="xmlObjLines[uObj.idx][view]" :class="classes"></div>
-            <div v-else>{{ xmlObjLines[uObj.idx].uObj.obj.text }}</div>
+            <template v-if="inView.indexOf(uIdx) > - 1">
+              <div class="kwic-frm" v-if="mainData.search.view.kwic && mainData.search.view.type !== 'xml-view'">
+                <div v-html="xmlObjLines[uObj.idx][view]" :class="classes" :data-highlighted="'s_' + h[0]" v-for="h in uObj.highlight" :key="'h' + h"></div>
+              </div>
+              <div v-html="xmlObjLines[uObj.idx][view]" :class="classes" v-else></div>
+            </template>
+            <div :class="mainData.search.view.kwic && mainData.search.view.type !== 'xml-view' ? 'kwic-prev' : null" v-else>{{ xmlObjLines[uObj.idx].uObj.obj.text }}</div>
           </template>
           <div class="line-loading" v-else>
             Loading ...
@@ -95,13 +100,32 @@ export default {
               if (line.dataset && line.dataset.uid) {
                 let uId = parseInt(line.dataset.uid)
                 let aU = this.xmlObjLines[uId]
-                if (aU[this.view + 'Height'] !== aH) {
+                if ((!this.mainData.search.view.kwic || this.mainData.search.view.type === 'xml-view') && aU[this.view + 'Height'] !== aH) {
                   aU[this.view + 'Height'] = aH
                 }
                 if (aU.uObj.loading) {
                   this.loadNext()
                 } else if (!aU[this.view]) {
-                  aU[this.view] = renderer.renderUtterance(aU.uObj.obj, {...aU.uObj, xml: aU.uObj.obj.xml}, this.view, this.mainData.search.highlights)
+                  aU[this.view] = renderer.renderUtterance(aU.uObj.obj, {...aU.uObj, xml: aU.uObj.obj.xml}, this.view, this.mainData.search.highlights, true)
+                }
+                if (this.mainData.search.view.kwic && this.mainData.search.view.type !== 'xml-view') {
+                  this.$nextTick(() => {
+                    [].forEach.call(line.querySelectorAll('.kwic-frm > div'), function(div) {
+                      if (div.dataset && div.dataset.highlighted) {
+                        let hit = div.querySelector('#' + div.dataset.highlighted)
+                        if (hit) {
+                          let frmHalfWidth = div.offsetWidth / 2
+                          let hitMiddle = hit.offsetLeft + hit.offsetWidth / 2
+                          div.style.left = parseInt(frmHalfWidth - hitMiddle) + 'px'
+                        } else {
+                          div.style.left = ''
+                        }
+                      }
+                    })
+                    if (aU['kwicHeight'] !== line.offsetHeight || 0) {
+                      aU['kwicHeight'] = line.offsetHeight || 0
+                    }
+                  })
                 }
                 this.inView.push(uId)
               }
@@ -151,6 +175,7 @@ export default {
             plainHeight: 24,
             pos: null,
             posHeight: 24,
+            kwicHeight: 24,
             'xml-view': null,
             'xml-viewHeight': 300
           }
@@ -242,8 +267,23 @@ export default {
       }
     },
     view () {
-      this.scrolling()
-    }
+      this.$nextTick(() => {
+        this.scrolling()
+      })
+    },
+    'mainData.search.view.kwic' () {
+      this.$nextTick(() => {
+        this.scrolling()
+      })
+    },
+    'mainData.search.view.views': {
+      deep: true,
+      handler() {
+        this.$nextTick(() => {
+          this.scrolling()
+        })
+      }
+    },
   },
   components: {
   }
@@ -299,6 +339,20 @@ export default {
 .line-con >>> .tag-parsererror {
   color: #d00;
   font-weight: bold;
+}
+
+/********/
+/* kwic */
+/********/
+.kwic-frm, .kwic-prev {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+}
+.kwic-frm > .line-con, .kwic-prev {
+  position: relative;
+  left: 0px;
+  white-space: nowrap;
 }
 
 /*********/

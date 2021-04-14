@@ -33,6 +33,7 @@ const localFunctions = {
         foundXmlId: [],
         view: {
           type: 'voice',
+          kwic: false,
           views: null
         },
         errors: [],

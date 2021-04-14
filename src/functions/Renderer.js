@@ -1,5 +1,5 @@
 const localFunctions = {
-  renderUtterance (uObj, xmlObj, type = 'plain', highlight) {
+  renderUtterance (uObj, xmlObj, type = 'plain', highlight, isSearch = false) {
     // console.log('renderUtterance', type, uObj, xmlObj)
     if (type === 'xml-view') {
       let aXml = xmlObj.xml.split('\n')
@@ -12,7 +12,7 @@ const localFunctions = {
       return localFunctions.w3CodeColor(aXml.join('\n'))
     } else {
       let xmlIdCache = {}
-      return renderingUtterance(uObj, xmlObj, type, highlight, xmlIdCache)
+      return renderingUtterance(uObj, xmlObj, type, highlight, isSearch, xmlIdCache)
     }
   },
   w3CodeColor (elmntTxt) {
@@ -106,15 +106,16 @@ const localFunctions = {
   },
 }
 
-function renderingUtterance(uObj, xmlObj, type, highlight, xmlIdCache) {
+function renderingUtterance(uObj, xmlObj, type, highlight, isSearch = false, xmlIdCache) {
   let aTxt = ''
   if (uObj.type === 'tag') {
     if (uObj.tag === 'u') {
       uObj.children.forEach(c => {
-        aTxt += renderingUtterance(c, xmlObj, type, highlight, xmlIdCache)
+        aTxt += renderingUtterance(c, xmlObj, type, highlight, isSearch, xmlIdCache)
       })
     } else {
       let aClasses = ['tag-' + uObj.tag]
+      let aId = null
       let attrClasses = {'type': {}, 'n': { has: true }, 'voice:desc': {}, 'reason': {}, 'new': {}}
       if (uObj.attributes && Object.keys(uObj.attributes).length > 0) {
         Object.keys(attrClasses).forEach(a => {
@@ -128,6 +129,7 @@ function renderingUtterance(uObj, xmlObj, type, highlight, xmlIdCache) {
         })
         if (highlight && uObj.attributes['xml:id'] && highlight.has(uObj.attributes['xml:id'])) {
           aClasses.push('highlight')
+          aId = uObj.attributes['xml:id']
         }
         if (uObj.tag === 'shift' && uObj.attributes['new'] === 'neutral') {
           if (uObj.attributes['corresp'] && xmlIdCache[uObj.attributes['corresp']]) {
@@ -135,11 +137,14 @@ function renderingUtterance(uObj, xmlObj, type, highlight, xmlIdCache) {
           }
         }
       }
-      aTxt += '<span class="' + aClasses.join(' ') + '"' + (uObj.attributes && uObj.attributes['lemma'] ? ' title="Lemma: ' + uObj.attributes['lemma'] + '"' : '') + '>'
+      aTxt += '<span class="' + aClasses.join(' ') + '"' + 
+              (aId ? ' id="' + (isSearch ? 's_' : '') + aId + '"' : '') + 
+              (uObj.attributes && uObj.attributes['lemma'] ? ' title="Lemma: ' + uObj.attributes['lemma'] + '"' : '') + 
+              '>'
       if (uObj.attributes && uObj.attributes['voice:syl']) {
         aTxt += '@'.repeat(parseInt(uObj.attributes['voice:syl']))
       }
-      aTxt += renderingUtteranceBefore(uObj, xmlObj, type, xmlIdCache)
+      aTxt += renderingUtteranceBefore(uObj, xmlObj, type, isSearch, xmlIdCache)
       if (type === 'voice' && uObj.tag === 'seg' && uObj.attributes && uObj.attributes['type'] === 'ws' && xmlObj.list[uObj.parent].tag === 'unclear'
         && (xmlObj.list[uObj.parent].children.indexOf(uObj) === 0 || xmlObj.list[uObj.parent].children.indexOf(uObj) === xmlObj.list[uObj.parent].children.length - 1)
       ) {
@@ -148,9 +153,9 @@ function renderingUtterance(uObj, xmlObj, type, highlight, xmlIdCache) {
         aTxt += uObj.attributes['spelt_orig']
       }
       uObj.children.forEach(c => {
-        aTxt += renderingUtterance(c, xmlObj, type, highlight, xmlIdCache)
+        aTxt += renderingUtterance(c, xmlObj, type, highlight, isSearch, xmlIdCache)
       })
-      aTxt += renderingUtteranceAfter(uObj, xmlObj, type, xmlIdCache)
+      aTxt += renderingUtteranceAfter(uObj, xmlObj, type, isSearch, xmlIdCache)
       aTxt += '</span>'
       // Whitespace
       if (
@@ -203,7 +208,7 @@ function renderingUtterance(uObj, xmlObj, type, highlight, xmlIdCache) {
   return aTxt
 }
 
-function renderingUtteranceBefore(uObj, xmlObj, type, xmlIdCache) {
+function renderingUtteranceBefore(uObj, xmlObj, type, isSearch, xmlIdCache) {
   let aTxt = ''
   // voice - layout
   if (type === 'voice') {
@@ -324,7 +329,7 @@ function renderingUtteranceBefore(uObj, xmlObj, type, xmlIdCache) {
   return aTxt
 }
 
-function renderingUtteranceAfter(uObj, xmlObj, type, xmlIdCache) {
+function renderingUtteranceAfter(uObj, xmlObj, type, isSearch, xmlIdCache) {
   let aTxt = ''
   // pos - layout
   if (type === 'pos') {

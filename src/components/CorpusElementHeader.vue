@@ -1,5 +1,6 @@
 <template>
   <div class="header">
+    <v-alert dense outlined type="info">Text headers currently correspond to VOICE 2.0. Updates will be made for the official release of VOICE 3.0.</v-alert>
     <h1>Header: {{ mainData.corpus.selectedElement }}</h1>
     <div v-if="element && element.headerObj">
       <h2 v-if="element.headerObj.data.title">{{ element.headerObj.data.title.charAt(0).toUpperCase() + element.headerObj.data.title.slice(1) }}</h2>

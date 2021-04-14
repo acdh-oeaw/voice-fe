@@ -336,7 +336,9 @@ function renderingUtteranceAfter(uObj, xmlObj, type, isSearch, xmlIdCache) {
     // ana
     if (uObj.attributes && uObj.attributes['ana']) {
       let ana = uObj.attributes['ana'].replace(/#/g, '').split('f')
-      aTxt += '<span class="fx-ana">_' + ana[0] + (ana[1] ? '(' + ana[1] + ')' : '') + '</span>'
+      if (ana[0]) {
+        aTxt += '<span class="fx-ana">' + ana[0] + (ana[0] !== ana[1] ? '(' + ana[1] + ')' : '') + '</span>'
+      }
     }
     // pause
     if (uObj.tag === 'pause') {
@@ -347,7 +349,7 @@ function renderingUtteranceAfter(uObj, xmlObj, type, isSearch, xmlIdCache) {
       } else {
         aTxt += '.'
       }
-      aTxt += '_PA(PA) '
+      aTxt += '_PA '
     }
   }
   // voice - layout

@@ -135,7 +135,7 @@ function renderingUtterance(uObj, xmlObj, type, highlight, xmlIdCache) {
           }
         }
       }
-      aTxt += '<span class="' + aClasses.join(' ') + '"' + (uObj.attributes && uObj.attributes['lemma'] ? ' data-lemma="' + uObj.attributes['lemma'] + '"' : '') + '>'
+      aTxt += '<span class="' + aClasses.join(' ') + '"' + (uObj.attributes && uObj.attributes['lemma'] ? ' title="Lemma: ' + uObj.attributes['lemma'] + '"' : '') + '>'
       if (uObj.attributes && uObj.attributes['voice:syl']) {
         aTxt += '@'.repeat(parseInt(uObj.attributes['voice:syl']))
       }

@@ -34,7 +34,7 @@
       <v-container class="py-0 px-2 text-right">
         <div class="d-flex justify-space-between">
           <div>
-            <v-chip class="mx-1 mb-1" label small>Version: {{ version }}</v-chip>
+            <v-chip class="mx-1 mb-1" label link small href="/dependency-license-report.html">Version: {{ version }}</v-chip>
             <v-chip class="mx-1 mb-1" label small>API: {{ apiVersion }}</v-chip>
           </div>
           <div>

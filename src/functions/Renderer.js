@@ -158,26 +158,42 @@ function renderingUtterance(uObj, xmlObj, type, highlight, xmlIdCache) {
         (!uObj.attributes['part'] ||
           uObj.attributes['part'] === 'F')
       ) {
+        if (uObj.tag !== 'emph' ||
+          (uObj.children.length === 1 && uObj.children[0].type === 'text')
+        ) {
+          if (type === 'voice') {
+            let oSiblings = xmlObj.list[uObj.parent].children
+            let oPos = oSiblings.indexOf(uObj)
+            if (
+              (xmlObj.list[uObj.parent].tag !== 'unclear') ||
+              (oPos < oSiblings.length - 1)
+            ) {
+              aTxt += ' '
+            }
+            if (oPos > 0 && oSiblings[oPos - 1].tag === 'unclear') {
+              aTxt = ' ' + aTxt
+            }
+          } else {
+            aTxt += ' '
+          }
+        }
+      } else {
         if (type === 'voice') {
           let oSiblings = xmlObj.list[uObj.parent].children
           let oPos = oSiblings.indexOf(uObj)
+          if (oPos > 0 && oSiblings[oPos - 1].tag === 'unclear') {
+            aTxt = ' ' + aTxt
+          }
+        }
+        if (uObj.tag === 'vocal') {
+          let oSiblings = xmlObj.list[uObj.parent].children
+          let oPos = oSiblings.indexOf(uObj)
           if (
-            (xmlObj.list[uObj.parent].tag !== 'unclear') ||
-            (oPos < oSiblings.length - 1)
+            oPos < oSiblings.length - 1 &&
+            (oSiblings[oPos + 1].tag === 'w' || oSiblings[oPos + 1].tag === 'emph')
           ) {
             aTxt += ' '
           }
-        } else {
-          aTxt += ' '
-        }
-      } else if (uObj.tag === 'vocal') {
-        let oSiblings = xmlObj.list[uObj.parent].children
-        let oPos = oSiblings.indexOf(uObj)
-        if (
-          oPos < oSiblings.length - 1 &&
-          (oSiblings[oPos + 1].tag === 'w' || oSiblings[oPos + 1].tag === 'emph')
-        ) {
-          aTxt += ' '
         }
       }
     }
@@ -294,7 +310,15 @@ function renderingUtteranceBefore(uObj, xmlObj, type, xmlIdCache) {
     }
     // unclear - before
     if (uObj.tag === 'unclear') {
-      aTxt += '<span class="fx-unclear"> (</span>'
+      if (xmlObj.list[uObj.parent].tag === 'seg') {
+        aTxt += ' '
+      }
+      let oSiblings = xmlObj.list[uObj.parent].children
+      let oPos = oSiblings.indexOf(uObj)
+      if (oPos > 0 && oSiblings[oPos - 1].tag === 'seg') {
+        aTxt += ' '
+      }
+      aTxt += '<span class="fx-unclear">(</span>'
     }
   }
   return aTxt
@@ -373,6 +397,9 @@ function renderingUtteranceAfter(uObj, xmlObj, type, xmlIdCache) {
     // unclear - after
     if (uObj.tag === 'unclear') {
       aTxt += '<span class="fx-unclear">)</span>'
+      if (xmlObj.list[uObj.parent] && xmlObj.list[uObj.parent].tag === 'seg') {
+        aTxt += ' '
+      }
     }
   }
   return aTxt

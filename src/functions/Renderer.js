@@ -341,16 +341,16 @@ function renderingUtteranceAfter(uObj, xmlObj, type, isSearch, xmlIdCache) {
       }
     }
     // pause
-    if (uObj.tag === 'pause') {
-      aTxt += ' _'
-      if (uObj.attributes && typeof uObj.attributes['dur'] === 'string') {
-        let aM = uObj.attributes['dur'].match(/PT(.+)S/i)
-        aTxt += (aM && aM[1]) ? aM[1] : '.'
-      } else {
-        aTxt += '.'
-      }
-      aTxt += '_PA '
-    }
+    // if (uObj.tag === 'pause') {
+    //   aTxt += ' _'
+    //   if (uObj.attributes && typeof uObj.attributes['dur'] === 'string') {
+    //     let aM = uObj.attributes['dur'].match(/PT(.+)S/i)
+    //     aTxt += (aM && aM[1]) ? aM[1] : '.'
+    //   } else {
+    //     aTxt += '.'
+    //   }
+    //   aTxt += '_PA '
+    // }
   }
   // voice - layout
   else if (type === 'voice') {

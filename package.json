@@ -21,7 +21,7 @@
   },
   "scripts": {
     "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build:fetchImprint && node_modules/.bin/license-report --output=html --config dependency-license-report-config.json > public/dependency-license-report.html && vue-cli-service build",
+    "build": "vue-cli-service build:fetchImprint && vue-cli-service build",
     "lint": "vue-cli-service lint",
     "start": "node server.js",
     "test": "NODE_ENV=production vue-cli-service test:e2e --headless --env PORT=8080",
@@ -29,6 +29,8 @@
   },
   "comments": {
     "license-report": "there is currently a bug in 4.5.0 and the dependency is on the pull request that should fix that. Update when 4.6.0 is out",
+    "license-report_2": "Add this to build and possibly remove the html file from git:",
+    "license-report_3": "&& node_modules/.bin/license-report --output=html --config dependency-license-report-config.json > public/dependency-license-report.html",
     "mode test and cypress": "mode test has a special meaning in vue",
     "mode test and cypress_2": "buildpack sets NODE_ENV test in test step",
     "docker test command line": "docker run --rm -v $(pwd):/tmp/app registry.gitlab.com/acdh-oeaw/docker/herokuish-for-cypress/master /bin/herokuish buildpack test",
@@ -66,7 +68,7 @@
     "eslint-plugin-vue": "^5.0.0",
     "git-revision-webpack-plugin": "^3.0.6",
     "jest": "^26.6.3",
-    "license-report": "joshuapassos/license-report#2faa7a1",
+    "license-report": "^4.5.0",
     "sass": "^1.32.7",
     "sass-loader": "^8.0.0",
     "vue-cli-plugin-vuetify": "^2.1.0",

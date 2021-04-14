@@ -1,7 +1,7 @@
 <template>
-  <div class="flex-grow-1 d-flex flex-column">
+  <div class="flex-grow-1 d-flex flex-column fill-height">
     <div class="scroll-content flex-grow-1">
-      <div ref="viewarea" class="px-3 py-2">
+      <div @scroll="viewareaScroll" ref="viewarea" class="px-3 py-2">
         <template v-for="(err, i) in mainData.search.errors">
           <v-alert prominent type="error" dismissible :key="'err' + i">
             <b>Error</b> ({{ err.status }}): <b>{{ err.txt }}</b><br>
@@ -29,20 +29,27 @@
           <div v-else>
             error
           </div>
-          <div v-if="mainData.search.highlights && mainData.search.highlights.size > 0">highlighted tokens: {{ mainData.search.highlights.size }}</div>
-          <div v-if="mainData.search.results.u && mainData.search.results.u.length > 0">
+          <div>highlighted tokens: {{ mainData.search.highlights ? mainData.search.highlights.size : 'error' }}</div>
+          <div class="my-1">To view a search result in the corresponding corpus text, click on the utterance ID in the left column.</div>
+          <div class="d-flex">
             <v-select hide-details
               label="Style"
               :items="['voice', 'plain', 'pos', 'xml-view']"
               v-model="mainData.search.view.type"
             ></v-select>
+            <v-checkbox
+              label="kwic"
+              class="ml-2"
+              :disabled="mainData.search.view.type === 'xml-view'"
+              v-model="mainData.search.view.kwic"
+            ></v-checkbox>
           </div>
-          <SearchResultsView @goToUtterance="goToUtterance" :mainData="mainData" :view="mainData.search.view.type" :filteredSearchResults="filteredSearchResults" :scrollerRef="$refs.viewarea" />
-                </div>
-                  </div>
-                </div>
+          <SearchResultsView ref="searchResultsView" @goToUtterance="goToUtterance" :mainData="mainData" :view="mainData.search.view.type" :filteredSearchResults="filteredSearchResults" :scrollerRef="$refs.viewarea" />
+        </div>
+      </div>
+    </div>
     <div class="voice-switches" v-if="mainData.search.view.type === 'voice' && mainData.search.results && mainData.search.results.u && mainData.search.results.u.length > 0">
-      <RenderSelect :mainData="mainData" class="d-flex flex-wrap justify-space-around" />
+      <RenderSelect :mainData="mainData" :views="mainData.search.view.views" class="d-flex flex-wrap justify-space-around" />
     </div>
   </div>
 </template>
@@ -59,6 +66,9 @@ export default {
   data: () => ({
   }),
   mounted () {
+    if (!this.mainData.search.view.views) {
+      this.mainData.search.view.views = JSON.parse(JSON.stringify(this.mainData.views))
+    }
   },
   computed: {
     filteredSearchResults () {
@@ -75,10 +85,15 @@ export default {
       return this.filteredSearchResults.reduce((a, c) => a + (c.hits || 0), 0)
     },
     show_utI () {
-      return this.mainData.search.view.type !== 'voice' || this.mainData.views.voice.utI.val
+      return this.mainData.search.view.type !== 'voice' || this.mainData.search.view.views.voice.utI.val
     }
   },
   methods: {
+    viewareaScroll (e) {
+      if (this.$refs.searchResultsView) {
+        this.$refs.searchResultsView.scrollEvent(e)
+      }
+    },
     goToUtterance (u) {
       let xmlId = u.split('_')[0]
       this.openDocument(xmlId, u)

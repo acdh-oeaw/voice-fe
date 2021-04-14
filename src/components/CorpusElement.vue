@@ -1,6 +1,6 @@
 <template>
-  <div class="flex-grow-1 d-flex flex-column">
-    <div class="flex-grow-1 d-flex flex-column">
+  <div class="flex-grow-1 d-flex flex-column fill-height">
+    <div class="flex-grow-1 d-flex flex-column fill-height">
       <v-tabs v-model="vTab" grow height="30" class="flex-shrink-1 fx-bb" v-if="aElement">
         <v-tab href="#textheader">Text Header</v-tab>
         <v-tab href="#voice">voice</v-tab>

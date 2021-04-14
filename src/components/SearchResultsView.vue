@@ -4,7 +4,7 @@
       <div ref="lines"
         v-for="(uObj, uIdx) in searchResultsU" class="line-frm" :key="uObj.idx + '-' + uIdx"
         :data-uid="uIdx"
-        :style="inView.indexOf(uIdx) === -1 && xmlObjLines[uObj.idx] ? 'min-height:' + xmlObjLines[uObj.idx][view + 'Height'] + 'px;' : null"
+        :style="inView.indexOf(uIdx) === -1 && xmlObjLines[uObj.idx] ? 'min-height:' + xmlObjLines[uObj.idx][(mainData.search.view.kwic && mainData.search.view.type !== 'xml-view' ? 'kwic' : view) + 'Height'] + 'px;' : null"
       >
         <div @click="openDocument(uObj.xmlId)" class="line-document" v-if="uIdx < 1 || uObj.xmlId !== searchResultsU[uIdx-1].xmlId">
           {{ uObj.xmlId }}
@@ -14,8 +14,13 @@
           <template v-if="!xmlObjLines[uObj.idx].uObj.loading">
             <div class="line-speaker" v-if="xmlObjLines[uObj.idx].uObj.obj.attributes && xmlObjLines[uObj.idx].uObj.obj.attributes.who">{{ xmlObjLines[uObj.idx].uObj.obj.attributes.who.split('_').slice(-1)[0] }}</div>
             <div class="flex-break" v-if="mainData.search.view.type === 'xml-view'"></div>
-            <div v-if="inView.indexOf(uIdx) > - 1" v-html="xmlObjLines[uObj.idx][view]" :class="classes"></div>
-            <div v-else>{{ xmlObjLines[uObj.idx].uObj.obj.text }}</div>
+            <template v-if="inView.indexOf(uIdx) > - 1">
+              <div class="kwic-frm" v-if="mainData.search.view.kwic && mainData.search.view.type !== 'xml-view'">
+                <div v-html="xmlObjLines[uObj.idx][view]" :class="classes" :data-highlighted="'s_' + h[0]" v-for="h in uObj.highlight" :key="'h' + h"></div>
+              </div>
+              <div v-html="xmlObjLines[uObj.idx][view]" :class="classes" v-else></div>
+            </template>
+            <div :class="mainData.search.view.kwic && mainData.search.view.type !== 'xml-view' ? 'kwic-prev' : null" v-else>{{ xmlObjLines[uObj.idx].uObj.obj.text }}</div>
           </template>
           <div class="line-loading" v-else>
             Loading ...
@@ -41,7 +46,9 @@ export default {
     xmlObjLines: null,
     lastParsedLine: 0,
     inView: [],
-    loadingNext: false
+    loadingNext: false,
+    scrollTop: 0,
+    clientHeight: 800
   }),
   mounted () {
     this.updateXmlObjLines()
@@ -49,27 +56,19 @@ export default {
       this.loadScrollPos()
       this.scrolling()
     })
-    if (this.scrollerRef) {
-      this.scrollerRef.addEventListener('scroll', this.scrolling)
-    }
-  },
-  beforeDestroy () {
-    if (this.scrollerRef) {
-      this.scrollerRef.removeEventListener('scroll', this.scrolling)
-    }
   },
   computed: {
     searchResultsU () {
       return this.filteredSearchResults.slice(0, this.lastParsedLine + 10)
     },
     show_utI () {
-      return this.mainData.search.view.type !== 'voice' || this.mainData.views.voice.utI.val
+      return this.mainData.search.view.type !== 'voice' || this.mainData.search.view.views.voice.utI.val
     },
     classes () {
       let aClasses = 'line-con typ-' + this.view
       if (this.view === 'voice') {
-        Object.keys(this.mainData.views.voice).forEach(vo => {
-          if (this.mainData.views.voice[vo].val) {
+        Object.keys(this.mainData.search.view.views.voice).forEach(vo => {
+          if (this.mainData.search.view.views.voice[vo].val) {
             aClasses += ' s-' + vo.toLowerCase()
           }
         })
@@ -81,33 +80,55 @@ export default {
     goToUtterance (u) {
       this.$emit('goToUtterance', u)
     },
+    scrollEvent (e) {
+      this.scrollTop = e.srcElement.scrollTop || 0
+      this.clientHeight = e.srcElement.clientHeight || 500
+      this.scrolling()
+    },
     scrolling () {
-      if (this.scrollerRef) {
-        let vT = this.scrollerRef.scrollTop
-        let vH = this.scrollerRef.clientHeight
-        this.mainData.search.scrollPos = vT
-        this.inView = []
-        if (this.$refs.lines) {
-          this.$refs.lines.forEach((line) => {
-            let aH = line.offsetHeight || 0
-            let aT = line.offsetTop
-            if (aT + aH >= vT && aT <= vT + vH) {
-              if (line.dataset && line.dataset.uid) {
-                let uId = parseInt(line.dataset.uid)
-                let aU = this.xmlObjLines[uId]
-                if (aU[this.view + 'Height'] !== aH) {
-                  aU[this.view + 'Height'] = aH
-                }
-                if (aU.uObj.loading) {
-                  this.loadNext()
-                } else if (!aU[this.view]) {
-                  aU[this.view] = renderer.renderUtterance(aU.uObj.obj, {...aU.uObj, xml: aU.uObj.obj.xml}, this.view, this.mainData.search.highlights)
-                }
-                this.inView.push(uId)
+      let vT = this.scrollTop
+      let vH = this.clientHeight
+      this.mainData.search.scrollPos = vT
+      this.inView = []
+      if (this.$refs.lines) {
+        this.$refs.lines.forEach((line) => {
+          let aH = line.offsetHeight || 0
+          let aT = line.offsetTop
+          if (aT + aH >= vT && aT <= vT + vH) {
+            if (line.dataset && line.dataset.uid) {
+              let uId = parseInt(line.dataset.uid)
+              let aU = this.xmlObjLines[uId]
+              if ((!this.mainData.search.view.kwic || this.mainData.search.view.type === 'xml-view') && aU[this.view + 'Height'] !== aH) {
+                aU[this.view + 'Height'] = aH
               }
+              if (aU.uObj.loading) {
+                this.loadNext()
+              } else if (!aU[this.view]) {
+                aU[this.view] = renderer.renderUtterance(aU.uObj.obj, {...aU.uObj, xml: aU.uObj.obj.xml}, this.view, this.mainData.search.highlights, true)
+              }
+              if (this.mainData.search.view.kwic && this.mainData.search.view.type !== 'xml-view') {
+                this.$nextTick(() => {
+                  [].forEach.call(line.querySelectorAll('.kwic-frm > div'), function(div) {
+                    if (div.dataset && div.dataset.highlighted) {
+                      let hit = div.querySelector('#' + div.dataset.highlighted)
+                      if (hit) {
+                        let frmHalfWidth = div.offsetWidth / 2
+                        let hitMiddle = hit.offsetLeft + hit.offsetWidth / 2
+                        div.style.left = parseInt(frmHalfWidth - hitMiddle) + 'px'
+                      } else {
+                        div.style.left = ''
+                      }
+                    }
+                  })
+                  if (aU['kwicHeight'] !== line.offsetHeight || 0) {
+                    aU['kwicHeight'] = line.offsetHeight || 0
+                  }
+                })
+              }
+              this.inView.push(uId)
             }
-          })
-        }
+          }
+        })
       }
     },
     openDocument (xmlId) {
@@ -151,6 +172,7 @@ export default {
             plainHeight: 24,
             pos: null,
             posHeight: 24,
+            kwicHeight: 24,
             'xml-view': null,
             'xml-viewHeight': 300
           }
@@ -242,7 +264,22 @@ export default {
       }
     },
     view () {
-      this.scrolling()
+      this.$nextTick(() => {
+        this.scrolling()
+      })
+    },
+    'mainData.search.view.kwic' () {
+      this.$nextTick(() => {
+        this.scrolling()
+      })
+    },
+    'mainData.search.view.views': {
+      deep: true,
+      handler() {
+        this.$nextTick(() => {
+          this.scrolling()
+        })
+      }
     }
   },
   components: {
@@ -299,6 +336,20 @@ export default {
 .line-con >>> .tag-parsererror {
   color: #d00;
   font-weight: bold;
+}
+
+/********/
+/* kwic */
+/********/
+.kwic-frm, .kwic-prev {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+}
+.kwic-frm > .line-con, .kwic-prev {
+  position: relative;
+  left: 0px;
+  white-space: nowrap;
 }
 
 /*********/
@@ -427,6 +478,19 @@ export default {
 /*******/
 /* Pos */
 /*******/
+.line-con.typ-pos >>> span {
+  vertical-align: top;
+}
+.line-con.typ-pos >>> .fx-ana {
+  color: #888;
+  display: block;
+  font-size: 0.9rem;
+  line-height: 1.2rem;
+}
+.line-con.typ-pos >>> .tag-w {
+  display: inline-block;
+  text-align: center;
+}
 
 /*******/
 /* XML */

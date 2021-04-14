@@ -7,6 +7,7 @@
       <router-link to="/"><img :src="publicPath + 'images/vc-logo-0-300.png'" class="img-fluid logo-small mt-1" /></router-link>
       <v-spacer />
       <div class="d-flex align-end">
+        <v-btn @click="clearRenderCache" v-if="dev" x-small class="mr-3">Clear Render Cache</v-btn>
         <v-select dense hide-details
           label="API"
           :items="['https://voice-node.acdh-dev.oeaw.ac.at/', 'http://127.0.0.1:3000/']"
@@ -209,6 +210,20 @@ export default {
       if (this.$matomo) {
         this.userOptedTracking = this.$matomo && !this.$matomo.isUserOptedOut()
       }
+    },
+    clearRenderCache () {
+      let views = ['voice', 'plain', 'pos', 'xml-view']
+      this.mainData.corpus.elements.forEach(e => {
+        if (e && e.bodyObj && e.bodyObj.data) {
+          e.bodyObj.data.u.list.forEach(u => {
+            views.forEach(v => {
+              if (u[v]) {
+                u[v] = ''
+              }
+            })
+          })
+        }
+      })
     }
   },
   computed: {

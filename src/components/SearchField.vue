@@ -125,17 +125,19 @@ export default {
       }
     },
     refreshHighlighting () {
-      console.log('refreshHighlighting', this.mainData.search.highlights, this.mainData, this.mainData.corpus.elements)
+      // console.log('refreshHighlighting', this.mainData.search.highlights, this.mainData, this.mainData.corpus.elements)
       let views = ['voice', 'plain', 'pos', 'xml-view']
       this.mainData.corpus.elements.forEach(e => {
-        console.log(e.bodyObj.data.u)
-        e.bodyObj.data.u.list.forEach(u => {
-          views.forEach(v => {
-            if (u[v]) {
-              u[v] = ''
-            }
+        // console.log(e.bodyObj.data.u)
+        if (e && e.bodyObj && e.bodyObj.data) {
+          e.bodyObj.data.u.list.forEach(u => {
+            views.forEach(v => {
+              if (u[v]) {
+                u[v] = ''
+              }
+            })
           })
-        })
+        }
       })
     },
     deepSeal (o) {

@@ -1,7 +1,7 @@
 <template>
   <div class="voice-switches-frm">
     <div
-      v-for="(o, i) in mainData.views.voice" :key="'o' + i"
+      v-for="(o, i) in aViews.voice" :key="'o' + i"
       @click="o.val = !o.val"
       :class="'vs-' + i.toLowerCase() + (o.val ? '' : ' off')"
       :title="o.title"
@@ -15,13 +15,17 @@
 export default {
   name: 'RenderSelect',
   props: {
-    'mainData': Object
+    'mainData': Object,
+    'views': Object,
   },
   data: () => ({
   }),
   mounted () {
   },
   computed: {
+    aViews () {
+      return this.views || this.mainData.views
+    }
   },
   methods: {
   },

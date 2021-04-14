@@ -194,4 +194,7 @@ export default {
 .tei-header >>> h3 {
   margin-bottom: 8px;
 }
+div.flex-shrink-1 {
+  flex-grow: 0
+}
 </style>

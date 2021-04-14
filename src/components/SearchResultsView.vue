@@ -478,8 +478,18 @@ export default {
 /*******/
 /* Pos */
 /*******/
+.line-con.typ-pos >>> span {
+  vertical-align: top;
+}
 .line-con.typ-pos >>> .fx-ana {
-  color: #777;
+  color: #888;
+  display: block;
+  font-size: 0.9rem;
+  line-height: 1.2rem;
+}
+.line-con.typ-pos >>> .tag-w {
+  display: inline-block;
+  text-align: center;
 }
 
 /*******/

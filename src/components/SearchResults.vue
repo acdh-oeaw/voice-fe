@@ -45,7 +45,7 @@
       </div>
     </div>
     <div class="voice-switches" v-if="mainData.search.view.type === 'voice' && mainData.search.results && mainData.search.results.u && mainData.search.results.u.length > 0">
-      <RenderSelect :mainData="mainData" class="d-flex flex-wrap justify-space-around" />
+      <RenderSelect :mainData="mainData" :views="mainData.search.view.views" class="d-flex flex-wrap justify-space-around" />
     </div>
   </div>
 </template>
@@ -62,6 +62,9 @@ export default {
   data: () => ({
   }),
   mounted () {
+    if (!this.mainData.search.view.views) {
+      this.mainData.search.view.views = JSON.parse(JSON.stringify(this.mainData.views))
+    }
   },
   computed: {
     filteredSearchResults () {
@@ -78,7 +81,7 @@ export default {
       return this.filteredSearchResults.reduce((a, c) => a + (c.hits || 0), 0)
     },
     show_utI () {
-      return this.mainData.search.view.type !== 'voice' || this.mainData.views.voice.utI.val
+      return this.mainData.search.view.type !== 'voice' || this.mainData.search.view.views.voice.utI.val
     }
   },
   methods: {

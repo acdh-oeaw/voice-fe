@@ -63,13 +63,13 @@ export default {
       return this.filteredSearchResults.slice(0, this.lastParsedLine + 10)
     },
     show_utI () {
-      return this.mainData.search.view.type !== 'voice' || this.mainData.views.voice.utI.val
+      return this.mainData.search.view.type !== 'voice' || this.mainData.search.view.views.voice.utI.val
     },
     classes () {
       let aClasses = 'line-con typ-' + this.view
       if (this.view === 'voice') {
-        Object.keys(this.mainData.views.voice).forEach(vo => {
-          if (this.mainData.views.voice[vo].val) {
+        Object.keys(this.mainData.search.view.views.voice).forEach(vo => {
+          if (this.mainData.search.view.views.voice[vo].val) {
             aClasses += ' s-' + vo.toLowerCase()
           }
         })

@@ -32,7 +32,8 @@ const localFunctions = {
         highlights: new Map(),
         foundXmlId: [],
         view: {
-          type: 'voice'
+          type: 'voice',
+          views: null
         },
         errors: [],
         now: false

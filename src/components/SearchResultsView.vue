@@ -427,6 +427,9 @@ export default {
 /*******/
 /* Pos */
 /*******/
+.line-con.typ-pos >>> .fx-ana {
+  color: #777;
+}
 
 /*******/
 /* XML */

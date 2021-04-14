@@ -135,7 +135,7 @@ function renderingUtterance(uObj, xmlObj, type, highlight, xmlIdCache) {
           }
         }
       }
-      aTxt += '<span class="' + aClasses.join(' ') + '">'
+      aTxt += '<span class="' + aClasses.join(' ') + '"' + (uObj.attributes && uObj.attributes['lemma'] ? ' data-lemma="' + uObj.attributes['lemma'] + '"' : '') + '>'
       if (uObj.attributes && uObj.attributes['voice:syl']) {
         aTxt += '@'.repeat(parseInt(uObj.attributes['voice:syl']))
       }
@@ -326,8 +326,27 @@ function renderingUtteranceBefore(uObj, xmlObj, type, xmlIdCache) {
 
 function renderingUtteranceAfter(uObj, xmlObj, type, xmlIdCache) {
   let aTxt = ''
+  // pos - layout
+  if (type === 'pos') {
+    // ana
+    if (uObj.attributes && uObj.attributes['ana']) {
+      let ana = uObj.attributes['ana'].replace(/#/g, '').split('f')
+      aTxt += '<span class="fx-ana">_' + ana[0] + (ana[1] ? '(' + ana[1] + ')' : '') + '</span>'
+    }
+    // pause
+    if (uObj.tag === 'pause') {
+      aTxt += ' _'
+      if (uObj.attributes && typeof uObj.attributes['dur'] === 'string') {
+        let aM = uObj.attributes['dur'].match(/PT(.+)S/i)
+        aTxt += (aM && aM[1]) ? aM[1] : '.'
+      } else {
+        aTxt += '.'
+      }
+      aTxt += '_PA(PA) '
+    }
+  }
   // voice - layout
-  if (type === 'voice') {
+  else if (type === 'voice') {
     // overlap tags - after
     if (uObj.tag === 'seg' && uObj.attributes && uObj.attributes['type'] === 'overlap') {
       let oSiblings = xmlObj.list[uObj.parent].children

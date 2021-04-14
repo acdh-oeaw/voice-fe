@@ -14,7 +14,7 @@ export default new Router({
     {
       path: '/tool',
       name: 'tool',
-      component: () => import(/* webpackChunkName: "about" */ './views/Tool.vue')
+      component: () => import(/* webpackChunkName: "tool" */ './views/Tool.vue')
     }
   ]
 })

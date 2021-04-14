@@ -1,5 +1,5 @@
 <template>
-  <div class="flex-grow-1 d-flex flex-column">
+  <div class="flex-grow-1 d-flex flex-column fill-height">
     <div class="scroll-content flex-grow-1">
       <div ref="viewarea" class="px-3 py-2">
         <template v-for="(err, i) in mainData.search.errors">

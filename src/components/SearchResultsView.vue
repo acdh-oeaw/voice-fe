@@ -46,7 +46,9 @@ export default {
     xmlObjLines: null,
     lastParsedLine: 0,
     inView: [],
-    loadingNext: false
+    loadingNext: false,
+    scrollTop: 0,
+    clientHeight: 800
   }),
   mounted () {
     this.updateXmlObjLines()
@@ -54,14 +56,6 @@ export default {
       this.loadScrollPos()
       this.scrolling()
     })
-    if (this.scrollerRef) {
-      this.scrollerRef.addEventListener('scroll', this.scrolling)
-    }
-  },
-  beforeDestroy () {
-    if (this.scrollerRef) {
-      this.scrollerRef.removeEventListener('scroll', this.scrolling)
-    }
   },
   computed: {
     searchResultsU () {
@@ -86,52 +80,55 @@ export default {
     goToUtterance (u) {
       this.$emit('goToUtterance', u)
     },
+    scrollEvent (e) {
+      this.scrollTop = e.srcElement.scrollTop || 0
+      this.clientHeight = e.srcElement.clientHeight || 500
+      this.scrolling()
+    },
     scrolling () {
-      if (this.scrollerRef) {
-        let vT = this.scrollerRef.scrollTop
-        let vH = this.scrollerRef.clientHeight
-        this.mainData.search.scrollPos = vT
-        this.inView = []
-        if (this.$refs.lines) {
-          this.$refs.lines.forEach((line) => {
-            let aH = line.offsetHeight || 0
-            let aT = line.offsetTop
-            if (aT + aH >= vT && aT <= vT + vH) {
-              if (line.dataset && line.dataset.uid) {
-                let uId = parseInt(line.dataset.uid)
-                let aU = this.xmlObjLines[uId]
-                if ((!this.mainData.search.view.kwic || this.mainData.search.view.type === 'xml-view') && aU[this.view + 'Height'] !== aH) {
-                  aU[this.view + 'Height'] = aH
-                }
-                if (aU.uObj.loading) {
-                  this.loadNext()
-                } else if (!aU[this.view]) {
-                  aU[this.view] = renderer.renderUtterance(aU.uObj.obj, {...aU.uObj, xml: aU.uObj.obj.xml}, this.view, this.mainData.search.highlights, true)
-                }
-                if (this.mainData.search.view.kwic && this.mainData.search.view.type !== 'xml-view') {
-                  this.$nextTick(() => {
-                    [].forEach.call(line.querySelectorAll('.kwic-frm > div'), function(div) {
-                      if (div.dataset && div.dataset.highlighted) {
-                        let hit = div.querySelector('#' + div.dataset.highlighted)
-                        if (hit) {
-                          let frmHalfWidth = div.offsetWidth / 2
-                          let hitMiddle = hit.offsetLeft + hit.offsetWidth / 2
-                          div.style.left = parseInt(frmHalfWidth - hitMiddle) + 'px'
-                        } else {
-                          div.style.left = ''
-                        }
+      let vT = this.scrollTop
+      let vH = this.clientHeight
+      this.mainData.search.scrollPos = vT
+      this.inView = []
+      if (this.$refs.lines) {
+        this.$refs.lines.forEach((line) => {
+          let aH = line.offsetHeight || 0
+          let aT = line.offsetTop
+          if (aT + aH >= vT && aT <= vT + vH) {
+            if (line.dataset && line.dataset.uid) {
+              let uId = parseInt(line.dataset.uid)
+              let aU = this.xmlObjLines[uId]
+              if ((!this.mainData.search.view.kwic || this.mainData.search.view.type === 'xml-view') && aU[this.view + 'Height'] !== aH) {
+                aU[this.view + 'Height'] = aH
+              }
+              if (aU.uObj.loading) {
+                this.loadNext()
+              } else if (!aU[this.view]) {
+                aU[this.view] = renderer.renderUtterance(aU.uObj.obj, {...aU.uObj, xml: aU.uObj.obj.xml}, this.view, this.mainData.search.highlights, true)
+              }
+              if (this.mainData.search.view.kwic && this.mainData.search.view.type !== 'xml-view') {
+                this.$nextTick(() => {
+                  [].forEach.call(line.querySelectorAll('.kwic-frm > div'), function(div) {
+                    if (div.dataset && div.dataset.highlighted) {
+                      let hit = div.querySelector('#' + div.dataset.highlighted)
+                      if (hit) {
+                        let frmHalfWidth = div.offsetWidth / 2
+                        let hitMiddle = hit.offsetLeft + hit.offsetWidth / 2
+                        div.style.left = parseInt(frmHalfWidth - hitMiddle) + 'px'
+                      } else {
+                        div.style.left = ''
                       }
-                    })
-                    if (aU['kwicHeight'] !== line.offsetHeight || 0) {
-                      aU['kwicHeight'] = line.offsetHeight || 0
                     }
                   })
-                }
-                this.inView.push(uId)
+                  if (aU['kwicHeight'] !== line.offsetHeight || 0) {
+                    aU['kwicHeight'] = line.offsetHeight || 0
+                  }
+                })
               }
+              this.inView.push(uId)
             }
-          })
-        }
+          }
+        })
       }
     },
     openDocument (xmlId) {
@@ -283,7 +280,7 @@ export default {
           this.scrolling()
         })
       }
-    },
+    }
   },
   components: {
   }

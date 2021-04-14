@@ -1,7 +1,7 @@
 <template>
   <div class="flex-grow-1 d-flex flex-column fill-height">
     <div class="scroll-content flex-grow-1">
-      <div ref="viewarea" class="px-3 py-2">
+      <div @scroll="viewareaScroll" ref="viewarea" class="px-3 py-2">
         <template v-for="(err, i) in mainData.search.errors">
           <v-alert prominent type="error" dismissible :key="'err' + i">
             <b>Error</b> ({{ err.status }}): <b>{{ err.txt }}</b><br>
@@ -47,7 +47,7 @@
               v-model="mainData.search.view.kwic"
             ></v-checkbox>
           </div>
-          <SearchResultsView @goToUtterance="goToUtterance" :mainData="mainData" :view="mainData.search.view.type" :filteredSearchResults="filteredSearchResults" :scrollerRef="$refs.viewarea" />
+          <SearchResultsView ref="searchResultsView" @goToUtterance="goToUtterance" :mainData="mainData" :view="mainData.search.view.type" :filteredSearchResults="filteredSearchResults" :scrollerRef="$refs.viewarea" />
         </div>
       </div>
     </div>
@@ -92,6 +92,11 @@ export default {
     }
   },
   methods: {
+    viewareaScroll (e) {
+      if (this.$refs.searchResultsView) {
+        this.$refs.searchResultsView.scrollEvent(e)
+      }
+    },
     goToUtterance (u) {
       let xmlId = u.split('_')[0]
       this.openDocument(xmlId, u)

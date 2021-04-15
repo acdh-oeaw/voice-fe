@@ -486,6 +486,7 @@ export default {
   display: block;
   font-size: 0.9rem;
   line-height: 1.2rem;
+  padding: 0 1.5px;
 }
 .line-con.typ-pos >>> .tag-w {
   display: inline-block;

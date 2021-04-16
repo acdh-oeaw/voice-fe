@@ -10,7 +10,13 @@
           {{ uObj.xmlId }}
         </div>
         <div :class="'d-flex' + (mainData.search.view.type === 'xml-view' ? ' flex-wrap' : '')" v-if="xmlObjLines">
-          <div class="line-uid" v-if="show_utI"><button @click="goToUtterance(uObj.uId)" class="c-uid">{{ uObj.uId.split('_')[0] + ':' + uObj.uId.split('_')[2] }}</button> <span class="u-hits">Hits:<br/>{{uObj.hits}}</span></div>
+          <div class="line-uid pr-6" v-if="show_utI">
+            <button @click="goToUtterance(uObj.uId)" class="c-uid">{{ uObj.uId.split('_')[0] + ':' + uObj.uId.split('_')[2] }}</button>
+            <span class="u-hits" title="Hits">{{ uObj.hits }}</span>
+          </div>
+          <div class="line-jump" v-else>
+            <button @click="goToUtterance(uObj.uId)" class="c-uid"></button>
+          </div>
           <template v-if="!xmlObjLines[uObj.idx].uObj.loading">
             <div class="line-speaker" v-if="xmlObjLines[uObj.idx].uObj.obj.attributes && xmlObjLines[uObj.idx].uObj.obj.attributes.who">{{ xmlObjLines[uObj.idx].uObj.obj.attributes.who.split('_').slice(-1)[0] }}</div>
             <div class="flex-break" v-if="mainData.search.view.type === 'xml-view'"></div>
@@ -306,7 +312,16 @@ export default {
   background: #eef;
 }
 .line-uid {
+  position: relative;
   min-width: 8.5rem;
+}
+.line-jump {
+  min-width: 2rem;
+}
+.line-jump > button::after {
+  content: url("data:image/svg+xml,%3C%3Fxml version='1.0' encoding='UTF-8'%3F%3E%3C!DOCTYPE svg PUBLIC '-//W3C//DTD SVG 1.1//EN' 'http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd'%3E%3Csvg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' version='1.1' width='20' height='20' viewBox='0 0 24 24'%3E%3Cpath fill='%23333' d='M14,3V5H17.59L7.76,14.83L9.17,16.24L19,6.41V10H21V3M19,19H5V5H12V3H5C3.89,3 3,3.9 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V12H19V19Z' /%3E%3C/svg%3E");
+  position: relative;
+  top: 1px;
 }
 .c-uid {
   cursor: pointer;
@@ -326,8 +341,17 @@ export default {
 }
 .u-hits {
   font-size: xx-small;
-  display: inline-block;
+  display: block;
   text-align: center;
+  border-radius: 7px;
+  background: #eee;
+  height: 14px;
+  min-width: 14px;
+  position: absolute;
+  right: 5px;
+  top: 4px;
+  color: #666;
+  padding: 0 3px;
 }
 
 .line-con >>> .highlight {

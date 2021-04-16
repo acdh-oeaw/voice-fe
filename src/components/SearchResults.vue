@@ -51,8 +51,8 @@
         </div>
       </div>
     </div>
-    <div class="voice-switches" v-if="mainData.search.view.type === 'voice' && mainData.search.results && mainData.search.results.u && mainData.search.results.u.length > 0">
-      <RenderSelect :mainData="mainData" :views="mainData.search.view.views" class="d-flex flex-wrap justify-space-around" />
+    <div class="voice-switches" v-if="mainData.search.view.views && mainData.search.view.views[mainData.search.view.type] && mainData.search.results && mainData.search.results.u && mainData.search.results.u.length > 0">
+      <RenderSelect :mainData="mainData" :views="mainData.search.view.views" :type="mainData.search.view.type" class="d-flex flex-wrap" />
     </div>
   </div>
 </template>

@@ -77,6 +77,11 @@ const localFunctions = {
           gap: { val: true, text: '(gap)', title: 'gap', style: { color: '#000' } },
           lie: { val: true, text: ':.?', title: '(Lengthening, Intonation, Emphasis)', style: { color: '#000' } },
           ut: { val: true, text: '(word)', title: 'Uncertain transcription', style: { color: '#000' } },
+        },
+        pos: {
+          utI: { val: true, text: '1', title: 'utterance identifier', style: { color: '#000' } },
+          asFT: { val: false, text: '(FT)', title: 'always show function tags', style: { color: '#666' } },
+          slv: { val: false, text: '_', title: 'single line view', style: { color: '#333' } },
         }
       },
       infos: {

@@ -45,7 +45,13 @@ export default {
   },
   computed: {
     show_utI () {
-      return this.view !== 'voice' || this.mainData.views.voice.utI.val
+      let show = true
+      Object.keys(this.mainData.views).some(v => {
+        if (this.view === v) {
+          show = !this.mainData.views[v].utI || this.mainData.views[v].utI.val
+        }
+      })
+      return show
     },
     show_sId () {
       return this.view !== 'voice' || this.mainData.views.voice.sId.val
@@ -55,13 +61,16 @@ export default {
     },
     classes () {
       let aClasses = 'line-con typ-' + this.view
-      if (this.view === 'voice') {
-        Object.keys(this.mainData.views.voice).forEach(vo => {
-          if (this.mainData.views.voice[vo].val) {
-            aClasses += ' s-' + vo.toLowerCase()
-          }
-        })
-      }
+      Object.keys(this.mainData.views).some(v => {
+        if (this.view === v) {
+          Object.keys(this.mainData.views[v]).forEach(vo => {
+            if (this.mainData.views[v][vo].val) {
+              aClasses += ' s-' + vo.toLowerCase()
+            }
+          })
+          return true
+        }
+      })
       return aClasses
     }
   },
@@ -342,14 +351,22 @@ export default {
 }
 .line-con.typ-pos >>> .fx-ana {
   color: #888;
+}
+.line-con.typ-pos:not(.s-slv) >>> .fx-ana {
   display: block;
   font-size: 0.9rem;
   line-height: 1.2rem;
   padding: 0 1.5px;
 }
-.line-con.typ-pos >>> .tag-w {
+.line-con.typ-pos:not(.s-slv) >>> .tag-w {
   display: inline-block;
   text-align: center;
+}
+.line-con.typ-pos:not(.s-slv) >>> .fx-ana-s {
+  display: none;
+}
+.line-con.typ-pos:not(.s-asft) >>> .fx-ana-f {
+  display: none;
 }
 
 /*******/

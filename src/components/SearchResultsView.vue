@@ -68,17 +68,26 @@ export default {
       return this.filteredSearchResults.slice(0, this.lastParsedLine + 10)
     },
     show_utI () {
-      return this.mainData.search.view.type !== 'voice' || this.mainData.search.view.views.voice.utI.val
+      let show = true
+      Object.keys(this.mainData.search.view.views).some(v => {
+        if (this.view === v) {
+          show = !this.mainData.search.view.views[v].utI || this.mainData.search.view.views[v].utI.val
+        }
+      })
+      return show
     },
     classes () {
       let aClasses = 'line-con typ-' + this.view
-      if (this.view === 'voice') {
-        Object.keys(this.mainData.search.view.views.voice).forEach(vo => {
-          if (this.mainData.search.view.views.voice[vo].val) {
-            aClasses += ' s-' + vo.toLowerCase()
-          }
-        })
-      }
+      Object.keys(this.mainData.search.view.views).some(v => {
+        if (this.view === v) {
+          Object.keys(this.mainData.search.view.views[v]).forEach(vo => {
+            if (this.mainData.search.view.views[v][vo].val) {
+              aClasses += ' s-' + vo.toLowerCase()
+            }
+          })
+          return true
+        }
+      })
       return aClasses
     }
   },
@@ -317,6 +326,7 @@ export default {
 }
 .line-jump {
   min-width: 2rem;
+  height: 24px;
 }
 .line-jump > button::after {
   content: url("data:image/svg+xml,%3C%3Fxml version='1.0' encoding='UTF-8'%3F%3E%3C!DOCTYPE svg PUBLIC '-//W3C//DTD SVG 1.1//EN' 'http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd'%3E%3Csvg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' version='1.1' width='20' height='20' viewBox='0 0 24 24'%3E%3Cpath fill='%23333' d='M14,3V5H17.59L7.76,14.83L9.17,16.24L19,6.41V10H21V3M19,19H5V5H12V3H5C3.89,3 3,3.9 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V12H19V19Z' /%3E%3C/svg%3E");
@@ -507,14 +517,22 @@ export default {
 }
 .line-con.typ-pos >>> .fx-ana {
   color: #888;
+}
+.line-con.typ-pos:not(.s-slv) >>> .fx-ana {
   display: block;
   font-size: 0.9rem;
   line-height: 1.2rem;
   padding: 0 1.5px;
 }
-.line-con.typ-pos >>> .tag-w {
+.line-con.typ-pos:not(.s-slv) >>> .tag-w {
   display: inline-block;
   text-align: center;
+}
+.line-con.typ-pos:not(.s-slv) >>> .fx-ana-s {
+  display: none;
+}
+.line-con.typ-pos:not(.s-asft) >>> .fx-ana-f {
+  display: none;
 }
 
 /*******/

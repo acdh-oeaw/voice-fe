@@ -27,8 +27,8 @@
         </div>
       </div>
     </div>
-    <div class="voice-switches" v-if="aElement && vTab === 'voice'">
-      <RenderSelect :mainData="mainData" class="d-flex flex-wrap justify-space-around" />
+    <div class="voice-switches" v-if="aElement && mainData.views && mainData.views[vTab]">
+      <RenderSelect :mainData="mainData" :type="vTab" class="d-flex flex-wrap" />
     </div>
     <Audioplayer class="fx-bt" :audiourl="aAudioUrl" v-if="!refreshAudio && aAudioUrl" />
   </div>

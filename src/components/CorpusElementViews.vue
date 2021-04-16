@@ -315,7 +315,7 @@ export default {
   color: #61DDD2;
 }
 
-.line-con.typ-voice >>> .tag-emph {
+.line-con.typ-voice.s-lie >>> .tag-emph {
   text-transform: uppercase;
 }
 
@@ -331,8 +331,7 @@ export default {
 }
 
 .line-con.typ-voice:not(.s-lie) >>> .type-lengthening,
-.line-con.typ-voice:not(.s-lie) >>> .type-intonation,
-.line-con.typ-voice:not(.s-lie) >>> .tag-emph {
+.line-con.typ-voice:not(.s-lie) >>> .type-intonation {
   display: none;
 }
 

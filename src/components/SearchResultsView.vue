@@ -12,7 +12,7 @@
         <div :class="'d-flex' + (mainData.search.view.type === 'xml-view' ? ' flex-wrap' : '')" v-if="xmlObjLines">
           <div class="line-uid pr-6" v-if="show_utI">
             <button @click="goToUtterance(uObj.uId)" class="c-uid">{{ uObj.uId.split('_')[0] + ':' + uObj.uId.split('_')[2] }}</button>
-            <span class="u-hits" title="Hits">{{ uObj.hits }}</span>
+            <span class="u-hits" title="Hits">{{ uObj.hits.length }}</span>
           </div>
           <div class="line-jump" v-else>
             <button @click="goToUtterance(uObj.uId)" class="c-uid"></button>
@@ -22,7 +22,7 @@
             <div class="flex-break" v-if="mainData.search.view.type === 'xml-view'"></div>
             <template v-if="inView.indexOf(uIdx) > - 1">
               <div class="kwic-frm" v-if="mainData.search.view.kwic && mainData.search.view.type !== 'xml-view'">
-                <div v-html="xmlObjLines[uObj.idx][view]" :class="classes" :data-highlighted="'s_' + h[0]" v-for="h in uObj.highlight" :key="'h' + h"></div>
+                <div v-html="xmlObjLines[uObj.idx][view]" :class="classes" :data-highlighted="'#s_' + h.join(',#s_')" v-for="h in uObj.hits" :key="'h' + h"></div>
               </div>
               <div v-html="xmlObjLines[uObj.idx][view]" :class="classes" v-else></div>
             </template>
@@ -129,7 +129,7 @@ export default {
                 this.$nextTick(() => {
                   [].forEach.call(line.querySelectorAll('.kwic-frm > div'), function(div) {
                     if (div.dataset && div.dataset.highlighted) {
-                      let hit = div.querySelector('#' + div.dataset.highlighted)
+                      let hit = div.querySelector(div.dataset.highlighted)
                       if (hit) {
                         let frmHalfWidth = div.offsetWidth / 2
                         let hitMiddle = hit.offsetLeft + hit.offsetWidth / 2

@@ -16,7 +16,7 @@
           No search done yet ...
         </div>
         <div v-else-if="mainData.search.results">
-          <v-alert prominent type="warning" dismissible v-if="mainData.search.results.hits === 0">
+          <v-alert prominent type="warning" dismissible v-if="mainData.search.results.hits.length === 0">
             Nothing found
           </v-alert>
           <v-alert prominent type="warning" dismissible v-else-if="filteredHits === 0">
@@ -26,7 +26,7 @@
           <!-- <div v-if="mainData.search.results.status">status: {{ mainData.search.results.status }}</div> -->
           <!-- <div>xmlStatus: {{ mainData.search.results.xmlStatus }}</div> -->
           <div v-if="mainData.search.results.u">
-            <span :title="'unfiltered hits: ' + mainData.search.results.hits" class="cur-help">{{ filteredHits }}</span> hits in <span :title="'unfiltered utterances: ' + mainData.search.results.u.length" class="cur-help">{{ filteredSearchResults.length }}</span> utterances
+            <span :title="'unfiltered hits: ' + mainData.search.results.hits.length" class="cur-help">{{ filteredHits }}</span> hits in <span :title="'unfiltered utterances: ' + mainData.search.results.u.length" class="cur-help">{{ filteredSearchResults.length }}</span> utterances
           </div>
           <div v-else>
             error
@@ -85,7 +85,7 @@ export default {
       }
     },
     filteredHits () {
-      return this.filteredSearchResults.reduce((a, c) => a + (c.hits || 0), 0)
+      return this.filteredSearchResults.reduce((a, c) => a + (c.hits.length || 0), 0)
     },
     show_utI () {
       return this.mainData.search.view.type !== 'voice' || this.mainData.search.view.views.voice.utI.val

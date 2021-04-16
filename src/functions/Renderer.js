@@ -116,6 +116,10 @@ function renderingUtterance(uObj, xmlObj, type, highlight, isSearch = false, xml
       uObj.children.forEach(c => {
         aTxt += renderingUtterance(c, xmlObj, type, highlight, isSearch, xmlIdCache, fxCache)
       })
+      if (type === 'pos' && fxCache.pos) {
+        aTxt += fxCache.pos.c + '</span>'
+        fxCache.pos = null
+      }
     } else {
       let aClasses = ['tag-' + uObj.tag]
       let aId = null

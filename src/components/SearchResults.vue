@@ -8,12 +8,12 @@
             Query: {{ err.q }}
           </v-alert>
         </template>
-        <div class="mb-2">Search Results - "{{ mainData.search.value }}" - Filter: {{ mainData.app.filterActive }}</div>
+        <!-- <div class="mb-2">Search Results - "{{ mainData.search.value }}" - Filter: {{ mainData.app.filterActive }}</div> -->
         <div v-if="mainData.search.loading">
           loading ...
         </div>
         <div v-else-if="!mainData.search.searched">
-          Noch keine Suche durchgeführt ...
+          No search done yet ...
         </div>
         <div v-else-if="mainData.search.results">
           <v-alert prominent type="warning" dismissible v-if="mainData.search.results.hits === 0">
@@ -22,17 +22,17 @@
           <v-alert prominent type="warning" dismissible v-else-if="filteredHits === 0">
             Nothing found with actual filter. (Without filter: {{ mainData.search.results.hits }} Hits)
           </v-alert>
-          <div>query: {{ mainData.search.results.query }}</div>
-          <div>cql: {{ mainData.search.results.cql }}</div>
-          <div v-if="mainData.search.results.status">status: {{ mainData.search.results.status }}</div>
-          <div>xmlStatus: {{ mainData.search.results.xmlStatus }}</div>
+          <!-- <div>query: {{ mainData.search.results.query }}</div> -->
+          <!-- <div v-if="mainData.search.results.status">status: {{ mainData.search.results.status }}</div> -->
+          <!-- <div>xmlStatus: {{ mainData.search.results.xmlStatus }}</div> -->
           <div v-if="mainData.search.results.u">
             <span :title="'unfiltered hits: ' + mainData.search.results.hits" class="cur-help">{{ filteredHits }}</span> hits in <span :title="'unfiltered utterances: ' + mainData.search.results.u.length" class="cur-help">{{ filteredSearchResults.length }}</span> utterances
           </div>
           <div v-else>
             error
           </div>
-          <div>highlighted tokens: {{ mainData.search.highlights ? mainData.search.highlights.size : 'error' }}</div>
+          <div>cql: {{ mainData.search.results.cql }}</div>
+          <!-- <div>highlighted tokens: {{ mainData.search.highlights ? mainData.search.highlights.size : 'error' }}</div> -->
           <div class="my-1">To view a search result in the corresponding corpus text, click on the utterance ID in the left column.</div>
           <div class="d-flex">
             <v-select hide-details

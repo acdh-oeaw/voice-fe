@@ -18,7 +18,7 @@
             <button @click="goToUtterance(uObj.uId)" class="c-uid"></button>
           </div>
           <template v-if="!xmlObjLines[uObj.idx].uObj.loading">
-            <div class="line-speaker" v-if="xmlObjLines[uObj.idx].uObj.obj.attributes && xmlObjLines[uObj.idx].uObj.obj.attributes.who">{{ xmlObjLines[uObj.idx].uObj.obj.attributes.who.split('_').slice(-1)[0] }}</div>
+            <div class="line-speaker" v-if="xmlObjLines[uObj.idx].uObj.obj.attributes && xmlObjLines[uObj.idx].uObj.obj.attributes.who"><button @click="showSpeaker(uObj)">{{ xmlObjLines[uObj.idx].uObj.obj.attributes.who.split('_').slice(-1)[0] }}</button></div>
             <div class="flex-break" v-if="mainData.search.view.type === 'xml-view'"></div>
             <template v-if="inView.indexOf(uIdx) > - 1">
               <div class="kwic-frm" v-if="mainData.search.view.kwic && mainData.search.view.type !== 'xml-view'">
@@ -92,6 +92,10 @@ export default {
     }
   },
   methods: {
+    showSpeaker (l) {
+      // console.log(l.xmlId, this.xmlObjLines[l.idx].uObj.obj.attributes.who.split('_').slice(-1)[0])
+      this.mainData.showSpeaker = {id: l.xmlId, speaker: this.xmlObjLines[l.idx].uObj.obj.attributes.who.split('_').slice(-1)[0]}
+    },
     goToUtterance (u) {
       this.$emit('goToUtterance', u)
     },

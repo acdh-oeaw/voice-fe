@@ -31,6 +31,40 @@
         size="64"
       ></v-progress-circular>
     </v-overlay>
+    <v-dialog v-model="showSpeakerDialog" width="500">
+      <v-card>
+        <v-card-title>Speaker Information</v-card-title>
+        <v-card-text v-if="showSpeaker">
+          <div v-if="showSpeaker.txt">
+            {{ showSpeaker.txt }}
+          </div>
+          <table>
+            <tr v-if="showSpeaker.age"><td><b>Age:</b></td><td> {{ showSpeaker.age }}</td></tr>
+            <tr v-if="showSpeaker.sex"><td><b>Sex:</b></td><td> {{ showSpeaker.sex }}</td></tr>
+            <tr v-if="showSpeaker['L1'] && showSpeaker['L1'].length > 0"><td><b>L1:</b></td><td> {{ showSpeaker['L1'].join(', ') }}</td></tr>
+            <tr v-if="showSpeaker.id"><td><b>ID:</b></td><td> {{ showSpeaker.id }}</td></tr>
+            <tr v-if="showSpeaker.occupation"><td><b>Occupation:</b></td><td> {{ showSpeaker.occupation }}</td></tr>
+          </table>
+          <table v-if="showSpeaker.refs" class="mt-3">
+            <tr class="text-left"><th>Text</th><th>Role</th><th>Tag</th></tr>
+            <tr v-for="k in Object.keys(showSpeaker.refs).sort((a, b) => { return a === mainData.showSpeaker.id ? -1 : b === mainData.showSpeaker.id ? 1 : 0 })" :key="k">
+              <td :class="'pr-3' + (k === mainData.showSpeaker.id ? ' bold' : '')">{{ k }}:</td>
+              <td class="pr-3">{{ showSpeaker.refs[k].role }}</td>
+              <td>{{ showSpeaker.refs[k].tag }}</td>
+            </tr>
+          </table>
+          <div class="pt-3" v-if="dev">
+            {{ showSpeaker }}
+          </div>
+        </v-card-text>
+        <v-card-text v-else-if="mainData.showSpeaker">
+          {{ mainData.showSpeaker }}
+        </v-card-text>
+        <v-card-actions>
+          <v-btn color="primary" text @click="showSpeakerDialog = false">Close</v-btn>
+        </v-card-actions>
+      </v-card>
+    </v-dialog>
     <v-footer color="white" class="py-0 footer">
       <v-container class="py-0 px-2 text-right">
         <div class="d-flex justify-space-between">
@@ -60,7 +94,8 @@ export default {
     version: process.env.VUE_APP_VERSION,
     apiVersion: '?',
     branch: process.env.VUE_APP_BRANCH,
-    mainData: mainDataFunc.initMainData()
+    mainData: mainDataFunc.initMainData(),
+    showSpeakerDialog: false
   }),
   mounted () {
     this.resized()
@@ -214,6 +249,23 @@ export default {
     }
   },
   computed: {
+    showSpeaker () {
+      // console.log(this.mainData.showSpeaker && this.mainData.showSpeaker.id && this.mainData.showSpeaker.speaker && this.mainData.corpus.obj[this.mainData.showSpeaker.id], this.mainData)
+      let s = this.mainData.showSpeaker && this.mainData.showSpeaker.id && this.mainData.showSpeaker.speaker && this.mainData.corpus.obj[this.mainData.showSpeaker.id] && this.mainData.corpus.obj[this.mainData.showSpeaker.id].speakers && this.mainData.corpus.obj[this.mainData.showSpeaker.id].speakers[this.mainData.showSpeaker.speaker]
+      let fx = {
+        'SX': { txt: 'Unidentified speaker', sex: 'unknown' },
+        'SX-f': { txt: 'Unidentified female speaker', sex: 'female' },
+        'SX-m': { txt: 'Unidentified female speaker', sex: 'male' },
+        'SS': { txt: 'Unidentified group of speakers' },
+      }
+      if (s && Object.keys(fx).indexOf(s.id) > -1) {
+        s = JSON.parse(JSON.stringify(s))
+        s.sex = fx[s.id].sex || s.sex
+        s.txt = fx[s.id].txt || s.txt
+        s.refs = null
+      }
+      return s
+    },
     filterActive () {
       let f = this.mainData.filter
       return f.active && (f.domain || f.spet || f.manualSelect || f.interactants || f.speakers || f.acquaintedness || f.powerRelations || f.durationOfSpeechEvent || f.words || f.onlyWithAudio) ? true : false
@@ -227,6 +279,13 @@ export default {
     dualViewPossible () {
       return this.mainData.wideScreen && this.mainData.options.fullWidth
     }
+  },
+  watch: {
+    'mainData.showSpeaker' (nVal) {
+      if (nVal) {
+        this.showSpeakerDialog = true
+      }
+    }
   }
 }
 </script>
@@ -239,6 +298,9 @@ export default {
   .img-fluid {
     max-width: 100%;
     height: auto;
+  }
+  .bold {
+    font-weight: bold;
   }
   .w-100 {
     width: 100%;

@@ -105,7 +105,8 @@ const localFunctions = {
           'PR': { label: 'PR', title: 'Professional research and science - The professional research/science domain includes all social situations connected with the careful study of a subject, especially in order to discover new facts or information about it.'},
         }
       },
-      wideScreen: false
+      wideScreen: false,
+      showSpeaker: null
     }
     return mainData
   }

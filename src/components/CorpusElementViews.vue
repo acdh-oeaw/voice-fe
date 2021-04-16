@@ -10,7 +10,7 @@
         :class="'d-flex line-frm' + (mainData.corpus.goToUtterance === aLine.uId ? ' jump' : '')"
       >
         <div class="line-nr" v-if="show_utI">{{ aIdx + 1 }}</div>
-        <div class="line-speaker" v-if="show_sId">{{ aLine.speaker }}</div>
+        <div class="line-speaker" v-if="show_sId"><button @click="showSpeaker(aLine)">{{ aLine.speaker }}</button></div>
         <div v-if="inView.indexOf(aIdx) > - 1" v-html="aLine[view]" :class="classes" data-testid="lineContent"></div>
         <div v-else data-testid="lineContent">{{ aLine.obj.text }}</div>
       </div>
@@ -43,38 +43,10 @@ export default {
   },
   beforeDestroy () {
   },
-  computed: {
-    show_utI () {
-      let show = true
-      Object.keys(this.mainData.views).some(v => {
-        if (this.view === v) {
-          show = !this.mainData.views[v].utI || this.mainData.views[v].utI.val
-        }
-      })
-      return show
-    },
-    show_sId () {
-      return this.view !== 'voice' || this.mainData.views.voice.sId.val
-    },
-    show_gap () {
-      return this.view !== 'voice' || this.mainData.views.voice.gap.val
-    },
-    classes () {
-      let aClasses = 'line-con typ-' + this.view
-      Object.keys(this.mainData.views).some(v => {
-        if (this.view === v) {
-          Object.keys(this.mainData.views[v]).forEach(vo => {
-            if (this.mainData.views[v][vo].val) {
-              aClasses += ' s-' + vo.toLowerCase()
-            }
-          })
-          return true
-        }
-      })
-      return aClasses
-    }
-  },
   methods: {
+    showSpeaker (l) {
+      this.mainData.showSpeaker = {id: l.uId.split('_')[0], speaker: l.speaker}
+    },
     goToUtterance () {
       if (this.mainData.corpus.goToUtterance) {
         let eId = this.mainData.corpus.goToUtterance.split('_')[0]
@@ -139,6 +111,37 @@ export default {
           this.element.aTopLineUId = this.element.bodyObj.data.u.list[this.inView[0]].uId
         }
       }
+    }
+  },
+  computed: {
+    show_utI () {
+      let show = true
+      Object.keys(this.mainData.views).some(v => {
+        if (this.view === v) {
+          show = !this.mainData.views[v].utI || this.mainData.views[v].utI.val
+        }
+      })
+      return show
+    },
+    show_sId () {
+      return this.view !== 'voice' || this.mainData.views.voice.sId.val
+    },
+    show_gap () {
+      return this.view !== 'voice' || this.mainData.views.voice.gap.val
+    },
+    classes () {
+      let aClasses = 'line-con typ-' + this.view
+      Object.keys(this.mainData.views).some(v => {
+        if (this.view === v) {
+          Object.keys(this.mainData.views[v]).forEach(vo => {
+            if (this.mainData.views[v][vo].val) {
+              aClasses += ' s-' + vo.toLowerCase()
+            }
+          })
+          return true
+        }
+      })
+      return aClasses
     }
   },
   watch: {

@@ -129,10 +129,13 @@ export default {
                 this.$nextTick(() => {
                   [].forEach.call(line.querySelectorAll('.kwic-frm > div'), function(div) {
                     if (div.dataset && div.dataset.highlighted) {
-                      let hit = div.querySelector(div.dataset.highlighted)
-                      if (hit) {
+                      let hitTags = div.querySelectorAll(div.dataset.highlighted)
+                      if (hitTags.length > 0) {
                         let frmHalfWidth = div.offsetWidth / 2
-                        let hitMiddle = hit.offsetLeft + hit.offsetWidth / 2
+                        let hitMiddle = hitTags[0].offsetLeft
+                        for (let hit of hitTags.entries()) {
+                          hitMiddle += hit[1].offsetWidth / 2
+                        }
                         div.style.left = parseInt(frmHalfWidth - hitMiddle) + 'px'
                       } else {
                         div.style.left = ''

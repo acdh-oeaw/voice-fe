@@ -10,7 +10,7 @@
         :class="'d-flex line-frm' + (mainData.corpus.goToUtterance === aLine.uId ? ' jump' : '')"
       >
         <div class="line-nr" v-if="show_utI">{{ aIdx + 1 }}</div>
-        <div class="line-speaker" v-if="show_sId">{{ aLine.speaker }}</div>
+        <div class="line-speaker" v-if="show_sId"><button @click="showSpeaker(aLine)">{{ aLine.speaker }}</button></div>
         <div v-if="inView.indexOf(aIdx) > - 1" v-html="aLine[view]" :class="classes" data-testid="lineContent"></div>
         <div v-else data-testid="lineContent">{{ aLine.obj.text }}</div>
       </div>
@@ -43,29 +43,10 @@ export default {
   },
   beforeDestroy () {
   },
-  computed: {
-    show_utI () {
-      return this.view !== 'voice' || this.mainData.views.voice.utI.val
-    },
-    show_sId () {
-      return this.view !== 'voice' || this.mainData.views.voice.sId.val
-    },
-    show_gap () {
-      return this.view !== 'voice' || this.mainData.views.voice.gap.val
-    },
-    classes () {
-      let aClasses = 'line-con typ-' + this.view
-      if (this.view === 'voice') {
-        Object.keys(this.mainData.views.voice).forEach(vo => {
-          if (this.mainData.views.voice[vo].val) {
-            aClasses += ' s-' + vo.toLowerCase()
-          }
-        })
-      }
-      return aClasses
-    }
-  },
   methods: {
+    showSpeaker (l) {
+      this.mainData.showSpeaker = {id: l.uId.split('_')[0], speaker: l.speaker}
+    },
     goToUtterance () {
       if (this.mainData.corpus.goToUtterance) {
         let eId = this.mainData.corpus.goToUtterance.split('_')[0]
@@ -130,6 +111,37 @@ export default {
           this.element.aTopLineUId = this.element.bodyObj.data.u.list[this.inView[0]].uId
         }
       }
+    }
+  },
+  computed: {
+    show_utI () {
+      let show = true
+      Object.keys(this.mainData.views).some(v => {
+        if (this.view === v) {
+          show = !this.mainData.views[v].utI || this.mainData.views[v].utI.val
+        }
+      })
+      return show
+    },
+    show_sId () {
+      return this.view !== 'voice' || this.mainData.views.voice.sId.val
+    },
+    show_gap () {
+      return this.view !== 'voice' || this.mainData.views.voice.gap.val
+    },
+    classes () {
+      let aClasses = 'line-con typ-' + this.view
+      Object.keys(this.mainData.views).some(v => {
+        if (this.view === v) {
+          Object.keys(this.mainData.views[v]).forEach(vo => {
+            if (this.mainData.views[v][vo].val) {
+              aClasses += ' s-' + vo.toLowerCase()
+            }
+          })
+          return true
+        }
+      })
+      return aClasses
     }
   },
   watch: {
@@ -203,177 +215,4 @@ export default {
   font-weight: bold;
 }
 
-.line-con >>> .highlight {
-  background: #ff0;
-}
-.line-con >>> .tag-parsererror {
-  color: #d00;
-  font-weight: bold;
-}
-
-/*********/
-/* Voice */
-/*********/
-.line-con.typ-voice >>> .fx-overlap,
-.line-con.typ-voice >>> .type-overlap {
-  color: blue;
-}
-.line-con.typ-voice:not(.s-ot) >>> .fx-overlap {
-  display: none;
-}
-
-.line-con.typ-voice >>> .tag-pause {
-  color: brown;
-}
-.line-con.typ-voice:not(.s-p) >>> .tag-pause {
-  display: none;
-}
-
-.line-con.typ-voice >>> .tag-incident {
-  color: #808080;
-}
-.line-con.typ-voice:not(.s-ce) >>> .tag-incident {
-  display: none;
-}
-
-.line-con.typ-voice >>> .tag-shift {
-  color: #AA0066;
-}
-.line-con.typ-voice:not(.s-sm) >>> .tag-shift:not(.new-laugh):not(.neutral-laugh) {
-  display: none;
-}
-
-.line-con.typ-voice:not(.s-smls) >>> .new-laugh,
-.line-con.typ-voice:not(.s-smls) >>> .neutral-laugh {
-  display: none;
-}
-
-.line-con.typ-voice >>> .tag-vocal {
-  color: #AA0066;
-}
-.line-con.typ-voice:not(.s-vsn) >>> .tag-vocal:not(.voice-desc-laughing) {
-  display: none;
-}
-
-.line-con.typ-voice:not(.s-vsnl) >>> .tag-vocal.voice-desc-laughing {
-  display: none;
-}
-
-.line-con.typ-voice >>> .fx-spel {
-  color: #AA0066;
-}
-.line-con.typ-voice:not(.s-spl) >>> .fx-spel {
-  display: none;
-}
-
-.line-con.typ-voice >>> .tag-foreign.type-LN, .line-con.typ-voice >>> .tag-foreign.type-L1, .line-con.typ-voice >>> .tag-foreign.type-LQ {
-  color: #b13610;
-}
-
-.line-con.typ-voice:not(.s-flat) >>> .fx-foreign {
-  display: none;
-}
-.line-con.typ-voice:not(.s-flat) >>> .fx-foreign-t {
-  display: none;
-}
-
-.line-con.typ-voice:not(.s-oc) >>> .fx-other-continuation {
-  display: none;
-}
-
-.line-con.typ-voice >>> .tag-supplied.reason-unintelligible {
-  color: #00978E;
-}
-.line-con.typ-voice:not(.s-uit) >>> .fx-unintelligible-tag {
-  display: none;
-}
-
-.line-con.typ-voice >>> .fx-ono {
-  color: #61DDD2;
-}
-.line-con.typ-voice:not(.s-ono) >>> .fx-ono {
-  display: none;
-}
-
-.line-con.typ-voice >>> .fx-pvct {
-  color: #61DDD2;
-}
-.line-con.typ-voice:not(.s-pvct) >>> .fx-pvct {
-  display: none;
-}
-
-.line-con.typ-voice >>> .fx-ipa {
-  color: #61DDD2;
-}
-
-.line-con.typ-voice >>> .tag-emph {
-  text-transform: uppercase;
-}
-
-.line-con.typ-voice >>> .type-other_continuation {
-  color: #8700C1;
-}
-
-.line-con.typ-voice:not(.s-ut) >>> .tag-unclear {
-  text-transform: lowercase;
-}
-.line-con.typ-voice:not(.s-ut) >>> .fx-unclear {
-  display: none;
-}
-
-.line-con.typ-voice:not(.s-lie) >>> .type-lengthening,
-.line-con.typ-voice:not(.s-lie) >>> .type-intonation,
-.line-con.typ-voice:not(.s-lie) >>> .tag-emph {
-  display: none;
-}
-
-/*********/
-/* Plain */
-/*********/
-.line-con.typ-plain >>> .has-n {
-  color: #00f;
-}
-
-/*******/
-/* Pos */
-/*******/
-.line-con.typ-pos >>> span {
-  vertical-align: top;
-}
-.line-con.typ-pos >>> .fx-ana {
-  color: #888;
-  display: block;
-  font-size: 0.9rem;
-  line-height: 1.2rem;
-}
-.line-con.typ-pos >>> .tag-w {
-  display: inline-block;
-  text-align: center;
-}
-
-/*******/
-/* XML */
-/*******/
-
-.line-con.typ-xml-view {
-  font-family: Consolas, "Courier New", monospace;
-  white-space: pre-wrap;
-  position: relative;
-  border-top: 1px solid #bbb;
-}
-.line-con.typ-xml-view >>> .tc {
-  color: mediumblue;
-}
-.line-con.typ-xml-view >>> .tnc {
-  color: brown;
-}
-.line-con.typ-xml-view >>> .ac {
-  color: red;
-}
-.line-con.typ-xml-view >>> .avc {
-  color: mediumblue;
-}
-.line-con.typ-xml-view >>> .cc {
-  color: green;
-}
 </style>

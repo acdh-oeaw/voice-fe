@@ -10,13 +10,19 @@
           {{ uObj.xmlId }}
         </div>
         <div :class="'d-flex' + (mainData.search.view.type === 'xml-view' ? ' flex-wrap' : '')" v-if="xmlObjLines">
-          <div class="line-uid" v-if="show_utI"><button @click="goToUtterance(uObj.uId)" class="c-uid">{{ uObj.uId.split('_')[0] + ':' + uObj.uId.split('_')[2] }}</button> <span class="u-hits">Hits:<br/>{{uObj.hits}}</span></div>
+          <div class="line-uid pr-6" v-if="show_utI">
+            <button @click="goToUtterance(uObj.uId)" class="c-uid">{{ uObj.uId.split('_')[0] + ':' + uObj.uId.split('_')[2] }}</button>
+            <span class="u-hits" title="Hits">{{ uObj.hits.length }}</span>
+          </div>
+          <div class="line-jump" v-else>
+            <button @click="goToUtterance(uObj.uId)" class="c-uid"></button>
+          </div>
           <template v-if="!xmlObjLines[uObj.idx].uObj.loading">
-            <div class="line-speaker" v-if="xmlObjLines[uObj.idx].uObj.obj.attributes && xmlObjLines[uObj.idx].uObj.obj.attributes.who">{{ xmlObjLines[uObj.idx].uObj.obj.attributes.who.split('_').slice(-1)[0] }}</div>
+            <div class="line-speaker" v-if="xmlObjLines[uObj.idx].uObj.obj.attributes && xmlObjLines[uObj.idx].uObj.obj.attributes.who"><button @click="showSpeaker(uObj)">{{ xmlObjLines[uObj.idx].uObj.obj.attributes.who.split('_').slice(-1)[0] }}</button></div>
             <div class="flex-break" v-if="mainData.search.view.type === 'xml-view'"></div>
             <template v-if="inView.indexOf(uIdx) > - 1">
               <div class="kwic-frm" v-if="mainData.search.view.kwic && mainData.search.view.type !== 'xml-view'">
-                <div v-html="xmlObjLines[uObj.idx][view]" :class="classes" :data-highlighted="'s_' + h[0]" v-for="h in uObj.highlight" :key="'h' + h"></div>
+                <div v-html="xmlObjLines[uObj.idx][view]" :class="classes" :data-highlighted="'#s_' + h.join(',#s_')" v-for="h in uObj.hits" :key="'h' + h"></div>
               </div>
               <div v-html="xmlObjLines[uObj.idx][view]" :class="classes" v-else></div>
             </template>
@@ -62,21 +68,34 @@ export default {
       return this.filteredSearchResults.slice(0, this.lastParsedLine + 10)
     },
     show_utI () {
-      return this.mainData.search.view.type !== 'voice' || this.mainData.search.view.views.voice.utI.val
+      let show = true
+      Object.keys(this.mainData.search.view.views).some(v => {
+        if (this.view === v) {
+          show = !this.mainData.search.view.views[v].utI || this.mainData.search.view.views[v].utI.val
+        }
+      })
+      return show
     },
     classes () {
       let aClasses = 'line-con typ-' + this.view
-      if (this.view === 'voice') {
-        Object.keys(this.mainData.search.view.views.voice).forEach(vo => {
-          if (this.mainData.search.view.views.voice[vo].val) {
-            aClasses += ' s-' + vo.toLowerCase()
-          }
-        })
-      }
+      Object.keys(this.mainData.search.view.views).some(v => {
+        if (this.view === v) {
+          Object.keys(this.mainData.search.view.views[v]).forEach(vo => {
+            if (this.mainData.search.view.views[v][vo].val) {
+              aClasses += ' s-' + vo.toLowerCase()
+            }
+          })
+          return true
+        }
+      })
       return aClasses
     }
   },
   methods: {
+    showSpeaker (l) {
+      // console.log(l.xmlId, this.xmlObjLines[l.idx].uObj.obj.attributes.who.split('_').slice(-1)[0])
+      this.mainData.showSpeaker = {id: l.xmlId, speaker: this.xmlObjLines[l.idx].uObj.obj.attributes.who.split('_').slice(-1)[0]}
+    },
     goToUtterance (u) {
       this.$emit('goToUtterance', u)
     },
@@ -110,10 +129,13 @@ export default {
                 this.$nextTick(() => {
                   [].forEach.call(line.querySelectorAll('.kwic-frm > div'), function(div) {
                     if (div.dataset && div.dataset.highlighted) {
-                      let hit = div.querySelector('#' + div.dataset.highlighted)
-                      if (hit) {
+                      let hitTags = div.querySelectorAll(div.dataset.highlighted)
+                      if (hitTags.length > 0) {
                         let frmHalfWidth = div.offsetWidth / 2
-                        let hitMiddle = hit.offsetLeft + hit.offsetWidth / 2
+                        let hitMiddle = hitTags[0].offsetLeft
+                        for (let hit of hitTags.entries()) {
+                          hitMiddle += hit[1].offsetWidth / 2
+                        }
                         div.style.left = parseInt(frmHalfWidth - hitMiddle) + 'px'
                       } else {
                         div.style.left = ''
@@ -306,7 +328,17 @@ export default {
   background: #eef;
 }
 .line-uid {
+  position: relative;
   min-width: 8.5rem;
+}
+.line-jump {
+  min-width: 2rem;
+  height: 24px;
+}
+.line-jump > button::after {
+  content: url("data:image/svg+xml,%3C%3Fxml version='1.0' encoding='UTF-8'%3F%3E%3C!DOCTYPE svg PUBLIC '-//W3C//DTD SVG 1.1//EN' 'http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd'%3E%3Csvg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' version='1.1' width='20' height='20' viewBox='0 0 24 24'%3E%3Cpath fill='%23333' d='M14,3V5H17.59L7.76,14.83L9.17,16.24L19,6.41V10H21V3M19,19H5V5H12V3H5C3.89,3 3,3.9 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V12H19V19Z' /%3E%3C/svg%3E");
+  position: relative;
+  top: 1px;
 }
 .c-uid {
   cursor: pointer;
@@ -326,16 +358,17 @@ export default {
 }
 .u-hits {
   font-size: xx-small;
-  display: inline-block;
+  display: block;
   text-align: center;
-}
-
-.line-con >>> .highlight {
-  background: #ff0;
-}
-.line-con >>> .tag-parsererror {
-  color: #d00;
-  font-weight: bold;
+  border-radius: 7px;
+  background: #eee;
+  height: 14px;
+  min-width: 14px;
+  position: absolute;
+  right: 5px;
+  top: 4px;
+  color: #666;
+  padding: 0 3px;
 }
 
 /********/
@@ -352,169 +385,4 @@ export default {
   white-space: nowrap;
 }
 
-/*********/
-/* Voice */
-/*********/
-.line-con.typ-voice >>> .fx-overlap,
-.line-con.typ-voice >>> .type-overlap {
-  color: blue;
-}
-.line-con.typ-voice:not(.s-ot) >>> .fx-overlap {
-  display: none;
-}
-
-.line-con.typ-voice >>> .tag-pause {
-  color: brown;
-}
-.line-con.typ-voice:not(.s-p) >>> .tag-pause {
-  display: none;
-}
-
-.line-con.typ-voice >>> .tag-incident {
-  color: #808080;
-}
-.line-con.typ-voice:not(.s-ce) >>> .tag-incident {
-  display: none;
-}
-
-.line-con.typ-voice >>> .tag-shift {
-  color: #AA0066;
-}
-.line-con.typ-voice:not(.s-sm) >>> .tag-shift:not(.new-laugh):not(.neutral-laugh) {
-  display: none;
-}
-
-.line-con.typ-voice:not(.s-smls) >>> .new-laugh,
-.line-con.typ-voice:not(.s-smls) >>> .neutral-laugh {
-  display: none;
-}
-
-.line-con.typ-voice >>> .tag-vocal {
-  color: #AA0066;
-}
-.line-con.typ-voice:not(.s-vsn) >>> .tag-vocal:not(.voice-desc-laughing) {
-  display: none;
-}
-
-.line-con.typ-voice:not(.s-vsnl) >>> .tag-vocal.voice-desc-laughing {
-  display: none;
-}
-
-.line-con.typ-voice >>> .fx-spel {
-  color: #AA0066;
-}
-.line-con.typ-voice:not(.s-spl) >>> .fx-spel {
-  display: none;
-}
-
-.line-con.typ-voice >>> .tag-foreign.type-LN, .line-con.typ-voice >>> .tag-foreign.type-L1, .line-con.typ-voice >>> .tag-foreign.type-LQ {
-  color: #b13610;
-}
-
-.line-con.typ-voice:not(.s-flat) >>> .fx-foreign {
-  display: none;
-}
-.line-con.typ-voice:not(.s-flat) >>> .fx-foreign-t {
-  display: none;
-}
-
-.line-con.typ-voice:not(.s-oc) >>> .fx-other-continuation {
-  display: none;
-}
-
-.line-con.typ-voice >>> .tag-supplied.reason-unintelligible {
-  color: #00978E;
-}
-.line-con.typ-voice:not(.s-uit) >>> .fx-unintelligible-tag {
-  display: none;
-}
-
-.line-con.typ-voice >>> .fx-ono {
-  color: #61DDD2;
-}
-.line-con.typ-voice:not(.s-ono) >>> .fx-ono {
-  display: none;
-}
-
-.line-con.typ-voice >>> .fx-pvct {
-  color: #61DDD2;
-}
-.line-con.typ-voice:not(.s-pvct) >>> .fx-pvct {
-  display: none;
-}
-
-.line-con.typ-voice >>> .fx-ipa {
-  color: #61DDD2;
-}
-
-.line-con.typ-voice >>> .tag-emph {
-  text-transform: uppercase;
-}
-
-.line-con.typ-voice >>> .type-other_continuation {
-  color: #8700C1;
-}
-
-.line-con.typ-voice:not(.s-ut) >>> .tag-unclear {
-  text-transform: lowercase;
-}
-.line-con.typ-voice:not(.s-ut) >>> .fx-unclear {
-  display: none;
-}
-
-.line-con.typ-voice:not(.s-lie) >>> .type-lengthening,
-.line-con.typ-voice:not(.s-lie) >>> .type-intonation,
-.line-con.typ-voice:not(.s-lie) >>> .tag-emph {
-  display: none;
-}
-
-/*********/
-/* Plain */
-/*********/
-.line-con.typ-plain >>> .has-n {
-  color: #00f;
-}
-
-/*******/
-/* Pos */
-/*******/
-.line-con.typ-pos >>> span {
-  vertical-align: top;
-}
-.line-con.typ-pos >>> .fx-ana {
-  color: #888;
-  display: block;
-  font-size: 0.9rem;
-  line-height: 1.2rem;
-}
-.line-con.typ-pos >>> .tag-w {
-  display: inline-block;
-  text-align: center;
-}
-
-/*******/
-/* XML */
-/*******/
-
-.line-con.typ-xml-view {
-  font-family: Consolas, "Courier New", monospace;
-  white-space: pre-wrap;
-  position: relative;
-  border-top: 1px solid #bbb;
-}
-.line-con.typ-xml-view >>> .tc {
-  color: mediumblue;
-}
-.line-con.typ-xml-view >>> .tnc {
-  color: brown;
-}
-.line-con.typ-xml-view >>> .ac {
-  color: red;
-}
-.line-con.typ-xml-view >>> .avc {
-  color: mediumblue;
-}
-.line-con.typ-xml-view >>> .cc {
-  color: green;
-}
 </style>

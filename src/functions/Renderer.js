@@ -12,7 +12,10 @@ const localFunctions = {
       return localFunctions.w3CodeColor(aXml.join('\n'))
     } else {
       let xmlIdCache = {}
-      return renderingUtterance(uObj, xmlObj, type, highlight, isSearch, xmlIdCache)
+      let fxCache = {
+        pos: null
+      }
+      return renderingUtterance(uObj, xmlObj, type, highlight, isSearch, xmlIdCache, fxCache)
     }
   },
   w3CodeColor (elmntTxt) {
@@ -106,13 +109,17 @@ const localFunctions = {
   },
 }
 
-function renderingUtterance(uObj, xmlObj, type, highlight, isSearch = false, xmlIdCache) {
+function renderingUtterance(uObj, xmlObj, type, highlight, isSearch = false, xmlIdCache, fxCache) {
   let aTxt = ''
   if (uObj.type === 'tag') {
     if (uObj.tag === 'u') {
       uObj.children.forEach(c => {
-        aTxt += renderingUtterance(c, xmlObj, type, highlight, isSearch, xmlIdCache)
+        aTxt += renderingUtterance(c, xmlObj, type, highlight, isSearch, xmlIdCache, fxCache)
       })
+      if (type === 'pos' && fxCache.pos) {
+        aTxt += fxCache.pos.c + '</span>'
+        fxCache.pos = null
+      }
     } else {
       let aClasses = ['tag-' + uObj.tag]
       let aId = null
@@ -137,6 +144,16 @@ function renderingUtterance(uObj, xmlObj, type, highlight, isSearch = false, xml
           }
         }
       }
+      if (type === 'pos') {
+        // ana
+        if (uObj.attributes && uObj.attributes['ana'] && uObj.attributes['part']) {
+          if (fxCache.pos) {
+            aTxt += fxCache.pos.c + '</span>'
+          }
+          aTxt += '<span class="fx-ana-frm">'
+          fxCache.pos = { c: '' }
+        }
+      }
       aTxt += '<span class="' + aClasses.join(' ') + '"' + 
               (aId ? ' id="' + (isSearch ? 's_' : '') + aId + '"' : '') + 
               (uObj.attributes && uObj.attributes['lemma'] ? ' title="Lemma: ' + uObj.attributes['lemma'] + '"' : '') + 
@@ -144,7 +161,7 @@ function renderingUtterance(uObj, xmlObj, type, highlight, isSearch = false, xml
       if (uObj.attributes && uObj.attributes['voice:syl']) {
         aTxt += '@'.repeat(parseInt(uObj.attributes['voice:syl']))
       }
-      aTxt += renderingUtteranceBefore(uObj, xmlObj, type, isSearch, xmlIdCache)
+      aTxt += renderingUtteranceBefore(uObj, xmlObj, type, isSearch, xmlIdCache, fxCache)
       if (type === 'voice' && uObj.tag === 'seg' && uObj.attributes && uObj.attributes['type'] === 'ws' && xmlObj.list[uObj.parent].tag === 'unclear'
         && (xmlObj.list[uObj.parent].children.indexOf(uObj) === 0 || xmlObj.list[uObj.parent].children.indexOf(uObj) === xmlObj.list[uObj.parent].children.length - 1)
       ) {
@@ -153,11 +170,12 @@ function renderingUtterance(uObj, xmlObj, type, highlight, isSearch = false, xml
         aTxt += uObj.attributes['spelt_orig']
       }
       uObj.children.forEach(c => {
-        aTxt += renderingUtterance(c, xmlObj, type, highlight, isSearch, xmlIdCache)
+        aTxt += renderingUtterance(c, xmlObj, type, highlight, isSearch, xmlIdCache, fxCache)
       })
-      aTxt += renderingUtteranceAfter(uObj, xmlObj, type, isSearch, xmlIdCache)
+      aTxt += renderingUtteranceAfter(uObj, xmlObj, type, isSearch, xmlIdCache, fxCache)
       aTxt += '</span>'
       // Whitespace
+      let ws = false
       if (
         (uObj.tag === 'w' || uObj.tag === 'emph') &&
         (!uObj.attributes['part'] ||
@@ -173,13 +191,13 @@ function renderingUtterance(uObj, xmlObj, type, highlight, isSearch = false, xml
               (xmlObj.list[uObj.parent].tag !== 'unclear') ||
               (oPos < oSiblings.length - 1)
             ) {
-              aTxt += ' '
+              ws = true
             }
             if (oPos > 0 && oSiblings[oPos - 1].tag === 'unclear') {
               aTxt = ' ' + aTxt
             }
           } else {
-            aTxt += ' '
+            ws = true
           }
         }
       } else {
@@ -197,9 +215,16 @@ function renderingUtterance(uObj, xmlObj, type, highlight, isSearch = false, xml
             oPos < oSiblings.length - 1 &&
             (oSiblings[oPos + 1].tag === 'w' || oSiblings[oPos + 1].tag === 'emph')
           ) {
-            aTxt += ' '
+            ws = true
           }
         }
+      }
+      if (ws) {
+        if (fxCache.pos) {
+          aTxt += fxCache.pos.c + '</span>'
+          fxCache.pos = null
+        }
+        aTxt += ' '
       }
     }
   } else if (uObj.type === 'text') {
@@ -208,7 +233,7 @@ function renderingUtterance(uObj, xmlObj, type, highlight, isSearch = false, xml
   return aTxt
 }
 
-function renderingUtteranceBefore(uObj, xmlObj, type, isSearch, xmlIdCache) {
+function renderingUtteranceBefore(uObj, xmlObj, type, isSearch, xmlIdCache, fxCache) {
   let aTxt = ''
   // voice - layout
   if (type === 'voice') {
@@ -329,28 +354,34 @@ function renderingUtteranceBefore(uObj, xmlObj, type, isSearch, xmlIdCache) {
   return aTxt
 }
 
-function renderingUtteranceAfter(uObj, xmlObj, type, isSearch, xmlIdCache) {
+function renderingUtteranceAfter(uObj, xmlObj, type, isSearch, xmlIdCache, fxCache) {
   let aTxt = ''
   // pos - layout
   if (type === 'pos') {
+    let pTxt = ''
     // ana
     if (uObj.attributes && uObj.attributes['ana']) {
       let ana = uObj.attributes['ana'].replace(/#/g, '').split('f')
       if (ana[0]) {
-        aTxt += '<span class="fx-ana">' + ana[0] + (ana[0] !== ana[1] ? '(' + ana[1] + ')' : '') + '</span>'
+        pTxt += '<span class="fx-ana"><span class="fx-ana-s">_</span>' + ana[0] + (ana[1] ? '<span class="fx-ana-f">(' + ana[1] + ')</span>' : '') + '</span>'
       }
     }
     // pause
     // if (uObj.tag === 'pause') {
-    //   aTxt += ' _'
+    //   pTxt += ' _'
     //   if (uObj.attributes && typeof uObj.attributes['dur'] === 'string') {
     //     let aM = uObj.attributes['dur'].match(/PT(.+)S/i)
-    //     aTxt += (aM && aM[1]) ? aM[1] : '.'
+    //     pTxt += (aM && aM[1]) ? aM[1] : '.'
     //   } else {
-    //     aTxt += '.'
+    //     pTxt += '.'
     //   }
-    //   aTxt += '_PA '
+    //   pTxt += '_PA '
     // }
+    if (fxCache.pos) {
+      fxCache.pos.c += pTxt
+    } else {
+      aTxt += pTxt
+    }
   }
   // voice - layout
   else if (type === 'voice') {

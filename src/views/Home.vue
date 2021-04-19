@@ -23,7 +23,7 @@
       This information is only used to enhance the user experience. The information is not shared with any third party.<br/>
       We need your consent to gather this information.<br/>
       The way you use our website is expecially valueable for our beta phase.</p>
-      <p>You can find more inforamation in the "Data privacy notice" of our "Site Notice".</p>
+      <p>You can find more information in the "Data privacy notice" of our "Site Notice".</p>
       <v-btn color="indigo darken-4 white--text" v-bind:x-large="true" v-on:click="cookiesAndTrackingAccepted" data-testid="acceptTracking">I accept</v-btn><br/><br/>
       <v-btn color="indigo darken-4 white--text" v-bind:small="true" v-on:click="cookiesAndTrackingRejected" data-testid="rejectTracking">I dont't want this</v-btn>
     </div>

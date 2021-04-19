@@ -16,6 +16,7 @@ test:
       fi
     - export DATABASE_URL="postgres://${POSTGRES_USER}:${POSTGRES_PASSWORD}@${DB_HOST}:5432/${POSTGRES_DB}"
     - cp -R . /tmp/app
+    - rm -rf coverage cypress
     - ln -s /app/coverage .
     - ln -s /app/cypress .
     - /bin/herokuish buildpack test

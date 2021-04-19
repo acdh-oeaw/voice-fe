@@ -3,6 +3,12 @@ context('toolUI', () => {
         const port = Cypress.env('PORT') || '8080'
         cy.visit('http://localhost:' + port + '/#/tool')
         cy.viewport(1000, 800)
+        cy.wait(300)
+        cy.get('[data-testid=rejectTracking]')
+          .click()
+        cy.get('a')
+          .contains('Browse')
+          .click()
     })
     it('page title is voice-fe', () => {
         // https://on.cypress.io/title

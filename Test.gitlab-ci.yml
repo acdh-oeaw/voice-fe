@@ -34,7 +34,7 @@ test:
     when: always
     paths:
       # save both cypress artifacts and coverage results
-      - /app/coverage
-      - /app/cypress/videos/**/*.mp4
-      - /app/cypress/screenshots/**/*.png
+      - coverage
+      - cypress/videos/**/*.mp4
+      - cypress/screenshots/**/*.png
     expire_in: 10 days

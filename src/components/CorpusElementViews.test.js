@@ -53,7 +53,7 @@ test('render a view <u><w part="I">te</w><emph><w part="F">st</w></emph><w>next<
     expect(within(line).getByText('te')).toHaveClass('tag-w')
     expect(within(line).getByText('st')).toBeInTheDocument()
     expect(within(line).getByText('st')).toHaveClass('tag-w')
-    expect(line).toContainHTML('<span class="tag-w">te</span><span class="tag-emph"><span class="tag-w">st</span></span> <span class="tag-w">next</span>')
+    expect(line).toContainHTML('<span class="tag-w">te</span><span class="tag-emph"><span class="tag-w">st</span> </span><span class="tag-w">next</span>')
 })
 
 test('render a view <u><w>before</w><emph><w part="I">re</w></emph><w part="F">integration<c function="fall" type="intonation"/></w><w>next</w></u>', async () => {

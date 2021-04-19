@@ -19,6 +19,10 @@ test:
     - export CYPRESS_VIDEOS_FOLDER=${CI_PROJECT_DIR}/cypress/videos
     - export CYPRESS_SCREENSHOTS_FOLDER=${CI_PROJECT_DIR}/cypress/videos
     - /bin/herokuish buildpack test
+    - TEST_STATUS=$?
+    - cp /app/coverage . || true
+    - echo "Test exit code $TEST_STATUS"
+    - exit $TEST_STATUS
   rules:
     - if: '$TEST_DISABLED'
       when: never

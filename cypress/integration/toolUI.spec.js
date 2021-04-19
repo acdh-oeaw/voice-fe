@@ -1,12 +1,10 @@
 context('toolUI', () => {
     beforeEach(() => {
         const port = Cypress.env('PORT') || '8080'
-        cy.visit('http://localhost:' + port + '/#/tool')
+        cy.visit('http://localhost:' + port + '/')
         cy.viewport(1000, 800)
-        cy.wait(300)
         cy.get('[data-testid=rejectTracking]')
           .click()
-        cy.wait(100)
         cy.get('a')
           .contains('Browse')
           .click()

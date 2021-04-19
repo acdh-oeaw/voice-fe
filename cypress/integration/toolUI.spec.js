@@ -6,7 +6,6 @@ context('toolUI', () => {
         cy.wait(300)
         cy.get('[data-testid=rejectTracking]')
           .click()
-        cy.wait(100)
         cy.get('a')
           .contains('Browse')
           .click()

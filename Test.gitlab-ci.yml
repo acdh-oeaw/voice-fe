@@ -20,11 +20,11 @@ test:
       function move_artifacts()
       {
         echo Getting test artifacts
-        cp -v/app/coverage .
+        cp -v /app/coverage .
         cp -rv /app/cypress/videos cypress
         cp -rv /app/cypress/screenshots cypress
       }
-      trap cleanup EXIT
+      trap move_artifacts EXIT
       /bin/herokuish buildpack test
   rules:
     - if: '$TEST_DISABLED'

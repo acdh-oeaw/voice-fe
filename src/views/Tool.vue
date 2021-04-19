@@ -47,7 +47,19 @@ export default {
   mounted () {
     console.log('Tool', this.mainData)
   },
+  timers: {
+    checkMatomo: { time: 100, autostart: true, repeat: true }
+  },
   methods: {
+    checkMatomo () {
+      if (this.$matomo) {
+        this.mainData.hideCookieConsent ||= this.$matomo.hasRememberedConsent()
+        if (!this.mainData.hideCookieConsent) {
+          this.$router.replace('/')
+        } 
+        this.$timer.stop('checkMatomo')
+      }
+    },
   },
   computed: {
     dualView () {

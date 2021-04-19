@@ -106,7 +106,8 @@ const localFunctions = {
         }
       },
       wideScreen: false,
-      showSpeaker: null
+      showSpeaker: null,
+      hideCookieConsent: false
     }
     return mainData
   }

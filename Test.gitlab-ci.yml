@@ -16,10 +16,16 @@ test:
       fi
     - export DATABASE_URL="postgres://${POSTGRES_USER}:${POSTGRES_PASSWORD}@${DB_HOST}:5432/${POSTGRES_DB}"
     - cp -R . /tmp/app
-    - ln -s /app/coverage .
-    - ln -s /app/cypress/videos cypress
-    - ln -s /app/cypress/screenshots cypress
-    - /bin/herokuish buildpack test
+    - |
+      function move_artifacts()
+      {
+        echo Getting test artifacts
+        cp -v/app/coverage .
+        cp -rv /app/cypress/videos cypress
+        cp -rv /app/cypress/screenshots cypress
+      }
+      trap cleanup EXIT
+      /bin/herokuish buildpack test
   rules:
     - if: '$TEST_DISABLED'
       when: never

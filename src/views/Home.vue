@@ -66,7 +66,7 @@ export default {
     },
     checkMatomo () {
       if (this.$matomo) {
-        this.mainData.hideCookieConsent = this.$matomo.hasRememberedConsent()
+        this.mainData.hideCookieConsent ||= this.$matomo.hasRememberedConsent()
         this.$timer.stop('checkMatomo')
       }
     },

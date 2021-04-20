@@ -19,14 +19,14 @@ context('isLoading', () => {
     })
 
     it('accept tracking', () => {
-      cy.wait(100)
+      cy.wait(300)
       cy.get('[data-testid=acceptTracking]')
         .click()
       cy.get('[data-testid=revokeTracking]')
     })
 
     it('revoke tracking', () => {
-      cy.wait(100)
+      cy.wait(300)
       cy.get('[data-testid=revokeTracking]')
         .click()
         .should('not.exist')

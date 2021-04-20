@@ -22,11 +22,14 @@ context('isLoading', () => {
       cy.wait(300)
       cy.get('[data-testid=acceptTracking]')
         .click()
-      cy.get('[data-testid=revokeTracking]')
+      cy.getCookie('mtm_consent').should('exist')
     })
 
     it('revoke tracking', () => {
       cy.wait(300)
+      cy.get('[data-testid=acceptTracking]')
+        .click()
+      cy.getCookie('mtm_consent').should('exist')
       cy.get('[data-testid=revokeTracking]')
         .click()
         .should('not.exist')

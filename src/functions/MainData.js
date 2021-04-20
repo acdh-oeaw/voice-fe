@@ -48,7 +48,8 @@ const localFunctions = {
         list: [
         ],
         baseJSON: {},
-        saxParserFunc: saxParser
+        saxParserFunc: saxParser,
+        text: 'Select a speech event ...'
       },
       options: {
         fullWidth: true,

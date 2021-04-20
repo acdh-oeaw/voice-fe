@@ -10,8 +10,8 @@
       </v-tabs>
       <div class="px-3 py-2 scroll-content flex-grow-1">
         <div v-if="mainData.corpus.showCorpusHeader" class="tei-header px-4 py-2" v-html="teiHeader"/>
-        <div v-else-if="!aElement" class="pa-2">
-          Select a speech event ...
+        <div v-else-if="!aElement" class="pa-3">
+          <div class="corpus-text pb-5" v-html="mainData.corpus.text" />
         </div>
         <div v-else-if="vTab === 'xml'">
           <CorpusElementXml :element="aElement" v-if="aElement && aElement.xml" />

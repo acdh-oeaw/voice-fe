@@ -237,6 +237,17 @@ export default {
           console.log(err)
           this.loading = false
         })
+      this.$http
+        .get('/corpustext.html')
+        .then((response) => {
+          if (response && response.body) {
+            this.mainData.corpus.text = response.body
+          }
+        })
+        .catch((err) => {
+          console.log(err)
+          this.loading = false
+        })
     },
     revokeCookieAndTrackingConsent () {
       this.$matomo && this.$matomo.forgetConsentGiven() && this.$matomo.orgetCookieConsentGiven() && this.$matomo.optUserOut()

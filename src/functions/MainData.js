@@ -81,7 +81,9 @@ const localFunctions = {
         },
         pos: {
           utI: { val: true, text: '1', title: 'utterance identifier', style: { color: '#000' } },
-          asFT: { val: false, text: '(FT)', title: 'always show function tags', style: { color: '#666' } },
+          form: { val: true, text: 'form', title: 'show form tags', style: { color: '#000' } },
+          func: { val: true, text: 'function', title: 'show function tags', style: { color: '#000' } },
+          asFT: { val: false, text: 'compressed', title: 'show function tag only if it differs from form tag', style: { color: '#666' } },
           slv: { val: false, text: '_', title: 'single line view', style: { color: '#333' } },
         }
       },

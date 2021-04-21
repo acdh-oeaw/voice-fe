@@ -237,7 +237,13 @@ export default {
 .line-con.typ-pos:not(.s-slv) .fx-ana-s {
   display: none;
 }
-.line-con.typ-pos:not(.s-asft) .fx-ana-f {
+.line-con.typ-pos.s-form.s-asft .fx-ana-f {
+  display: none;
+}
+.line-con.typ-pos:not(.s-func) .fx-ana-f {
+  display: none;
+}
+.line-con.typ-pos:not(.s-form) .fx-ana-form {
   display: none;
 }
 

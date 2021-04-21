@@ -250,9 +250,15 @@ function renderingUtteranceBefore(uObj, xmlObj, type, isSearch, xmlIdCache, fxCa
       let oSiblings = xmlObj.list[uObj.parent].children
       let oPos = oSiblings.indexOf(uObj)
       if (oPos === oSiblings.length - 1 || oPos === 0 ||
-        ((xmlObj.list[oPos + 1].tag === 'w' || xmlObj.list[oPos + 1].tag === 'emph') &&
-          (!xmlObj.list[oPos + 1].attributes['part'] ||
-          (xmlObj.list[oPos + 1].attributes['part'] === 'F'))
+        ((oSiblings[oPos - 1].tag === 'w' || oSiblings[oPos - 1].tag === 'emph') &&
+          (!oSiblings[oPos - 1].attributes['part'] ||
+          (oSiblings[oPos - 1].attributes['part'] === 'F'))
+        ) ||
+        (!uObj.children || uObj.children.length < 1 ||
+          ((uObj.children[0].tag === 'w' || uObj.children[0].tag === 'emph') &&
+            (!uObj.children[0].attributes['part'] ||
+            (uObj.children[0].attributes['part'] === 'I'))
+          )
         )
       ) {
         aTxt += ' '
@@ -398,10 +404,10 @@ function renderingUtteranceAfter(uObj, xmlObj, type, isSearch, xmlIdCache, fxCac
         aTxt += uObj.attributes['n']
       }
       aTxt += '&gt;'
-      if (oPos < 1 ||
-        ((xmlObj.list[oPos - 1].tag === 'w' || xmlObj.list[oPos - 1].tag === 'emph') &&
-          (!xmlObj.list[oPos - 1].attributes['part'] ||
-          (xmlObj.list[oPos - 1].attributes['part'] === 'F'))
+      if (!uObj.children || uObj.children.length < 1 ||
+        ((uObj.children[uObj.children.length - 1].tag === 'w' || uObj.children[uObj.children.length - 1].tag === 'emph') &&
+          (!uObj.children[uObj.children.length - 1].attributes['part'] ||
+          (uObj.children[uObj.children.length - 1].attributes['part'] === 'F'))
         )
       ) {
         aTxt += ' '

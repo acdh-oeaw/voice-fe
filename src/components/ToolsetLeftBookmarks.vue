@@ -1,6 +1,8 @@
 <template>
   <div class="py-2">
-    ToolsetLeftBookmarks
+    <v-alert dense outlined type="info" class="ma-3">
+      Coming in summer 2021.
+    </v-alert>
   </div>
 </template>
 

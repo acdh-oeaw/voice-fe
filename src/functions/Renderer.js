@@ -424,10 +424,29 @@ function renderingUtteranceAfter(uObj, xmlObj, type, isSearch, xmlIdCache, fxCac
     }
     // foreign_tag - after
     if (uObj.tag === 'foreign' && uObj.attributes && uObj.attributes['type'] && uObj.attributes['xml:lang']) {
+      if (!uObj.children || uObj.children.length < 1 ||
+        ((uObj.children[uObj.children.length - 1].tag === 'w' || uObj.children[uObj.children.length - 1].tag === 'emph') &&
+          (!uObj.children[uObj.children.length - 1].attributes['part'] ||
+          (uObj.children[uObj.children.length - 1].attributes['part'] === 'F'))
+        )
+      ) {
+        aTxt += ' '
+      }
       if (uObj.attributes['voice:translation']) {
         aTxt += '<span class="fx-foreign-t"> {' + uObj.attributes['voice:translation'] + '} </span>'
       }
-      aTxt += '<span class="fx-foreign"> &lt;/' + uObj.attributes['type'] + uObj.attributes['xml:lang'] + '&gt; </span>'
+      aTxt += '<span class="fx-foreign">&lt;/' + uObj.attributes['type'] + uObj.attributes['xml:lang'] + '&gt;'
+      let oSiblings = xmlObj.list[uObj.parent].children
+      let oPos = oSiblings.indexOf(uObj)
+      if (oPos === oSiblings.length - 1 || oPos === 0 ||
+        ((oSiblings[oPos + 1].tag === 'w' || oSiblings[oPos + 1].tag === 'emph') &&
+          (!oSiblings[oPos + 1].attributes['part'] ||
+          (oSiblings[oPos + 1].attributes['part'] === 'F'))
+        )
+      ) {
+        aTxt += ' '
+      }
+      aTxt += '</span>'
     }
     // unintelligible - after
     if (uObj.tag === 'supplied' && uObj.attributes && uObj.attributes['reason'] === 'unintelligible') {

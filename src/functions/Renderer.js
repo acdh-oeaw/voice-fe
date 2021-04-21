@@ -373,7 +373,7 @@ function renderingUtteranceAfter(uObj, xmlObj, type, isSearch, xmlIdCache, fxCac
     if (uObj.attributes && uObj.attributes['ana']) {
       let ana = uObj.attributes['ana'].replace(/#/g, '').split('f')
       if (ana[0]) {
-        pTxt += '<span class="fx-ana"><span class="fx-ana-s">_</span><span class="fx-ana-form">' + ana[0] + '</span>' + (ana[1] ? '<span class="fx-ana-f">(' + ana[1] + ')</span>' : '') + '</span>'
+        pTxt += '<span class="fx-ana"><span class="fx-ana-s">_</span><span class="fx-ana-form">' + ana[0] + '</span>' + (ana[1] ? '<span class="fx-ana-f' + (ana[0] === ana[1] ? ' fx-ana-f-s' : '') + '">(' + ana[1] + ')</span>' : '') + '</span>'
       }
     }
     // pause

@@ -92,6 +92,13 @@ export default {
 }
 
 /*********/
+/* Views */
+/*********/
+.line-con .fx-spelt-cont {
+  display: none;
+}
+
+/*********/
 /* Voice */
 /*********/
 .line-con.typ-voice .fx-overlap,

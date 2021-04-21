@@ -166,12 +166,16 @@ function renderingUtterance(uObj, xmlObj, type, highlight, isSearch = false, xml
         && (xmlObj.list[uObj.parent].children.indexOf(uObj) === 0 || xmlObj.list[uObj.parent].children.indexOf(uObj) === xmlObj.list[uObj.parent].children.length - 1)
       ) {
         aTxt += ''
-      } else if (uObj.attributes && uObj.attributes['spelt_orig']) {
-        aTxt += uObj.attributes['spelt_orig']
+      }
+      if (uObj.attributes && uObj.attributes['spelt_orig']) {
+        aTxt += '<span class="fx-spelt-orig">' + uObj.attributes['spelt_orig'] + '</span><span class="fx-spelt-cont">'
       }
       uObj.children.forEach(c => {
         aTxt += renderingUtterance(c, xmlObj, type, highlight, isSearch, xmlIdCache, fxCache)
       })
+      if (uObj.attributes && uObj.attributes['spelt_orig']) {
+        aTxt += '</span>'
+      }
       aTxt += renderingUtteranceAfter(uObj, xmlObj, type, isSearch, xmlIdCache, fxCache)
       aTxt += '</span>'
       // Whitespace

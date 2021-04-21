@@ -18,6 +18,15 @@
       :disabled="!mainData.search.value || mainData.search.value.length < 2"
       >Search</v-btn
     >
+    <v-tooltip top max-width="400">
+      <template v-slot:activator="{ on, attrs }"><v-icon v-bind="attrs" v-on="on" class="ml-2">mdi-information-outline</v-icon></template>
+      <div class="py-1">
+        <p class="mb-0">
+          The syntax of wildcard searches has changed from previous versions: As a default, insert a full stop before any wildcard, e.g. <code>.*</code>, <code>.+</code> or <code>.?</code>.<br>
+          For details see search manual.
+        </p>
+      </div>
+    </v-tooltip>
   </div>
 </template>
 

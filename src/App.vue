@@ -16,8 +16,8 @@
       </div>
       <v-spacer />
       <div class="d-flex align-end">
-        <v-btn @click="clearRenderCache" v-if="dev" x-small class="mr-3">Clear Render Cache</v-btn>
-        <v-select dense hide-details
+        <v-btn @click="clearRenderCache" v-if="dev" x-small class="mr-3 d-none d-md-flex">Clear Render Cache</v-btn>
+        <v-select dense hide-details class="d-none d-md-flex"
           label="API"
           :items="['https://voice-node.acdh-dev.oeaw.ac.at/', 'http://127.0.0.1:3000/']"
           v-model="mainData.apiUrl"
@@ -390,6 +390,9 @@ export default {
   }
   .cur-help {
     cursor: help;
+  }
+  .v-tooltip__content code {
+      background-color: rgba(0, 0, 0, 0.3)!important;
   }
   @media (min-width: 1264px) {
     .container {

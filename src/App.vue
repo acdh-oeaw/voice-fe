@@ -29,6 +29,22 @@
         <v-btn @click="mainData.options.fullWidth = !mainData.options.fullWidth" icon small v-if="mainData.wideScreen">
           <v-icon>{{ mainData.options.fullWidth ? 'mdi-unfold-less-vertical' : 'mdi-unfold-more-vertical' }}</v-icon>
         </v-btn>
+        <v-menu offset-y>
+          <template v-slot:activator="{ on, attrs }">
+            <v-btn icon small v-bind="attrs" v-on="on">
+              <v-icon>mdi-book-open-variant</v-icon>
+            </v-btn>
+          </template>
+          <v-list>
+            <v-list-item><v-list-item-title>search manual</v-list-item-title></v-list-item>
+            <v-list-item href="https://voice-clariah.acdh.oeaw.ac.at/wp-content/uploads/2021/04/VOICE-mark-up-conventions.pdf" target="_blank"><v-list-item-title>Mark-Up Conventions</v-list-item-title></v-list-item>
+            <v-list-item href="https://voice-clariah.acdh.oeaw.ac.at/wp-content/uploads/2021/04/VOICE-spelling-conventions.pdf" target="_blank"><v-list-item-title>Spelling Conventions</v-list-item-title></v-list-item>
+            <v-list-item href="https://voice-clariah.acdh.oeaw.ac.at/wp-content/uploads/2021/04/Short-POS-tagset.pdf" target="_blank"><v-list-item-title>List of POS tag</v-list-item-title></v-list-item>
+            <v-list-item href="https://voice-clariah.acdh.oeaw.ac.at/wp-content/uploads/2021/04/POS-tagging-and-lemmatization-manual.pdf" target="_blank"><v-list-item-title>POS tagging and lemmatization</v-list-item-title></v-list-item>
+            <v-list-item ><v-list-item-title>Beta test survey</v-list-item-title></v-list-item>
+            <v-list-item href="https://voice-clariah.acdh.oeaw.ac.at/" target="_blank"><v-list-item-title>VOICE Clariah Homepage</v-list-item-title></v-list-item>
+          </v-list>
+        </v-menu>
       </div>
     </v-container>
     <v-main>

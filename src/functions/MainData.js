@@ -37,7 +37,10 @@ const localFunctions = {
           views: null
         },
         errors: [],
-        now: false
+        now: false,
+        showInfos: {
+          utteranceClick: true
+        }
       },
       corpus: {
         selectedElement: null,

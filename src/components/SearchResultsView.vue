@@ -92,6 +92,15 @@ export default {
     }
   },
   methods: {
+    updateLastParsedLine () {
+      this.lastParsedLine = 0
+      this.filteredSearchResults.some(u => {
+        if (this.xmlObjLines[u.idx].uObj.loading) {
+          return true
+        }
+        this.lastParsedLine += 1
+      })
+    },
     showSpeaker (l) {
       // console.log(l.xmlId, this.xmlObjLines[l.idx].uObj.obj.attributes.who.split('_').slice(-1)[0])
       this.mainData.showSpeaker = {id: l.xmlId, speaker: this.xmlObjLines[l.idx].uObj.obj.attributes.who.split('_').slice(-1)[0]}
@@ -116,7 +125,7 @@ export default {
           if (aT + aH >= vT && aT <= vT + vH) {
             if (line.dataset && line.dataset.uid) {
               let uId = parseInt(line.dataset.uid)
-              let aU = this.xmlObjLines[uId]
+              let aU = this.xmlObjLines[this.searchResultsU[uId].idx]
               if ((!this.mainData.search.view.kwic || this.mainData.search.view.type === 'xml-view') && aU[this.view + 'Height'] !== aH) {
                 aU[this.view + 'Height'] = aH
               }
@@ -168,7 +177,6 @@ export default {
     },
     updateXmlObjLines () {
       this.xmlObjLines = null
-      this.lastParsedLine = 0
       if (this.mainData.search.results && this.mainData.search.results.u && this.mainData.search.results.u.length > 0) {
         // console.log('SearchResults - updateXmlObjLines', this.mainData.search.results.u)
         let aLines = this.mainData.search.results.u.map((aU, i) => {
@@ -182,7 +190,6 @@ export default {
           if (typeof aU.xml === 'string' && aU.xml.length > 5) {
             this.mainData.corpus.saxParserFunc.parseIt(aU.xml, null, null, uObj)
             this.deepSeal(uObj)
-            this.lastParsedLine = i
           }
           const ret = {
             uId: aU.uId,
@@ -205,6 +212,7 @@ export default {
         Object.seal(aLines)
         this.xmlObjLines = aLines
       }
+      this.updateLastParsedLine()
     },
     loadScrollPos () {
       if (this.scrollerRef) {
@@ -212,8 +220,11 @@ export default {
       }
     },
     loadNext () {
+      console.log('loadNext')
       if (!this.loadingNext) {
-        let loadList = this.filteredSearchResults.slice(this.lastParsedLine + 1, this.lastParsedLine + 101).map(u => u.uId)
+        this.updateLastParsedLine()
+        let loadList = this.filteredSearchResults.slice(this.lastParsedLine, this.lastParsedLine + 100).map(u => u.uId)
+        // console.log('loadNext ->', this.loadingNext, this.lastParsedLine, JSON.parse(JSON.stringify(this.filteredSearchResults)), loadList)
         if (loadList.length > 0) {
           this.loadingNext = true
           this.$http
@@ -245,7 +256,7 @@ export default {
                   }
                 })
               }
-              this.lastParsedLine += 100
+              this.updateLastParsedLine()
               this.$nextTick(() => {
                 this.scrolling()
                 this.loadingNext = false

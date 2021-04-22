@@ -125,38 +125,40 @@ export default {
           if (aT + aH >= vT && aT <= vT + vH) {
             if (line.dataset && line.dataset.uid) {
               let uId = parseInt(line.dataset.uid)
-              let aU = this.xmlObjLines[this.searchResultsU[uId].idx]
-              if ((!this.mainData.search.view.kwic || this.mainData.search.view.type === 'xml-view') && aU[this.view + 'Height'] !== aH) {
-                aU[this.view + 'Height'] = aH
-              }
-              if (aU.uObj.loading) {
-                this.loadNext()
-              } else if (!aU[this.view]) {
-                aU[this.view] = renderer.renderUtterance(aU.uObj.obj, {...aU.uObj, xml: aU.uObj.obj.xml}, this.view, this.mainData.search.highlights, true)
-              }
-              if (this.mainData.search.view.kwic && this.mainData.search.view.type !== 'xml-view') {
-                this.$nextTick(() => {
-                  [].forEach.call(line.querySelectorAll('.kwic-frm > div'), function(div) {
-                    if (div.dataset && div.dataset.highlighted) {
-                      let hitTags = div.querySelectorAll(div.dataset.highlighted)
-                      if (hitTags.length > 0) {
-                        let frmHalfWidth = div.offsetWidth / 2
-                        let hitMiddle = hitTags[0].offsetLeft
-                        for (let hit of hitTags.entries()) {
-                          hitMiddle += hit[1].offsetWidth / 2
+              if (this.searchResultsU[uId]) {
+                let aU = this.xmlObjLines[this.searchResultsU[uId].idx]
+                if ((!this.mainData.search.view.kwic || this.mainData.search.view.type === 'xml-view') && aU[this.view + 'Height'] !== aH) {
+                  aU[this.view + 'Height'] = aH
+                }
+                if (aU.uObj.loading) {
+                  this.loadNext()
+                } else if (!aU[this.view]) {
+                  aU[this.view] = renderer.renderUtterance(aU.uObj.obj, {...aU.uObj, xml: aU.uObj.obj.xml}, this.view, this.mainData.search.highlights, true)
+                }
+                if (this.mainData.search.view.kwic && this.mainData.search.view.type !== 'xml-view') {
+                  this.$nextTick(() => {
+                    [].forEach.call(line.querySelectorAll('.kwic-frm > div'), function(div) {
+                      if (div.dataset && div.dataset.highlighted) {
+                        let hitTags = div.querySelectorAll(div.dataset.highlighted)
+                        if (hitTags.length > 0) {
+                          let frmHalfWidth = div.offsetWidth / 2
+                          let hitMiddle = hitTags[0].offsetLeft
+                          for (let hit of hitTags.entries()) {
+                            hitMiddle += hit[1].offsetWidth / 2
+                          }
+                          div.style.left = parseInt(frmHalfWidth - hitMiddle) + 'px'
+                        } else {
+                          div.style.left = ''
                         }
-                        div.style.left = parseInt(frmHalfWidth - hitMiddle) + 'px'
-                      } else {
-                        div.style.left = ''
                       }
+                    })
+                    if (aU['kwicHeight'] !== line.offsetHeight || 0) {
+                      aU['kwicHeight'] = line.offsetHeight || 0
                     }
                   })
-                  if (aU['kwicHeight'] !== line.offsetHeight || 0) {
-                    aU['kwicHeight'] = line.offsetHeight || 0
-                  }
-                })
+                }
+                this.inView.push(uId)
               }
-              this.inView.push(uId)
             }
           }
         })
@@ -220,10 +222,9 @@ export default {
       }
     },
     loadNext () {
-      console.log('loadNext')
       if (!this.loadingNext) {
         this.updateLastParsedLine()
-        let loadList = this.filteredSearchResults.slice(this.lastParsedLine, this.lastParsedLine + 100).map(u => u.uId)
+        let loadList = this.filteredSearchResults.slice(this.lastParsedLine, this.lastParsedLine + 100).filter(u => this.xmlObjLines[u.idx].uObj.loading).map(u => u.uId)
         // console.log('loadNext ->', this.loadingNext, this.lastParsedLine, JSON.parse(JSON.stringify(this.filteredSearchResults)), loadList)
         if (loadList.length > 0) {
           this.loadingNext = true
@@ -290,6 +291,10 @@ export default {
     }
   },
   watch: {
+    'filteredSearchResults' () {
+      this.updateLastParsedLine()
+      this.scrolling()
+    },
     'mainData.search.results': {
       deep: true,
       handler() {
@@ -297,11 +302,13 @@ export default {
       }
     },
     view () {
+      this.updateLastParsedLine()
       this.$nextTick(() => {
         this.scrolling()
       })
     },
     'mainData.search.view.kwic' () {
+      this.updateLastParsedLine()
       this.$nextTick(() => {
         this.scrolling()
       })
@@ -309,6 +316,7 @@ export default {
     'mainData.search.view.views': {
       deep: true,
       handler() {
+        this.updateLastParsedLine()
         this.$nextTick(() => {
           this.scrolling()
         })

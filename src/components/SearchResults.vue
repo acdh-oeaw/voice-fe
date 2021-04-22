@@ -13,7 +13,20 @@
           loading ...
         </div>
         <div v-else-if="!mainData.search.searched">
-          No search done yet ...
+          <div>No search done yet ...</div>
+          <div class="mt-3">
+            <hr class="mb-3">
+            <p><b><u>Explore the new features of VOICE 3.0 Online BETA</u></b></p>
+            <p><b>Enhanced search functions</b></p>
+            <p>
+              In VOICE 3.0 Online BETA, the previous interfaces VOICE Online and VOICE POS Online have been merged and refined. In addition, our new interface includes entirely new query options that make it possible to search for select mark-up of spoken language (pauses, laughter, overlaps, etc.). Queries for tokens, POS, lemmas and mark-up can be flexibly combined and modified with different wildcards. For details of query features to try out, see our VOICE 3.0 Online BETA
+              <a href="https://voice-clariah.acdh.oeaw.ac.at/searchmanual/" target="_blank">search manual</a>.
+            </p>
+            <p><b>Additional filter categories</b></p>
+            <p>In addition to domain and speech event type, VOICE 3.0 Online BETA offers new filter categories for selecting speech events (number of interactants/speakers, duration, number of words, etc.) and building your own subcorpus. </p>
+            <p><b>New style options</b></p>
+            <p>Try out the enhanced, customizable display of search results and VOICE transcripts. Have a look at our style options (voice, plain, pos, xml; kwic style for search results) and/or adapt the voice style according to your research interests by using the different 'flexi style' categories (overlaps, pauses, etc.; new: e.g. laughter, uncertain transcription). </p>
+          </div>
         </div>
         <div v-else-if="mainData.search.results">
           <v-alert prominent type="warning" dismissible v-if="mainData.search.results.hits.length === 0">
@@ -61,7 +74,7 @@
         </div>
       </div>
     </div>
-    <div class="voice-switches" v-if="mainData.search.view.views && mainData.search.view.views[mainData.search.view.type] && mainData.search.results && mainData.search.results.u && mainData.search.results.u.length > 0">
+    <div class="voice-switches" v-if="mainData.search.searched && mainData.search.results && mainData.search.results.u && mainData.search.view.views && mainData.search.view.views[mainData.search.view.type] && mainData.search.results && mainData.search.results.u && mainData.search.results.u.length > 0">
       <RenderSelect :mainData="mainData" :views="mainData.search.view.views" :type="mainData.search.view.type" class="d-flex flex-wrap" />
     </div>
   </div>

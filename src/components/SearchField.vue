@@ -18,6 +18,7 @@
       :disabled="!mainData.search.value || mainData.search.value.length < 2"
       >Search</v-btn
     >
+    <v-btn href="https://voice-clariah.acdh.oeaw.ac.at/searchmanual/" target="_blank" class="ml-2" small><v-icon class="mr-2" small>mdi-book-open-variant</v-icon> search manual</v-btn>
     <v-tooltip top max-width="400">
       <template v-slot:activator="{ on, attrs }"><v-icon v-bind="attrs" v-on="on" class="ml-2">mdi-information-outline</v-icon></template>
       <div class="py-1">

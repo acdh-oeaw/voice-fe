@@ -10,7 +10,7 @@
           <div><b>You are currently using VOICE 3.0 Online BETA</b> (temporary pre-release, version end of April 2021).</div>
           <div style="font-size: 0.8rem; line-height: 1rem;">
             Search results may not be fully consistent yet as small features of the interface may still be adapted.<br>
-            Please let us have your feedback and/or report any Bugs in our online survey. <i>Thanks for beta-testing!</i>
+            Please let us have your feedback and/or report any Bugs in our <a href="https://survey.acdh.oeaw.ac.at/index.php/326478?lang=en" target="_blank"><b>online survey</b></a>. <i>Thanks for beta-testing!</i>
           </div>
         </v-alert>
       </div>
@@ -36,12 +36,12 @@
             </v-btn>
           </template>
           <v-list>
-            <v-list-item><v-list-item-title>search manual</v-list-item-title></v-list-item>
+            <v-list-item href="https://voice-clariah.acdh.oeaw.ac.at/searchmanual/" target="_blank"><v-list-item-title>search manual</v-list-item-title></v-list-item>
             <v-list-item href="https://voice-clariah.acdh.oeaw.ac.at/wp-content/uploads/2021/04/VOICE-mark-up-conventions.pdf" target="_blank"><v-list-item-title>Mark-Up Conventions</v-list-item-title></v-list-item>
             <v-list-item href="https://voice-clariah.acdh.oeaw.ac.at/wp-content/uploads/2021/04/VOICE-spelling-conventions.pdf" target="_blank"><v-list-item-title>Spelling Conventions</v-list-item-title></v-list-item>
             <v-list-item href="https://voice-clariah.acdh.oeaw.ac.at/wp-content/uploads/2021/04/Short-POS-tagset.pdf" target="_blank"><v-list-item-title>List of POS tag</v-list-item-title></v-list-item>
             <v-list-item href="https://voice-clariah.acdh.oeaw.ac.at/wp-content/uploads/2021/04/POS-tagging-and-lemmatization-manual.pdf" target="_blank"><v-list-item-title>POS tagging and lemmatization</v-list-item-title></v-list-item>
-            <v-list-item ><v-list-item-title>Beta test survey</v-list-item-title></v-list-item>
+            <v-list-item href="https://survey.acdh.oeaw.ac.at/index.php/326478?lang=en" target="_blank"><v-list-item-title>Beta test survey</v-list-item-title></v-list-item>
             <v-list-item href="https://voice-clariah.acdh.oeaw.ac.at/" target="_blank"><v-list-item-title>VOICE Clariah Homepage</v-list-item-title></v-list-item>
           </v-list>
         </v-menu>

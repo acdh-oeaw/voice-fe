@@ -21,6 +21,11 @@ const localFunctions = {
         onlyWithAudio: false,
         filterSpeechEventsFunc: filterSpeechEvents
       },
+      bookmarks: {
+        active: false,
+        localStorage: false,
+        elements: []
+      },
       search: {
         value: '',
         lastValue: '',

@@ -8,7 +8,7 @@
       <div class="px-4">
         <v-alert dense outlined type="info">
           <div><b>You are currently using VOICE 3.0 Online BETA</b> (temporary pre-release, version end of April 2021).</div>
-          <div style="font-size: 0.8rem; line-height: 1rem;">
+          <div class="sm-font">
             Search results may not be fully consistent yet as small features of the interface may still be adapted.<br>
             Please let us have your feedback and/or report any Bugs in our <a href="https://survey.acdh.oeaw.ac.at/index.php/326478?lang=en" target="_blank"><b>online survey</b></a>. <i>Thanks for beta-testing!</i>
           </div>
@@ -354,6 +354,16 @@ export default {
   .w-100 {
     width: 100%;
   }
+  .mw-33 {
+    min-width: 33.333%;
+  }
+  .mw-50 {
+    min-width: 50%;
+  }
+  .sm-font {
+    font-size: 0.8rem;
+    line-height: 1rem;
+  }
   .logo-small {
     width: 200px;
   }
@@ -410,6 +420,18 @@ export default {
   .v-tooltip__content code {
       background-color: rgba(0, 0, 0, 0.3)!important;
   }
+  .m-title {
+    font-size: 12px;
+    padding: 2px;
+    color: rgba(0, 0, 0, 0.6);
+  }
+  .m-hint {
+    font-size: 12px;
+    color: rgba(0, 0, 0, 0.6);
+  }
+  .inset-card-shadow {
+    box-shadow: inset 0px 3px 1px -2px rgb(0 0 0 / 20%), inset 0px 2px 2px 0px rgb(0 0 0 / 14%), inset 0px 1px 5px 0px rgb(0 0 0 / 12%)!important;
+  }
   @media (min-width: 1264px) {
     .container {
       max-width: 1785px!important;
@@ -422,5 +444,70 @@ export default {
     .home-width {
       max-width: 700px!important;
     }
+  }
+  .jump-btn::after {
+    content: url("data:image/svg+xml,%3C%3Fxml version='1.0' encoding='UTF-8'%3F%3E%3C!DOCTYPE svg PUBLIC '-//W3C//DTD SVG 1.1//EN' 'http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd'%3E%3Csvg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' version='1.1' width='20' height='20' viewBox='0 0 24 24'%3E%3Cpath fill='%23333' d='M14,3V5H17.59L7.76,14.83L9.17,16.24L19,6.41V10H21V3M19,19H5V5H12V3H5C3.89,3 3,3.9 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V12H19V19Z' /%3E%3C/svg%3E");
+    position: relative;
+    top: 1px;
+  }
+  .trash-icon::after {
+    content: "\F01B4";
+    display: block;
+    width: 20px;
+    height: 24px;
+    display: inline-block;
+    font: normal normal normal 24px/1 "Material Design Icons";
+    font-size: inherit;
+    text-rendering: auto;
+    line-height: inherit;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    color: #666;
+    font-size: 1.4rem;
+    line-height: 1;
+    position: relative;
+    top: -1px;
+    left: 1px;
+    cursor: pointer;
+  }
+  .bookmark, .bookmark-check {
+    position: relative;
+  }
+  .bookmark::after, .bookmark-check::after {
+    content: "\F00C4";
+    display: block;
+    width: 20px;
+    height: 24px;
+    display: inline-block;
+    font: normal normal normal 24px/1 "Material Design Icons";
+    font-size: inherit;
+    text-rendering: auto;
+    line-height: inherit;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    color: #aaa;
+    font-size: 1.4rem;
+    line-height: 1;
+    position: relative;
+    top: 2px;
+    left: 1px;
+    cursor: pointer;
+  }
+  .bookmark-check::after {
+    content: "\F00C1";
+    color: #666;
+  }
+  .bookmark:hover::after, .bookmark-check:hover::after {
+    color: #333;
+  }
+  .bookmark:hover::before, .bookmark-check:hover::before {
+    content: "";
+    position: absolute;
+    background: #ccc;
+    width: 28px;
+    height: 28px;
+    left: -2px;
+    top: -2px;
+    border-radius: 100%;
   }
 </style>

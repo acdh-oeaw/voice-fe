@@ -242,15 +242,6 @@ export default {
 </script>
 
 <style scoped>
-.m-title {
-  font-size: 12px;
-  padding: 2px;
-  color: rgba(0, 0, 0, 0.6);
-}
-.m-hint {
-  font-size: 12px;
-  color: rgba(0, 0, 0, 0.6);
-}
 .fx-tree-icon {
   background: #1976d2;
   color: #fff!important;
@@ -267,8 +258,5 @@ export default {
 .no-filters {
   color: #777;
   background: #ddd;
-}
-.inset-card-shadow {
-  box-shadow: inset 0px 3px 1px -2px rgb(0 0 0 / 20%), inset 0px 2px 2px 0px rgb(0 0 0 / 14%), inset 0px 1px 5px 0px rgb(0 0 0 / 12%)!important;
 }
 </style>

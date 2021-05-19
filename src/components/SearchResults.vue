@@ -138,7 +138,7 @@ export default {
         }
       }
     },
-    },
+  },
   watch: {
   },
   components: {

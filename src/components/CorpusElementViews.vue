@@ -19,8 +19,9 @@
       >
         <div class="line-nr" v-if="show_utI">{{ aIdx + 1 }}</div>
         <div class="line-speaker" v-if="show_sId"><button @click="showSpeaker(aLine)">{{ aLine.speaker }}</button></div>
-        <div v-if="inView.indexOf(aIdx) > - 1" v-html="aLine[view]" :class="classes" data-testid="lineContent"></div>
-        <div v-else data-testid="lineContent">{{ aLine.obj.text }}</div>
+        <div v-if="inView.indexOf(aIdx) > - 1" v-html="aLine[view]" :class="'flex-grow-1 ' + classes" data-testid="lineContent"></div>
+        <div v-else data-testid="lineContent" class="flex-grow-1">{{ aLine.obj.text }}</div>
+        <div @click="toggleBookmark(aLine.uId)" v-if="mainData.bookmarks.active" :class="'bookmark' + (mainData.bookmarks.elements.indexOf(aLine.uId) > -1 ? '-check' : '')"></div>
       </div>
       <div class="line-gap" ref="lines" :key="'u' + element.id + 'lg' + aIdx" v-if="show_gap && aLine.gap">
         {{ aLine.gap }}
@@ -52,6 +53,14 @@ export default {
   beforeDestroy () {
   },
   methods: {
+    toggleBookmark (uId) {
+      console.log(uId)
+      if (this.mainData.bookmarks.elements.indexOf(uId) > -1) {
+        this.mainData.bookmarks.elements.splice(this.mainData.bookmarks.elements.indexOf(uId), 1)
+      } else {
+        this.mainData.bookmarks.elements.push(uId)
+      }
+    },
     showSpeaker (l) {
       this.mainData.showSpeaker = {id: l.uId.split('_')[0], speaker: l.speaker}
     },

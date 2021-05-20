@@ -8,14 +8,18 @@
         </div>
         <div class="mw-50">
           <div class="m-title">local storage</div>
-          <v-switch v-model="mainData.bookmarks.localStorage" dense hide-details class="mt-0" :label="mainData.bookmarks.localStorage ? 'On' : 'Off'"></v-switch>
+          <v-switch v-model="mainData.bookmarks.localStorage" dense hide-details class="mt-0" :label="mainData.bookmarks.localStorage ? 'On' : 'Off'" :disabled="localStorageDisabeld"></v-switch>
         </div>
       </v-card>
       <v-alert dense outlined type="info" v-if="!mainData.bookmarks.active">
         Activate bookmarks to show the icon to add bookmarks.
       </v-alert>
-      <v-alert dense outlined type="warning" v-if="!mainData.bookmarks.localStorage">
+      <v-alert dense outlined type="warning" v-if="!mainData.bookmarks.localStorage && !localStorageDisabeld">
         <b>Local storage is deactivated</b>
+        <div class="sm-font">If you leave or reload this site all Bookmarks are lost.</div>
+      </v-alert>
+      <v-alert dense outlined type="warning" v-if="localStorageDisabeld">
+        <b>Local storage not available</b>
         <div class="sm-font">If you leave or reload this site all Bookmarks are lost.</div>
       </v-alert>
       <v-alert dense outlined type="info" v-if="Object.keys(mainData.bookmarks.elements).length < 1">
@@ -43,7 +47,8 @@ export default {
     'mainData': Object,
   },
   data: () => ({
-    shiftKeyDown: false
+    shiftKeyDown: false,
+    localStorageDisabeld: true
   }),
   created () {
     window.addEventListener('keydown', this.keyDown)
@@ -55,6 +60,11 @@ export default {
   },
   mounted () {
     console.log('ToolsetLeftBookmarks', this.mainData)
+    if (bookmarks.localStorageAvailable()) {
+      this.localStorageDisabeld = false
+    } else {
+      this.mainData.bookmarks.localStorage = false
+    }
   },
   methods: {
     editBookmark (uId) {

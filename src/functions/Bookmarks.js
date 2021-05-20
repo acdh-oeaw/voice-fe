@@ -27,19 +27,39 @@ const localFunctions = {
     }
   },
   loadBookmarkStore (vThis, bookmarks) {
-    let data = localStorage.getItem('bookmarks', null)
-    if (data) {
-      data = JSON.parse(data)
-      if (data.hasOwnProperty('active')) {
-        vThis.$set(bookmarks, 'active', data.active)
+    if (this.localStorageAvailable()) {
+      let data = localStorage.getItem('bookmarks', null)
+      if (data) {
+        data = JSON.parse(data)
+        if (data.hasOwnProperty('active')) {
+          vThis.$set(bookmarks, 'active', data.active)
+        }
+        if (data.hasOwnProperty('localStorage')) {
+          vThis.$set(bookmarks, 'localStorage', data.localStorage)
+        }
+        if (data.hasOwnProperty('elements')) {
+          vThis.$set(bookmarks, 'elements', data.elements)
+        }
+        console.log('loadBookmarkStore', data.hasOwnProperty('active'), data, bookmarks)
       }
-      if (data.hasOwnProperty('localStorage')) {
-        vThis.$set(bookmarks, 'localStorage', data.localStorage)
-      }
-      if (data.hasOwnProperty('elements')) {
-        vThis.$set(bookmarks, 'elements', data.elements)
-      }
-      console.log('loadBookmarkStore', data.hasOwnProperty('active'), data, bookmarks)
+    }
+  },
+  localStorageAvailable() {
+    var storage
+    try {
+      storage = window['localStorage']
+      var x = '__storage_test__'
+      storage.setItem(x, x)
+      storage.removeItem(x)
+      return true
+    }
+    catch(e) {
+      return e instanceof DOMException && (
+        e.code === 22 ||
+        e.code === 1014 ||
+        e.name === 'QuotaExceededError' ||
+        e.name === 'NS_ERROR_DOM_QUOTA_REACHED') &&
+        (storage && storage.length !== 0)
     }
   }
 }

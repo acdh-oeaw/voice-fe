@@ -21,7 +21,7 @@
         <div class="line-speaker" v-if="show_sId"><button @click="showSpeaker(aLine)">{{ aLine.speaker }}</button></div>
         <div v-if="inView.indexOf(aIdx) > - 1" v-html="aLine[view]" :class="'flex-grow-1 ' + classes" data-testid="lineContent"></div>
         <div v-else data-testid="lineContent" class="flex-grow-1">{{ aLine.obj.text }}</div>
-        <div @click="toggleBookmark(aLine.uId)" v-if="mainData.bookmarks.active" :class="'bookmark' + (mainData.bookmarks.elements.indexOf(aLine.uId) > -1 ? '-check' : '')"></div>
+        <button @click="editBookmark(aLine.uId, $event)" v-if="mainData.bookmarks.active" :class="'bookmark' + (Object.keys(mainData.bookmarks.elements).indexOf(aLine.uId) > -1 ? '-check' : '') + (shiftKeyDown ? ' bookmark-fast' : '')"></button>
       </div>
       <div class="line-gap" ref="lines" :key="'u' + element.id + 'lg' + aIdx" v-if="show_gap && aLine.gap">
         {{ aLine.gap }}
@@ -32,6 +32,7 @@
 
 <script>
 import renderer from '../functions/Renderer'
+import bookmarks from '../functions/Bookmarks'
 var _ = require('lodash')
 
 export default {
@@ -42,23 +43,35 @@ export default {
     'view': String
   },
   data: () => ({
-    inView: []
+    inView: [],
+    shiftKeyDown: false
   }),
+  created () {
+    window.addEventListener('keydown', this.keyDown)
+    window.addEventListener('keyup', this.keyUp)
+  },
+  beforeDestroy () {
+    window.removeEventListener('keydown', this.keyDown)
+    window.removeEventListener('keyup', this.keyUp)
+  },
   mounted () {
     console.log('CorpusElementViews', this.element)
     this.scroll2TopLine(this.element.aTopLineUId)
     this.scrolling()
     this.goToUtterance()
   },
-  beforeDestroy () {
-  },
   methods: {
-    toggleBookmark (uId) {
-      console.log(uId)
-      if (this.mainData.bookmarks.elements.indexOf(uId) > -1) {
-        this.mainData.bookmarks.elements.splice(this.mainData.bookmarks.elements.indexOf(uId), 1)
-      } else {
-        this.mainData.bookmarks.elements.push(uId)
+    editBookmark (uId, e) {
+      bookmarks.editBookmark(this, this.mainData.bookmarks, uId, e.shiftKey)
+    },
+    keyDown (e) {
+      if (e.key === 'Shift') {
+        this.shiftKeyDown = true
+      }
+    },
+    keyUp (e) {
+      if (e.key === 'Shift') {
+        this.shiftKeyDown = false
       }
     },
     showSpeaker (l) {

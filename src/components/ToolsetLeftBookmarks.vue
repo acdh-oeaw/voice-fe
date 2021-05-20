@@ -18,15 +18,15 @@
         <b>Local storage is deactivated</b>
         <div class="sm-font">If you leave or reload this site all Bookmarks are lost.</div>
       </v-alert>
-      <v-alert dense outlined type="info" v-if="mainData.bookmarks.elements.length < 1">
+      <v-alert dense outlined type="info" v-if="Object.keys(mainData.bookmarks.elements).length < 1">
         No bookmarks have been added yet.
       </v-alert>
       <div v-else>
-        <div v-for="element in mainData.bookmarks.elements" :key="element" class="d-flex">
-          <div class="flex-grow-1">{{ element.split('_')[0] + ':' + element.split('_')[2] }}</div>
+        <div v-for="(element, uId) in mainData.bookmarks.elements" :key="uId" class="d-flex">
+          <div class="flex-grow-1">{{ uId.split('_')[0] + ':' + uId.split('_')[2] }}</div>
           <div>
-            <button @click="goToUtterance(element)" class="ml-1 jump-btn"></button>
-            <button @click="removeBookmark(element)" class="ml-1 trash-icon"></button>
+            <button @click="goToUtterance(uId)" class="ml-1 jump-btn"></button>
+            <button @click="editBookmark(uId)" :class="'ml-1 ' + (shiftKeyDown ? 'trash-icon' : 'edit-icon')"></button>
           </div>
         </div>
       </div>
@@ -35,21 +35,39 @@
 </template>
 
 <script>
+import bookmarks from '../functions/Bookmarks'
+
 export default {
   name: 'ToolsetLeftBookmarks',
   props: {
     'mainData': Object,
   },
   data: () => ({
+    shiftKeyDown: false
   }),
+  created () {
+    window.addEventListener('keydown', this.keyDown)
+    window.addEventListener('keyup', this.keyUp)
+  },
+  beforeDestroy () {
+    window.removeEventListener('keydown', this.keyDown)
+    window.removeEventListener('keyup', this.keyUp)
+  },
   mounted () {
     console.log('ToolsetLeftBookmarks', this.mainData)
   },
   methods: {
-    removeBookmark (uId) {
-      console.log(uId)
-      if (this.mainData.bookmarks.elements.indexOf(uId) > -1) {
-        this.mainData.bookmarks.elements.splice(this.mainData.bookmarks.elements.indexOf(uId), 1)
+    editBookmark (uId) {
+      bookmarks.editBookmark(this, this.mainData.bookmarks, uId, this.shiftKeyDown)
+    },
+    keyDown (e) {
+      if (e.key === 'Shift') {
+        this.shiftKeyDown = true
+      }
+    },
+    keyUp (e) {
+      if (e.key === 'Shift') {
+        this.shiftKeyDown = false
       }
     },
     goToUtterance (u) {
@@ -72,9 +90,18 @@ export default {
     },
   },
   watch: {
+    'mainData.bookmarks.active' () {
+      bookmarks.updateBookmarkStore(this.mainData.bookmarks)
+    },
+    'mainData.bookmarks.localStorage' () {
+      bookmarks.updateBookmarkStore(this.mainData.bookmarks)
+    }
   }
 }
 </script>
 
 <style scoped>
+  button {
+    outline: none;
+  }
 </style>

@@ -24,7 +24,8 @@ const localFunctions = {
       bookmarks: {
         active: false,
         localStorage: false,
-        elements: []
+        elements: {},
+        edit: null
       },
       search: {
         value: '',

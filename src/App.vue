@@ -450,7 +450,8 @@ export default {
     position: relative;
     top: 1px;
   }
-  .trash-icon::after {
+
+  .trash-icon::after, .edit-icon::after {
     content: "\F01B4";
     display: block;
     width: 20px;
@@ -470,11 +471,19 @@ export default {
     left: 1px;
     cursor: pointer;
   }
+  .edit-icon::after {
+    content: "\F03EB";
+  }
   .bookmark, .bookmark-check {
     position: relative;
   }
+  button.bookmark, button.bookmark-check {
+    height: fit-content;
+    margin-bottom: -3px;
+    outline: none;
+  }
   .bookmark::after, .bookmark-check::after {
-    content: "\F00C4";
+    content: "\F137B";
     display: block;
     width: 20px;
     height: 24px;
@@ -489,16 +498,26 @@ export default {
     font-size: 1.4rem;
     line-height: 1;
     position: relative;
-    top: 2px;
+    top: 1px;
     left: 1px;
     cursor: pointer;
+  }
+  .bookmark.bookmark-fast::after {
+    content: "\F00C4";
   }
   .bookmark-check::after {
     content: "\F00C1";
     color: #666;
   }
+  .bookmark-check.bookmark-fast::after {
+    content: "\F00C6";
+    color: #800;
+  }
   .bookmark:hover::after, .bookmark-check:hover::after {
     color: #333;
+  }
+  .bookmark-check.bookmark-fast:hover::after {
+    color: #a00;
   }
   .bookmark:hover::before, .bookmark-check:hover::before {
     content: "";

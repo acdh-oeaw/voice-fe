@@ -19,7 +19,7 @@
           </div>
           <template v-if="!xmlObjLines[uObj.idx].uObj.loading">
             <div class="line-speaker" v-if="xmlObjLines[uObj.idx].uObj.obj.attributes && xmlObjLines[uObj.idx].uObj.obj.attributes.who"><button @click="showSpeaker(uObj)">{{ xmlObjLines[uObj.idx].uObj.obj.attributes.who.split('_').slice(-1)[0] }}</button></div>
-            <div @click="toggleBookmark(uObj.uId)" v-if="mainData.bookmarks.active && mainData.search.view.type === 'xml-view'" :class="'ml-auto bookmark' + (mainData.bookmarks.elements.indexOf(uObj.uId) > -1 ? '-check' : '')"></div>
+            <button @click="editBookmark(uObj.uId, $event)" v-if="mainData.bookmarks.active && mainData.search.view.type === 'xml-view'" :class="'ml-auto bookmark' + (Object.keys(mainData.bookmarks.elements).indexOf(uObj.uId) > -1 ? '-check' : '') + (shiftKeyDown ? ' bookmark-fast' : '')"></button>
             <div class="flex-break" v-if="mainData.search.view.type === 'xml-view'"></div>
             <template v-if="inView.indexOf(uIdx) > - 1">
               <div class="kwic-frm flex-grow-1" v-if="mainData.search.view.kwic && mainData.search.view.type !== 'xml-view'">
@@ -32,7 +32,7 @@
           <div class="line-loading flex-grow-1" v-else>
             Loading ...
           </div>
-          <div @click="toggleBookmark(uObj.uId)" v-if="mainData.bookmarks.active && mainData.search.view.type !== 'xml-view'" :class="'bookmark' + (mainData.bookmarks.elements.indexOf(uObj.uId) > -1 ? '-check' : '')"></div>
+          <button @click="editBookmark(uObj.uId, $event)" v-if="mainData.bookmarks.active && mainData.search.view.type !== 'xml-view'" :class="'bookmark' + (Object.keys(mainData.bookmarks.elements).indexOf(uObj.uId) > -1 ? '-check' : '') + (shiftKeyDown ? ' bookmark-fast' : '')"></button>
         </div>
       </div>
     </template>
@@ -41,6 +41,7 @@
 
 <script>
 import renderer from '../functions/Renderer'
+import bookmarks from '../functions/Bookmarks'
 
 export default {
   name: 'SearchResultsView',
@@ -56,8 +57,17 @@ export default {
     inView: [],
     loadingNext: false,
     scrollTop: 0,
-    clientHeight: 800
+    clientHeight: 800,
+    shiftKeyDown: false
   }),
+  created () {
+    window.addEventListener('keydown', this.keyDown)
+    window.addEventListener('keyup', this.keyUp)
+  },
+  beforeDestroy () {
+    window.removeEventListener('keydown', this.keyDown)
+    window.removeEventListener('keyup', this.keyUp)
+  },
   mounted () {
     this.updateXmlObjLines()
     this.$nextTick(() => {
@@ -94,12 +104,17 @@ export default {
     }
   },
   methods: {
-    toggleBookmark (uId) {
-      console.log(uId)
-      if (this.mainData.bookmarks.elements.indexOf(uId) > -1) {
-        this.mainData.bookmarks.elements.splice(this.mainData.bookmarks.elements.indexOf(uId), 1)
-      } else {
-        this.mainData.bookmarks.elements.push(uId)
+    editBookmark (uId, e) {
+      bookmarks.editBookmark(this, this.mainData.bookmarks, uId, e.shiftKey)
+    },
+    keyDown (e) {
+      if (e.key === 'Shift') {
+        this.shiftKeyDown = true
+      }
+    },
+    keyUp (e) {
+      if (e.key === 'Shift') {
+        this.shiftKeyDown = false
       }
     },
     updateLastParsedLine () {

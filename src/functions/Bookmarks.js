@@ -20,9 +20,26 @@ const localFunctions = {
       // save
       let data = JSON.parse(JSON.stringify(bookmarks))
       delete data.edit
-      console.log('updateBookmarkStore', data)
+      // console.log('updateBookmarkStore', JSON.stringify(data))
+      localStorage.setItem('bookmarks', JSON.stringify(data))
     } else {
-      // delete
+      localStorage.removeItem('bookmarks')
+    }
+  },
+  loadBookmarkStore (vThis, bookmarks) {
+    let data = localStorage.getItem('bookmarks', null)
+    if (data) {
+      data = JSON.parse(data)
+      if (data.hasOwnProperty('active')) {
+        vThis.$set(bookmarks, 'active', data.active)
+      }
+      if (data.hasOwnProperty('localStorage')) {
+        vThis.$set(bookmarks, 'localStorage', data.localStorage)
+      }
+      if (data.hasOwnProperty('elements')) {
+        vThis.$set(bookmarks, 'elements', data.elements)
+      }
+      console.log('loadBookmarkStore', data.hasOwnProperty('active'), data, bookmarks)
     }
   }
 }

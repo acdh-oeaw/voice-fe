@@ -110,6 +110,7 @@
 
 <script>
 import mainDataFunc from './functions/MainData'
+import bookmarks from './functions/Bookmarks'
 
 export default {
   name: 'App',
@@ -129,6 +130,7 @@ export default {
     this.loadCorpus()
     window.addEventListener('resize', this.resized)
     this.mainData.app = this
+    bookmarks.loadBookmarkStore(this, this.mainData.bookmarks)
   },
   beforeDestroy () {
     window.removeEventListener('resize', this.resized)

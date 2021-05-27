@@ -14,7 +14,10 @@ export default new Router({
     {
       path: '/tool',
       name: 'tool',
-      component: () => import(/* webpackChunkName: "tool" */ './views/Tool.vue')
+      component: () => import(/* webpackChunkName: "tool" */ './views/Tool.vue'),
+      props: (route) => ({
+        bookmarks: route.query.bookmarks
+      })
     }
   ]
 })

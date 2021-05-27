@@ -11,6 +11,9 @@
           <v-switch v-model="mainData.bookmarks.localStorage" dense hide-details class="mt-0" :label="mainData.bookmarks.localStorage ? 'On' : 'Off'" :disabled="localStorageDisabeld"></v-switch>
         </div>
       </v-card>
+      <div class="mb-4">
+        <v-btn @click="exportBookmarksAsUrl">Export as url</v-btn>
+      </div>
       <v-alert dense outlined type="info" v-if="!mainData.bookmarks.active">
         Activate bookmarks to show the icon to add bookmarks.
       </v-alert>
@@ -130,6 +133,16 @@ export default {
     }
   },
   methods: {
+    exportBookmarksAsUrl () {
+      console.log({x: this.$router})
+      var codec = require('json-url')('lzma')
+      codec.compress(this.mainData.bookmarks.elements).then(result => {
+        console.log(result)
+        // codec.decompress(result).then(json => console.log(json))
+        let bUrl = window.location.origin + '/#/tool?bookmarks=' + result
+        console.log(bUrl.length, bUrl)
+      })
+    },
     editBookmark (uId) {
       bookmarks.editBookmark(this, this.mainData.bookmarks, uId, this.shiftKeyDown)
     },

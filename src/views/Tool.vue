@@ -41,13 +41,15 @@ import DialogBookmarks from '../components/DialogBookmarks';
 export default {
   name: 'Tool',
   props: {
-    'mainData': Object
+    'mainData': Object,
+    'bookmarks': String
   },
   data: () => ({
     publicPath: process.env.BASE_URL
   }),
   mounted () {
     console.log('Tool', this.mainData)
+    this.getBookmarks()
   },
   timers: {
     checkMatomo: { time: 100, autostart: true, repeat: true }
@@ -62,6 +64,12 @@ export default {
         this.$timer.stop('checkMatomo')
       }
     },
+    getBookmarks () {
+      if (this.bookmarks) {
+        var codec = require('json-url')('lzma')
+        codec.decompress(this.bookmarks).then(json => console.log('bookmarks from url', json))
+      }
+    }
   },
   computed: {
     dualView () {
@@ -69,6 +77,9 @@ export default {
     }
   },
   watch: {
+    bookmarks () {
+      this.getBookmarks()
+    }
   },
   components: {
     ToolsetLeft,

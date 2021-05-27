@@ -27,6 +27,7 @@
         </v-row>
       </v-col>
     </v-row>
+    <DialogBookmarks :mainData="mainData" />
   </v-container>
 </template>
 
@@ -35,6 +36,7 @@ import ToolsetLeft from '../components/ToolsetLeft';
 import SearchSelect from '../components/SearchSelect';
 import SearchResults from '../components/SearchResults';
 import CorpusElement from '../components/CorpusElement';
+import DialogBookmarks from '../components/DialogBookmarks';
 
 export default {
   name: 'Tool',
@@ -72,7 +74,8 @@ export default {
     ToolsetLeft,
     SearchSelect,
     SearchResults,
-    CorpusElement
+    CorpusElement,
+    DialogBookmarks
   }
 }
 </script>

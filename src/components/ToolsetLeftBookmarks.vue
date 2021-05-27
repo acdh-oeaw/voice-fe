@@ -26,11 +26,20 @@
         No bookmarks have been added yet.
       </v-alert>
       <div v-else>
-        <div v-for="(element, uId) in mainData.bookmarks.elements" :key="uId" class="d-flex">
-          <div class="flex-grow-1">{{ uId.split('_')[0] + ':' + uId.split('_')[2] }}</div>
-          <div>
-            <button @click="goToUtterance(uId)" class="ml-1 jump-btn"></button>
-            <button @click="editBookmark(uId)" :class="'ml-1 ' + (shiftKeyDown ? 'trash-icon' : 'edit-icon')"></button>
+        <div v-for="(sBookmarks, bIdx) in sortedBookmarks" :key="bIdx">
+          <div v-for="(element, uId) in sBookmarks.elements" :key="uId" class="d-flex">
+            <div class="flex-grow-1">{{ uId.split('_')[0] + ':' + uId.split('_')[2] }}</div>
+            <div>
+              <v-tooltip top max-width="300" v-if="element.comment">
+                <template v-slot:activator="{ on, attrs }"><button v-bind="attrs" v-on="on" class="ml-1 comment-btn"></button></template>
+                <div class="py-1">
+                  <div v-if="element.category"><i><b>{{ element.category }}</b></i></div>
+                  <div v-html="element.comment.replace(/(?:\r\n|\r|\n)/g, '<br />')" />
+                </div>
+              </v-tooltip>
+              <button @click="goToUtterance(uId)" class="ml-1 jump-btn"></button>
+              <button @click="editBookmark(uId)" :class="'ml-1 ' + (shiftKeyDown ? 'trash-icon' : 'edit-icon')"></button>
+            </div>
           </div>
         </div>
       </div>
@@ -64,6 +73,16 @@ export default {
       this.localStorageDisabeld = false
     } else {
       this.mainData.bookmarks.localStorage = false
+    }
+  },
+  computed: {
+    sortedBookmarks () {
+      return [
+        {
+          category: null,
+          elements: this.mainData.bookmarks.elements
+        }
+      ]
     }
   },
   methods: {

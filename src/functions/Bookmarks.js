@@ -4,16 +4,23 @@ const localFunctions = {
       bookmarks.edit = uId
     } else {
       if (bookmarks.elements[uId]) {
-        vThis.$delete(bookmarks.elements, uId)
+        this.deleteBookmark(vThis, bookmarks, uId)
       } else {
-        vThis.$set(bookmarks.elements, uId, {
-          added: Date.now(),
-          category: '',
-          comment: ''
-        })
+        this.setBookmark(vThis, bookmarks, uId)
       }
-      this.updateBookmarkStore(bookmarks)
     }
+  },
+  setBookmark(vThis, bookmarks, uId, added, category, comment) {
+    vThis.$set(bookmarks.elements, uId, {
+      added: added || Date.now(),
+      category: category || '',
+      comment: comment || ''
+    })
+    this.updateBookmarkStore(bookmarks)
+  },
+  deleteBookmark(vThis, bookmarks, uId) {
+    vThis.$delete(bookmarks.elements, uId)
+    this.updateBookmarkStore(bookmarks)
   },
   updateBookmarkStore (bookmarks) {
     if (bookmarks.localStorage) {

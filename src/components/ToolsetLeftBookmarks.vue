@@ -49,6 +49,22 @@
         </v-card>
       </div>
     </div>
+    <v-dialog v-model="localStorageDialog" persistent width="500">
+      <v-card>
+        <v-card-title class="headline warning white--text">
+          Attention
+        </v-card-title>
+        <v-card-text class="py-4">
+          Clearing the cache memory of your browser will delete your bookmarks!<br>
+          Make sure to save your bookmarks externally.
+        </v-card-text>
+        <v-divider />
+        <v-card-actions>
+          <v-spacer />
+          <v-btn color="warning" @click="localStorageDialog = false">Close</v-btn>
+        </v-card-actions>
+      </v-card>
+    </v-dialog>
   </div>
 </template>
 
@@ -62,7 +78,8 @@ export default {
   },
   data: () => ({
     shiftKeyDown: false,
-    localStorageDisabeld: true
+    localStorageDisabeld: true,
+    localStorageDialog: false
   }),
   created () {
     window.addEventListener('keydown', this.keyDown)
@@ -151,6 +168,9 @@ export default {
     },
     'mainData.bookmarks.localStorage' () {
       bookmarks.updateBookmarkStore(this.mainData.bookmarks)
+      if (this.mainData.bookmarks.localStorage) {
+        this.localStorageDialog = true
+      }
     }
   }
 }

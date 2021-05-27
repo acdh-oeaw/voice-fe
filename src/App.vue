@@ -4,16 +4,7 @@
       <img :src="publicPath + 'images/vc-logo-0-676.png'" class="img-fluid w-100 mt-7" />
     </v-container>
     <v-container :class="{'max-width': !mainData.options.fullWidth, 'd-flex': true, 'pb-0': true}" :fluid="!mainData.wideScreen" v-else>
-      <router-link to="/"><img :src="publicPath + 'images/vc-logo-0-300-beta.png'" class="img-fluid logo-small mt-1" /></router-link>
-      <div class="px-4">
-        <v-alert dense outlined type="info">
-          <div><b>You are currently using VOICE 3.0 Online BETA</b> (temporary pre-release, version end of April 2021).</div>
-          <div class="sm-font">
-            Search results may not be fully consistent yet as small features of the interface may still be adapted.<br>
-            Please let us have your feedback and/or report any Bugs in our <a href="https://survey.acdh.oeaw.ac.at/index.php/326478?lang=en" target="_blank"><b>online survey</b></a>. <i>Thanks for beta-testing!</i>
-          </div>
-        </v-alert>
-      </div>
+      <router-link to="/"><img :src="publicPath + 'images/vc-logo-0-300.png'" class="img-fluid logo-small mt-1" /></router-link>
       <v-spacer />
       <div class="d-flex align-end">
         <v-btn @click="clearRenderCache" v-if="dev" x-small class="mr-3 d-none d-md-flex">Clear Render Cache</v-btn>

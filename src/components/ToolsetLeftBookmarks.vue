@@ -3,7 +3,7 @@
     <div class="pa-2 flex-grow-1" style="overflow-y: auto;">
       <v-card class="mb-4 px-2 pb-1 inset-card-shadow d-flex flex-wrap">
         <div class="mw-50">
-          <div class="m-title">Active</div>
+          <div class="m-title">Show icon</div>
           <v-switch v-model="mainData.bookmarks.active" dense hide-details class="mt-0" :label="mainData.bookmarks.active ? 'On' : 'Off'"></v-switch>
         </div>
         <div class="mw-50">
@@ -15,7 +15,7 @@
         <v-btn @click="exportBookmarksAsUrl">Export as url</v-btn>
       </div>
       <v-alert dense outlined type="info" v-if="!mainData.bookmarks.active">
-        Activate bookmarks to show the icon to add bookmarks.
+        Show icons to add bookmarks.
       </v-alert>
       <v-alert dense outlined type="warning" v-if="!mainData.bookmarks.localStorage && !localStorageDisabeld">
         <b>Local storage is deactivated</b>

@@ -18,6 +18,7 @@ const localFunctions = {
         words: null,
         domain: null,
         spet: null,
+        speakersL1: null,
         onlyWithAudio: false,
         filterSpeechEventsFunc: filterSpeechEvents
       },

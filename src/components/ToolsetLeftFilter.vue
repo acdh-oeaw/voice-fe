@@ -138,6 +138,17 @@
           v-model="mainData.filter.words"
         >
         </v-select>
+        <v-select
+          :items="itemsSpeakersL1"
+          item-text="title"
+          item-value="val"
+          label="Speakers L1"
+          class="mb-3"
+          hide-details
+          @change="mainData.filter.active = true"
+          v-model="mainData.filter.speakersL1"
+        >
+        </v-select>
         <div class="m-title">With Audio File</div>
         <v-switch v-model="mainData.filter.onlyWithAudio" @change="mainData.filter.active = true" dense hide-details class="mt-0" :label="mainData.filter.onlyWithAudio ? 'On' : 'Off'"></v-switch>
       </v-card>
@@ -229,6 +240,55 @@ export default {
       { val: {f: 6000, t: 9999}, title: '6000 to 9999' },
       { val: {f: 10000, t: 14999}, title: '10000 to 14999' },
       { val: {f: 15000, t: Infinity}, title: '15000 and more' }
+    ],
+    itemsSpeakersL1: [
+      { val: null, title: 'Off' },
+      { val: 'alb', title: 'alb' },
+      { val: 'ara', title: 'ara' },
+      { val: 'arm', title: 'arm' },
+      { val: 'bos', title: 'bos' },
+      { val: 'bul', title: 'bul' },
+      { val: 'cat', title: 'cat' },
+      { val: 'chi', title: 'chi' },
+      { val: 'cze', title: 'cze' },
+      { val: 'dan', title: 'dan' },
+      { val: 'dut', title: 'dut' },
+      { val: 'eng', title: 'eng' },
+      { val: 'est', title: 'est' },
+      { val: 'fin', title: 'fin' },
+      { val: 'fre', title: 'fre' },
+      { val: 'ger', title: 'ger' },
+      { val: 'gre', title: 'gre' },
+      { val: 'hin', title: 'hin' },
+      { val: 'hun', title: 'hun' },
+      { val: 'ice', title: 'ice' },
+      { val: 'ind', title: 'ind' },
+      { val: 'ita', title: 'ita' },
+      { val: 'jpn', title: 'jpn' },
+      { val: 'kaz', title: 'kaz' },
+      { val: 'kir', title: 'kir' },
+      { val: 'kor', title: 'kor' },
+      { val: 'lav', title: 'lav' },
+      { val: 'lit', title: 'lit' },
+      { val: 'mac', title: 'mac' },
+      { val: 'mlt', title: 'mlt' },
+      { val: 'nor', title: 'nor' },
+      { val: 'per', title: 'per' },
+      { val: 'pol', title: 'pol' },
+      { val: 'por', title: 'por' },
+      { val: 'rum', title: 'rum' },
+      { val: 'rus', title: 'rus' },
+      { val: 'scc', title: 'scc' },
+      { val: 'scr', title: 'scr' },
+      { val: 'slo', title: 'slo' },
+      { val: 'slv', title: 'slv' },
+      { val: 'spa', title: 'spa' },
+      { val: 'swe', title: 'swe' },
+      { val: 'tgl', title: 'tgl' },
+      { val: 'tur', title: 'tur' },
+      { val: 'ukr', title: 'ukr' },
+      { val: 'urd', title: 'urd' },
+      { val: 'vie', title: 'vie' }
     ]
   }),
   mounted () {

@@ -309,8 +309,7 @@ export default {
       return s
     },
     filterActive () {
-      let f = this.mainData.filter
-      return f.active && (f.domain || f.spet || f.manualSelect || f.interactants || f.speakers || f.acquaintedness || f.powerRelations || f.durationOfSpeechEvent || f.words || f.speakersL1 || f.onlyWithAudio) ? true : false
+      return this.mainData.filter.active && this.mainData.filter.filterSpeechEventsFunc.filterActive(this.mainData.filter)
     },
     filteredSeIds () {
       return this.filterActive ? this.mainData.filter.filterSpeechEventsFunc.getFilteredIds(this.mainData.corpus, this.mainData.filter) : null

@@ -14,19 +14,31 @@
         </div>
       </v-card>
       <div class="my-3">
-        Simple filter
-        <v-tooltip top max-width="300">
-          <template v-slot:activator="{ on, attrs }"><v-icon v-bind="attrs" v-on="on">mdi-information-outline</v-icon></template>
-          <div class="py-1">
-            <p class="mb-0"><b>Simple filter:</b> Choose corpus texts according to meta-data categories.</p>
-            <!-- <p class="mt-1 mb-0"><b>Expert filter:</b> This feature allows to combine different filters. Note of caution: Some combinations may drastically reduce the number of corpus texts selected.</p> -->
-          </div>
-        </v-tooltip>
+        <v-select
+          :items="filterTypes"
+          item-text="title"
+          item-value="val"
+          label="Domain"
+          class="mb-3 mr-2"
+          hide-details
+          @change="mainData.filter.active = true"
+          v-model="filterType"
+        >
+          <template v-slot:append-outer>
+            <v-tooltip top max-width="300">
+              <template v-slot:activator="{ on, attrs }"><v-icon v-bind="attrs" v-on="on">mdi-information-outline</v-icon></template>
+              <div class="py-1">
+                <p class="mb-0"><b>Simple filter:</b> Choose corpus texts according to meta-data categories.</p>
+                <!-- <p class="mt-1 mb-0"><b>Expert filter:</b> This feature allows to combine different filters. Note of caution: Some combinations may drastically reduce the number of corpus texts selected.</p> -->
+              </div>
+            </v-tooltip>
+          </template>
+        </v-select>
       </div>
       <v-card class="my-2 px-2 pb-1 inset-card-shadow">
         <div class="d-flex">
           <v-select
-            :items="itemsDomain"
+            :items="itemsDomain.filter(i => !multiSelect || i.val !== null)"
             item-text="title"
             item-value="val"
             label="Domain"
@@ -34,10 +46,11 @@
             hide-details
             @change="mainData.filter.active = true"
             v-model="mainData.filter.domain"
+            :multiple="multiSelect"
           >
           </v-select>
           <v-select
-            :items="itemsSpet"
+            :items="itemsSpet.filter(i => !multiSelect || i.val !== null)"
             item-text="title"
             item-value="val"
             label="Spet"
@@ -45,11 +58,12 @@
             hide-details
             @change="mainData.filter.active = true"
             v-model="mainData.filter.spet"
+            :multiple="multiSelect"
           >
           </v-select>
         </div>
         <v-select
-          :items="itemsInteractants"
+          :items="itemsInteractants.filter(i => !multiSelect || i.val !== null)"
           item-text="title"
           item-value="val"
           label="No of interactants"
@@ -57,6 +71,7 @@
           hide-details
           @change="mainData.filter.active = true"
           v-model="mainData.filter.interactants"
+          :multiple="multiSelect"
         >
           <template v-slot:append-outer>
             <v-tooltip top max-width="300">
@@ -66,7 +81,7 @@
           </template>
         </v-select>
         <v-select
-          :items="itemsSpeakers"
+          :items="itemsSpeakers.filter(i => !multiSelect || i.val !== null)"
           item-text="title"
           item-value="val"
           label="No of speakers"
@@ -74,6 +89,7 @@
           hide-details
           @change="mainData.filter.active = true"
           v-model="mainData.filter.speakers"
+          :multiple="multiSelect"
         >
           <template v-slot:append-outer>
             <v-tooltip top max-width="300">
@@ -83,7 +99,7 @@
           </template>
         </v-select>
         <v-select
-          :items="itemsAcquaintedness"
+          :items="itemsAcquaintedness.filter(i => !multiSelect || i.val !== null)"
           item-text="title"
           item-value="val"
           label="Acquaintedness"
@@ -91,6 +107,7 @@
           hide-details
           @change="mainData.filter.active = true"
           v-model="mainData.filter.acquaintedness"
+          :multiple="multiSelect"
         >
           <template v-slot:append-outer>
             <v-tooltip top max-width="300">
@@ -100,7 +117,7 @@
           </template>
         </v-select>
         <v-select
-          :items="itemsPowerRelations"
+          :items="itemsPowerRelations.filter(i => !multiSelect || i.val !== null)"
           item-text="title"
           item-value="val"
           label="Power relations"
@@ -108,6 +125,7 @@
           hide-details
           @change="mainData.filter.active = true"
           v-model="mainData.filter.powerRelations"
+          :multiple="multiSelect"
         >
           <template v-slot:append-outer>
             <v-tooltip top max-width="300">
@@ -117,7 +135,7 @@
           </template>
         </v-select>
         <v-select
-          :items="itemsDurationOfSpeechEvent"
+          :items="itemsDurationOfSpeechEvent.filter(i => !multiSelect || i.val !== null)"
           item-text="title"
           item-value="val"
           label="Duration of speech event"
@@ -125,10 +143,11 @@
           hide-details
           @change="mainData.filter.active = true"
           v-model="mainData.filter.durationOfSpeechEvent"
+          :multiple="multiSelect"
         >
         </v-select>
         <v-select
-          :items="itemsWords"
+          :items="itemsWords.filter(i => !multiSelect || i.val !== null)"
           item-text="title"
           item-value="val"
           label="No of words"
@@ -136,10 +155,11 @@
           hide-details
           @change="mainData.filter.active = true"
           v-model="mainData.filter.words"
+          :multiple="multiSelect"
         >
         </v-select>
         <v-select
-          :items="itemsSpeakersL1"
+          :items="itemsSpeakersL1.filter(i => !multiSelect || i.val !== null)"
           item-text="title"
           item-value="val"
           label="Speakers L1"
@@ -147,6 +167,7 @@
           hide-details
           @change="mainData.filter.active = true"
           v-model="mainData.filter.speakersL1"
+          :multiple="multiSelect"
         >
         </v-select>
         <div class="m-title">With Audio File</div>
@@ -173,6 +194,11 @@ export default {
     'mainData': Object
   },
   data: () => ({
+    filterType: 'simple',
+    filterTypes: [
+      { val: 'simple', title: 'Simple filter (AND-Logic)' },
+      { val: 'simple-multi', title: 'Simple filter (AND-Logic) width multiple select (OR-Logic)'},
+    ],
     itemsInteractants: [
       { val: null, title: 'Off' },
       { val: {f: 2, t: 2}, title: '2' },
@@ -294,9 +320,30 @@ export default {
   mounted () {
     console.log('ToolsetLeftFilter', this.mainData)
   },
+  computed: {
+    multiSelect () {
+      return this.filterType === 'simple-multi'
+    }
+  },
   methods: {
   },
   watch: {
+    multiSelect () {
+      let fs = ['manualSelect', 'domain', 'spet', 'interactants', 'speakers', 'acquaintedness', 'powerRelations', 'durationOfSpeechEvent', 'words', 'speakersL1']
+      if (this.multiSelect) {
+        fs.forEach(f => {
+          if (this.mainData.filter[f] && !Array.isArray(this.mainData.filter[f])) {
+            this.mainData.filter[f] = [this.mainData.filter[f]]
+          }
+        })
+      } else {
+        fs.forEach(f => {
+          if (this.mainData.filter[f] && Array.isArray(this.mainData.filter[f])) {
+            this.mainData.filter[f] = this.mainData.filter[f][0] || null
+          }
+        })
+      }
+    }
   }
 }
 </script>

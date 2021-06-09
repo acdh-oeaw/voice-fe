@@ -197,7 +197,7 @@ export default {
     filterType: 'simple',
     filterTypes: [
       { val: 'simple', title: 'Simple filter (AND-Logic)' },
-      { val: 'simple-multi', title: 'Simple filter (AND-Logic) width multiple select (OR-Logic)'},
+      { val: 'simple-multi', title: 'Simple filter (AND-Logic) with multiple select (OR-Logic)'},
     ],
     itemsInteractants: [
       { val: null, title: 'Off' },

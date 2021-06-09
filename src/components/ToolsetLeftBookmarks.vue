@@ -12,7 +12,7 @@
         </div>
       </v-card>
       <div class="mb-4">
-        <v-btn @click="exportBookmarksAsUrl">Export as url</v-btn>
+        <ToolsetLeftBookmarksExport :mainData="mainData" />
       </div>
       <v-alert dense outlined type="info" v-if="!mainData.bookmarks.active">
         Show icons to add bookmarks.
@@ -73,6 +73,7 @@
 
 <script>
 import bookmarks from '../functions/Bookmarks'
+import ToolsetLeftBookmarksExport from './ToolsetLeftBookmarksExport'
 
 export default {
   name: 'ToolsetLeftBookmarks',
@@ -133,16 +134,6 @@ export default {
     }
   },
   methods: {
-    exportBookmarksAsUrl () {
-      console.log({x: this.$router})
-      var codec = require('json-url')('lzma')
-      codec.compress(this.mainData.bookmarks.elements).then(result => {
-        console.log(result)
-        // codec.decompress(result).then(json => console.log(json))
-        let bUrl = window.location.origin + '/#/tool?bookmarks=' + result
-        console.log(bUrl.length, bUrl)
-      })
-    },
     editBookmark (uId) {
       bookmarks.editBookmark(this, this.mainData.bookmarks, uId, this.shiftKeyDown)
     },
@@ -185,6 +176,9 @@ export default {
         this.localStorageDialog = true
       }
     }
+  },
+  components: {
+    ToolsetLeftBookmarksExport
   }
 }
 </script>

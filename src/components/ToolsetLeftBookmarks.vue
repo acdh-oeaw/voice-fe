@@ -11,8 +11,9 @@
           <v-switch v-model="mainData.bookmarks.localStorage" dense hide-details class="mt-0" :label="mainData.bookmarks.localStorage ? 'On' : 'Off'" :disabled="localStorageDisabeld"></v-switch>
         </div>
       </v-card>
-      <div class="mb-4">
+      <div class="d-flex flex-wrap mb-2">
         <ToolsetLeftBookmarksExport :mainData="mainData" />
+        <ToolsetLeftBookmarksImport :mainData="mainData" />
       </div>
       <v-alert dense outlined type="info" v-if="!mainData.bookmarks.active">
         Show icons to add bookmarks.
@@ -74,6 +75,7 @@
 <script>
 import bookmarks from '../functions/Bookmarks'
 import ToolsetLeftBookmarksExport from './ToolsetLeftBookmarksExport'
+import ToolsetLeftBookmarksImport from './ToolsetLeftBookmarksImport'
 
 export default {
   name: 'ToolsetLeftBookmarks',
@@ -178,7 +180,8 @@ export default {
     }
   },
   components: {
-    ToolsetLeftBookmarksExport
+    ToolsetLeftBookmarksExport,
+    ToolsetLeftBookmarksImport
   }
 }
 </script>

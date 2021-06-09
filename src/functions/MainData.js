@@ -26,7 +26,11 @@ const localFunctions = {
         active: false,
         localStorage: false,
         elements: {},
-        edit: null
+        edit: null,
+        import: {
+          show: false,
+          urlData: null
+        }
       },
       search: {
         value: '',

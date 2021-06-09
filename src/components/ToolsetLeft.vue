@@ -40,12 +40,20 @@ export default {
   }),
   mounted () {
     console.log('ToolsetLeft', this.mainData)
+    if (this.mainData.bookmarks.import.urlData) {
+      this.cTab = 'bookmarks'
+    }
   },
   methods: {
   },
   computed: {
   },
   watch: {
+    'mainData.bookmarks.import.urlData' () {
+      if (this.mainData.bookmarks.import.urlData) {
+        this.cTab = 'bookmarks'
+      }
+    }
   },
   components: {
     ToolsetLeftFilter,

@@ -41,8 +41,7 @@ import DialogBookmarks from '../components/DialogBookmarks';
 export default {
   name: 'Tool',
   props: {
-    'mainData': Object,
-    'bookmarks': String
+    'mainData': Object
   },
   data: () => ({
     publicPath: process.env.BASE_URL
@@ -65,9 +64,10 @@ export default {
       }
     },
     getBookmarks () {
-      if (this.bookmarks) {
-        var codec = require('json-url')('lzma')
-        codec.decompress(this.bookmarks).then(json => console.log('bookmarks from url', json))
+      if (this.$route.query.bookmarks) {
+        this.mainData.bookmarks.import.urlData = this.$route.query.bookmarks
+        this.mainData.bookmarks.import.show = true
+        this.$router.push({ path: this.$route.path, query: Object.keys(this.$route.query).filter(key => key !== 'bookmarks').reduce((obj, key) => { return {...obj, [key]: this.$route.query[key]} }, {}) })
       }
     }
   },
@@ -77,8 +77,10 @@ export default {
     }
   },
   watch: {
-    bookmarks () {
-      this.getBookmarks()
+    '$route.query.bookmarks' () {
+      if (this.$route.query.bookmarks) {
+        this.getBookmarks()
+      }
     }
   },
   components: {

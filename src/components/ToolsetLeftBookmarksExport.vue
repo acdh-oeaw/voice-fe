@@ -1,7 +1,7 @@
 <template>
   <v-dialog v-model="show" width="500">
     <template v-slot:activator="{ on, attrs }">
-      <v-btn v-bind="attrs" v-on="on" :disabled="Object.keys(mainData.bookmarks.elements).length < 1">Export</v-btn>
+      <v-btn v-bind="attrs" v-on="on" :disabled="Object.keys(mainData.bookmarks.elements).length < 1" class="mx-2 mb-2 flex-grow-1">Export</v-btn>
     </template>
     <v-card>
       <v-card-title class="text-h5 grey lighten-2">Export Bookmarks</v-card-title>
@@ -18,7 +18,7 @@
           <v-tabs-items v-model="tab">
             <v-tab-item>
               <v-textarea
-                label="Encoded Bookmarks"
+                label="Encoded Bookmarks (url)"
                 :value="origin + '/#/tool?bookmarks=' + bookmarksCompressed"
                 @focus="copyBookmarksUrl"
                 ref="encBookmarksUrl"
@@ -95,6 +95,11 @@ export default {
     show () {
       if (this.show) {
         this.updateBookmarkCompression()
+      }
+    },
+    'mainData.bookmarks.import.show' () {
+      if (this.mainData.bookmarks.import.show) {
+        this.show = false
       }
     }
   }

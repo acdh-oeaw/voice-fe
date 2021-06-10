@@ -40,10 +40,16 @@
             </v-alert>
             <v-alert dense outlined type="error" v-if="countBookmarks === 0">No Bookmarks in file!</v-alert>
             <v-alert dense outlined type="success" v-else-if="newBookmarks === 0 && changedBookmarks === 0">Loaded bookmarks correspond to the existing ones.</v-alert>
-            <div class="d-flex flex-wrap mt-3">
-              <!-- <v-btn @click="loadTextFile" class="mx-2 mb-2 flex-grow-1">Load text file</v-btn> -->
-              <!-- <v-btn @click="copyBookmarksUrl" :disabled="!xxx" class="mx-2 mb-2 flex-grow-1">Copy to clipboard</v-btn> -->
-            </div>
+            <template v-else>
+              <div class="d-flex flex-wrap mt-3">
+                <v-switch v-model="delBookmarks" label="Delete all existing Bookmarks" v-if="Object.keys(this.mainData.bookmarks.elements).length > 0"></v-switch>
+                <v-switch v-model="overwriteBookmarks" label="Overwrite existing Bookmarks" v-if="!delBookmarks && changedBookmarks > 0 && newBookmarks > 0"></v-switch>
+                <v-alert dense outlined type="warning" v-if="!delBookmarks && changedBookmarks > 0 && newBookmarks === 0" class="w-100"><b>Exisiting bookmarks will be overwritten</b></v-alert>
+              </div>
+              <div class="d-flex flex-wrap mt-3">
+                <v-btn @click="importBookmarks" class="mx-2 mb-2 flex-grow-1">Import Bookmarks</v-btn>
+              </div>
+            </template>
           </template>
         </div>
       </v-card-text>
@@ -65,7 +71,9 @@ export default {
   data: () => ({
     tab: null,
     decodeError: null,
-    decodedObj: null
+    decodedObj: null,
+    delBookmarks: false,
+    overwriteBookmarks: false
   }),
   mounted () {
     this.updateData()
@@ -82,6 +90,21 @@ export default {
     }
   },
   methods: {
+    importBookmarks () {
+      console.log(this.decodedObj, this.mainData.bookmarks.elements)
+      if (this.delBookmarks || Object.keys(this.mainData.bookmarks.elements).length === 0 ) {
+        if (Object.keys(this.mainData.bookmarks.elements).length === 0 || confirm('All existing Bookmarks will be deleted!')) {
+          this.$set(this.mainData.bookmarks, 'elements', JSON.parse(JSON.stringify(this.decodedObj)))
+        }
+      } else {
+        let overwrite = this.overwriteBookmarks || (this.changedBookmarks > 0 && this.newBookmarks === 0)
+        Object.keys(this.decodedObj).forEach(b => {
+          if (!this.mainData.bookmarks.elements[b] || overwrite) {
+            this.$set(this.mainData.bookmarks.elements, b, JSON.parse(JSON.stringify(this.decodedObj[b])))
+          }
+        })
+      }
+    },
     updateData () {
       this.decodedObj = null
       this.decompressUrlData()
@@ -141,6 +164,10 @@ export default {
   },
   watch: {
     'mainData.bookmarks.import.show' () {
+      if (this.mainData.bookmarks.import.show) {
+        this.delBookmarks = false
+        this.overwriteBookmarks = false
+      }
       this.updateData()
     },
     'mainData.bookmarks.import.urlData' () {

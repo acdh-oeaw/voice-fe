@@ -1,10 +1,33 @@
 /* eslint-disable no-undef */
+import Vue from 'vue'
+import Vuetify from 'vuetify'
 import { render, fireEvent, within } from '@testing-library/vue'
 import parser from '../functions/SaxParser'
 import CorpusElementViews from './CorpusElementViews.vue'
 
+Vue.use(Vuetify)
+
+// Custom container to integrate Vuetify with Vue Testing Library.
+// Vuetify requires you to wrap your app with a v-app component that provides
+// a <div data-app="true"> node.
+const renderWithVuetify = (component, options, callback) => {
+  const root = document.createElement('div')
+  root.setAttribute('data-app', 'true')
+
+  return render(
+    component,
+    {
+      container: document.body.appendChild(root),
+      // for Vuetify components that use the $vuetify instance property
+      vuetify: new Vuetify(),
+      ...options,
+    },
+    callback,
+  )
+}
+
 test('render a view', async () => {
-   const { getByTestId } = render(CorpusElementViews, {
+   const { getByTestId } = renderWithVuetify(CorpusElementViews, {
     props: {
         element: {
             aTopLineUId: 'testid',
@@ -19,6 +42,9 @@ test('render a view', async () => {
         },
         view: 'voice',
         mainData: {
+            bookmarks: {
+                active: false
+            },
             corpus: {},
             views: {voice: {
             utI: {val: 'testid'},
@@ -29,7 +55,8 @@ test('render a view', async () => {
         }
     }
 })
-   expect(getByTestId('lineContent')).toContainHTML('<div data-testid="lineContent" />')
+   // When rendered with such an input the output is just an empty <div/>
+   expect(getByTestId('lineContent')).toContainHTML('')
 })
 
 test('render a view <u><w>test</w></u>', async () => {
@@ -72,7 +99,7 @@ test('render a view <u><w>before</w><emph><w part="I">re</w></emph><w part="F">i
 function renderUtterance(utteranceXML) {
     const parsed = {}
     parser.parseIt(utteranceXML, null, null, parsed)
-    return render(CorpusElementViews, {
+    return renderWithVuetify(CorpusElementViews, {
         props: {
             element: {
                 aTopLineUId: 'testid',
@@ -87,6 +114,9 @@ function renderUtterance(utteranceXML) {
             },
             view: 'voice',
             mainData: {
+                bookmarks: {
+                    active: false
+                },
                 corpus: {},
                 views: {voice: {
                 utI: {val: 'testid'},

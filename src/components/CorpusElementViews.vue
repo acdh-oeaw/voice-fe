@@ -55,7 +55,6 @@ export default {
     window.removeEventListener('keyup', this.keyUp)
   },
   mounted () {
-    console.log('CorpusElementViews', this.element)
     this.scroll2TopLine(this.element.aTopLineUId)
     this.scrolling()
     this.goToUtterance()

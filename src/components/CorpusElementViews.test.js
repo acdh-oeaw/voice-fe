@@ -51,7 +51,7 @@ test('render a view', async () => {
             sId: {val: 'testspeaker'},
             gap: {val: false},
             }},
-            search: {highlights: []}
+            search: {highlights: new Map()}
         }
     }
 })
@@ -96,6 +96,38 @@ test('render a view <u><w>before</w><emph><w part="I">re</w></emph><w part="F">i
     expect(line).toContainHTML('<span class="tag-w">before</span> <span class="tag-emph"><span class="tag-w">re</span></span><span class="tag-w">integration<span class="tag-c type-intonation">.</span></span> <span class="tag-w">next</span>')
 })
 
+test('render a view <emph><w>le</w></emph><seg n="1"><w>vel</w></seg><w>i</w>', async () => {
+    const { getByTestId } = renderUtterance(`<u who="#EDint330_S2"
+    xml:id="EDint330_u_482">
+     <w xml:id="xTok_EDint330_006949"
+        ana="#JJfJJ"
+        lemma="higher">higher</w>
+     <emph xml:id="EDint330_d2e16501">
+         <w xml:id="xTok_EDint330_006952"
+            part="I"
+            next="#xTok_EDint330_006953"
+            ana="#NNfNN"
+            lemma="level">le</w>
+     </emph>
+     <seg n="1"
+          type="overlap"
+          xml:id="EDint330_ol_248">
+         <w xml:id="xTok_EDint330_006953"
+            part="F"
+            prev="#xTok_EDint330_006952">vel</w>
+     </seg>
+     <w xml:id="xTok_EDint330_006956"
+        ana="#PPfPP"
+        lemma="i">i</w>
+     <w xml:id="xTok_EDint330_006958"
+        ana="#VVPfVVP"
+        lemma="feel">feel</w>
+ </u>`)
+    const line = getByTestId('lineContent')
+    await fireEvent.focus(line) // only after some event the rendered TEI appears    expect(within(line).getByText('re')).toBeInTheDocument()
+    expect(line).toContainHTML('<span class="tag-w" title="Lemma: higher">higher</span> <span class="tag-emph"><span class="tag-w" title="Lemma: level">le</span></span><span class="tag-seg type-overlap n-1 has-n"><span class="fx-overlap">&lt;1&gt;</span><span class="tag-w">vel</span> <span class="fx-overlap">&lt;/1&gt; </span></span><span class="tag-w" title="Lemma: i">i</span> <span class="tag-w" title="Lemma: feel">feel</span> ')
+})
+
 function renderUtterance(utteranceXML) {
     const parsed = {}
     parser.parseIt(utteranceXML, null, null, parsed)
@@ -123,7 +155,7 @@ function renderUtterance(utteranceXML) {
                 sId: {val: 'testspeaker'},
                 gap: {val: false},
                 }},
-                search: {highlights: []}
+                search: {highlights: new Map()}
             }
         }
     })

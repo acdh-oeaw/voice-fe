@@ -63,6 +63,8 @@
 </template>
 
 <script>
+import bookmarks from '../functions/Bookmarks'
+
 export default {
   name: 'ToolsetLeftBookmarksImport',
   props: {
@@ -104,6 +106,7 @@ export default {
           }
         })
       }
+      bookmarks.updateBookmarkStore(this.mainData.bookmarks)
     },
     updateData () {
       this.decodedObj = null

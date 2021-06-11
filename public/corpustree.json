@@ -48,6 +48,7 @@
       "ger",
       "gre",
       "hin",
+      "hrv",
       "hun",
       "ice",
       "ind",
@@ -66,11 +67,10 @@
       "por",
       "rum",
       "rus",
-      "scc",
-      "scr",
       "slo",
       "slv",
       "spa",
+      "srp",
       "swe",
       "tgl",
       "tur",
@@ -1213,7 +1213,7 @@
         }
       },
       "L1":[
-        "scr-HR"
+        "hrv-HR"
       ],
       "sex":"male",
       "occupation":"student",
@@ -3117,7 +3117,7 @@
         }
       },
       "L1":[
-        "scc-RS"
+        "srp-RS"
       ],
       "sex":"female",
       "occupation":"student",
@@ -6948,7 +6948,7 @@
         }
       },
       "L1":[
-        "scc-RS"
+        "srp-RS"
       ],
       "sex":"male",
       "occupation":"representative of distribution company",
@@ -7308,7 +7308,7 @@
         }
       },
       "L1":[
-        "scr-HR"
+        "hrv-HR"
       ],
       "sex":"male",
       "occupation":"university employee",
@@ -7808,7 +7808,7 @@
         }
       },
       "L1":[
-        "scc-RS"
+        "srp-RS"
       ],
       "sex":"female",
       "occupation":"head of distribution company",
@@ -10056,7 +10056,7 @@
         }
       },
       "L1":[
-        "scc-RS"
+        "srp-RS"
       ],
       "sex":"female",
       "occupation":"representative of European youth organization",
@@ -10328,7 +10328,7 @@
         }
       },
       "L1":[
-        "scc-RS"
+        "srp-RS"
       ],
       "sex":"male",
       "occupation":"sales representative of distribution company",
@@ -10455,7 +10455,7 @@
         }
       },
       "L1":[
-        "scr-HR"
+        "hrv-HR"
       ],
       "sex":"male",
       "occupation":"student",
@@ -11225,7 +11225,7 @@
         }
       },
       "L1":[
-        "scc-RS"
+        "srp-RS"
       ],
       "sex":"male",
       "occupation":"high-ranking politician",
@@ -11530,7 +11530,7 @@
         }
       },
       "L1":[
-        "scc-RS"
+        "srp-RS"
       ],
       "sex":"male",
       "occupation":"vice governor of a bank",
@@ -11856,7 +11856,7 @@
         }
       },
       "L1":[
-        "scc-RS"
+        "srp-RS"
       ],
       "sex":"male",
       "occupation":"journalist",
@@ -12649,7 +12649,7 @@
         }
       },
       "L1":[
-        "scc-RS"
+        "srp-RS"
       ],
       "sex":"female",
       "occupation":"student",
@@ -12748,7 +12748,7 @@
         }
       },
       "L1":[
-        "scr-HR"
+        "hrv-HR"
       ],
       "sex":"male",
       "occupation":"deputy governor of bank",
@@ -12944,7 +12944,7 @@
         }
       },
       "L1":[
-        "scr-HR"
+        "hrv-HR"
       ],
       "sex":"female",
       "occupation":"student",
@@ -13060,7 +13060,7 @@
         }
       },
       "L1":[
-        "scc-RS"
+        "srp-RS"
       ],
       "sex":"male",
       "occupation":"employee at company for interior design",
@@ -15058,7 +15058,7 @@
           "speakersTags":{
             "S1":{
               "L1":[
-                "scc-RS"
+                "srp-RS"
               ],
               "sex":"female",
               "occupation":"student",
@@ -15086,7 +15086,7 @@
             },
             "S4":{
               "L1":[
-                "scc-RS"
+                "srp-RS"
               ],
               "sex":"male",
               "occupation":"employee at company for interior design",
@@ -15103,7 +15103,7 @@
             }
           },
           "speakersL1":[
-            "scc",
+            "srp",
             "mlt",
             "eng"
           ],
@@ -15132,7 +15132,7 @@
           "speakersTags":{
             "S1":{
               "L1":[
-                "scc-RS"
+                "srp-RS"
               ],
               "sex":"female",
               "occupation":"student",
@@ -15170,7 +15170,7 @@
             },
             "S5":{
               "L1":[
-                "scc-RS"
+                "srp-RS"
               ],
               "sex":"male",
               "occupation":"employee at company for interior design",
@@ -15195,7 +15195,7 @@
             }
           },
           "speakersL1":[
-            "scc",
+            "srp",
             "mlt",
             "eng"
           ],
@@ -15233,7 +15233,7 @@
             },
             "S2":{
               "L1":[
-                "scc-RS"
+                "srp-RS"
               ],
               "sex":"female",
               "occupation":"student",
@@ -15243,7 +15243,7 @@
           },
           "speakersL1":[
             "mlt",
-            "scc"
+            "srp"
           ],
           "interactantsNo":2,
           "interactantsBucket":"2–3",
@@ -15289,7 +15289,7 @@
             },
             "S1":{
               "L1":[
-                "scc-RS"
+                "srp-RS"
               ],
               "sex":"female",
               "occupation":"student",
@@ -15300,7 +15300,7 @@
           "speakersL1":[
             "mlt",
             "ger",
-            "scc"
+            "srp"
           ],
           "interactantsNo":3,
           "interactantsBucket":"2–3",
@@ -15345,7 +15345,7 @@
             },
             "S1":{
               "L1":[
-                "scc-RS"
+                "srp-RS"
               ],
               "sex":"female",
               "occupation":"student",
@@ -15355,7 +15355,7 @@
           },
           "speakersL1":[
             "mlt",
-            "scc"
+            "srp"
           ],
           "interactantsNo":2,
           "interactantsBucket":"2–3",
@@ -16285,7 +16285,7 @@
             },
             "S9":{
               "L1":[
-                "scc-RS"
+                "srp-RS"
               ],
               "sex":"female",
               "occupation":"student",
@@ -16502,7 +16502,7 @@
             "slo",
             "rum",
             "bos",
-            "scc",
+            "srp",
             "ukr",
             "lav"
           ],
@@ -18616,7 +18616,7 @@
             },
             "S12":{
               "L1":[
-                "scr-HR"
+                "hrv-HR"
               ],
               "sex":"male",
               "occupation":"student",
@@ -18658,7 +18658,7 @@
             }
           },
           "speakersL1":[
-            "scr",
+            "hrv",
             "dut",
             "eng",
             "spa",
@@ -18894,7 +18894,7 @@
             },
             "S29":{
               "L1":[
-                "scr-HR"
+                "hrv-HR"
               ],
               "sex":"male",
               "occupation":"student",
@@ -19035,7 +19035,7 @@
           },
           "speakersL1":[
             "dan",
-            "scr",
+            "hrv",
             "swe",
             "fre",
             "dut",
@@ -19554,7 +19554,7 @@
             },
             "S16":{
               "L1":[
-                "scr-HR"
+                "hrv-HR"
               ],
               "sex":"male",
               "occupation":"student",
@@ -19770,7 +19770,7 @@
             "bul",
             "pol",
             "rus",
-            "scr",
+            "hrv",
             "slv",
             "nor",
             "fin"
@@ -19846,7 +19846,7 @@
             },
             "S16":{
               "L1":[
-                "scr-HR"
+                "hrv-HR"
               ],
               "sex":"male",
               "occupation":"student",
@@ -20038,7 +20038,7 @@
           },
           "speakersL1":[
             "dan",
-            "scr",
+            "hrv",
             "eng",
             "spa",
             "rum",
@@ -21296,7 +21296,7 @@
             },
             "S7":{
               "L1":[
-                "scr-HR"
+                "hrv-HR"
               ],
               "sex":"female",
               "occupation":"student",
@@ -21419,7 +21419,7 @@
             "nor",
             "swe",
             "slo",
-            "scr",
+            "hrv",
             "spa",
             "alb"
           ],
@@ -21648,7 +21648,7 @@
             },
             "S30":{
               "L1":[
-                "scr-HR"
+                "hrv-HR"
               ],
               "sex":"male",
               "occupation":"student",
@@ -21731,7 +21731,7 @@
           },
           "speakersL1":[
             "dan",
-            "scr",
+            "hrv",
             "swe",
             "fre",
             "dut",
@@ -22139,7 +22139,7 @@
             },
             "S3":{
               "L1":[
-                "scc-RS"
+                "srp-RS"
               ],
               "sex":"female",
               "occupation":"student",
@@ -22167,7 +22167,7 @@
           },
           "speakersL1":[
             "mlt",
-            "scc",
+            "srp",
             "eng"
           ],
           "interactantsNo":4,
@@ -22951,7 +22951,7 @@
             },
             "S3":{
               "L1":[
-                "scc-RS"
+                "srp-RS"
               ],
               "sex":"female",
               "occupation":"student",
@@ -22969,7 +22969,7 @@
           },
           "speakersL1":[
             "mlt",
-            "scc",
+            "srp",
             "eng"
           ],
           "interactantsNo":4,
@@ -23035,7 +23035,7 @@
             },
             "S3":{
               "L1":[
-                "scc-RS"
+                "srp-RS"
               ],
               "sex":"female",
               "occupation":"student",
@@ -23071,7 +23071,7 @@
           },
           "speakersL1":[
             "mlt",
-            "scc",
+            "srp",
             "eng"
           ],
           "interactantsNo":5,
@@ -23329,7 +23329,7 @@
             },
             "S8":{
               "L1":[
-                "scc-RS"
+                "srp-RS"
               ],
               "sex":"female",
               "occupation":"student",
@@ -23506,7 +23506,7 @@
             }
           },
           "speakersL1":[
-            "scc",
+            "srp",
             "nor",
             "und",
             "dut",
@@ -24109,7 +24109,7 @@
             },
             "S2":{
               "L1":[
-                "scc-RS"
+                "srp-RS"
               ],
               "sex":"female",
               "occupation":"head of distribution company",
@@ -24168,7 +24168,7 @@
           },
           "speakersL1":[
             "ger",
-            "scc"
+            "srp"
           ],
           "interactantsNo":3,
           "interactantsBucket":"2–3",
@@ -25015,7 +25015,7 @@
           "speakersTags":{
             "S3":{
               "L1":[
-                "scc-RS"
+                "srp-RS"
               ],
               "sex":"male",
               "occupation":"representative of distribution company",
@@ -25024,7 +25024,7 @@
             },
             "S1":{
               "L1":[
-                "scc-RS"
+                "srp-RS"
               ],
               "sex":"female",
               "occupation":"head of distribution company",
@@ -25060,7 +25060,7 @@
             },
             "S7":{
               "L1":[
-                "scc-RS"
+                "srp-RS"
               ],
               "sex":"male",
               "occupation":"sales representative of distribution company",
@@ -25159,7 +25159,7 @@
           },
           "speakersL1":[
             "ger",
-            "scc"
+            "srp"
           ],
           "interactantsNo":6,
           "interactantsBucket":"4–6",
@@ -25186,7 +25186,7 @@
           "speakersTags":{
             "S1":{
               "L1":[
-                "scc-RS"
+                "srp-RS"
               ],
               "sex":"male",
               "occupation":"representative of distribution company",
@@ -25195,7 +25195,7 @@
             },
             "S2":{
               "L1":[
-                "scc-RS"
+                "srp-RS"
               ],
               "sex":"female",
               "occupation":"head of distribution company",
@@ -25231,7 +25231,7 @@
             },
             "S7":{
               "L1":[
-                "scc-RS"
+                "srp-RS"
               ],
               "sex":"male",
               "occupation":"sales representative of distribution company",
@@ -25321,7 +25321,7 @@
             }
           },
           "speakersL1":[
-            "scc",
+            "srp",
             "ger"
           ],
           "interactantsNo":7,
@@ -25571,7 +25571,7 @@
             },
             "S8":{
               "L1":[
-                "scr-HR"
+                "hrv-HR"
               ],
               "sex":"male",
               "occupation":"deputy governor of bank",
@@ -25654,7 +25654,7 @@
             "rum",
             "ger",
             "lav",
-            "scr"
+            "hrv"
           ],
           "interactantsNo":11,
           "interactantsBucket":"11–14",
@@ -25717,7 +25717,7 @@
             },
             "S5":{
               "L1":[
-                "scc-RS"
+                "srp-RS"
               ],
               "sex":"male",
               "occupation":"vice governor of a bank",
@@ -25806,7 +25806,7 @@
             "rus",
             "pol",
             "kaz",
-            "scc",
+            "srp",
             "eng"
           ],
           "interactantsNo":8,
@@ -27472,7 +27472,7 @@
             },
             "S12":{
               "L1":[
-                "scr-HR"
+                "hrv-HR"
               ],
               "sex":"male",
               "occupation":"university employee",
@@ -27600,7 +27600,7 @@
             "nor",
             "est",
             "ger",
-            "scr",
+            "hrv",
             "dan",
             "gre",
             "ita"
@@ -27675,7 +27675,7 @@
             },
             "S6":{
               "L1":[
-                "scr-HR"
+                "hrv-HR"
               ],
               "sex":"male",
               "occupation":"university employee",
@@ -27842,7 +27842,7 @@
             "lav",
             "nor",
             "est",
-            "scr",
+            "hrv",
             "dan",
             "gre",
             "ita"
@@ -27944,7 +27944,7 @@
             },
             "S9":{
               "L1":[
-                "scr-HR"
+                "hrv-HR"
               ],
               "sex":"male",
               "occupation":"university employee",
@@ -28097,7 +28097,7 @@
             "lav",
             "nor",
             "est",
-            "scr",
+            "hrv",
             "dan",
             "gre",
             "ger",
@@ -29845,7 +29845,7 @@
             },
             "S6":{
               "L1":[
-                "scc-RS"
+                "srp-RS"
               ],
               "sex":"male",
               "occupation":"journalist",
@@ -29881,7 +29881,7 @@
             },
             "S2":{
               "L1":[
-                "scc-RS"
+                "srp-RS"
               ],
               "sex":"male",
               "occupation":"high-ranking politician",
@@ -29943,7 +29943,7 @@
             "ger",
             "dan",
             "fin",
-            "scc",
+            "srp",
             "ita",
             "spa"
           ],
@@ -30863,7 +30863,7 @@
             },
             "S9":{
               "L1":[
-                "scr-HR"
+                "hrv-HR"
               ],
               "sex":"male",
               "occupation":"university employee",
@@ -31004,7 +31004,7 @@
             "fre",
             "pol",
             "est",
-            "scr",
+            "hrv",
             "dan",
             "dut",
             "swe"
@@ -31070,7 +31070,7 @@
             },
             "S7":{
               "L1":[
-                "scr-HR"
+                "hrv-HR"
               ],
               "sex":"male",
               "occupation":"university employee",
@@ -31217,7 +31217,7 @@
             "lav",
             "nor",
             "ger",
-            "scr",
+            "hrv",
             "ita"
           ],
           "interactantsNo":8,
@@ -31534,7 +31534,7 @@
             },
             "S9":{
               "L1":[
-                "scr-HR"
+                "hrv-HR"
               ],
               "sex":"male",
               "occupation":"university employee",
@@ -31614,7 +31614,7 @@
             "por",
             "fin",
             "pol",
-            "scr",
+            "hrv",
             "swe",
             "ita",
             "spa"
@@ -33746,7 +33746,7 @@
             },
             "S10":{
               "L1":[
-                "scc-RS"
+                "srp-RS"
               ],
               "sex":"female",
               "occupation":"representative of European youth organization",
@@ -33887,7 +33887,7 @@
             "mlt",
             "nor",
             "fre",
-            "scc"
+            "srp"
           ],
           "interactantsNo":13,
           "interactantsBucket":"11–14",
@@ -33986,7 +33986,7 @@
             },
             "S10":{
               "L1":[
-                "scc-RS"
+                "srp-RS"
               ],
               "sex":"female",
               "occupation":"representative of European youth organization",
@@ -34152,7 +34152,7 @@
             "mlt",
             "nor",
             "fre",
-            "scc",
+            "srp",
             "ger"
           ],
           "interactantsNo":12,

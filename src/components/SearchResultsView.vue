@@ -15,22 +15,24 @@
             <span class="u-hits" title="Hits">{{ uObj.hits.length }}</span>
           </div>
           <div class="line-jump" v-else>
-            <button @click="goToUtterance(uObj.uId)" class="c-uid"></button>
+            <button @click="goToUtterance(uObj.uId)" class="c-uid jump-btn"></button>
           </div>
           <template v-if="!xmlObjLines[uObj.idx].uObj.loading">
             <div class="line-speaker" v-if="xmlObjLines[uObj.idx].uObj.obj.attributes && xmlObjLines[uObj.idx].uObj.obj.attributes.who"><button @click="showSpeaker(uObj)">{{ xmlObjLines[uObj.idx].uObj.obj.attributes.who.split('_').slice(-1)[0] }}</button></div>
+            <button @click="editBookmark(uObj.uId, $event)" v-if="mainData.bookmarks.active && mainData.search.view.type === 'xml-view'" :class="'ml-auto bookmark' + (Object.keys(mainData.bookmarks.elements).indexOf(uObj.uId) > -1 ? '-check' : '') + (shiftKeyDown ? ' bookmark-fast' : '')"></button>
             <div class="flex-break" v-if="mainData.search.view.type === 'xml-view'"></div>
             <template v-if="inView.indexOf(uIdx) > - 1">
-              <div class="kwic-frm" v-if="mainData.search.view.kwic && mainData.search.view.type !== 'xml-view'">
+              <div class="kwic-frm flex-grow-1" v-if="mainData.search.view.kwic && mainData.search.view.type !== 'xml-view'">
                 <div v-html="xmlObjLines[uObj.idx][view]" :class="classes" :data-highlighted="'#s_' + h.join(',#s_')" v-for="h in uObj.hits" :key="'h' + h"></div>
               </div>
-              <div v-html="xmlObjLines[uObj.idx][view]" :class="classes" v-else></div>
+              <div v-html="xmlObjLines[uObj.idx][view]" :class="'flex-grow-1 ' + classes" v-else></div>
             </template>
-            <div :class="mainData.search.view.kwic && mainData.search.view.type !== 'xml-view' ? 'kwic-prev' : null" v-else>{{ xmlObjLines[uObj.idx].uObj.obj.text }}</div>
+            <div :class="'flex-grow-1 ' + (mainData.search.view.kwic && mainData.search.view.type !== 'xml-view' ? 'kwic-prev' : null)" v-else>{{ xmlObjLines[uObj.idx].uObj.obj.text }}</div>
           </template>
-          <div class="line-loading" v-else>
+          <div class="line-loading flex-grow-1" v-else>
             Loading ...
           </div>
+          <button @click="editBookmark(uObj.uId, $event)" v-if="mainData.bookmarks.active && mainData.search.view.type !== 'xml-view'" :class="'bookmark' + (Object.keys(mainData.bookmarks.elements).indexOf(uObj.uId) > -1 ? '-check' : '') + (shiftKeyDown ? ' bookmark-fast' : '')"></button>
         </div>
       </div>
     </template>
@@ -39,6 +41,7 @@
 
 <script>
 import renderer from '../functions/Renderer'
+import bookmarks from '../functions/Bookmarks'
 
 export default {
   name: 'SearchResultsView',
@@ -54,8 +57,17 @@ export default {
     inView: [],
     loadingNext: false,
     scrollTop: 0,
-    clientHeight: 800
+    clientHeight: 800,
+    shiftKeyDown: false
   }),
+  created () {
+    window.addEventListener('keydown', this.keyDown)
+    window.addEventListener('keyup', this.keyUp)
+  },
+  beforeDestroy () {
+    window.removeEventListener('keydown', this.keyDown)
+    window.removeEventListener('keyup', this.keyUp)
+  },
   mounted () {
     this.updateXmlObjLines()
     this.$nextTick(() => {
@@ -92,6 +104,19 @@ export default {
     }
   },
   methods: {
+    editBookmark (uId, e) {
+      bookmarks.editBookmark(this, this.mainData.bookmarks, uId, e.shiftKey)
+    },
+    keyDown (e) {
+      if (e.key === 'Shift') {
+        this.shiftKeyDown = true
+      }
+    },
+    keyUp (e) {
+      if (e.key === 'Shift') {
+        this.shiftKeyDown = false
+      }
+    },
     updateLastParsedLine () {
       this.lastParsedLine = 0
       this.filteredSearchResults.some(u => {
@@ -353,11 +378,6 @@ export default {
 .line-jump {
   min-width: 2rem;
   height: 24px;
-}
-.line-jump > button::after {
-  content: url("data:image/svg+xml,%3C%3Fxml version='1.0' encoding='UTF-8'%3F%3E%3C!DOCTYPE svg PUBLIC '-//W3C//DTD SVG 1.1//EN' 'http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd'%3E%3Csvg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' version='1.1' width='20' height='20' viewBox='0 0 24 24'%3E%3Cpath fill='%23333' d='M14,3V5H17.59L7.76,14.83L9.17,16.24L19,6.41V10H21V3M19,19H5V5H12V3H5C3.89,3 3,3.9 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V12H19V19Z' /%3E%3C/svg%3E");
-  position: relative;
-  top: 1px;
 }
 .c-uid {
   cursor: pointer;

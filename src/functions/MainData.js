@@ -18,8 +18,19 @@ const localFunctions = {
         words: null,
         domain: null,
         spet: null,
+        speakersL1: null,
         onlyWithAudio: false,
         filterSpeechEventsFunc: filterSpeechEvents
+      },
+      bookmarks: {
+        active: false,
+        localStorage: false,
+        elements: {},
+        edit: null,
+        import: {
+          show: false,
+          urlData: null
+        }
       },
       search: {
         value: '',

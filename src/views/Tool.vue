@@ -27,6 +27,7 @@
         </v-row>
       </v-col>
     </v-row>
+    <DialogBookmarks :mainData="mainData" />
   </v-container>
 </template>
 
@@ -35,6 +36,7 @@ import ToolsetLeft from '../components/ToolsetLeft';
 import SearchSelect from '../components/SearchSelect';
 import SearchResults from '../components/SearchResults';
 import CorpusElement from '../components/CorpusElement';
+import DialogBookmarks from '../components/DialogBookmarks';
 
 export default {
   name: 'Tool',
@@ -46,6 +48,7 @@ export default {
   }),
   mounted () {
     console.log('Tool', this.mainData)
+    this.getBookmarks()
   },
   timers: {
     checkMatomo: { time: 100, autostart: true, repeat: true }
@@ -60,6 +63,13 @@ export default {
         this.$timer.stop('checkMatomo')
       }
     },
+    getBookmarks () {
+      if (this.$route.query.bookmarks) {
+        this.mainData.bookmarks.import.urlData = this.$route.query.bookmarks
+        this.mainData.bookmarks.import.show = true
+        this.$router.push({ path: this.$route.path, query: Object.keys(this.$route.query).filter(key => key !== 'bookmarks').reduce((obj, key) => { return {...obj, [key]: this.$route.query[key]} }, {}) })
+      }
+    }
   },
   computed: {
     dualView () {
@@ -67,12 +77,18 @@ export default {
     }
   },
   watch: {
+    '$route.query.bookmarks' () {
+      if (this.$route.query.bookmarks) {
+        this.getBookmarks()
+      }
+    }
   },
   components: {
     ToolsetLeft,
     SearchSelect,
     SearchResults,
-    CorpusElement
+    CorpusElement,
+    DialogBookmarks
   }
 }
 </script>

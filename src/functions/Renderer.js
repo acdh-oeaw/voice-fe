@@ -265,7 +265,9 @@ function renderingUtteranceBefore(uObj, xmlObj, type, isSearch, xmlIdCache, fxCa
           )
         )
       ) {
-        aTxt += ' '
+        if (!(uObj.children && uObj.children[0].attributes['part'] === 'F')) {
+          aTxt += ' '
+        }
       }
       aTxt += '</span>'
     }

@@ -14,19 +14,31 @@
         </div>
       </v-card>
       <div class="my-3">
-        Simple filter
-        <v-tooltip top max-width="300">
-          <template v-slot:activator="{ on, attrs }"><v-icon v-bind="attrs" v-on="on">mdi-information-outline</v-icon></template>
-          <div class="py-1">
-            <p class="mb-0"><b>Simple filter:</b> Choose corpus texts according to meta-data categories.</p>
-            <!-- <p class="mt-1 mb-0"><b>Expert filter:</b> This feature allows to combine different filters. Note of caution: Some combinations may drastically reduce the number of corpus texts selected.</p> -->
-          </div>
-        </v-tooltip>
+        <v-select
+          :items="filterTypes"
+          item-text="title"
+          item-value="val"
+          label="Domain"
+          class="mb-3 mr-2"
+          hide-details
+          @change="mainData.filter.active = true"
+          v-model="filterType"
+        >
+          <template v-slot:append-outer>
+            <v-tooltip top max-width="300">
+              <template v-slot:activator="{ on, attrs }"><v-icon v-bind="attrs" v-on="on">mdi-information-outline</v-icon></template>
+              <div class="py-1">
+                <p class="mb-0"><b>Simple filter:</b> Choose corpus texts according to meta-data categories.</p>
+                <!-- <p class="mt-1 mb-0"><b>Expert filter:</b> This feature allows to combine different filters. Note of caution: Some combinations may drastically reduce the number of corpus texts selected.</p> -->
+              </div>
+            </v-tooltip>
+          </template>
+        </v-select>
       </div>
       <v-card class="my-2 px-2 pb-1 inset-card-shadow">
         <div class="d-flex">
           <v-select
-            :items="itemsDomain"
+            :items="itemsDomain.filter(i => !multiSelect || i.val !== null)"
             item-text="title"
             item-value="val"
             label="Domain"
@@ -34,10 +46,11 @@
             hide-details
             @change="mainData.filter.active = true"
             v-model="mainData.filter.domain"
+            :multiple="multiSelect"
           >
           </v-select>
           <v-select
-            :items="itemsSpet"
+            :items="itemsSpet.filter(i => !multiSelect || i.val !== null)"
             item-text="title"
             item-value="val"
             label="Spet"
@@ -45,11 +58,12 @@
             hide-details
             @change="mainData.filter.active = true"
             v-model="mainData.filter.spet"
+            :multiple="multiSelect"
           >
           </v-select>
         </div>
         <v-select
-          :items="itemsInteractants"
+          :items="itemsInteractants.filter(i => !multiSelect || i.val !== null)"
           item-text="title"
           item-value="val"
           label="No of interactants"
@@ -57,6 +71,7 @@
           hide-details
           @change="mainData.filter.active = true"
           v-model="mainData.filter.interactants"
+          :multiple="multiSelect"
         >
           <template v-slot:append-outer>
             <v-tooltip top max-width="300">
@@ -66,7 +81,7 @@
           </template>
         </v-select>
         <v-select
-          :items="itemsSpeakers"
+          :items="itemsSpeakers.filter(i => !multiSelect || i.val !== null)"
           item-text="title"
           item-value="val"
           label="No of speakers"
@@ -74,6 +89,7 @@
           hide-details
           @change="mainData.filter.active = true"
           v-model="mainData.filter.speakers"
+          :multiple="multiSelect"
         >
           <template v-slot:append-outer>
             <v-tooltip top max-width="300">
@@ -83,7 +99,7 @@
           </template>
         </v-select>
         <v-select
-          :items="itemsAcquaintedness"
+          :items="itemsAcquaintedness.filter(i => !multiSelect || i.val !== null)"
           item-text="title"
           item-value="val"
           label="Acquaintedness"
@@ -91,6 +107,7 @@
           hide-details
           @change="mainData.filter.active = true"
           v-model="mainData.filter.acquaintedness"
+          :multiple="multiSelect"
         >
           <template v-slot:append-outer>
             <v-tooltip top max-width="300">
@@ -100,7 +117,7 @@
           </template>
         </v-select>
         <v-select
-          :items="itemsPowerRelations"
+          :items="itemsPowerRelations.filter(i => !multiSelect || i.val !== null)"
           item-text="title"
           item-value="val"
           label="Power relations"
@@ -108,6 +125,7 @@
           hide-details
           @change="mainData.filter.active = true"
           v-model="mainData.filter.powerRelations"
+          :multiple="multiSelect"
         >
           <template v-slot:append-outer>
             <v-tooltip top max-width="300">
@@ -117,7 +135,7 @@
           </template>
         </v-select>
         <v-select
-          :items="itemsDurationOfSpeechEvent"
+          :items="itemsDurationOfSpeechEvent.filter(i => !multiSelect || i.val !== null)"
           item-text="title"
           item-value="val"
           label="Duration of speech event"
@@ -125,10 +143,11 @@
           hide-details
           @change="mainData.filter.active = true"
           v-model="mainData.filter.durationOfSpeechEvent"
+          :multiple="multiSelect"
         >
         </v-select>
         <v-select
-          :items="itemsWords"
+          :items="itemsWords.filter(i => !multiSelect || i.val !== null)"
           item-text="title"
           item-value="val"
           label="No of words"
@@ -136,6 +155,19 @@
           hide-details
           @change="mainData.filter.active = true"
           v-model="mainData.filter.words"
+          :multiple="multiSelect"
+        >
+        </v-select>
+        <v-select
+          :items="itemsSpeakersL1.filter(i => !multiSelect || i.val !== null)"
+          item-text="title"
+          item-value="val"
+          label="Speakers L1"
+          class="mb-3"
+          hide-details
+          @change="mainData.filter.active = true"
+          v-model="mainData.filter.speakersL1"
+          :multiple="multiSelect"
         >
         </v-select>
         <div class="m-title">With Audio File</div>
@@ -162,6 +194,11 @@ export default {
     'mainData': Object
   },
   data: () => ({
+    filterType: 'simple',
+    filterTypes: [
+      { val: 'simple', title: 'Simple filter (AND-Logic)' },
+      { val: 'simple-multi', title: 'Simple filter (AND-Logic) with multiple select (OR-Logic)'},
+    ],
     itemsInteractants: [
       { val: null, title: 'Off' },
       { val: {f: 2, t: 2}, title: '2' },
@@ -229,28 +266,94 @@ export default {
       { val: {f: 6000, t: 9999}, title: '6000 to 9999' },
       { val: {f: 10000, t: 14999}, title: '10000 to 14999' },
       { val: {f: 15000, t: Infinity}, title: '15000 and more' }
+    ],
+    itemsSpeakersL1: [
+      { val: null, title: 'Off' },
+      { val: 'alb', title: 'Albanian (alb)' },
+      { val: 'ara', title: 'Arabic (ara)' },
+      { val: 'arm', title: 'Armenian (arm)' },
+      { val: 'bos', title: 'Bosnian	(bos)' },
+      { val: 'bul', title: 'Bulgarian	(bul)' },
+      { val: 'cat', title: 'Catalan	(cat)' },
+      { val: 'chi', title: 'Chinese	(chi)' },
+      { val: 'cze', title: 'Czech (cze)' },
+      { val: 'dan', title: 'Danish (dan)' },
+      { val: 'dut', title: 'Dutch (dut)' },
+      { val: 'eng', title: 'English (eng)' },
+      { val: 'est', title: 'Estonian (est)' },
+      { val: 'fin', title: 'Finnish (fin)' },
+      { val: 'fre', title: 'French (fre)' },
+      { val: 'ger', title: 'German (ger)' },
+      { val: 'gre', title: 'Greek (gre)' },
+      // { val: 'heb', title: 'Hebrew (heb)' },
+      { val: 'hin', title: 'Hindi (hin)' },
+      { val: 'hun', title: 'Hungarian (hun)' },
+      { val: 'ice', title: 'Icelandic (ice)' },
+      { val: 'ind', title: 'Indonesian (ind)' },
+      { val: 'ita', title: 'Italian (ita)' },
+      { val: 'jpn', title: 'Japanese (jpn)' },
+      { val: 'kaz', title: 'Kazakh (kaz)' },
+      { val: 'kir', title: 'Kirghiz (kir)' },
+      { val: 'kor', title: 'Korean (kor)' },
+      { val: 'lav', title: 'Latvian (lav)' },
+      { val: 'lit', title: 'Lithuanian (lit)' },
+      { val: 'mac', title: 'Macedonian (mac)' },
+      { val: 'mlt', title: 'Maltese (mlt)' },
+      { val: 'nor', title: 'Norwegian (nor)' },
+      { val: 'per', title: 'Persian (per)' },
+      { val: 'pol', title: 'Polish (pol)' },
+      { val: 'por', title: 'Portuguese (por)' },
+      { val: 'rum', title: 'Romanian (rum)' },
+      { val: 'rus', title: 'Russian (rus)' },
+      // { val: 'srp', title: 'Serbian (srp)' },
+      // { val: 'hrv', title: 'Croatian (hrv)' },
+      { val: 'scc', title: 'scc' },
+      { val: 'scr', title: 'scr' },
+      { val: 'slo', title: 'Slovak (slo)' },
+      { val: 'slv', title: 'Slovenian (slv)' },
+      { val: 'spa', title: 'Spanish (spa)' },
+      { val: 'swe', title: 'Swedish (swe)' },
+      { val: 'tgl', title: 'Tagalog (tgl)' },
+      { val: 'tur', title: 'Turkish (tur)' },
+      { val: 'ukr', title: 'Ukrainian (ukr)' },
+      // { val: 'und', title: 'Undetermined (und)' },
+      { val: 'urd', title: 'Urdu (urd)' },
+      { val: 'vie', title: 'Vietnamese (vie)' },
+      // { val: 'yor', title: 'Yoruba (yor)' }
     ]
   }),
   mounted () {
     console.log('ToolsetLeftFilter', this.mainData)
   },
+  computed: {
+    multiSelect () {
+      return this.filterType === 'simple-multi'
+    }
+  },
   methods: {
   },
   watch: {
+    multiSelect () {
+      let fs = ['manualSelect', 'domain', 'spet', 'interactants', 'speakers', 'acquaintedness', 'powerRelations', 'durationOfSpeechEvent', 'words', 'speakersL1']
+      if (this.multiSelect) {
+        fs.forEach(f => {
+          if (this.mainData.filter[f] && !Array.isArray(this.mainData.filter[f])) {
+            this.mainData.filter[f] = [this.mainData.filter[f]]
+          }
+        })
+      } else {
+        fs.forEach(f => {
+          if (this.mainData.filter[f] && Array.isArray(this.mainData.filter[f])) {
+            this.mainData.filter[f] = this.mainData.filter[f][0] || null
+          }
+        })
+      }
+    }
   }
 }
 </script>
 
 <style scoped>
-.m-title {
-  font-size: 12px;
-  padding: 2px;
-  color: rgba(0, 0, 0, 0.6);
-}
-.m-hint {
-  font-size: 12px;
-  color: rgba(0, 0, 0, 0.6);
-}
 .fx-tree-icon {
   background: #1976d2;
   color: #fff!important;
@@ -267,8 +370,5 @@ export default {
 .no-filters {
   color: #777;
   background: #ddd;
-}
-.inset-card-shadow {
-  box-shadow: inset 0px 3px 1px -2px rgb(0 0 0 / 20%), inset 0px 2px 2px 0px rgb(0 0 0 / 14%), inset 0px 1px 5px 0px rgb(0 0 0 / 12%)!important;
 }
 </style>

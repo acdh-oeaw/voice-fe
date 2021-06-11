@@ -4,16 +4,7 @@
       <img :src="publicPath + 'images/vc-logo-0-676.png'" class="img-fluid w-100 mt-7" />
     </v-container>
     <v-container :class="{'max-width': !mainData.options.fullWidth, 'd-flex': true, 'pb-0': true}" :fluid="!mainData.wideScreen" v-else>
-      <router-link to="/"><img :src="publicPath + 'images/vc-logo-0-300-beta.png'" class="img-fluid logo-small mt-1" /></router-link>
-      <div class="px-4">
-        <v-alert dense outlined type="info">
-          <div><b>You are currently using VOICE 3.0 Online BETA</b> (temporary pre-release, version end of April 2021).</div>
-          <div style="font-size: 0.8rem; line-height: 1rem;">
-            Search results may not be fully consistent yet as small features of the interface may still be adapted.<br>
-            Please let us have your feedback and/or report any Bugs in our <a href="https://survey.acdh.oeaw.ac.at/index.php/326478?lang=en" target="_blank"><b>online survey</b></a>. <i>Thanks for beta-testing!</i>
-          </div>
-        </v-alert>
-      </div>
+      <router-link to="/"><img :src="publicPath + 'images/vc-logo-0-300.png'" class="img-fluid logo-small mt-1" /></router-link>
       <v-spacer />
       <div class="d-flex align-end">
         <v-btn @click="clearRenderCache" v-if="dev" x-small class="mr-3 d-none d-md-flex">Clear Render Cache</v-btn>
@@ -110,6 +101,7 @@
 
 <script>
 import mainDataFunc from './functions/MainData'
+import bookmarks from './functions/Bookmarks'
 
 export default {
   name: 'App',
@@ -129,6 +121,7 @@ export default {
     this.loadCorpus()
     window.addEventListener('resize', this.resized)
     this.mainData.app = this
+    bookmarks.loadBookmarkStore(this, this.mainData.bookmarks)
   },
   beforeDestroy () {
     window.removeEventListener('resize', this.resized)
@@ -316,8 +309,7 @@ export default {
       return s
     },
     filterActive () {
-      let f = this.mainData.filter
-      return f.active && (f.domain || f.spet || f.manualSelect || f.interactants || f.speakers || f.acquaintedness || f.powerRelations || f.durationOfSpeechEvent || f.words || f.onlyWithAudio) ? true : false
+      return this.mainData.filter.active && this.mainData.filter.filterSpeechEventsFunc.filterActive(this.mainData.filter)
     },
     filteredSeIds () {
       return this.filterActive ? this.mainData.filter.filterSpeechEventsFunc.getFilteredIds(this.mainData.corpus, this.mainData.filter) : null
@@ -353,6 +345,16 @@ export default {
   }
   .w-100 {
     width: 100%;
+  }
+  .mw-33 {
+    min-width: 33.333%;
+  }
+  .mw-50 {
+    min-width: 50%;
+  }
+  .sm-font {
+    font-size: 0.8rem;
+    line-height: 1rem;
   }
   .logo-small {
     width: 200px;
@@ -410,6 +412,18 @@ export default {
   .v-tooltip__content code {
       background-color: rgba(0, 0, 0, 0.3)!important;
   }
+  .m-title {
+    font-size: 12px;
+    padding: 2px;
+    color: rgba(0, 0, 0, 0.6);
+  }
+  .m-hint {
+    font-size: 12px;
+    color: rgba(0, 0, 0, 0.6);
+  }
+  .inset-card-shadow {
+    box-shadow: inset 0px 3px 1px -2px rgb(0 0 0 / 20%), inset 0px 2px 2px 0px rgb(0 0 0 / 14%), inset 0px 1px 5px 0px rgb(0 0 0 / 12%)!important;
+  }
   @media (min-width: 1264px) {
     .container {
       max-width: 1785px!important;
@@ -422,5 +436,94 @@ export default {
     .home-width {
       max-width: 700px!important;
     }
+  }
+  .jump-btn::after {
+    content: url("data:image/svg+xml,%3C%3Fxml version='1.0' encoding='UTF-8'%3F%3E%3C!DOCTYPE svg PUBLIC '-//W3C//DTD SVG 1.1//EN' 'http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd'%3E%3Csvg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' version='1.1' width='20' height='20' viewBox='0 0 24 24'%3E%3Cpath fill='%23333' d='M14,3V5H17.59L7.76,14.83L9.17,16.24L19,6.41V10H21V3M19,19H5V5H12V3H5C3.89,3 3,3.9 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V12H19V19Z' /%3E%3C/svg%3E");
+    position: relative;
+    top: 1px;
+  }
+  .comment-btn::after {
+    content: url("data:image/svg+xml,%3C%3Fxml version='1.0' encoding='UTF-8'%3F%3E%3C!DOCTYPE svg PUBLIC '-//W3C//DTD SVG 1.1//EN' 'http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd'%3E%3Csvg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' version='1.1' width='20' height='20' viewBox='0 0 24 24'%3E%3Cpath fill='%23333' d='M9,22A1,1 0 0,1 8,21V18H4A2,2 0 0,1 2,16V4C2,2.89 2.9,2 4,2H20A2,2 0 0,1 22,4V16A2,2 0 0,1 20,18H13.9L10.2,21.71C10,21.9 9.75,22 9.5,22V22H9M10,16V19.08L13.08,16H20V4H4V16H10M6,7H18V9H6V7M6,11H15V13H6V11Z' /%3E%3C/svg%3E");
+    position: relative;
+    top: 2px;
+  }
+
+  .trash-icon::after, .edit-icon::after {
+    content: "\F01B4";
+    display: block;
+    width: 20px;
+    height: 24px;
+    display: inline-block;
+    font: normal normal normal 24px/1 "Material Design Icons";
+    font-size: inherit;
+    text-rendering: auto;
+    line-height: inherit;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    color: #666;
+    font-size: 1.4rem;
+    line-height: 1;
+    position: relative;
+    top: -1px;
+    left: 1px;
+    cursor: pointer;
+  }
+  .edit-icon::after {
+    content: "\F03EB";
+  }
+  .bookmark, .bookmark-check {
+    position: relative;
+  }
+  button.bookmark, button.bookmark-check {
+    height: fit-content;
+    margin-bottom: -3px;
+    outline: none;
+  }
+  .bookmark::after, .bookmark-check::after {
+    content: "\F137B";
+    display: block;
+    width: 20px;
+    height: 24px;
+    display: inline-block;
+    font: normal normal normal 24px/1 "Material Design Icons";
+    font-size: inherit;
+    text-rendering: auto;
+    line-height: inherit;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    color: #aaa;
+    font-size: 1.4rem;
+    line-height: 1;
+    position: relative;
+    top: 1px;
+    left: 1px;
+    cursor: pointer;
+  }
+  .bookmark.bookmark-fast::after {
+    content: "\F00C4";
+  }
+  .bookmark-check::after {
+    content: "\F00C1";
+    color: #666;
+  }
+  .bookmark-check.bookmark-fast::after {
+    content: "\F00C6";
+    color: #800;
+  }
+  .bookmark:hover::after, .bookmark-check:hover::after {
+    color: #333;
+  }
+  .bookmark-check.bookmark-fast:hover::after {
+    color: #a00;
+  }
+  .bookmark:hover::before, .bookmark-check:hover::before {
+    content: "";
+    position: absolute;
+    background: #ccc;
+    width: 28px;
+    height: 28px;
+    left: -2px;
+    top: -2px;
+    border-radius: 100%;
   }
 </style>

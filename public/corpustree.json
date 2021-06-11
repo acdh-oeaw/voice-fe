@@ -88,7 +88,8 @@
     "relationPower":[
       "fairly_asymmetrical",
       "fairly_symmetrical",
-      "power_relations_unknown"
+      "power_relations_unknown",
+      "symmetrical"
     ],
     "domain":[
       "ED",
@@ -14661,6 +14662,7 @@
             }
           },
           "speakersL1":[
+            "ita",
             "ger",
             "eng",
             "tur",
@@ -15023,6 +15025,7 @@
             "por",
             "pol",
             "lav",
+            "eng",
             "est",
             "nor",
             "slo",
@@ -16001,6 +16004,7 @@
             }
           },
           "speakersL1":[
+            "rus",
             "slo",
             "ger",
             "eng",
@@ -16490,14 +16494,17 @@
           },
           "speakersL1":[
             "ger",
+            "eng",
+            "heb",
+            "dut",
             "rus",
             "tur",
-            "eng",
             "slo",
             "rum",
             "bos",
             "scc",
-            "ukr"
+            "ukr",
+            "lav"
           ],
           "interactantsNo":20,
           "interactantsBucket":"15 and more",
@@ -16707,11 +16714,13 @@
             }
           },
           "speakersL1":[
+            "mac",
             "ger",
             "alb",
             "chi",
             "eng",
             "bos",
+            "kor",
             "gre",
             "rus"
           ],
@@ -16915,18 +16924,20 @@
             }
           },
           "speakersL1":[
+            "mac",
             "ger",
             "alb",
             "chi",
             "eng",
             "bos",
+            "kor",
             "gre",
             "rus"
           ],
           "interactantsNo":14,
           "interactantsBucket":"11–14",
           "relationPower":"fairly_asymmetrical",
-          "relationAcquaintedness":"acquainted"
+          "relationAcquaintedness":"predominantly_acquainted"
         },
         {
           "id":"EDsve421",
@@ -17351,7 +17362,8 @@
             "ger",
             "ita",
             "fre",
-            "cze"
+            "cze",
+            "gre"
           ],
           "interactantsNo":5,
           "interactantsBucket":"4–6",
@@ -17562,13 +17574,14 @@
           },
           "speakersL1":[
             "spa",
+            "und",
             "ger",
             "fre"
           ],
           "interactantsNo":4,
           "interactantsBucket":"4–6",
           "relationPower":"fairly_symmetrical",
-          "relationAcquaintedness":"predominantly_acquainted"
+          "relationAcquaintedness":"predominantly_unacquainted"
         },
         {
           "id":"EDwgd5",
@@ -17734,7 +17747,9 @@
             }
           },
           "speakersL1":[
+            "kor",
             "eng",
+            "ukr",
             "ger",
             "rum",
             "mac",
@@ -17969,7 +17984,10 @@
           },
           "speakersL1":[
             "ger",
+            "und",
+            "kor",
             "bul",
+            "alb",
             "ukr",
             "eng"
           ],
@@ -18479,6 +18497,7 @@
             "vie",
             "ara",
             "dut",
+            "eng",
             "ger"
           ],
           "interactantsNo":5,
@@ -20408,6 +20427,7 @@
           "speakersL1":[
             "dan",
             "dut",
+            "und",
             "eng",
             "spa",
             "ger",
@@ -20423,7 +20443,7 @@
           "interactantsNo":19,
           "interactantsBucket":"15 and more",
           "relationPower":"fairly_symmetrical",
-          "relationAcquaintedness":"acquainted"
+          "relationAcquaintedness":"predominantly_acquainted"
         },
         {
           "id":"EDwsd306",
@@ -21187,6 +21207,7 @@
             }
           },
           "speakersL1":[
+            "mac",
             "pol",
             "ita",
             "ger",
@@ -21870,6 +21891,7 @@
           },
           "speakersL1":[
             "ger",
+            "kor",
             "kir",
             "alb",
             "spa"
@@ -21983,7 +22005,8 @@
           "speakersL1":[
             "nor",
             "fin",
-            "ger"
+            "ger",
+            "und"
           ],
           "interactantsNo":2,
           "interactantsBucket":"2–3",
@@ -23485,6 +23508,7 @@
           "speakersL1":[
             "scc",
             "nor",
+            "und",
             "dut",
             "eng",
             "ger",
@@ -24422,7 +24446,8 @@
           "speakersL1":[
             "ger",
             "fre",
-            "spa"
+            "spa",
+            "dut"
           ],
           "interactantsNo":5,
           "interactantsBucket":"4–6",
@@ -24560,7 +24585,12 @@
             }
           },
           "speakersL1":[
-            "ger"
+            "ger",
+            "pol",
+            "cze",
+            "slv",
+            "hun",
+            "lav"
           ],
           "interactantsNo":7,
           "interactantsBucket":"7–10",
@@ -24665,7 +24695,10 @@
             }
           },
           "speakersL1":[
-            "ger"
+            "ger",
+            "pol",
+            "eng",
+            "swe"
           ],
           "interactantsNo":6,
           "interactantsBucket":"4–6",
@@ -24839,6 +24872,7 @@
           "speakersL1":[
             "ger",
             "dut",
+            "und",
             "fre",
             "spa"
           ],
@@ -25613,6 +25647,7 @@
             }
           },
           "speakersL1":[
+            "und",
             "hun",
             "slv",
             "cze",
@@ -25896,7 +25931,9 @@
           },
           "speakersL1":[
             "dan",
+            "spa",
             "slo",
+            "dut",
             "ger"
           ],
           "interactantsNo":8,
@@ -26051,6 +26088,7 @@
             "ger",
             "per",
             "fin",
+            "und",
             "dut"
           ],
           "interactantsNo":11,
@@ -26221,7 +26259,8 @@
             "ger",
             "eng",
             "hin",
-            "fin"
+            "fin",
+            "fre"
           ],
           "interactantsNo":11,
           "interactantsBucket":"11–14",
@@ -26402,15 +26441,17 @@
           "speakersL1":[
             "swe",
             "ger",
+            "fre",
             "per",
             "por",
             "chi",
             "eng",
-            "hin"
+            "hin",
+            "dut"
           ],
           "interactantsNo":16,
           "interactantsBucket":"15 and more",
-          "relationPower":"fairly_asymmetrical",
+          "relationPower":"symmetrical",
           "relationAcquaintedness":"predominantly_unacquainted"
         },
         {
@@ -26478,6 +26519,7 @@
             }
           },
           "speakersL1":[
+            "ger",
             "fin",
             "chi",
             "tur"
@@ -26772,6 +26814,7 @@
             }
           },
           "speakersL1":[
+            "gre",
             "ger"
           ],
           "interactantsNo":2,
@@ -27298,6 +27341,7 @@
           },
           "speakersL1":[
             "ita",
+            "dut",
             "ger",
             "spa",
             "slo",
@@ -29895,6 +29939,7 @@
             }
           },
           "speakersL1":[
+            "und",
             "ger",
             "dan",
             "fin",
@@ -30036,6 +30081,7 @@
             "fin",
             "ger",
             "rum",
+            "und",
             "eng",
             "spa"
           ],
@@ -30135,7 +30181,10 @@
           },
           "speakersL1":[
             "lit",
-            "pol"
+            "spa",
+            "dut",
+            "pol",
+            "und"
           ],
           "interactantsNo":6,
           "interactantsBucket":"4–6",
@@ -30323,6 +30372,8 @@
             "eng",
             "bul",
             "ger",
+            "fre",
+            "und",
             "por",
             "fin"
           ],
@@ -30508,9 +30559,13 @@
           },
           "speakersL1":[
             "nor",
+            "und",
             "eng",
             "spa",
-            "lav"
+            "cat",
+            "lav",
+            "ger",
+            "fre"
           ],
           "interactantsNo":11,
           "interactantsBucket":"11–14",
@@ -31383,6 +31438,7 @@
             "pol",
             "ita",
             "spa",
+            "dut",
             "ger",
             "slo",
             "eng",
@@ -32885,9 +32941,12 @@
           },
           "speakersL1":[
             "ger",
+            "ita",
             "pol",
             "kor",
-            "lav"
+            "lav",
+            "yor",
+            "arm"
           ],
           "interactantsNo":6,
           "interactantsBucket":"4–6",
@@ -33026,8 +33085,8 @@
             }
           },
           "speakersL1":[
-            "ger",
             "dut",
+            "ger",
             "pol",
             "fre",
             "eng"
@@ -34508,10 +34567,10 @@
             }
           },
           "speakersL1":[
-            "ger",
             "dut",
-            "pol",
+            "ger",
             "fre",
+            "pol",
             "eng"
           ],
           "interactantsNo":9,
@@ -35085,6 +35144,7 @@
             }
           },
           "speakersL1":[
+            "fre",
             "slv"
           ],
           "interactantsNo":2,
@@ -35251,7 +35311,8 @@
             }
           },
           "speakersL1":[
-            "ger"
+            "ger",
+            "ita"
           ],
           "interactantsNo":3,
           "interactantsBucket":"2–3",
@@ -35296,6 +35357,7 @@
             }
           },
           "speakersL1":[
+            "kor",
             "ger"
           ],
           "interactantsNo":2,
@@ -35513,6 +35575,7 @@
             }
           },
           "speakersL1":[
+            "kor",
             "ger"
           ],
           "interactantsNo":2,
@@ -35558,6 +35621,7 @@
             }
           },
           "speakersL1":[
+            "kor",
             "ger"
           ],
           "interactantsNo":2,
@@ -35777,6 +35841,7 @@
             }
           },
           "speakersL1":[
+            "und",
             "ara",
             "ger",
             "per",
@@ -36003,6 +36068,7 @@
           "speakersL1":[
             "ger",
             "fin",
+            "und",
             "eng",
             "rum",
             "por"
@@ -36231,9 +36297,14 @@
             }
           },
           "speakersL1":[
+            "und",
             "ger",
+            "spa",
+            "ita",
             "eng",
-            "rus"
+            "tur",
+            "rus",
+            "cze"
           ],
           "interactantsNo":16,
           "interactantsBucket":"15 and more",
@@ -36757,6 +36828,7 @@
           "speakersL1":[
             "ger",
             "fre",
+            "und",
             "fin",
             "tur",
             "ita"
@@ -36887,8 +36959,10 @@
             }
           },
           "speakersL1":[
+            "dut",
             "nor",
-            "fin"
+            "fin",
+            "und"
           ],
           "interactantsNo":5,
           "interactantsBucket":"4–6",
@@ -36967,6 +37041,7 @@
             }
           },
           "speakersL1":[
+            "kor",
             "eng",
             "swe",
             "spa"
@@ -37129,10 +37204,13 @@
           },
           "speakersL1":[
             "ger",
+            "spa",
             "ukr",
             "eng",
             "hun",
-            "rus"
+            "tur",
+            "rus",
+            "cze"
           ],
           "interactantsNo":12,
           "interactantsBucket":"11–14",
@@ -37256,6 +37334,7 @@
           },
           "speakersL1":[
             "slv",
+            "und",
             "cze",
             "ger"
           ],
@@ -37364,6 +37443,7 @@
           "speakersL1":[
             "slo",
             "cze",
+            "und",
             "ger"
           ],
           "interactantsNo":6,
@@ -37557,7 +37637,7 @@
           "interactantsNo":12,
           "interactantsBucket":"11–14",
           "relationPower":"fairly_symmetrical",
-          "relationAcquaintedness":"acquainted"
+          "relationAcquaintedness":"predominantly_unacquainted"
         },
         {
           "id":"PRwgd537",

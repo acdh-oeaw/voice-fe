@@ -97,8 +97,8 @@ export default {
       }, 100)()
     },
     categoryChange () {
-      // console.log('categoryChange', this.categorySearch, this.category, this.category && this.category.toLowerCase().indexOf(this.categorySearch.toLowerCase()))
-      if (this.category && this.categorySearch && this.categorySearch.trim().length > 0 && this.category.toLowerCase().indexOf(this.categorySearch.toLowerCase()) < 0) {
+      // console.log('categoryChange', this.categorySearch, this.category.toLowerCase().indexOf(this.categorySearch.toLowerCase()))
+      if (this.categorySearch && this.categorySearch.trim().length > 0 && this.category.toLowerCase().indexOf(this.categorySearch.toLowerCase()) < 0) {
         console.log('newCategory', this.categorySearch)
         this.categoryNewVal = this.categorySearch
         this.category = this.categoryNewVal.trim()

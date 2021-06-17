@@ -285,7 +285,7 @@ export default {
       { val: 'fre', title: 'French (fre)' },
       { val: 'ger', title: 'German (ger)' },
       { val: 'gre', title: 'Greek (gre)' },
-      // { val: 'heb', title: 'Hebrew (heb)' },
+      { val: 'heb', title: 'Hebrew (heb)' },
       { val: 'hin', title: 'Hindi (hin)' },
       { val: 'hun', title: 'Hungarian (hun)' },
       { val: 'ice', title: 'Icelandic (ice)' },
@@ -305,10 +305,10 @@ export default {
       { val: 'por', title: 'Portuguese (por)' },
       { val: 'rum', title: 'Romanian (rum)' },
       { val: 'rus', title: 'Russian (rus)' },
-      // { val: 'srp', title: 'Serbian (srp)' },
-      // { val: 'hrv', title: 'Croatian (hrv)' },
-      { val: 'scc', title: 'scc' },
-      { val: 'scr', title: 'scr' },
+      { val: 'srp', title: 'Serbian (srp)' },
+      { val: 'hrv', title: 'Croatian (hrv)' },
+      // { val: 'scc', title: 'Serbian (scc)' },
+      // { val: 'scr', title: 'Croatian (scr)' },
       { val: 'slo', title: 'Slovak (slo)' },
       { val: 'slv', title: 'Slovenian (slv)' },
       { val: 'spa', title: 'Spanish (spa)' },
@@ -316,10 +316,10 @@ export default {
       { val: 'tgl', title: 'Tagalog (tgl)' },
       { val: 'tur', title: 'Turkish (tur)' },
       { val: 'ukr', title: 'Ukrainian (ukr)' },
-      // { val: 'und', title: 'Undetermined (und)' },
+      { val: 'und', title: 'Undetermined (und)' },
       { val: 'urd', title: 'Urdu (urd)' },
       { val: 'vie', title: 'Vietnamese (vie)' },
-      // { val: 'yor', title: 'Yoruba (yor)' }
+      { val: 'yor', title: 'Yoruba (yor)' }
     ]
   }),
   mounted () {

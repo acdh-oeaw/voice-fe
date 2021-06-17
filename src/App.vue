@@ -305,6 +305,9 @@ export default {
         s.sex = fx[s.id].sex || s.sex
         s.txt = fx[s.id].txt || s.txt
         s.refs = null
+      } else if (this.mainData.showSpeaker && this.mainData.showSpeaker.speaker && this.mainData.showSpeaker.speaker.match(/SX-\d/)) {
+        let oSpeaker = this.mainData.showSpeaker.speaker.replace('X-', '')
+        s = this.mainData.showSpeaker && this.mainData.showSpeaker.id && oSpeaker && this.mainData.corpus.obj[this.mainData.showSpeaker.id] && this.mainData.corpus.obj[this.mainData.showSpeaker.id].speakers && this.mainData.corpus.obj[this.mainData.showSpeaker.id].speakers[oSpeaker]
       }
       return s
     },

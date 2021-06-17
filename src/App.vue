@@ -297,7 +297,7 @@ export default {
       let fx = {
         'SX': { txt: 'Unidentified speaker', sex: 'unknown' },
         'SX-f': { txt: 'Unidentified female speaker', sex: 'female' },
-        'SX-m': { txt: 'Unidentified female speaker', sex: 'male' },
+        'SX-m': { txt: 'Unidentified male speaker', sex: 'male' },
         'SS': { txt: 'Unidentified group of speakers' },
       }
       if (s && Object.keys(fx).indexOf(s.id) > -1) {

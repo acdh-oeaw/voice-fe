@@ -270,7 +270,7 @@ function renderingUtteranceBefore(uObj, xmlObj, type, isSearch, xmlIdCache, fxCa
       ) {
         if (!(uObj.children &&
             (uObj.children[0].attributes['part'] === 'F') ||
-            (oSiblings[oPos - 1].attributes['join'] === 'left'))) {
+            (uObj.children[0].attributes['join'] === 'left'))) {
           aTxt += ' '
         }
       }

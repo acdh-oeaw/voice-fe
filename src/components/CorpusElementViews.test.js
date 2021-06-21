@@ -124,12 +124,52 @@ test('render a view <emph><w>le</w></emph><seg n="1"><w>vel</w></seg><w>i</w>', 
         lemma="feel">feel</w>
  </u>`)
     const line = getByTestId('lineContent')
-    await fireEvent.focus(line) // only after some event the rendered TEI appears    expect(within(line).getByText('re')).toBeInTheDocument()
+    await fireEvent.focus(line) // only after some event the rendered TEI appears
     expect(line).toContainHTML('<span class="tag-w" title="Lemma: higher">higher</span> <span class="tag-emph"><span class="tag-w" title="Lemma: level">le</span></span><span class="tag-seg type-overlap n-1 has-n"><span class="fx-overlap">&lt;1&gt;</span><span class="tag-w">vel</span> <span class="fx-overlap">&lt;/1&gt; </span></span><span class="tag-w" title="Lemma: i">i</span> <span class="tag-w" title="Lemma: feel">feel</span> ')
 })
 
-function renderUtterance(utteranceXML) {
-    const parsed = {}
+test('render a view <anchor/><w join="right">it</w><w join="left">\'s</w><w>not</w>', async () => {
+    const { getByTestId } = renderUtterance(`<u who="#EDwsd304_S10" xml:id="EDwsd304_u_332">
+                    <anchor synch="#EDwsd304_oc_80" type="other_continuation" xml:id="EDwsd304_oc_81"/>
+                    <w join="right" xml:id="xTok_EDwsd304_008761" ana="#PPfPP" lemma="it">it</w>
+                    <w join="left" xml:id="xTok_EDwsd304_008763" ana="#VBSfVBS" lemma="be">'s</w>
+                    <w xml:id="xTok_EDwsd304_008765" ana="#RBfRB" lemma="not">not</w>                
+                </u>`)
+    const line = getByTestId('lineContent')
+    await fireEvent.focus(line) // only after some event the rendered TEI appears
+    expect(line).toContainHTML('<span class="tag-anchor type-other_continuation"><span class="fx-other-continuation">=</span></span><span class="tag-w" title="Lemma: it">it</span><span class="tag-w" title="Lemma: be">\'s</span> <span class="tag-w" title="Lemma: not">not</span>')
+})
+
+test('render a POS single line view <anchor/><w join="right">it</w><w join="left">\'s</w><w>not</w>', async () => {
+    const { getByTestId } = renderUtterance(`<u who="#EDwsd304_S10" xml:id="EDwsd304_u_332">
+                    <anchor synch="#EDwsd304_oc_80" type="other_continuation" xml:id="EDwsd304_oc_81"/>
+                    <w join="right" xml:id="xTok_EDwsd304_008761" ana="#PPfPP" lemma="it">it</w>
+                    <w join="left" xml:id="xTok_EDwsd304_008763" ana="#VBSfVBS" lemma="be">'s</w>
+                    <w xml:id="xTok_EDwsd304_008765" ana="#RBfRB" lemma="not">not</w>                
+                </u>`, 'pos')
+    const line = getByTestId('lineContent')
+    await fireEvent.focus(line) // only after some event the rendered TEI appears
+    expect(line).toContainHTML('<span class="tag-anchor type-other_continuation"></span><span class="fx-ana-frm"><span class="tag-w" title="Lemma: it">it</span><span class="fx-ana"><span class="fx-ana-s">_</span><span class="fx-ana-form">PP</span><span class="fx-ana-f fx-ana-f-s">(PP)</span></span></span><span class="fx-ana-frm"><span class="tag-w" title="Lemma: be">\'s</span><span class="fx-ana"><span class="fx-ana-s">_</span><span class="fx-ana-form">VBS</span><span class="fx-ana-f fx-ana-f-s">(VBS)</span></span></span> <span class="tag-w" title="Lemma: not">not<span class="fx-ana"><span class="fx-ana-s">_</span><span class="fx-ana-form">RB</span><span class="fx-ana-f fx-ana-f-s">(RB)</span></span></span>')
+})
+
+test('render a view <w part="I">si</w><emph><w part="M">mul</w></emph><w part="F">taneously</w>', async () => {
+    const { getByTestId } = renderUtterance(`<u who="#EDwsd304_S10" xml:id="EDwsd304_u_315">
+    <w xml:id="xTok_EDwsd304_008479" ana="#VVNfVVN" lemma="play">played</w>
+    <w xml:id="xTok_EDwsd304_008481" part="I" next="#xTok_EDwsd304_008482" norm="simultaneously" ana="#RBfRB" lemma="simultaneously">si</w>
+    <emph xml:id="EDwsd304_d2e20444">
+        <w xml:id="xTok_EDwsd304_008482" part="M" prev="#xTok_EDwsd304_008481" next="#xTok_EDwsd304_008483" norm="____">mul</w>
+    </emph>
+    <w xml:id="xTok_EDwsd304_008483" part="F" prev="#xTok_EDwsd304_008482" norm="____">taneously</w>
+    <w xml:id="xTok_EDwsd304_008485" ana="#INfIN" lemma="in">in</w>
+</u>`)
+    const line = getByTestId('lineContent')
+    await fireEvent.focus(line) // only after some event the rendered TEI appears
+    expect(line).toContainHTML('<span class="tag-w" title="Lemma: play">played</span> <span class="tag-w" title="Lemma: simultaneously">si</span><span class="tag-emph"><span class="tag-w">mul</span></span><span class="tag-w">taneously</span> <span class="tag-w" title="Lemma: in">in</span> ')
+})
+
+function renderUtterance(utteranceXML, aView) {
+    const parsed = {},
+          view = aView || 'voice'
     parser.parseIt(utteranceXML, null, null, parsed)
     return renderWithVuetify(CorpusElementViews, {
         props: {
@@ -144,7 +184,7 @@ function renderUtterance(utteranceXML) {
                     xmlObj: parsed
                 },
             },
-            view: 'voice',
+            view: view,
             mainData: {
                 bookmarks: {
                     active: false

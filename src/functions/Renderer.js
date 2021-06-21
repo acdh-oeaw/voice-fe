@@ -146,7 +146,7 @@ function renderingUtterance(uObj, xmlObj, type, highlight, isSearch = false, xml
       }
       if (type === 'pos') {
         // ana
-        if (uObj.attributes && uObj.attributes['ana'] && uObj.attributes['part']) {
+        if (uObj.attributes && uObj.attributes['ana'] && (uObj.attributes['part'] || uObj.attributes['join'])) {
           if (fxCache.pos) {
             aTxt += fxCache.pos.c + '</span>'
           }
@@ -182,8 +182,9 @@ function renderingUtterance(uObj, xmlObj, type, highlight, isSearch = false, xml
       let ws = false
       if (
         (uObj.tag === 'w' || uObj.tag === 'emph') &&
-        (!uObj.attributes['part'] ||
-          uObj.attributes['part'] === 'F')
+        ((!uObj.attributes['part'] && !uObj.attributes['join']) ||
+          uObj.attributes['part'] === 'F' ||
+          uObj.attributes['join'] === 'left')
       ) {
         if (uObj.tag !== 'emph' ||
           (uObj.children.length === 1 && uObj.children[0].type === 'text')
@@ -255,17 +256,21 @@ function renderingUtteranceBefore(uObj, xmlObj, type, isSearch, xmlIdCache, fxCa
       let oPos = oSiblings.indexOf(uObj)
       if (oPos === oSiblings.length - 1 || oPos === 0 ||
         ((oSiblings[oPos - 1].tag === 'w' || oSiblings[oPos - 1].tag === 'emph') &&
-          (!oSiblings[oPos - 1].attributes['part'] ||
-          (oSiblings[oPos - 1].attributes['part'] === 'F'))
+          ((!oSiblings[oPos - 1].attributes['part'] && !oSiblings[oPos - 1].attributes['join']) ||
+          (oSiblings[oPos - 1].attributes['part'] === 'F') ||
+          (oSiblings[oPos - 1].attributes['join'] === 'left'))
         ) ||
         (!uObj.children || uObj.children.length < 1 ||
           ((uObj.children[0].tag === 'w' || uObj.children[0].tag === 'emph') &&
-            (!uObj.children[0].attributes['part'] ||
-            (uObj.children[0].attributes['part'] === 'I'))
+            ((!uObj.children[0].attributes['part'] && !uObj.children[0].attributes['join']) ||
+            (uObj.children[0].attributes['part'] === 'I') ||
+            (uObj.children[0].attributes['join'] === 'right'))
           )
         )
       ) {
-        if (!(uObj.children && uObj.children[0].attributes['part'] === 'F')) {
+        if (!(uObj.children &&
+            (uObj.children[0].attributes['part'] === 'F') ||
+            (oSiblings[oPos - 1].attributes['join'] === 'left'))) {
           aTxt += ' '
         }
       }
@@ -412,8 +417,9 @@ function renderingUtteranceAfter(uObj, xmlObj, type, isSearch, xmlIdCache, fxCac
       aTxt += '&gt;'
       if (!uObj.children || uObj.children.length < 1 ||
         ((uObj.children[uObj.children.length - 1].tag === 'w' || uObj.children[uObj.children.length - 1].tag === 'emph') &&
-          (!uObj.children[uObj.children.length - 1].attributes['part'] ||
-          (uObj.children[uObj.children.length - 1].attributes['part'] === 'F'))
+          ((!uObj.children[uObj.children.length - 1].attributes['part'] && !uObj.children[uObj.children.length - 1].attributes['join']) ||
+          (uObj.children[uObj.children.length - 1].attributes['part'] === 'F') ||
+          (uObj.children[uObj.children.length - 1].attributes['join'] === 'left'))
         )
       ) {
         aTxt += ' '
@@ -428,8 +434,9 @@ function renderingUtteranceAfter(uObj, xmlObj, type, isSearch, xmlIdCache, fxCac
     if (uObj.tag === 'foreign' && uObj.attributes && uObj.attributes['type'] && uObj.attributes['xml:lang']) {
       if (!uObj.children || uObj.children.length < 1 ||
         ((uObj.children[uObj.children.length - 1].tag === 'w' || uObj.children[uObj.children.length - 1].tag === 'emph') &&
-          (!uObj.children[uObj.children.length - 1].attributes['part'] ||
-          (uObj.children[uObj.children.length - 1].attributes['part'] === 'F'))
+          ((!uObj.children[uObj.children.length - 1].attributes['part'] && !uObj.children[uObj.children.length - 1].attributes['join']) ||
+          (uObj.children[uObj.children.length - 1].attributes['part'] === 'F') ||
+          (uObj.children[uObj.children.length - 1].attributes['join'] === 'left'))
         )
       ) {
         aTxt += ' '
@@ -442,8 +449,9 @@ function renderingUtteranceAfter(uObj, xmlObj, type, isSearch, xmlIdCache, fxCac
       let oPos = oSiblings.indexOf(uObj)
       if (oPos === oSiblings.length - 1 || oPos === 0 ||
         ((oSiblings[oPos + 1].tag === 'w' || oSiblings[oPos + 1].tag === 'emph') &&
-          (!oSiblings[oPos + 1].attributes['part'] ||
-          (oSiblings[oPos + 1].attributes['part'] === 'F'))
+          ((!oSiblings[oPos + 1].attributes['part'] && !oSiblings[oPos + 1].attributes['join']) ||
+          (oSiblings[oPos + 1].attributes['part'] === 'F') ||
+          (oSiblings[oPos + 1].attributes['join'] === 'left'))
         )
       ) {
         aTxt += ' '

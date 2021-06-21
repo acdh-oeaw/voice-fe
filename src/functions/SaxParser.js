@@ -143,13 +143,13 @@ const localFunctions = {
         aTree.pop()
       }
       parser.onprocessinginstruction = (node) => {
-        aObj.children.push({
+/*         aObj.children.push({
           type: 'processinginstruction',
           name: node.name,
           body: node.body,
           tree: [...aTree],
           parent: aObj
-        })
+        }) */
         // console.log('onprocessinginstruction', node)
       }
       parser.onend = () => {

@@ -63,7 +63,7 @@
               v-model="mainData.search.view.type"
             ></v-select>
             <v-checkbox
-              label="kwic"
+              label="KWIC"
               class="ml-2"
               :disabled="mainData.search.view.type === 'xml-view'"
               v-model="mainData.search.view.kwic"

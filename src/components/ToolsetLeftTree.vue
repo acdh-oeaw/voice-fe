@@ -39,7 +39,7 @@
               'found': mainData.search.foundXmlId.indexOf(item.id) > -1,
               'filtered': !item.children && mainData.app.filteredSeIds && mainData.app.filteredSeIds.indexOf(item.id) < 0,
             }"
-            :title="item.title"
+            :title="typeof item.title === 'string' ? item.title.charAt(0).toUpperCase() + item.title.slice(1) : null"
             v-html="itemLabel(item)"
           />
         </template>

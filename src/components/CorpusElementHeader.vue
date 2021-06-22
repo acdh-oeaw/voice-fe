@@ -104,7 +104,7 @@
         <table class="changes ml-2">
           <tbody>
             <tr v-for="(rd, i) in element.headerObj.data.revisionDesc" :key="'rd' + i">
-              <th>{{ rd.txt }}:</th>
+              <th>{{ typeof rd.txt === 'string' ? rd.txt.charAt(0).toUpperCase() + rd.txt.slice(1) : null }}:</th>
               <td>{{ rd.who }}</td>
             </tr>
           </tbody>

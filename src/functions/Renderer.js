@@ -167,13 +167,13 @@ function renderingUtterance(uObj, xmlObj, type, highlight, isSearch = false, xml
       ) {
         aTxt += ''
       }
-      if (uObj.attributes && uObj.attributes['spelt_orig']) {
-        aTxt += '<span class="fx-spelt-orig">' + uObj.attributes['spelt_orig'] + '</span><span class="fx-spelt-cont">'
+      if (uObj.attributes && uObj.attributes['voice:mode'] && uObj.attributes['voice:mode'] === 'spelt' && uObj.attributes['orig']) {
+        aTxt += '<span class="fx-spelt-orig">' + uObj.attributes['orig'] + '</span><span class="fx-spelt-cont">'
       }
       uObj.children.forEach(c => {
         aTxt += renderingUtterance(c, xmlObj, type, highlight, isSearch, xmlIdCache, fxCache)
       })
-      if (uObj.attributes && uObj.attributes['spelt_orig']) {
+      if (uObj.attributes && uObj.attributes['voice:mode'] && uObj.attributes['voice:mode'] === 'spelt') {
         aTxt += '</span>'
       }
       aTxt += renderingUtteranceAfter(uObj, xmlObj, type, isSearch, xmlIdCache, fxCache)
@@ -333,7 +333,7 @@ function renderingUtteranceBefore(uObj, xmlObj, type, isSearch, xmlIdCache, fxCa
       aTxt += '&lt;' + uObj.attributes['voice:desc'] + '&gt;'
     }
     // spel - before
-    if (uObj.attributes && uObj.attributes['spelt_orig']) {
+    if (uObj.attributes && uObj.attributes['voice:mode'] && uObj.attributes['voice:mode'] === 'spelt') {
       aTxt += '<span class="fx-spel"> &lt;spel&gt; </span>'
     }
     // foreign_tag - before
@@ -427,7 +427,7 @@ function renderingUtteranceAfter(uObj, xmlObj, type, isSearch, xmlIdCache, fxCac
       aTxt += '</span>'
     }
     // spel - after
-    if (uObj.attributes && uObj.attributes['spelt_orig']) {
+    if (uObj.attributes && uObj.attributes['voice:mode'] && uObj.attributes['voice:mode'] === 'spelt') {
       aTxt += '<span class="fx-spel"> &lt;/spel&gt; </span>'
     }
     // foreign_tag - after

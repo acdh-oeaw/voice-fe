@@ -33,7 +33,7 @@
             Nothing found
           </v-alert>
           <v-alert prominent type="warning" dismissible v-else-if="filteredHits === 0">
-            Nothing found with actual filter. (Without filter: {{ mainData.search.results.u.length }} Hits)
+            Nothing found with current filter. (Without filter: {{ mainData.search.results.u.length }} Hits)
           </v-alert>
           <!-- <div>query: {{ mainData.search.results.query }}</div> -->
           <!-- <div v-if="mainData.search.results.status">status: {{ mainData.search.results.status }}</div> -->

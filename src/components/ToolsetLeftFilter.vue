@@ -53,7 +53,7 @@
             :items="itemsSpet.filter(i => !multiSelect || i.val !== null)"
             item-text="title"
             item-value="val"
-            label="Spet"
+            label="SPET"
             class="mb-3 ml-2"
             hide-details
             @change="mainData.filter.active = true"

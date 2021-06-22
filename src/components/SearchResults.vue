@@ -47,12 +47,19 @@
           <div>cql: {{ mainData.search.results.cql }}</div>
           <!-- <div>highlighted tokens: {{ mainData.search.highlights ? mainData.search.highlights.size : 'error' }}</div> -->
           <v-alert v-model="mainData.search.showInfos.utteranceClick" dense outlined type="info" dismissible class="mt-3">
-            <div style="font-size: 0.9rem; line-height: 1.1rem;">To view a search result in the corresponding corpus text, click on the utterance ID in the left column.</div>
+            <div style="font-size: 0.9rem; line-height: 1.1rem;">To view a search result in the corresponding corpus text, click on the utterance ID in the search results</div>
           </v-alert>
           <div class="d-flex mt-3">
             <v-select hide-details
               label="Style"
-              :items="['voice', 'plain', 'pos', 'xml-view']"
+              :items="[
+                { val: 'voice', txt: 'voice' },
+                { val: 'plain', txt: 'plain' },
+                { val: 'pos', txt: 'pos' },
+                { val: 'xml-view', txt: 'xml' }
+              ]"
+              item-text="txt"
+              item-value="val"
               v-model="mainData.search.view.type"
             ></v-select>
             <v-checkbox

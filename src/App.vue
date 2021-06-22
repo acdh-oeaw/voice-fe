@@ -8,32 +8,58 @@
       <v-spacer />
       <div class="d-flex align-end">
         <v-btn @click="clearRenderCache" v-if="dev" x-small class="mr-3 d-none d-md-flex">Clear Render Cache</v-btn>
-        <v-select dense hide-details class="d-none d-md-flex"
+        <v-select dense hide-details class="d-none d-md-flex mr-3"
           label="API"
           :items="['https://voice-node.acdh-dev.oeaw.ac.at/', 'http://127.0.0.1:3000/']"
           v-model="mainData.apiUrl"
           v-if="dev"
         ></v-select>
-        <v-btn @click="mainData.options.dualView = !mainData.options.dualView" icon small v-if="dualViewPossible">
+        <v-btn :title="mainData.options.dualView ? 'MERGE COLUMNS' : 'SPLIT COLUMNS'" class="mr-1" @click="mainData.options.dualView = !mainData.options.dualView" icon small v-if="dualViewPossible">
           <v-icon>{{ mainData.options.dualView ? 'mdi-arrow-collapse-horizontal' : 'mdi-arrow-split-vertical' }}</v-icon>
         </v-btn>
-        <v-btn @click="mainData.options.fullWidth = !mainData.options.fullWidth" icon small v-if="mainData.wideScreen">
+        <v-btn :title="mainData.options.fullWidth ? 'NARROW VIEW' : 'EXPANDED VIEW'" class="mr-1" @click="mainData.options.fullWidth = !mainData.options.fullWidth" icon small v-if="mainData.wideScreen">
           <v-icon>{{ mainData.options.fullWidth ? 'mdi-unfold-less-vertical' : 'mdi-unfold-more-vertical' }}</v-icon>
         </v-btn>
         <v-menu offset-y>
           <template v-slot:activator="{ on, attrs }">
-            <v-btn icon small v-bind="attrs" v-on="on">
-              <v-icon>mdi-book-open-variant</v-icon>
+            <v-btn text small v-bind="attrs" v-on="on" color="#125">
+              <v-icon class="mr-2">mdi-book-open-variant</v-icon>
+              Corpus information
             </v-btn>
           </template>
           <v-list>
-            <v-list-item href="https://voice-clariah.acdh.oeaw.ac.at/searchmanual/" target="_blank"><v-list-item-title>search manual</v-list-item-title></v-list-item>
-            <v-list-item href="https://voice-clariah.acdh.oeaw.ac.at/wp-content/uploads/2021/04/VOICE-mark-up-conventions.pdf" target="_blank"><v-list-item-title>Mark-Up Conventions</v-list-item-title></v-list-item>
-            <v-list-item href="https://voice-clariah.acdh.oeaw.ac.at/wp-content/uploads/2021/04/VOICE-spelling-conventions.pdf" target="_blank"><v-list-item-title>Spelling Conventions</v-list-item-title></v-list-item>
-            <v-list-item href="https://voice-clariah.acdh.oeaw.ac.at/wp-content/uploads/2021/04/Short-POS-tagset.pdf" target="_blank"><v-list-item-title>List of POS tag</v-list-item-title></v-list-item>
-            <v-list-item href="https://voice-clariah.acdh.oeaw.ac.at/wp-content/uploads/2021/04/POS-tagging-and-lemmatization-manual.pdf" target="_blank"><v-list-item-title>POS tagging and lemmatization</v-list-item-title></v-list-item>
-            <v-list-item href="https://survey.acdh.oeaw.ac.at/index.php/326478?lang=en" target="_blank"><v-list-item-title>Beta test survey</v-list-item-title></v-list-item>
-            <v-list-item href="https://voice-clariah.acdh.oeaw.ac.at/" target="_blank"><v-list-item-title>VOICE Clariah Homepage</v-list-item-title></v-list-item>
+            <v-list-item @click="mainData.corpus.selectedElement = false; mainData.corpus.showCorpusHeader = true;">
+              <v-list-item-icon class="mr-4"><v-icon>mdi-open-in-app</v-icon></v-list-item-icon>
+              <v-list-item-title>VOICE Header</v-list-item-title>
+            </v-list-item>
+            <v-list-item href="https://voice-clariah.acdh.oeaw.ac.at/searchmanual/" target="_blank">
+              <v-list-item-icon class="mr-4"><v-icon>mdi-open-in-new</v-icon></v-list-item-icon>
+              <v-list-item-title>Search Manual</v-list-item-title>
+            </v-list-item>
+            <v-list-item href="https://voice-clariah.acdh.oeaw.ac.at/wp-content/uploads/2021/04/VOICE-mark-up-conventions.pdf" target="_blank">
+              <v-list-item-icon class="mr-4"><v-icon>mdi-pdf-box</v-icon></v-list-item-icon>
+              <v-list-item-title>Mark-Up Conventions</v-list-item-title>
+            </v-list-item>
+            <v-list-item href="https://voice-clariah.acdh.oeaw.ac.at/wp-content/uploads/2021/04/VOICE-spelling-conventions.pdf" target="_blank">
+              <v-list-item-icon class="mr-4"><v-icon>mdi-pdf-box</v-icon></v-list-item-icon>
+              <v-list-item-title>Spelling Conventions</v-list-item-title>
+            </v-list-item>
+            <v-list-item href="https://voice-clariah.acdh.oeaw.ac.at/wp-content/uploads/2021/04/POS-tagging-and-lemmatization-manual.pdf" target="_blank">
+              <v-list-item-icon class="mr-4"><v-icon>mdi-pdf-box</v-icon></v-list-item-icon>
+              <v-list-item-title>POS and Lemmatization Manual</v-list-item-title>
+            </v-list-item>
+            <v-list-item href="https://voice-clariah.acdh.oeaw.ac.at/wp-content/uploads/2021/04/Short-POS-tagset.pdf" target="_blank">
+              <v-list-item-icon class="mr-4"><v-icon>mdi-pdf-box</v-icon></v-list-item-icon>
+              <v-list-item-title>Short POS Tag Set</v-list-item-title>
+            </v-list-item>
+            <v-list-item >
+              <v-list-item-icon class="mr-4"><v-icon>mdi-book</v-icon></v-list-item-icon>
+              <v-list-item-title>How to Cite VOICE</v-list-item-title>
+            </v-list-item>
+            <v-list-item href="https://voice-clariah.acdh.oeaw.ac.at/" target="_blank">
+              <v-list-item-icon class="mr-4"><v-icon>mdi-open-in-new</v-icon></v-list-item-icon>
+              <v-list-item-title>VOICE CLARIAH Homepagee</v-list-item-title>
+            </v-list-item>
           </v-list>
         </v-menu>
       </div>

@@ -5,7 +5,7 @@
       @keydown.enter="search(false)"
       @click:clear="search(true)"
       :loading="mainData.search.loading"
-      label="Search the VOICE Corpus"
+      label="Search VOICE"
       class="mr-2 mt-0"
       hide-details
       clearable
@@ -23,8 +23,8 @@
       <template v-slot:activator="{ on, attrs }"><v-icon v-bind="attrs" v-on="on" class="ml-2">mdi-information-outline</v-icon></template>
       <div class="py-1">
         <p class="mb-0">
-          The syntax of wildcard searches has changed from previous versions: As a default, insert a full stop before any wildcard, e.g. <code>.*</code>, <code>.+</code> or <code>.?</code>.<br>
-          For details see search manual.
+          As a default, insert a full stop before any wildcard, e.g. <code>.*</code>, <code>.+</code> or <code>.?</code>.<br>
+          For details see Search Manual.
         </p>
       </div>
     </v-tooltip>

@@ -16,7 +16,7 @@ context('toolUI', () => {
     })
     it('type search', () => {
         cy.get('label')
-            .contains('Search the VOICE Corpus')
+            .contains('Search VOICE')
             .then((label) => {
                 cy.get('#' + label.attr('for'))
                     .type('translation')

@@ -9,7 +9,7 @@
     <div class="text-center py-10 indigo lighten-5" v-if="mainData.hideCookieConsent">
       <h3 class="text-h5 font-weight-bold">Explore VOICE</h3>
       <div class="d-flex align-center search-frm mt-4">
-        <v-text-field @keyup.enter.native="search" v-model="mainData.search.value" label="Search the VOICE Corpus" class="mr-3" data-testid="quickSearch"></v-text-field>
+        <v-text-field @keyup.enter.native="search" v-model="mainData.search.value" label="Search VOICE" class="mr-3" data-testid="quickSearch"></v-text-field>
         <v-btn @click="search" color="indigo darken-4 white--text">Search</v-btn>
       </div>
       or
@@ -26,6 +26,9 @@
       <p>You can find more information in the "Data privacy notice" of our "Site Notice".</p>
       <v-btn color="indigo darken-4 white--text" v-bind:x-large="true" v-on:click="cookiesAndTrackingAccepted" data-testid="acceptTracking">I accept</v-btn><br/><br/>
       <v-btn color="indigo darken-4 white--text" v-bind:small="true" v-on:click="cookiesAndTrackingRejected" data-testid="rejectTracking">I dont't want this</v-btn>
+    </div>
+    <div class="text-center py-5">
+      <p>The web interface for VOICE 3.0 Online was developed in the <a href="https://voice-clariah.acdh.oeaw.ac.at/" target="_blank">VOICE CLARIAH project</a></p>
     </div>
   </div>
 </template>

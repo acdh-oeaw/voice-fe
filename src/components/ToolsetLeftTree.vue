@@ -5,8 +5,8 @@
         <v-card class="mx-2 mb-2 px-1" flat>
           <div class="d-flex">
             <v-switch v-model="mainData.options.treeShowSpet" dense hide-details class="mt-0 mr-3" label="SPET" title="Speech event types"></v-switch>
-            <v-switch v-model="mainData.options.treeShowFiltered" dense hide-details class="mt-0 mr-3 s-small-font"
-              label="Hide filtered Speech Events"
+            <v-switch v-model="mainData.options.treeShowFiltered" dense hide-details class="mt-0 mr-2 s-small-font"
+              label="Show only filtered speech events"
               v-if="mainData.app.filteredSeIds"
             ></v-switch>
             <v-tooltip top max-width="300">
@@ -167,7 +167,7 @@ export default {
     color: #aaa;
   }
   .s-small-font {
-    max-width: 135px;
+    max-width: 150px;
   }
   .s-small-font >>> label {
     font-size: 12px;

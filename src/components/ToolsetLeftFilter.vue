@@ -2,7 +2,7 @@
   <div class="fill-height d-flex flex-column">
     <div class="pa-2 flex-grow-1" style="overflow-y: auto;">
       <v-card class="mb-2 px-2 pb-1 inset-card-shadow">
-        <div class="m-title">All Filters</div>
+        <div class="m-title">Filters</div>
         <v-switch v-model="mainData.filter.active" dense hide-details class="mt-0" :label="mainData.filter.active ? 'On' : 'Off'"></v-switch>
       </v-card>
       <v-card class="mb-2 px-2 pb-1 inset-card-shadow">
@@ -28,7 +28,7 @@
             <v-tooltip top max-width="300">
               <template v-slot:activator="{ on, attrs }"><v-icon v-bind="attrs" v-on="on">mdi-information-outline</v-icon></template>
               <div class="py-1">
-                <p class="mb-0"><b>Simple filter:</b> Choose corpus texts according to meta-data categories.</p>
+                <p class="mb-0"><b>Filter:</b> Choose corpus texts according to meta-data categories.</p>
                 <!-- <p class="mt-1 mb-0"><b>Expert filter:</b> This feature allows to combine different filters. Note of caution: Some combinations may drastically reduce the number of corpus texts selected.</p> -->
               </div>
             </v-tooltip>

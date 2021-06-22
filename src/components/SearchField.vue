@@ -55,6 +55,7 @@ export default {
       if (clear) {
         this.mainData.search.value = ''
         this.mainData.search.lastValue = ''
+        this.mainData.search.results = {}
         this.refreshHighlighting()
       }
       this.mainData.options.singleView = 'search'

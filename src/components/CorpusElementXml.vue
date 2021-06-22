@@ -1,7 +1,7 @@
 <template>
   <div class="xml-view d-flex flex-column">
     <div class="xml-tools pa-2">
-      <v-btn @click="scrollTo(0)" class="mr-2" small>TOP</v-btn>
+      <!-- <v-btn @click="scrollTo(0)" class="mr-2" small>TOP</v-btn> -->
       <v-btn @click="scrollTo(teiHeaderLine)" class="mr-2" small :disabled="teiHeaderLine < 0">&lt;teiHeader&gt;</v-btn>
       <v-btn @click="scrollTo(bodyLine)" class="mr-2" small :disabled="bodyLine < 0">&lt;body&gt;</v-btn>
       <v-btn @click="scrollTo(uLine)" class="mr-2" small v-if="uLine">Jump to utterance {{ element.aTopLineUId.split('_').slice(-1)[0] }}</v-btn>

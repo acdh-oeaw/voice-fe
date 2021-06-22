@@ -28,12 +28,12 @@
             <p>Try out the enhanced, customizable display of search results and VOICE transcripts. Have a look at our style options (voice, plain, pos, xml; kwic style for search results) and/or adapt the voice style according to your research interests by using the different 'flexi style' categories (overlaps, pauses, etc.; new: e.g. laughter, uncertain transcription). </p>
           </div>
         </div>
-        <div v-else-if="mainData.search.results">
+        <div v-else-if="mainData.search.results && mainData.search.results.hits">
           <v-alert prominent type="warning" dismissible v-if="mainData.search.results.hits.length === 0">
             Nothing found
           </v-alert>
           <v-alert prominent type="warning" dismissible v-else-if="filteredHits === 0">
-            Nothing found with actual filter. (Without filter: {{ mainData.search.results.hits }} Hits)
+            Nothing found with actual filter. (Without filter: {{ mainData.search.results.hits.length }} Hits)
           </v-alert>
           <!-- <div>query: {{ mainData.search.results.query }}</div> -->
           <!-- <div v-if="mainData.search.results.status">status: {{ mainData.search.results.status }}</div> -->
@@ -44,7 +44,7 @@
           <div v-else>
             error
           </div>
-          <div class="cql-line">cql: {{ mainData.search.results.cql }}</div>
+          <div class="cql-line">CQL: {{ mainData.search.results.cql }}</div>
           <!-- <div>highlighted tokens: {{ mainData.search.highlights ? mainData.search.highlights.size : 'error' }}</div> -->
           <v-alert v-model="mainData.search.showInfos.utteranceClick" dense outlined type="info" dismissible class="mt-3">
             <div style="font-size: 0.9rem; line-height: 1.1rem;">To view a search result in the corresponding corpus text, click on the utterance ID in the search results</div>

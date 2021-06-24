@@ -173,7 +173,7 @@ function renderingUtterance(uObj, xmlObj, type, highlight, isSearch = false, xml
       uObj.children.forEach(c => {
         aTxt += renderingUtterance(c, xmlObj, type, highlight, isSearch, xmlIdCache, fxCache)
       })
-      if (uObj.attributes && uObj.attributes['voice:mode'] && uObj.attributes['voice:mode'] === 'spelt') {
+      if (uObj.attributes && uObj.attributes['voice:mode'] && uObj.attributes['voice:mode'] === 'spelt' && uObj.attributes['orig']) {
         aTxt += '</span>'
       }
       aTxt += renderingUtteranceAfter(uObj, xmlObj, type, isSearch, xmlIdCache, fxCache)
@@ -394,7 +394,9 @@ function renderingUtteranceAfter(uObj, xmlObj, type, isSearch, xmlIdCache, fxCac
     //   }
     //   pTxt += '_PA '
     // }
-    if (fxCache.pos) {
+    if (fxCache.pos &&
+        !(xmlObj.list[uObj.parent].tag === 'seg' && xmlObj.list[uObj.parent].children.indexOf(uObj) === xmlObj.list[uObj.parent].children.length - 1)
+      ) {
       fxCache.pos.c += pTxt
     } else {
       aTxt += pTxt

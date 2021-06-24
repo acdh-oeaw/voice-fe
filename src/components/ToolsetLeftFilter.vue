@@ -16,7 +16,7 @@
         <v-tooltip top max-width="300">
           <template v-slot:activator="{ on, attrs }"><v-icon v-bind="attrs" :color="mainData.filter.active ? 'white' : null" v-on="on">mdi-information-outline</v-icon></template>
           <div class="py-1">
-            <p class="mb-0"><b>Filter:</b> Choose corpus texts according to meta-data categories.</p>
+            <p class="mb-0"><b>Filter:</b> Choose corpus text according to meta-data categories below.</p>
             <!-- <p class="mt-1 mb-0"><b>Expert filter:</b> This feature allows to combine different filters. Note of caution: Some combinations may drastically reduce the number of corpus texts selected.</p> -->
           </div>
         </v-tooltip>
@@ -160,8 +160,12 @@
         <v-switch v-model="mainData.filter.onlyWithAudio" @change="mainData.filter.active = true" dense hide-details class="mt-0" :label="mainData.filter.onlyWithAudio ? 'On' : 'Off'"></v-switch>
       </v-card>
       <v-card class="mb-2 px-2 pb-1 inset-card-shadow">
+        <v-tooltip top max-width="300">
+          <template v-slot:activator="{ on, attrs }"><v-icon v-bind="attrs" class="fx-btn" v-on="on">mdi-information-outline</v-icon></template>
+          <div class="py-1">Select individual corpus texts in tree view.</div>
+        </v-tooltip>
         <div class="m-title">Manual selection</div>
-        <v-switch v-model="mainData.filter.manualSelect" @change="mainData.filter.active = true" dense hide-details class="mt-0" :label="mainData.filter.manualSelect ? 'On: ' + (mainData.filter.manualSelection.length > 0 ? mainData.filter.manualSelection.length + ' element' + (mainData.filter.manualSelection.length > 1 ? 's' : '') + ' selected' : 'No element selected') : 'Off'"></v-switch>
+        <v-switch v-model="mainData.filter.manualSelect" @change="mainData.filter.active = true" dense hide-details class="mt-0" :label="mainData.filter.manualSelect ? 'On: ' + (mainData.filter.manualSelection.length > 0 ? mainData.filter.manualSelection.length + ' speech event' + (mainData.filter.manualSelection.length > 1 ? 's' : '') + ' selected' : 'No element selected') : 'Off'"></v-switch>
         <div v-if="mainData.filter.manualSelect">
           <v-icon :class="'fx-tree-icon' + (mainData.filter.manualSelection.length > 0 ? '' : ' fx-icon-red') + ' mr-2'" v-if="mainData.filter.manualSelect">mdi-check-bold</v-icon>
           <span class="m-hint">Elements are selectable in <a @click="$emit('treeview')">Tree View</a>.</span>
@@ -355,5 +359,10 @@ export default {
 .no-filters {
   color: #777;
   background: #ddd;
+}
+.fx-btn {
+  position: absolute;
+  right: 0.2rem;
+  top: 0.2rem;
 }
 </style>

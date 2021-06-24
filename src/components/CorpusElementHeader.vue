@@ -20,7 +20,7 @@
               </tr>
               <tr :key="'re' + i" v-else-if="i === 'equipment'">
                 <th>Equipment:</th>
-                <td>{{ re }}</td>
+                <td>{{ typeof re === 'string' ? re.charAt(0).toLowerCase() + re.slice(1) : null }}</td>
               </tr>
               <tr :key="'re' + i" v-else-if="i === 'resps'">
                 <th>{{ re[0] === 'recording' ? 'Recorded by' : (re[0]) ? re[0] : '?' }}:</th>

@@ -7,7 +7,7 @@
       </v-tab>
       <v-tab href="#filter">
         Filter
-        <v-icon class="tree-icon" v-if="mainData.app.filterActive">mdi-exclamation-thick</v-icon>
+        <v-icon class="tree-icon" v-if="mainData.app.filterActive" title="Filters currently active.">mdi-exclamation-thick</v-icon>
       </v-tab>
       <v-tab href="#bookmarks">Bookmarks</v-tab>
     </v-tabs>

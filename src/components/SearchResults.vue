@@ -30,7 +30,7 @@
         </div>
         <div v-else-if="mainData.search.results && mainData.search.results.hits">
           <v-alert prominent type="warning" dismissible v-if="mainData.search.results.hits.length === 0">
-            Nothing found
+            Nothing found. Check query syntax.
           </v-alert>
           <v-alert prominent type="warning" dismissible v-else-if="filteredHits === 0">
             Nothing found with current filter. (Without filter: {{ mainData.search.results.u.length }} Hits)

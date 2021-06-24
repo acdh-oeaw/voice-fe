@@ -1,5 +1,31 @@
 <template>
   <div class="flex-grow-1 d-flex flex-column fill-height">
+    <div class="flex-shrink-1 fx-bb" v-if="!mainData.search.loading && mainData.search.searched && mainData.search.results && mainData.search.results.hits">
+      <template v-if="mainData.search.results.u">
+        <div class="px-3 pt-2">
+          <span :title="'unfiltered hits: ' + mainData.search.results.hits.length" class="cur-help">{{ filteredHits }}</span> hits in <span :title="'unfiltered utterances: ' + mainData.search.results.u.length" class="cur-help">{{ filteredSearchResults.length }}</span> utterances
+        </div>
+        <div class="d-flex">
+          <v-tabs v-model="mainData.search.view.type" grow height="30" class="flex-shrink-1 fx-bb border-0 mt-1">
+            <v-tab href="#voice">voice</v-tab>
+            <v-tab href="#plain">plain</v-tab>
+            <v-tab href="#pos">PoS</v-tab>
+            <v-tab href="#xml-view">XML</v-tab>
+          </v-tabs>
+          <v-checkbox
+            label="KWIC"
+            class="mx-2"
+            dense
+            hide-details
+            :disabled="mainData.search.view.type === 'xml-view'"
+            v-model="mainData.search.view.kwic"
+          ></v-checkbox>
+        </div>
+      </template>
+      <div v-else>
+        error
+      </div>
+    </div>
     <div class="scroll-content flex-grow-1">
       <div @scroll="viewareaScroll" ref="viewarea" class="px-3 py-2">
         <template v-for="(err, i) in mainData.search.errors">
@@ -35,40 +61,14 @@
           <v-alert prominent type="warning" dismissible v-else-if="filteredHits === 0">
             Nothing found with current filter. (Without filter: {{ mainData.search.results.u.length }} Hits)
           </v-alert>
+          <div class="cql-line">CQL: {{ mainData.search.results.cql }}</div>
           <!-- <div>query: {{ mainData.search.results.query }}</div> -->
           <!-- <div v-if="mainData.search.results.status">status: {{ mainData.search.results.status }}</div> -->
           <!-- <div>xmlStatus: {{ mainData.search.results.xmlStatus }}</div> -->
-          <div v-if="mainData.search.results.u">
-            <span :title="'unfiltered hits: ' + mainData.search.results.hits.length" class="cur-help">{{ filteredHits }}</span> hits in <span :title="'unfiltered utterances: ' + mainData.search.results.u.length" class="cur-help">{{ filteredSearchResults.length }}</span> utterances
-          </div>
-          <div v-else>
-            error
-          </div>
-          <div class="cql-line">CQL: {{ mainData.search.results.cql }}</div>
           <!-- <div>highlighted tokens: {{ mainData.search.highlights ? mainData.search.highlights.size : 'error' }}</div> -->
           <v-alert v-model="mainData.search.showInfos.utteranceClick" dense outlined type="info" dismissible class="mt-3">
-            <div style="font-size: 0.9rem; line-height: 1.1rem;">To view a search result in the corresponding corpus text, click on the utterance ID in the search results</div>
+            <div style="font-size: 0.9rem; line-height: 1.1rem;">To view a search result in the corresponding corpus text, click on the utterance ID in the search results.</div>
           </v-alert>
-          <div class="d-flex mt-3">
-            <v-select hide-details
-              label="Style"
-              :items="[
-                { val: 'voice', txt: 'voice' },
-                { val: 'plain', txt: 'plain' },
-                { val: 'pos', txt: 'pos' },
-                { val: 'xml-view', txt: 'xml' }
-              ]"
-              item-text="txt"
-              item-value="val"
-              v-model="mainData.search.view.type"
-            ></v-select>
-            <v-checkbox
-              label="KWIC"
-              class="ml-2"
-              :disabled="mainData.search.view.type === 'xml-view'"
-              v-model="mainData.search.view.kwic"
-            ></v-checkbox>
-          </div>
           <div v-if="mainData.search.view.type === 'pos'">
             <v-btn href="https://voice-clariah.acdh.oeaw.ac.at/wp-content/uploads/2021/04/Short-POS-tagset.pdf" target="_blank" class="mr-2 mb-3" small><v-icon class="mr-2" small>mdi-book-open-variant</v-icon> List of POS tag</v-btn>
             <v-btn href="https://voice-clariah.acdh.oeaw.ac.at/wp-content/uploads/2021/04/POS-tagging-and-lemmatization-manual.pdf" target="_blank" class="mr-2 mb-3" small><v-icon class="mr-2" small>mdi-book-open-variant</v-icon> POS tagging and lemmatization</v-btn>

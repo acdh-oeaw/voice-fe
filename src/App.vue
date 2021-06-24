@@ -403,6 +403,9 @@ export default {
   .underline {
     text-decoration: underline;
   }
+  .border-0 {
+    border: none;
+  }
   .v-main {
     position: relative;
     min-height: 500px;

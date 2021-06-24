@@ -28,7 +28,7 @@
             </v-btn>
           </template>
           <v-list>
-            <v-list-item @click="mainData.corpus.selectedElement = false; mainData.corpus.showCorpusHeader = true;">
+            <v-list-item @click="mainData.corpus.selectedElement = false; mainData.options.singleView = 'corpus'; mainData.corpus.showCorpusHeader = true;">
               <v-list-item-icon class="mr-4"><v-icon>mdi-open-in-app</v-icon></v-list-item-icon>
               <v-list-item-title>VOICE Header</v-list-item-title>
             </v-list-item>

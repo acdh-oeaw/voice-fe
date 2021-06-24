@@ -40,7 +40,7 @@
         </div>
         <div v-else-if="!mainData.search.searched">
           <div>No search done yet ...</div>
-          <div class="mt-3">
+          <!-- <div class="mt-3">
             <hr class="mb-3">
             <p><b><u>Explore the new features of VOICE 3.0 Online BETA</u></b></p>
             <p><b>Enhanced search functions</b></p>
@@ -52,7 +52,7 @@
             <p>In addition to domain and speech event type, VOICE 3.0 Online BETA offers new filter categories for selecting speech events (number of interactants/speakers, duration, number of words, etc.) and building your own subcorpus. </p>
             <p><b>New style options</b></p>
             <p>Try out the enhanced, customizable display of search results and VOICE transcripts. Have a look at our style options (voice, plain, pos, xml; kwic style for search results) and/or adapt the voice style according to your research interests by using the different 'flexi style' categories (overlaps, pauses, etc.; new: e.g. laughter, uncertain transcription). </p>
-          </div>
+          </div> -->
         </div>
         <div v-else-if="mainData.search.results && mainData.search.results.hits">
           <v-alert prominent type="warning" dismissible v-if="mainData.search.results.hits.length === 0">

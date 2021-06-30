@@ -7,25 +7,25 @@
           <v-switch v-model="mainData.bookmarks.active" dense hide-details class="mt-0" :label="mainData.bookmarks.active ? 'On' : 'Off'"></v-switch>
         </div>
         <div class="mw-50">
-          <div class="m-title">local storage</div>
+          <div class="m-title">Local storage</div>
           <v-switch v-model="mainData.bookmarks.localStorage" dense hide-details class="mt-0" :label="mainData.bookmarks.localStorage ? 'On' : 'Off'" :disabled="localStorageDisabeld"></v-switch>
         </div>
       </v-card>
-      <div class="d-flex flex-wrap mb-2">
-        <ToolsetLeftBookmarksExport :mainData="mainData" />
-        <ToolsetLeftBookmarksImport :mainData="mainData" />
-      </div>
       <v-alert dense outlined type="info" v-if="!mainData.bookmarks.active">
         Show icons to add bookmarks.
       </v-alert>
       <v-alert dense outlined type="warning" v-if="!mainData.bookmarks.localStorage && !localStorageDisabeld">
         <b>Local storage is deactivated</b>
-        <div class="sm-font">If you leave or reload this site all Bookmarks are lost.</div>
+        <div class="sm-font">If you leave or reload this page, all bookmarks will be lost.</div>
       </v-alert>
       <v-alert dense outlined type="warning" v-if="localStorageDisabeld">
         <b>Local storage not available</b>
-        <div class="sm-font">If you leave or reload this site all Bookmarks are lost.</div>
+        <div class="sm-font">If you leave or reload this page, all bookmarks will be lost.</div>
       </v-alert>
+      <div class="d-flex flex-wrap mb-2">
+        <ToolsetLeftBookmarksExport :mainData="mainData" />
+        <ToolsetLeftBookmarksImport :mainData="mainData" />
+      </div>
       <v-alert dense outlined type="info" v-if="Object.keys(mainData.bookmarks.elements).length < 1">
         No bookmarks have been added yet.
       </v-alert>

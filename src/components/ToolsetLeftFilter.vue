@@ -160,10 +160,18 @@
       <v-card class="mb-2 px-2 pb-1 inset-card-shadow">
         <v-tooltip top max-width="300">
           <template v-slot:activator="{ on, attrs }"><v-icon v-bind="attrs" class="fx-btn" v-on="on">mdi-information-outline</v-icon></template>
-          <div class="py-1">Select individual corpus texts in tree view.</div>
+          <div class="py-1">
+            Select individual corpus texts in tree view.<br>
+            <b>Attention:</b> if additional filters are selected this will reduce the number of texts.
+          </div>
         </v-tooltip>
         <div class="m-title">Manual selection</div>
-        <v-switch v-model="mainData.filter.manualSelect" @change="mainData.filter.active = true" dense hide-details class="mt-0" :label="mainData.filter.manualSelect ? 'On: ' + (mainData.filter.manualSelection.length > 0 ? mainData.filter.manualSelection.length + ' speech event' + (mainData.filter.manualSelection.length > 1 ? 's' : '') + ' selected' : 'No element selected') : 'Off'"></v-switch>
+        <v-switch
+          v-model="mainData.filter.manualSelect"
+          @change="mainData.filter.active = true"
+          dense hide-details class="mt-0"
+          :label="mainData.filter.manualSelect ? 'On: ' + (mainData.filter.manualSelection.length > 0 ? mainData.filter.manualSelection.length + ' speech event' + (mainData.filter.manualSelection.length > 1 ? 's' : '') + ' selected' : 'No element selected') : 'Off'"
+        ></v-switch>
         <div v-if="mainData.filter.manualSelect">
           <v-icon :class="'fx-tree-icon' + (mainData.filter.manualSelection.length > 0 ? '' : ' fx-icon-red') + ' mr-2'" v-if="mainData.filter.manualSelect">mdi-check-bold</v-icon>
           <span class="m-hint">Elements are selectable in <a @click="$emit('treeview')">Tree View</a>.</span>

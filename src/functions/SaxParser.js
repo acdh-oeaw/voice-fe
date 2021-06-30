@@ -331,7 +331,7 @@ function parseHeader (xmlObj) {
       if (o.tag === 'person' && xmlObj.list[o.parent].tag === 'listperson' && xmlObj.list[o.parent].attributes.type === 'not_identified' && o.tree.indexOf('particdesc') > -1) {
         data.particDesc.personNotIdentified.push(o.attributes['xml:id'].split('_')[1])
       }
-      if (o.tag === 'relation' && o.tree.indexOf('relationgrp') > -1) {
+      if (o.tag === 'relation' && o.tree.indexOf('listrelation') > -1) {
         data.particDesc.relationGrp.push({
           h: o.attributes.type ? {acquaintedness: 'Acquaintedness', power: 'Power relations'}[o.attributes.type] || o.attributes.type : '?',
           d: o.attributes.name.split('_').join(' ')

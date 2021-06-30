@@ -183,12 +183,12 @@ export default {
                 aTxt += '&lt;' + elm.attributes['voice:desc'].value + '&gt;'
               }
               // spel - before
-              if (elm.attributes && elm.attributes['spelt_orig']) {
+              if (elm.attributes && elm.attributes['voice:mode'] && elm.attributes['voice:mode'] === 'spelt') {
                 aTxt += '<span class="fx-spel"> &lt;spel&gt; </span>'
               }
               // foreign_tag - before
-              if (elm.tagName === 'foreign' && elm.attributes && elm.attributes['type'] && elm.attributes['xml:lang']) {
-                aTxt += '<span class="fx-foreign"> &lt;' + elm.attributes['type'].value + elm.attributes['xml:lang'].value + '&gt; </span>'
+              if (elm.tagName === 'foreign' && elm.attributes && elm.attributes['voice:type'] && elm.attributes['xml:lang']) {
+                aTxt += '<span class="fx-foreign"> &lt;' + elm.attributes['voice:type'].value + elm.attributes['xml:lang'].value + '&gt; </span>'
               }
               if (elm.attributes && elm.attributes['type'] && elm.attributes['type'].value === 'other_continuation') {
                 aTxt += '<span class="fx-other-continuation">=</span>'
@@ -215,8 +215,8 @@ export default {
             } else {
               if (this.aType === 'voice' && elm.tagName === 'seg' && elm.attributes && elm.attributes['type'] && elm.attributes['type'].value === 'ws' && elm.parentElement.tagName === 'unclear' && (!elm.previousElementSibling || !elm.nextElementSibling)) {
                 aTxt += ''
-              } else if (elm.attributes && elm.attributes['spelt_orig'] && elm.attributes['spelt_orig'].value) {
-                aTxt += elm.attributes['spelt_orig'].value
+              } else if (elm.attributes && elm.attributes['voice:mode'] && elm.attributes['voice:mode'] === 'spelt' && elm.attributes['orig'] && elm.attributes['orig'].value) {
+                aTxt += elm.attributes['orig'].value
               } else {
                 let aTC = elm.textContent.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
                 if (!(elm.attributes && elm.attributes['type'] && elm.attributes['type'].value === 'ws')) {
@@ -244,15 +244,15 @@ export default {
                 aTxt += '</span>'
               }
               // spel - after
-              if (elm.attributes && elm.attributes['spelt_orig']) {
+              if (elm.attributes && elm.attributes['voice:mode'] && elm.attributes['voice:mode'] === 'spelt') {
                 aTxt += '<span class="fx-spel"> &lt;/spel&gt; </span>'
               }
               // foreign_tag - after
-              if (elm.tagName === 'foreign' && elm.attributes && elm.attributes['type'] && elm.attributes['xml:lang']) {
+              if (elm.tagName === 'foreign' && elm.attributes && elm.attributes['voice:type'] && elm.attributes['xml:lang']) {
                 if (elm.attributes['voice:translation']) {
                   aTxt += '<span class="fx-foreign-t"> {' + elm.attributes['voice:translation'].value + '} </span>'
                 }
-                aTxt += '<span class="fx-foreign"> &lt;/' + elm.attributes['type'].value + elm.attributes['xml:lang'].value + '&gt; </span>'
+                aTxt += '<span class="fx-foreign"> &lt;/' + elm.attributes['voice:type'].value + elm.attributes['xml:lang'].value + '&gt; </span>'
               }
               // unintelligible - after
               if (elm.tagName === 'supplied' && elm.attributes && elm.attributes['reason'] && elm.attributes['reason'].value === 'unintelligible') {
@@ -393,7 +393,7 @@ export default {
   display: none;
 }
 
-.line-con.typ-voice >>> .tag-foreign.type-LN, .line-con.typ-voice >>> .tag-foreign.type-L1, .line-con.typ-voice >>> .tag-foreign.type-LQ {
+.line-con.typ-voice >>> .tag-foreign.voice-type-LN, .line-con.typ-voice >>> .tag-foreign.voice-type-L1, .line-con.typ-voice >>> .tag-foreign.voice-type-LQ {
   color: #b13610;
 }
 

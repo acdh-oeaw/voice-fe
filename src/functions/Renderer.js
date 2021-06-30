@@ -123,7 +123,7 @@ function renderingUtterance(uObj, xmlObj, type, highlight, isSearch = false, xml
     } else {
       let aClasses = ['tag-' + uObj.tag]
       let aId = null
-      let attrClasses = {'type': {}, 'n': { has: true }, 'voice:desc': {}, 'reason': {}, 'new': {}}
+      let attrClasses = {'type': {}, 'voice:type': {}, 'n': { has: true }, 'voice:desc': {}, 'reason': {}, 'new': {}}
       if (uObj.attributes && Object.keys(uObj.attributes).length > 0) {
         Object.keys(attrClasses).forEach(a => {
           if (uObj.attributes[a]) {
@@ -269,8 +269,8 @@ function renderingUtteranceBefore(uObj, xmlObj, type, isSearch, xmlIdCache, fxCa
         )
       ) {
         if (!(uObj.children && uObj.children.length > 0 && uObj.children[0].attributes &&
-            (uObj.children[0].attributes['part'] === 'F') ||
-            (uObj.children[0].attributes['join'] === 'left'))) {
+            ((uObj.children[0].attributes['part'] === 'F') ||
+            (uObj.children[0].attributes['join'] === 'left')))) {
           aTxt += ' '
         }
       }
@@ -337,8 +337,8 @@ function renderingUtteranceBefore(uObj, xmlObj, type, isSearch, xmlIdCache, fxCa
       aTxt += '<span class="fx-spel"> &lt;spel&gt; </span>'
     }
     // foreign_tag - before
-    if (uObj.tag === 'foreign' && uObj.attributes && uObj.attributes['type'] && uObj.attributes['xml:lang']) {
-      aTxt += '<span class="fx-foreign"> &lt;' + uObj.attributes['type'] + uObj.attributes['xml:lang'] + '&gt; </span>'
+    if (uObj.tag === 'foreign' && uObj.attributes && uObj.attributes['voice:type'] && uObj.attributes['xml:lang']) {
+      aTxt += '<span class="fx-foreign"> &lt;' + uObj.attributes['voice:type'] + uObj.attributes['xml:lang'] + '&gt; </span>'
     }
     if (uObj.attributes && uObj.attributes['type'] === 'other_continuation') {
       aTxt += '<span class="fx-other-continuation">=</span>'
@@ -433,7 +433,7 @@ function renderingUtteranceAfter(uObj, xmlObj, type, isSearch, xmlIdCache, fxCac
       aTxt += '<span class="fx-spel"> &lt;/spel&gt; </span>'
     }
     // foreign_tag - after
-    if (uObj.tag === 'foreign' && uObj.attributes && uObj.attributes['type'] && uObj.attributes['xml:lang']) {
+    if (uObj.tag === 'foreign' && uObj.attributes && uObj.attributes['voice:type'] && uObj.attributes['xml:lang']) {
       if (!uObj.children || uObj.children.length < 1 ||
         ((uObj.children[uObj.children.length - 1].tag === 'w' || uObj.children[uObj.children.length - 1].tag === 'emph') &&
           ((!uObj.children[uObj.children.length - 1].attributes['part'] && !uObj.children[uObj.children.length - 1].attributes['join']) ||
@@ -446,7 +446,7 @@ function renderingUtteranceAfter(uObj, xmlObj, type, isSearch, xmlIdCache, fxCac
       if (uObj.attributes['voice:translation']) {
         aTxt += '<span class="fx-foreign-t"> {' + uObj.attributes['voice:translation'] + '} </span>'
       }
-      aTxt += '<span class="fx-foreign">&lt;/' + uObj.attributes['type'] + uObj.attributes['xml:lang'] + '&gt;'
+      aTxt += '<span class="fx-foreign">&lt;/' + uObj.attributes['voice:type'] + uObj.attributes['xml:lang'] + '&gt;'
       let oSiblings = xmlObj.list[uObj.parent].children
       let oPos = oSiblings.indexOf(uObj)
       if (oPos === oSiblings.length - 1 || oPos === 0 ||

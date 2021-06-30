@@ -58,7 +58,7 @@
             </v-list-item>
             <v-list-item href="https://voice-clariah.acdh.oeaw.ac.at/" target="_blank">
               <v-list-item-icon class="mr-4"><v-icon>mdi-open-in-new</v-icon></v-list-item-icon>
-              <v-list-item-title>VOICE CLARIAH Homepagee</v-list-item-title>
+              <v-list-item-title>VOICE CLARIAH Homepage</v-list-item-title>
             </v-list-item>
           </v-list>
         </v-menu>

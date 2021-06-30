@@ -22,32 +22,30 @@
         </v-tooltip>
       </div>
       <v-card class="my-2 px-2 pb-1 inset-card-shadow">
-        <div class="d-flex">
-          <v-select
-            :items="itemsDomain.filter(i => !multiSelect || i.val !== null)"
-            item-text="title"
-            item-value="val"
-            label="Domain"
-            class="mb-3 mr-2"
-            hide-details
-            @change="mainData.filter.active = true"
-            v-model="mainData.filter.domain"
-            :multiple="multiSelect"
-          >
-          </v-select>
-          <v-select
-            :items="itemsSpet.filter(i => !multiSelect || i.val !== null)"
-            item-text="title"
-            item-value="val"
-            label="SPET"
-            class="mb-3 ml-2"
-            hide-details
-            @change="mainData.filter.active = true"
-            v-model="mainData.filter.spet"
-            :multiple="multiSelect"
-          >
-          </v-select>
-        </div>
+        <v-select
+          :items="itemsDomain.filter(i => !multiSelect || i.val !== null)"
+          item-text="title"
+          item-value="val"
+          label="Domain"
+          class="mb-3"
+          hide-details
+          @change="mainData.filter.active = true"
+          v-model="mainData.filter.domain"
+          :multiple="multiSelect"
+        >
+        </v-select>
+        <v-select
+          :items="itemsSpet.filter(i => !multiSelect || i.val !== null)"
+          item-text="title"
+          item-value="val"
+          label="SPET"
+          class="mb-3"
+          hide-details
+          @change="mainData.filter.active = true"
+          v-model="mainData.filter.spet"
+          :multiple="multiSelect"
+        >
+        </v-select>
         <v-select
           :items="itemsInteractants.filter(i => !multiSelect || i.val !== null)"
           item-text="title"
@@ -156,7 +154,7 @@
           :multiple="multiSelect"
         >
         </v-select>
-        <div class="m-title">With Audio File</div>
+        <div class="m-title">With audio file</div>
         <v-switch v-model="mainData.filter.onlyWithAudio" @change="mainData.filter.active = true" dense hide-details class="mt-0" :label="mainData.filter.onlyWithAudio ? 'On' : 'Off'"></v-switch>
       </v-card>
       <v-card class="mb-2 px-2 pb-1 inset-card-shadow">

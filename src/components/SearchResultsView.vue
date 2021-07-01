@@ -49,7 +49,8 @@ export default {
     'mainData': Object,
     'filteredSearchResults': Array,
     'scrollerRef': HTMLDivElement,
-    'view': String
+    'view': String,
+    'downloadSearchResults': Object
   },
   data: () => ({
     xmlObjLines: null,
@@ -76,6 +77,9 @@ export default {
     })
   },
   computed: {
+    loadList () {
+      return this.filteredSearchResults.slice(this.lastParsedLine, this.lastParsedLine + (this.downloadSearchResults ? 400 : 100)).filter(u => this.xmlObjLines[u.idx].uObj.loading).map(u => u.uId)
+    },
     searchResultsU () {
       return this.filteredSearchResults.slice(0, this.lastParsedLine + 10)
     },
@@ -249,12 +253,11 @@ export default {
     loadNext () {
       if (!this.loadingNext) {
         this.updateLastParsedLine()
-        let loadList = this.filteredSearchResults.slice(this.lastParsedLine, this.lastParsedLine + 100).filter(u => this.xmlObjLines[u.idx].uObj.loading).map(u => u.uId)
         // console.log('loadNext ->', this.loadingNext, this.lastParsedLine, JSON.parse(JSON.stringify(this.filteredSearchResults)), loadList)
-        if (loadList.length > 0) {
+        if (this.loadList.length > 0) {
           this.loadingNext = true
           this.$http
-            .get(this.mainData.apiUrl + 'xml/*/uid/' + loadList.join(';'))
+            .get(this.mainData.apiUrl + 'xml/*/uid/' + this.loadList.join(';'))
             .then((response) => {
               if (response.data && response.data.u) {
                 response.data.u.forEach(aU => {

@@ -20,6 +20,23 @@
             :disabled="mainData.search.view.type === 'xml-view'"
             v-model="mainData.search.view.kwic"
           ></v-checkbox>
+          <v-btn icon small class="mt-1 mx-1" disabled v-if="mainData.search.view.type === 'xml-view'">
+            <v-icon small>mdi-download</v-icon>
+          </v-btn>
+          <v-menu v-model="showDownloadMenue" offset-y style="max-width: 400px" v-else>
+            <template v-slot:activator="{ on, attrs }">
+              <v-btn icon small class="mt-1 mx-1" v-bind="attrs" v-on="on">
+                <v-icon small>mdi-download</v-icon>
+              </v-btn>
+            </template>
+            <v-list>
+              <v-list-item @click="downloadSearchResults = { id: 'text', txt: 'text file' }"><v-list-item-title>Text</v-list-item-title></v-list-item>
+              <!-- <v-list-item @click="downloadSearchResults = { id: 'text', txt: 'HTML file' }"><v-list-item-title>HTML</v-list-item-title></v-list-item> -->
+              <!-- <v-list-item @click="downloadSearchResults = { id: 'text', txt: 'CSV file' }"><v-list-item-title>CSV</v-list-item-title></v-list-item> -->
+              <!-- <v-list-item @click="downloadSearchResults = { id: 'text', txt: 'XLS file' }"><v-list-item-title>XLS</v-list-item-title></v-list-item> -->
+              <!-- <v-list-item @click="downloadSearchResults = { id: 'text', txt: 'XLS file with Worksheets' }"><v-list-item-title>XLS - Worksheets</v-list-item-title></v-list-item> -->
+            </v-list>
+          </v-menu>
         </div>
       </template>
       <div v-else>
@@ -77,19 +94,37 @@
             <v-btn href="https://voice-clariah.acdh.oeaw.ac.at/wp-content/uploads/2021/04/VOICE-mark-up-conventions.pdf" target="_blank" class="mr-2 mb-3" small><v-icon class="mr-2" small>mdi-book-open-variant</v-icon> Mark-Up Conventions</v-btn>
             <v-btn href="https://voice-clariah.acdh.oeaw.ac.at/wp-content/uploads/2021/04/VOICE-spelling-conventions.pdf" target="_blank" class="mr-2 mb-3" small><v-icon class="mr-2" small>mdi-book-open-variant</v-icon> Spelling Conventions</v-btn>
           </div>
-          <SearchResultsView ref="searchResultsView" @goToUtterance="goToUtterance" :mainData="mainData" :view="mainData.search.view.type" :filteredSearchResults="filteredSearchResults" :scrollerRef="$refs.viewarea" />
+          <SearchResultsView
+            ref="searchResultsView"
+            @goToUtterance="goToUtterance"
+            :mainData="mainData"
+            :view="mainData.search.view.type"
+            :filteredSearchResults="filteredSearchResults"
+            :downloadSearchResults="downloadSearchResults"
+            :scrollerRef="$refs.viewarea"
+          />
         </div>
       </div>
     </div>
     <div class="voice-switches" v-if="mainData.search.searched && mainData.search.results && mainData.search.results.u && mainData.search.view.views && mainData.search.view.views[mainData.search.view.type] && mainData.search.results && mainData.search.results.u && mainData.search.results.u.length > 0">
       <RenderSelect :mainData="mainData" :views="mainData.search.view.views" :type="mainData.search.view.type" class="d-flex flex-wrap" />
     </div>
+    <SearchResultsDownload
+      :mainData="mainData"
+      :type="downloadSearchResults"
+      :filteredSearchResults="filteredSearchResults"
+      :view="mainData.search.view.type"
+      :searchResultsView="$refs.searchResultsView"
+      @close="downloadSearchResults = null"
+      v-if="downloadSearchResults"
+    />
   </div>
 </template>
 
 <script>
 import RenderSelect from './RenderSelect';
 import SearchResultsView from './SearchResultsView';
+import SearchResultsDownload from './SearchResultsDownload';
 
 export default {
   name: 'SearchResults',
@@ -97,6 +132,8 @@ export default {
     'mainData': Object
   },
   data: () => ({
+    showDownloadMenue: false,
+    downloadSearchResults: null
   }),
   mounted () {
     if (!this.mainData.search.view.views) {
@@ -150,7 +187,8 @@ export default {
   },
   components: {
     RenderSelect,
-    SearchResultsView
+    SearchResultsView,
+    SearchResultsDownload
   }
 }
 </script>

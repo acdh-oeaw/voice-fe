@@ -55,7 +55,8 @@
     "vue-resource": "^1.5.1",
     "vue-router": "^3.5.1",
     "vue-timers": "^2.0.4",
-    "vuetify": "^2.4.4"
+    "vuetify": "^2.4.4",
+    "xlsx": "^0.17.0"
   },
   "devDependencies": {
     "@testing-library/jest-dom": "^5.13.0",

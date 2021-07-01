@@ -30,11 +30,26 @@
               </v-btn>
             </template>
             <v-list>
-              <v-list-item @click="downloadSearchResults = { id: 'text', txt: 'text file' }"><v-list-item-title>Text</v-list-item-title></v-list-item>
-              <!-- <v-list-item @click="downloadSearchResults = { id: 'text', txt: 'HTML file' }"><v-list-item-title>HTML</v-list-item-title></v-list-item> -->
-              <!-- <v-list-item @click="downloadSearchResults = { id: 'text', txt: 'CSV file' }"><v-list-item-title>CSV</v-list-item-title></v-list-item> -->
-              <!-- <v-list-item @click="downloadSearchResults = { id: 'text', txt: 'XLS file' }"><v-list-item-title>XLS</v-list-item-title></v-list-item> -->
-              <!-- <v-list-item @click="downloadSearchResults = { id: 'text', txt: 'XLS file with Worksheets' }"><v-list-item-title>XLS - Worksheets</v-list-item-title></v-list-item> -->
+              <v-list-item @click="downloadSearchResults = { id: 'text', txt: 'text file' }" :disabled="mainData.search.view.kwic">
+                <v-list-item-icon class="mr-4"><v-icon>mdi-text-box-outline</v-icon></v-list-item-icon>
+                <v-list-item-title>Text</v-list-item-title>
+              </v-list-item>
+              <!-- <v-list-item @click="downloadSearchResults = { id: 'html', txt: 'HTML file' }">
+                <v-list-item-icon class="mr-4"><v-icon>mdi-language-html5</v-icon></v-list-item-icon>
+                <v-list-item-title>HTML</v-list-item-title>
+              </v-list-item> -->
+              <!-- <v-list-item @click="downloadSearchResults = { id: 'csv', txt: 'CSV file' }">
+                <v-list-item-icon class="mr-4"><v-icon>mdi-file-delimited-outline</v-icon></v-list-item-icon>
+                <v-list-item-title>CSV</v-list-item-title>
+              </v-list-item> -->
+              <!-- <v-list-item @click="downloadSearchResults = { id: 'xls', txt: 'XLS file' }">
+                <v-list-item-icon class="mr-4"><v-icon>mdi-microsoft-excel</v-icon></v-list-item-icon>
+                <v-list-item-title>XLS</v-list-item-title>
+              </v-list-item> -->
+              <!-- <v-list-item @click="downloadSearchResults = { id: 'xlsWS', txt: 'XLS file with Worksheets' }">
+                <v-list-item-icon class="mr-4"><v-icon>mdi-microsoft-excel</v-icon></v-list-item-icon>
+                <v-list-item-title>XLS - Worksheets</v-list-item-title>
+              </v-list-item> -->
             </v-list>
           </v-menu>
         </div>

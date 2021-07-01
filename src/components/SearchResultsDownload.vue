@@ -14,15 +14,22 @@
         </template>
         <template v-else-if="status === 1">
           Rendering {{ view.toUpperCase() }} style for {{ type.txt }} ...
+          <v-progress-linear
+            v-model="rProgress"
+            color="white"
+            style="background-color: #005eb6 !important;"
+            class="mt-3"
+          ></v-progress-linear>
         </template>
         <v-btn @click="open = false" color="accent" class="w-100 mt-3">Abort</v-btn>
-        <div class="mt-3"><b>HCB:</b> Ist noch nicht fertig!</div>
       </v-card-text>
     </v-card>
   </v-dialog>
 </template>
 
 <script>
+import exporter from '../functions/Exporter'
+
 export default {
   name: 'SearchResultsDownload',
   props: {
@@ -34,7 +41,8 @@ export default {
   },
   data: () => ({
     status: 0,
-    open: true
+    open: true,
+    rProgress: 0
   }),
   mounted () {
     console.log('SearchResultsDownload', this.mainData, this.searchResultsView)
@@ -63,6 +71,19 @@ export default {
       }
       if (this.status === 0 && !this.searchResultsView.loadingNext && this.searchResultsView.loadList.length === 0) {
         this.status = 1
+        this.$nextTick(() => {
+          exporter.saveSearchResult(
+            this.searchResultsView.xmlObjLines,
+            this.view,
+            this.type,
+            {
+              version: 'Versions: FE ' + this.mainData.version + ' - API ' + this.mainData.apiVersion,
+              addText: 'search: ' + this.mainData.search.results.query.q + '\ncql: ' + this.mainData.search.results.cql
+            },
+            (p) => { this.rProgress = p },
+            () => { this.open = false }
+          )
+        })
       }
     }
   },

@@ -6,6 +6,8 @@ const localFunctions = {
     let mainData = {
       app: null,
       apiUrl: process.env.VUE_APP_API_URL,
+      apiVersion: '?',
+      version: '?',
       filter: {
         active: false,
         manualSelect: false,

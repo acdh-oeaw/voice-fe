@@ -111,8 +111,8 @@
       <v-container class="py-0 px-2 text-right">
         <div class="d-flex justify-space-between">
           <div>
-            <v-chip class="mx-1 mb-1" label link small href="/dependency-license-report.html" target="_blank">Version: {{ version }}</v-chip>
-            <v-chip class="mx-1 mb-1" label small>API: {{ apiVersion }}</v-chip>
+            <v-chip class="mx-1 mb-1" label link small href="/dependency-license-report.html" target="_blank">Version: {{ mainData.version }}</v-chip>
+            <v-chip class="mx-1 mb-1" label small>API: {{ mainData.apiVersion }}</v-chip>
           </div>
           <div>
             <v-chip class="mx-1 mb-1" label link small v-on:click="revokeCookieAndTrackingConsent" v-if="userOptedTracking" data-testid="revokeTracking">Stop tracking me</v-chip>
@@ -135,8 +135,6 @@ export default {
     loading: false,
     publicPath: process.env.BASE_URL,
     dev: process.env.NODE_ENV === 'development',
-    version: process.env.VUE_APP_VERSION,
-    apiVersion: '?',
     branch: process.env.VUE_APP_BRANCH,
     mainData: mainDataFunc.initMainData(),
     userOptedTracking: true,
@@ -147,6 +145,10 @@ export default {
     this.loadCorpus()
     window.addEventListener('resize', this.resized)
     this.mainData.app = this
+    this.mainData.version = process.env.VUE_APP_VERSION
+    if (this.mainData.version.charAt(0) === 'v') {
+      this.mainData.version = this.mainData.version.substring(1)
+    }
     bookmarks.loadBookmarkStore(this, this.mainData.bookmarks)
   },
   beforeDestroy () {
@@ -164,7 +166,7 @@ export default {
       this.$http
         .get(this.mainData.apiUrl)
         .then((response) => {
-          this.apiVersion = response.bodyText
+          this.mainData.apiVersion = response.bodyText
         })
         .catch((err) => {
           console.log(err)

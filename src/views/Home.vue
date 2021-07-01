@@ -18,11 +18,10 @@
       </div>
     </div>
     <div class="text-center py-10 indigo lighten-5" v-else>
-      <h3 class="text-h5 font-weight-bold">VOICE-CLARIAH needs your help to improve</h3>
-      <p>This project uses <b>website tracking and cookies</b> to collect statistical infomation about our users.<br/>
+      <h3 class="text-h5 font-weight-bold">COOKIES</h3>
+      <p>This project uses <b>website tracking and cookies</b> to collect statistical information about our users.<br/>
       This information is only used to enhance the user experience. The information is not shared with any third party.<br/>
-      We need your consent to gather this information.<br/>
-      Knowing how you use our website is especially valuable for our beta phase.</p>
+      We need your consent to gather this information.</p>
       <p>You can find more information in the "Data privacy notice" of our "Site Notice".</p>
       <v-btn color="indigo darken-4 white--text" v-bind:x-large="true" v-on:click="cookiesAndTrackingAccepted" data-testid="acceptTracking">I accept</v-btn><br/><br/>
       <v-btn color="indigo darken-4 white--text" v-bind:small="true" v-on:click="cookiesAndTrackingRejected" data-testid="rejectTracking">I dont't want this</v-btn>

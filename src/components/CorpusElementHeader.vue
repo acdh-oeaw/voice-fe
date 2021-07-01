@@ -20,7 +20,7 @@
               </tr>
               <tr :key="'re' + i" v-else-if="i === 'equipment'">
                 <th>Equipment:</th>
-                <td>{{ typeof re === 'string' ? re.charAt(0).toLowerCase() + re.slice(1) : null }}</td>
+                <td>{{ typeof re === 'string' ? re.charAt(0).toLowerCase() + re.slice(1) : '' }}</td>
               </tr>
               <tr :key="'re' + i" v-else-if="i === 'resps'">
                 <th>{{ re[0] === 'recording' ? 'Recorded by' : (re[0]) ? re[0] : '?' }}:</th>
@@ -55,11 +55,11 @@
             </tr>
             <tr v-if="element.headerObj.data.settingDesc.locale">
               <th>Locale:</th>
-              <td>{{ element.headerObj.data.settingDesc.locale }}</td>
+              <td>{{ typeof element.headerObj.data.settingDesc.locale === 'string' ? element.headerObj.data.settingDesc.locale.charAt(0).toLowerCase() + element.headerObj.data.settingDesc.locale.slice(1) : '' }}</td>
             </tr>
             <tr v-if="element.headerObj.data.settingDesc.activity">
               <th>Activity:</th>
-              <td>{{ element.headerObj.data.settingDesc.activity }}</td>
+              <td>{{ typeof element.headerObj.data.settingDesc.activity === 'string' ? element.headerObj.data.settingDesc.activity.charAt(0).toLowerCase() + element.headerObj.data.settingDesc.activity.slice(1) : '' }}</td>
             </tr>
           </tbody>
         </table>

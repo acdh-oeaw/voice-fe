@@ -13,7 +13,7 @@
           ></v-progress-linear>
         </template>
         <template v-else-if="status === 1">
-          Rendering {{ view.toUpperCase() }} style for {{ type.txt }} ...
+          Rendering {{ view.type.toUpperCase() }} style for {{ type.txt }} ...
           <v-progress-linear
             v-model="rProgress"
             color="white"
@@ -37,7 +37,7 @@ export default {
     'type': Object,
     'filteredSearchResults': Array,
     'searchResultsView': Object,
-    'view': String
+    'view': Object
   },
   data: () => ({
     status: 0,
@@ -74,12 +74,14 @@ export default {
         this.$nextTick(() => {
           exporter.saveSearchResult(
             this.searchResultsView.xmlObjLines,
+            this.filteredSearchResults,
             this.view,
             this.type,
             {
-              version: 'Versions: FE ' + this.mainData.version + ' - API ' + this.mainData.apiVersion,
+              version: 'Versions: FE ' + this.mainData.version + ' - API: ' + this.mainData.apiVersion,
               addText: 'search: ' + this.mainData.search.results.query.q + '\ncql: ' + this.mainData.search.results.cql
             },
+            this.mainData.search.highlights,
             (p) => { this.rProgress = p },
             () => { this.open = false }
           )

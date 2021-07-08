@@ -94,13 +94,8 @@ function exportUtterancesList (xmlObjLines, filteredSearchResults, view, type, f
       aExportText += txtMinLen(u.uId + ': ', minLen + 2) + txtMinLen((u.uObj.obj.attributes && u.uObj.obj.attributes.who ? u.uObj.obj.attributes.who.split('_').slice(-1)[0] : '') + ': ', 7) + u.text + '\n'
     })
     // console.log('text', { aExportText })
-    let blob = new Blob([aExportText], { type: "text/plain;charset=utf-8" })
-    const a = document.createElement('a')
-    a.href= URL.createObjectURL(blob)
-    a.download = aFilename + '.txt'
-    a.click()
     if (doneFunction) {
-      doneFunction(true)
+      doneFunction(aExportText, 'text/plain;charset=utf-8', 'txt', aFilename)
     }
   } else if (type.id === 'xls' || type.id === 'xlsWS' || type.id === 'csv') {
     var aFileType = type.id === 'csv' ? 'csv' : 'xlsx'
@@ -186,20 +181,17 @@ function exportUtterancesList (xmlObjLines, filteredSearchResults, view, type, f
   }
 }
 
-function saveTable (fileType, aFileType, aFilename, doneFunction, buffer) {
+function saveTable (mimeType, aFileType, aFilename, doneFunction, buffer) {
   if (buffer) {
     // console.log(buffer)
-    let blob = new Blob([buffer], {type: fileType})
-    const a = document.createElement('a')
-    a.href= URL.createObjectURL(blob)
-    a.download = aFilename + '.' + aFileType
-    a.click()  
+    doneFunction(buffer, mimeType, aFileType, aFilename)
   } else {
     alert('Error on creating file!')
+    if (doneFunction) {
+      doneFunction(false)
+    }
   }
-  if (doneFunction) {
-    doneFunction(true)
-  }
+
 }
 
 function addWs (wb, aSheet, view, filteredSearchResults) {

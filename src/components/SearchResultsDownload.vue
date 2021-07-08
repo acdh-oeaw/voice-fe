@@ -86,10 +86,20 @@ export default {
             },
             this.mainData.search.highlights,
             (p) => { this.rProgress = p },
-            () => { this.open = false }
+            this.saveFile
           )
         })
       }
+    },
+    saveFile (data, mimeType, fileExtension, filename) {
+      if (data) {
+        let blob = new Blob([data], {type: mimeType})
+        const a = document.createElement('a')
+        a.href= URL.createObjectURL(blob)
+        a.download = filename + '.' + fileExtension
+        a.click()  
+      }
+      this.open = false
     }
   },
   watch: {

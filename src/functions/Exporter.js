@@ -168,12 +168,12 @@ function exportUtterancesList (xmlObjLines, filteredSearchResults, view, type, f
             if (cVal instanceof Date) {
               cVal = cVal.toLocaleString('en-US')
             }
-            cVal = cVal === null || c === undefined ? '' : c.toString()
+            cVal = cVal === null || cVal === undefined ? '' : cVal.toString()
             cVal = cVal.replace(/"/g, '""')
             if (cVal.search(/("|;|\n)/g) >= 0) {
               cVal = '"' + cVal + '"'
             }
-            cOut.push(c.value)
+            cOut.push(cVal)
           })
           out += cOut.join(';') + '\n'
         })

@@ -79,7 +79,10 @@ export default {
             this.type,
             {
               version: 'Versions: FE ' + this.mainData.version + ' - API: ' + this.mainData.apiVersion,
-              addText: 'search: ' + this.mainData.search.results.query.q + '\ncql: ' + this.mainData.search.results.cql
+              addText: 'search: ' + this.mainData.search.results.query.q + '\n' +
+                       'cql: ' + this.mainData.search.results.cql + '\n' +
+                       this.filteredSearchResults.reduce((a, c) => a + (c.hits.length || 0), 0) + ' hits in ' + this.filteredSearchResults.length + ' utterances' +
+                       (this.mainData.app.filterActive ? '\nfilter active!' : '')
             },
             this.mainData.search.highlights,
             (p) => { this.rProgress = p },

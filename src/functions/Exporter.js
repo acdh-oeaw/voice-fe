@@ -1,5 +1,6 @@
 import renderer from './Renderer'
-const XLSX = require('xlsx')
+// const XLSX = require('xlsx')
+const ExcelJS = require('exceljs');
 
 const localFunctions = {
   saveSearchResult (xmlObjLines, filteredSearchResults, view, type, fxText, highlights, progressFunction = null, doneFunction = null) {
@@ -36,7 +37,7 @@ function renderExportUtterances (xmlObjLines, filteredSearchResults, view, type,
             let kwicText = (kwicHtml.textContent || kwicHtml.innerText || '').trim().replace(/ +(?= )/g, '')
             kwicHtml.innerHTML = '###startKwic###' + kwicHtml.innerHTML + '###endKwic###'
             let lKwicText = (kwicHtmlTmp.textContent || kwicHtmlTmp.innerText || '').trim().replace(/ +(?= )/g, '')
-            console.log('s_' + uHit[0], kwicText, kwicHtml, kwicHtmlTmp)
+            // console.log('s_' + uHit[0], kwicText, kwicHtml, kwicHtmlTmp)
             uList.push({
               uId: aU.uId,
               html: lHtml,
@@ -57,7 +58,7 @@ function renderExportUtterances (xmlObjLines, filteredSearchResults, view, type,
         }
       }
     })
-    console.log(uList)
+    // console.log(uList)
     if (progressFunction) {
       setTimeout(() => { renderExportUtterances(xmlObjLines, filteredSearchResults, view, type, fxText, highlights, progressFunction, doneFunction, uList, uListPos) }, 10)
     }
@@ -104,74 +105,102 @@ function exportUtterancesList (xmlObjLines, filteredSearchResults, view, type, f
   } else if (type.id === 'xls' || type.id === 'xlsWS' || type.id === 'csv') {
     var aFileType = type.id === 'csv' ? 'csv' : 'xlsx'
     // console.log('xls', aHeader, aDateTime, aFilename, fxText, highlights, view)
-    var wb = XLSX.utils.book_new()
-    wb.Props = {
-      Title: aHeader,
-      Subject: fxText ? fxText.addText.replace('\n', ' - ') : '',
-      Author: aHeader,
-      CreatedDate: new Date()
-    }
+    const wb = new ExcelJS.Workbook()
+    wb.title = aHeader
+    wb.subject = fxText ? fxText.addText.replace('\n', ' - ') : ''
+    wb.creator = aHeader
+    wb.created = new Date()
     var ws
     let aSheet = 'Overview'
-    wb.SheetNames.push(aSheet)
-    var ws_data = [[aHeader]]
+    ws = addWs(wb, aSheet, view, filteredSearchResults)
+    ws.addRow([aHeader])
     if (fxText && fxText.version) {
       fxText.version.split('\n').forEach(v => {
-        ws_data.push([v.trim()])
+        ws.addRow([v.trim()])
       })
     }
     if (fxText && fxText.addText) {
       fxText.addText.split('\n').forEach(v => {
-        ws_data.push([v.trim()])
+        ws.addRow([v.trim()])
       })
     }
-    ws_data.push([aDateTime])
-    ws_data.push([])
+    ws.addRow([aDateTime])
+    ws.addRow()
     let dg = 0
     uList.forEach(u => {
       if (type.id === 'xlsWS' && aSheet !== u.uId.split('_u_')[0]) {
-        ws = XLSX.utils.aoa_to_sheet(ws_data)
-        colWidths(ws, view, filteredSearchResults)
-        wb.Sheets[aSheet] = ws
         aSheet = u.uId.split('_u_')[0]
-        wb.SheetNames.push(aSheet)
-        ws_data = []
+        ws = addWs(wb, aSheet, view, filteredSearchResults)
         dg = 0
       }
       if (dg === 0) {
         if (view.kwic && filteredSearchResults) {
-          ws_data.push(['nr', 'utterance ID', 'speaker', 'left text', 'kwic', 'right text'])
+          let aRow = ws.addRow(['nr', 'utterance ID', 'speaker', 'left text', 'kwic', 'right text'])
+          aRow.style = { font: { bold: true } }
+          aRow.border = { bottom: { style: 'medium' } }
+          aRow.eachCell(c => {
+            c.style = { font: { bold: true } }
+            c.border = { bottom: { style: 'medium' } }
+          })
         } else {
-          ws_data.push(['nr', 'utterance ID', 'speaker', 'text'])
+          ws.addRow(['nr', 'utterance ID', 'speaker', 'text'])
         }
       }
       let aSpeaker = u.uObj.obj.attributes && u.uObj.obj.attributes.who ? u.uObj.obj.attributes.who.split('_').slice(-1)[0] : ''
       if (view.kwic && filteredSearchResults) {
-        ws_data.push([dg + 1, u.uId, aSpeaker, u.leftText.replace('\n', ' ').trim(), u.kwicText.replace('\n', ' ').trim(), u.rightText.replace('\n', ' ').trim()])
+        ws.addRow([dg + 1, u.uId, aSpeaker, u.leftText.replace('\n', ' ').trim(), u.kwicText.replace('\n', ' ').trim(), u.rightText.replace('\n', ' ').trim()])
       } else {
-        ws_data.push([dg + 1, u.uId, aSpeaker, u.text.replace('\n', ' ').trim()])
+        ws.addRow([dg + 1, u.uId, aSpeaker, u.text.replace('\n', ' ').trim()])
       }
       dg++
     })
     // console.log(uList)
-    ws = XLSX.utils.aoa_to_sheet(ws_data)
-    colWidths(ws, view, filteredSearchResults)
-    wb.Sheets[aSheet] = ws
-    XLSX.writeFile(wb, aFilename + '.' + aFileType, {bookType: aFileType, type: 'binary', FS: ';'})
-    if (doneFunction) {
-      doneFunction(true)
+    if (aFileType === 'xlsx') {
+      wb.xlsx.writeBuffer().then(saveTable.bind(null, 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet', aFileType, aFilename, doneFunction))
+    } else if (aFileType === 'csv') {
+      wb.csv.writeBuffer({ formatterOptions: {} }).then(saveTable.bind(null, 'text/csv', aFileType, aFilename, doneFunction))
     }
   } else {
     console.log('unknown export type', type.id, type)
   }
 }
 
-function colWidths (ws, view, filteredSearchResults) {
-  if (view.kwic && filteredSearchResults) {
-    ws['!cols'] = [{wpx: 50}, {wpx: 150}, {wpx: 50}, {wpx: 300}, {wpx: 100}, {wpx: 300}]
+function saveTable (fileType, aFileType, aFilename, doneFunction, buffer) {
+  if (buffer) {
+    // console.log(buffer)
+    let blob = new Blob([buffer], {type: fileType})
+    const a = document.createElement('a')
+    a.href= URL.createObjectURL(blob)
+    a.download = aFilename + '.' + aFileType
+    a.click()  
   } else {
-    ws['!cols'] = [{wpx: 50}, {wpx: 150}, {wpx: 50}, {wpx: 700}]
+    alert('Error on creating file!')
   }
+  if (doneFunction) {
+    doneFunction(true)
+  }
+}
+
+function addWs (wb, aSheet, view, filteredSearchResults) {
+  let ws = wb.addWorksheet(aSheet)
+  if (view.kwic && filteredSearchResults) {
+    ws.columns = [
+      { key: 'nr', width: 5 },
+      { key: 'uId', width: 15 },
+      { key: 'speaker', width: 10 },
+      { key: 'ltext', width: 120, style: { alignment: { horizontal: 'right' } } },
+      { key: 'kwic', width: 20, style: { alignment: { horizontal: 'center' } } },
+      { key: 'rtext', width: 120 }
+    ]
+  } else {
+    ws.columns = [
+      { key: 'nr', width: 5 },
+      { key: 'uId', width: 15 },
+      { key: 'speaker', width: 10 },
+      { key: 'text', width: 260 }
+    ]
+  }
+  return ws
 }
 
 function txtMinLen (txt, len) {

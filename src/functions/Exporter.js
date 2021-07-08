@@ -158,7 +158,28 @@ function exportUtterancesList (xmlObjLines, filteredSearchResults, view, type, f
     if (aFileType === 'xlsx') {
       wb.xlsx.writeBuffer().then(saveTable.bind(null, 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet', aFileType, aFilename, doneFunction))
     } else if (aFileType === 'csv') {
-      wb.csv.writeBuffer({ formatterOptions: {} }).then(saveTable.bind(null, 'text/csv', aFileType, aFilename, doneFunction))
+      // wb.csv.writeBuffer({ formatterOptions: {} }).then(saveTable.bind(null, 'text/csv', aFileType, aFilename, doneFunction))
+      let out = ''
+      wb.eachSheet(s => {
+        s.eachRow(r => {
+          let cOut = []
+          r.eachCell(c => {
+            let cVal = c
+            if (cVal instanceof Date) {
+              cVal = cVal.toLocaleString('en-US')
+            }
+            cVal = cVal === null || c === undefined ? '' : c.toString()
+            cVal = cVal.replace(/"/g, '""')
+            if (cVal.search(/("|;|\n)/g) >= 0) {
+              cVal = '"' + cVal + '"'
+            }
+            cOut.push(c.value)
+          })
+          out += cOut.join(';') + '\n'
+        })
+        out += '\n'
+      })
+      saveTable('text/csv;charset=utf-8', aFileType, aFilename, doneFunction, out)
     }
   } else {
     console.log('unknown export type', type.id, type)

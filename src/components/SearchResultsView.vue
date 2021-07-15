@@ -413,18 +413,4 @@ export default {
   padding: 0 3px;
 }
 
-/********/
-/* kwic */
-/********/
-.kwic-frm, .kwic-prev {
-  position: relative;
-  overflow: hidden;
-  width: 100%;
-}
-.kwic-frm > .line-con, .kwic-prev {
-  position: relative;
-  left: 0px;
-  white-space: nowrap;
-}
-
 </style>

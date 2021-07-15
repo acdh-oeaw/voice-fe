@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en" style="font-size: 16px;">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title><!--Title--></title>
+    <style>
+      /*CSS*/
+      .line-frm {
+        border-top: 1px solid #ddd;
+        padding: 2px 0.5rem;
+        display: -webkit-box !important;
+        display: -ms-flexbox !important;
+        display: flex !important;
+      }
+      .line-frm:last-child {
+        border-bottom: 1px solid #ddd;
+      }
+      .line-document {
+        background: #eee;
+        margin: -2px -0.5rem -1px -0.5rem;
+        padding: 0 0.5rem 0 0.5rem;
+        font-weight: bold;
+      }
+      .line-nr {
+        min-width: 3rem;
+        padding-right: 0.5rem;
+      }
+      .line-uid {
+        min-width: 8.5rem;
+        padding-right: 0.5rem;
+      }
+      .line-speaker {
+        min-width: 4rem;
+        font-weight: bold;
+        padding-right: 0.5rem;
+      }
+      .kwic-frm {
+        position: relative;
+        overflow: hidden;
+        width: 100%;
+        -webkit-box-flex: 1 !important;
+        -ms-flex-positive: 1 !important;
+        flex-grow: 1 !important;
+        white-space: nowrap;
+      }
+      .kwic-frm > .line-con {
+        display: inline-block;
+      }
+    </style>
+  </head>
+  <body style="font-family: 'Roboto', sans-serif; line-height: 1.5;">
+    <div style="padding: 1rem;">
+      <div style="margin-bottom: 2rem;">
+        <!--Header-->
+      </div>
+      <div>
+        <!--RenderLines-->
+      </div>
+    </div>
+    <!--KwicScriptStart-->
+    <script>
+      console.log('KwicScript');
+      function kwicPos() {
+        document.querySelectorAll('.kwic-frm').forEach(kf => {
+          if (kf.firstElementChild) {
+            kf.firstElementChild.style['margin-left'] = '0px';
+            let kwicElement = document.getElementById(kf.dataset.kwic);
+            if (kwicElement) {
+              kf.firstElementChild.style['margin-left'] = parseInt(((kf.offsetWidth) / 2) - (kwicElement.offsetLeft + (kwicElement.offsetWidth / 2))) + 'px';
+            }
+          }
+        });
+      }
+      window.onresize = kwicPos;
+      kwicPos();
+    </script>
+    <!--KwicScriptEnd-->
+  </body>
+</html>

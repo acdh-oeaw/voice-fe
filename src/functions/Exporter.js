@@ -1,4 +1,6 @@
 import renderer from './Renderer'
+import htmlCss from '!!raw-loader!../assets/css/RenderLine.css'
+import htmlTemplate from '!!raw-loader!../assets/html/HtmlTemplate.html'
 // const XLSX = require('xlsx')
 const ExcelJS = require('exceljs');
 
@@ -45,6 +47,7 @@ function renderExportUtterances (xmlObjLines, filteredSearchResults, view, type,
               leftText: lKwicText.substr(0, lKwicText.indexOf('###startKwic###')),
               kwicText: kwicText,
               rightText: lKwicText.substr(lKwicText.indexOf('###endKwic###') + 13),
+              kwicSelector: 's_' + uHit[0],
               uObj: aU.uObj
             })
           })
@@ -175,6 +178,68 @@ function exportUtterancesList (xmlObjLines, filteredSearchResults, view, type, f
         out += '\n'
       })
       saveTable('text/csv;charset=utf-8', aFileType, aFilename, doneFunction, out)
+    }
+  } else if (type.id === 'html') {
+    let aOut = htmlTemplate
+    aOut = aOut.replace('/*CSS*/', htmlCss)
+    aOut = aOut.replace('<!--Title-->', aHeader + (fxText ? ' - ' + fxText.addText.replace('\n', ' - ') : '') + ' - ' + aDateTime)
+    // console.log({x: aOut})
+    let aExportText = ''
+    aExportText += '<h1 style="margin: 0;">' + aHeader + '</h1>\n'
+    if (fxText && fxText.version) {
+      aExportText += '<div style="font-size: 0.8rem;">' + fxText.version.replace('\n', '<br>\n') + '</div>\n'
+    }
+    if (fxText && fxText.addText) {
+      aExportText += fxText.addText.replace('\n', '<br>\n') + '<br>\n'
+    }
+    aExportText += aDateTime + '<br>'
+    aOut = aOut.replace('<!--Header-->', aExportText)
+    let aClasses = 'line-con typ-' + view.type
+    Object.keys(view.views).some(v => {
+      if (view.type === v) {
+        Object.keys(view.views[v]).forEach(vo => {
+          if (view.views[v][vo].val) {
+            aClasses += ' s-' + vo.toLowerCase()
+          }
+        })
+        return true
+      }
+    })
+    let aRenderLines = ''
+    let lXmlId = ''
+    let luId = ''
+    if (filteredSearchResults && view.kwic) {
+      aOut = aOut.replace('<!--KwicScriptStart-->', '')
+      aOut = aOut.replace('<!--KwicScriptEnd-->', '')
+    } else {
+      aOut = aOut.replace(/<!--KwicScriptStart-->(.|\r|\n)*<!--KwicScriptEnd-->/gm, '')
+    }
+    uList.forEach(u => {
+      if (filteredSearchResults && lXmlId !== u.uId.split('_u_')[0]) {
+        aRenderLines += '<div class="line-document">' + u.uId.split('_u_')[0] + '</div>'
+      }
+      aRenderLines += '<div class="line-frm">'
+      if (filteredSearchResults) {
+        aRenderLines += '<div class="line-uid">' + (luId !== u.uId ? u.uId.split('_u_').join(':') : '') + '</div>'
+      } else {
+        aRenderLines += '<div class="line-nr">' + u.uId.split('_u_')[1] + '</div>'
+      }
+      aRenderLines += '<div class="line-speaker">' + (luId !== u.uId && u.uObj.obj.attributes && u.uObj.obj.attributes.who ? u.uObj.obj.attributes.who.split('_').slice(-1)[0] : '') + '</div>'
+      if (filteredSearchResults && view.kwic) {
+        aRenderLines += '<div class="kwic-frm" data-kwic="' + u.kwicSelector + '">'
+      }
+      aRenderLines += '<div class="rl-lc ' + aClasses + '">' + u.html.trim() + '</div>\n'
+      if (filteredSearchResults && view.kwic) {
+        aRenderLines += '</div>'
+      }
+      aRenderLines += '</div>'
+      luId = u.uId
+      lXmlId = u.uId.split('_u_')[0]
+    })
+    aOut = aOut.replace('<!--RenderLines-->', aRenderLines)
+    // console.log('html', aOut, view.type)
+    if (doneFunction) {
+      doneFunction(aOut, 'text/html;charset=utf-8', 'html', aFilename)
     }
   } else {
     console.log('unknown export type', type.id, type)

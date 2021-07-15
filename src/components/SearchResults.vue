@@ -25,7 +25,7 @@
           </v-btn>
           <v-menu v-model="showDownloadMenue" offset-y style="max-width: 400px" v-else>
             <template v-slot:activator="{ on, attrs }">
-              <v-btn icon small class="mt-1 mx-1" v-bind="attrs" v-on="on">
+              <v-btn icon small class="mt-1 mx-1" title="Download search results" color="#125" v-bind="attrs" v-on="on">
                 <v-icon small>mdi-download</v-icon>
               </v-btn>
             </template>

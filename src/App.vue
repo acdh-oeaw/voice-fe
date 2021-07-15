@@ -23,7 +23,7 @@
         <v-menu offset-y>
           <template v-slot:activator="{ on, attrs }">
             <v-btn text small v-bind="attrs" v-on="on" color="#125">
-              <v-icon class="mr-2">mdi-book-open-variant</v-icon>
+              <v-icon class="mr-2" style="top: -2px;">mdi-book-open-variant</v-icon>
               Corpus information
             </v-btn>
           </template>

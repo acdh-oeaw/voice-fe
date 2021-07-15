@@ -27,7 +27,7 @@ function renderExportUtterances (xmlObjLines, filteredSearchResults, view, type,
     }
     aLines.forEach(aU => {
       if (!filteredSearchResults || filteredSearchResults.filter(x => x.uId === aU.uId).length > 0) {
-        let lHtml = renderer.renderUtterance(aU.uObj.obj, {...aU.uObj, xml: aU.uObj.obj.xml}, view.type, highlights, true)
+        let lHtml = renderer.renderUtterance(aU.uObj.obj, {...aU.uObj, xml: aU.uObj.obj.xml}, view.type, highlights, filteredSearchResults ? true : false)
         htmlTmp.innerHTML = lHtml
         let lTxt = (htmlTmp.textContent || htmlTmp.innerText || '').trim().replace(/ +(?= )/g, '')
         if (view.kwic && filteredSearchResults) {
@@ -80,7 +80,7 @@ function exportUtterancesList (xmlObjLines, filteredSearchResults, view, type, f
   let aHeader = 'VOICE 3.0'
   let aTime = new Date()
   let aDateTime = aTime.toLocaleString('en-US')
-  let aFilename = 'voice-search_' + aTime.getFullYear() + '-' + ('0' + aTime.getMonth()).slice(-2) + '-' + ('0' + aTime.getDay()).slice(-2) + '_' + ('0' + aTime.getHours()).slice(-2) + '-' + ('0' + aTime.getMinutes()).slice(-2) + '-' + ('0' + aTime.getSeconds()).slice(-2)
+  let aFilename = 'voice' + (fxText && fxText.fileFx ? '-' + fxText.fileFx : '') + '_' + aTime.getFullYear() + '-' + ('0' + aTime.getMonth()).slice(-2) + '-' + ('0' + aTime.getDay()).slice(-2) + '_' + ('0' + aTime.getHours()).slice(-2) + '-' + ('0' + aTime.getMinutes()).slice(-2) + '-' + ('0' + aTime.getSeconds()).slice(-2)
   if (type.id === 'text') {
     let aExportText = ''
     aExportText += aHeader + '\n'

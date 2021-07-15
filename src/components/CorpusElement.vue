@@ -1,13 +1,49 @@
 <template>
   <div class="flex-grow-1 d-flex flex-column fill-height">
     <div class="flex-grow-1 d-flex flex-column fill-height">
-      <v-tabs v-model="vTab" grow height="30" class="flex-shrink-1 fx-bb" v-if="aElement">
-        <v-tab href="#textheader">Text Header</v-tab>
-        <v-tab href="#voice">voice</v-tab>
-        <v-tab href="#plain">plain</v-tab>
-        <v-tab href="#pos">PoS</v-tab>
-        <v-tab href="#xml">XML</v-tab>
-      </v-tabs>
+      <div class="d-flex fx-bb" v-if="aElement">
+        <v-tabs v-model="vTab" grow height="30" class="flex-shrink-1">
+          <v-tab href="#textheader">Text Header</v-tab>
+          <v-tab href="#voice">voice</v-tab>
+          <v-tab href="#plain">plain</v-tab>
+          <v-tab href="#pos">PoS</v-tab>
+          <v-tab href="#xml">XML</v-tab>
+        </v-tabs>
+        <v-btn icon small class="mx-1 mt-auto" title="Download" disabled v-if="vTab === 'textheader'">
+          <v-icon small>mdi-download</v-icon>
+        </v-btn>
+        <v-menu v-model="showDownloadMenue" offset-y style="max-width: 400px" v-else>
+          <template v-slot:activator="{ on, attrs }">
+            <v-btn icon small class="mx-1 mt-auto" title="Download" color="#125" v-bind="attrs" v-on="on">
+              <v-icon small>mdi-download</v-icon>
+            </v-btn>
+          </template>
+          <v-list>
+            <v-list-item @click="downloadXML" v-if="vTab === 'xml'">
+              <v-list-item-icon class="mr-4"><v-icon>mdi-xml</v-icon></v-list-item-icon>
+              <v-list-item-title>XML</v-list-item-title>
+            </v-list-item>
+            <template v-else>
+              <v-list-item @click="downloadText = { id: 'xls', txt: 'XLSX file' }">
+                <v-list-item-icon class="mr-4"><v-icon>mdi-microsoft-excel</v-icon></v-list-item-icon>
+                <v-list-item-title>XLS</v-list-item-title>
+              </v-list-item>
+              <v-list-item @click="downloadText = { id: 'csv', txt: 'CSV file' }">
+                <v-list-item-icon class="mr-4"><v-icon>mdi-file-delimited-outline</v-icon></v-list-item-icon>
+                <v-list-item-title>CSV</v-list-item-title>
+              </v-list-item>
+              <v-list-item @click="downloadText = { id: 'html', txt: 'HTML file' }">
+                <v-list-item-icon class="mr-4"><v-icon>mdi-language-html5</v-icon></v-list-item-icon>
+                <v-list-item-title>HTML</v-list-item-title>
+              </v-list-item>
+              <v-list-item @click="downloadText = { id: 'text', txt: 'text file' }">
+                <v-list-item-icon class="mr-4"><v-icon>mdi-text-box-outline</v-icon></v-list-item-icon>
+                <v-list-item-title>Text</v-list-item-title>
+              </v-list-item>
+            </template>
+          </v-list>
+        </v-menu>
+      </div>
       <div class="px-3 py-2 scroll-content flex-grow-1">
         <div v-if="mainData.corpus.showCorpusHeader" class="tei-header px-4 py-2" v-html="teiHeader"/>
         <div v-else-if="!aElement" class="pa-3">
@@ -31,6 +67,14 @@
       <RenderSelect :mainData="mainData" :type="vTab" class="d-flex flex-wrap" />
     </div>
     <Audioplayer class="fx-bt" :audiourl="aAudioUrl" v-if="!refreshAudio && aAudioUrl" />
+    <CorpusElementDownload
+      :mainData="mainData"
+      :element="aElement"
+      :type="downloadText"
+      :view="{kwic: false, type: vTab, views: mainData.views }"
+      @close="downloadText = null"
+      v-if="aElement && downloadText"
+    />
   </div>
 </template>
 
@@ -40,6 +84,7 @@ import CorpusElementHeader from './CorpusElementHeader';
 import CorpusElementViews from './CorpusElementViews';
 import CorpusElementXml from './CorpusElementXml';
 import RenderSelect from './RenderSelect';
+import CorpusElementDownload from './CorpusElementDownload';
 
 export default {
   name: 'CorpusElement',
@@ -48,7 +93,9 @@ export default {
   },
   data: () => ({
     vTab: null,
-    refreshAudio: false
+    refreshAudio: false,
+    showDownloadMenue: false,
+    downloadText: null
   }),
   mounted () {
     console.log('CorpusElement', this.mainData)
@@ -68,6 +115,16 @@ export default {
     }
   },
   methods: {
+    downloadXML () {
+      console.log('downloadXML', this.aElement)
+      if (this.aElement && this.aElement.xml) {
+        let blob = new Blob([this.aElement.xml], {type: 'application/xml'})
+        const a = document.createElement('a')
+        a.href= URL.createObjectURL(blob)
+        a.download = this.aElement.id + '.xml'
+        a.click()
+      }
+    },
     loadElementData () {
       if (this.mainData.apiUrl && this.aElement) {
         if (this.vTab === 'textheader') {
@@ -164,7 +221,8 @@ export default {
     CorpusElementHeader,
     CorpusElementViews,
     CorpusElementXml,
-    RenderSelect
+    RenderSelect,
+    CorpusElementDownload
   }
 }
 </script>

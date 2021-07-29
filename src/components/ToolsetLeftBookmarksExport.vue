@@ -24,7 +24,7 @@
           </div>
           <div class="d-flex flex-wrap mt-3">
             <v-btn @click="saveBookmarksTable('xlsx')" class="mx-2 mb-2 flex-grow-1"><v-icon class="mr-2">mdi-microsoft-excel</v-icon>Save as XLSX file</v-btn>
-            <v-btn @click="saveBookmarksTable('csv')" class="mx-2 mb-2 flex-grow-1"><v-icon class="mr-2">mdi-file-delimited-outline</v-icon>Save as CSV file</v-btn>
+            <!-- <v-btn @click="saveBookmarksTable('csv')" class="mx-2 mb-2 flex-grow-1"><v-icon class="mr-2">mdi-file-delimited-outline</v-icon>Save as CSV file</v-btn> -->
           </div>
         </div>
       </v-card-text>
@@ -38,7 +38,7 @@
 </template>
 
 <script>
-const ExcelJS = require('exceljs');
+const ExcelJS = require('exceljs')
 
 export default {
   name: 'ToolsetLeftBookmarksExport',

@@ -1,8 +1,7 @@
 import renderer from './Renderer'
 import htmlCss from '!!raw-loader!../assets/css/RenderLine.css'
 import htmlTemplate from '!!raw-loader!../assets/html/HtmlTemplate.html'
-// const XLSX = require('xlsx')
-const ExcelJS = require('exceljs');
+const ExcelJS = require('exceljs')
 
 const localFunctions = {
   saveSearchResult (xmlObjLines, filteredSearchResults, view, type, fxText, highlights, progressFunction = null, doneFunction = null) {

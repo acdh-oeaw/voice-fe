@@ -13,14 +13,16 @@
             counter
             no-resize
             class="lba"
-            :disabled="mainData.bookmarks.import.external"
+            :disabled="mainData.bookmarks.import.external || isTable"
+            v-if="!isTable"
           ></v-textarea>
           <div class="d-flex flex-wrap my-3" v-if="!mainData.bookmarks.import.external">
-            <v-btn @click="loadTextFile" class="mx-2 mb-2 flex-grow-1">Load text file</v-btn>
+            <v-btn @click="closeFile" class="mx-2 mb-2 flex-grow-1" v-if="isTable">Close File</v-btn>
+            <v-btn @click="loadFile" class="mx-2 mb-2 flex-grow-1" v-else>Load file</v-btn>
           </div>
-          <input type="file" ref="txtFile" @change="selectTxtFile" accept=".txt" style="display:none">
+          <input type="file" ref="txtFile" @change="selectTxtFile" accept=".txt,.xlsx" style="display:none">
           <v-alert dense outlined type="error" v-if="decodeError"><b>Decoding error:</b> {{ decodeError }}</v-alert>
-          <v-alert dense outlined type="warning" v-else-if="!decodedObj"><b>Please insert url or open text file</b></v-alert>
+          <v-alert dense outlined type="warning" v-else-if="!decodedObj"><b>Please insert url or open file</b></v-alert>
           <template v-if="decodedObj">
             <v-alert dense outlined type="info">
               <b>Bookmarks:</b> {{ countBookmarks }}<br>
@@ -53,6 +55,7 @@
 
 <script>
 import bookmarks from '../functions/Bookmarks'
+const ExcelJS = require('exceljs');
 
 export default {
   name: 'ToolsetLeftBookmarksImport',
@@ -63,7 +66,8 @@ export default {
     decodeError: null,
     decodedObj: null,
     delBookmarks: false,
-    overwriteBookmarks: false
+    overwriteBookmarks: false,
+    isTable: false
   }),
   mounted () {
     this.updateData()
@@ -127,15 +131,22 @@ export default {
         })
       }
     },
-    loadTextFile () {
+    loadFile () {
       this.$refs.txtFile.click()
+    },
+    closeFile () {
+      this.isTable = false
+      this.decodedObj = null
+      this.decodeError = null
     },
     selectTxtFile () {
       if (this.$refs.txtFile && this.$refs.txtFile.files) {
-        console.log(this.$refs.txtFile.files[0]);
+        console.log(this.$refs.txtFile.files[0])
+        this.isTable = false
         let file = this.$refs.txtFile.files[0]
         if (file) {
-          if (file.type === 'text/plain') {
+          let aFileExt = file.name.split('.').slice(-1)[0]
+          if (aFileExt === 'txt') {
             let reader = new FileReader()
             reader.readAsText(file, 'UTF-8')
             reader.onload =  evt => {
@@ -152,8 +163,54 @@ export default {
             reader.onerror = evt => {
               console.error(evt)
             }
+          } else if (aFileExt === 'xlsx') {
+            // console.log('xlsx')
+            this.isTable = true
+            this.mainData.bookmarks.import.urlData = null
+            this.decodedObj = null
+            this.decodeError = null
+            this.$nextTick(() => {
+              const wb = new ExcelJS.Workbook()
+              if (aFileExt === 'xlsx') {
+                wb.xlsx.load(file).then(() => {
+                  // console.log('wb', this.isTable, wb)
+                  if (wb.creator === 'VOICE 3.0' && wb.subject === 'Bookmarks') {
+                    let ws = wb.getWorksheet()
+                    let rows = ws.getSheetValues()
+                    if (rows) {
+                      let dataRows = {}
+                      rows.forEach(row => {
+                        if (row, row[3] && row[3].indexOf('_u_') > -1) {
+                          dataRows[row[3].trim()] = {
+                            added: typeof row[4] === 'string' ? new Date(row[4].trim()).getTime() : Date.now(), // 7/29/2021, 8:49:20 AM
+                            category: typeof row[2] === 'string' ? row[2].trim() : '',
+                            comment: typeof row[5] === 'string' ? row[5].trim() : ''
+                          }
+                        }
+                      })
+                      // console.log(dataRows)
+                      if (dataRows && Object.keys(dataRows).length > 0) {
+                        this.decodedObj = dataRows
+                      } else {
+                        alert('No bookmarks found!')
+                        this.decodeError = 'No bookmarks found!'
+                        this.isTable = false
+                      }
+                    } else {
+                      alert('No rows found!')
+                      this.decodeError = 'No rows found!'
+                      this.isTable = false
+                    }
+                  } else {
+                    alert('File is invalid!')
+                    this.decodeError = 'File is invalid!'
+                    this.isTable = false
+                  }
+                })
+              }
+            })
           } else {
-            alert('File type is not "text/plain"!')
+            alert('File type is invalid!')
           }
         }
       }
@@ -164,6 +221,9 @@ export default {
       if (this.mainData.bookmarks.import.show) {
         this.delBookmarks = false
         this.overwriteBookmarks = false
+        this.isTable = false
+        this.decodedObj = null
+        this.decodeError = null
       }
       this.updateData()
     },

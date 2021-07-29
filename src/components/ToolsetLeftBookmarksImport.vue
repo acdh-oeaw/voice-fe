@@ -1,38 +1,26 @@
 <template>
-  <v-dialog v-model="mainData.bookmarks.import.show" width="500">
+  <v-dialog v-model="mainData.bookmarks.import.show" width="550">
     <template v-slot:activator="{ on, attrs }">
       <v-btn v-bind="attrs" v-on="on" class="mx-2 mb-2 flex-grow-1">Import</v-btn>
     </template>
     <v-card>
       <v-card-title class="text-h5 grey lighten-2">Import Bookmarks</v-card-title>
       <v-card-text>
-        <v-tabs
-          v-model="tab"
-          centered
-        >
-          <v-tab>
-            URL/Text
-          </v-tab>
-        </v-tabs>
         <div class="pt-4">
-          <v-tabs-items v-model="tab">
-            <v-tab-item>
-              <v-textarea
-                label="Encoded Bookmarks (url)"
-                v-model="mainData.bookmarks.import.urlData"
-                counter
-                no-resize
-                class="lba"
-                :disabled="mainData.bookmarks.import.external"
-              ></v-textarea>
-              <div class="d-flex flex-wrap my-3" v-if="!mainData.bookmarks.import.external">
-                <v-btn @click="loadTextFile" class="mx-2 mb-2 flex-grow-1">Load text file</v-btn>
-              </div>
-              <input type="file" ref="txtFile" @change="selectTxtFile" accept=".txt" style="display:none">
-              <v-alert dense outlined type="error" v-if="decodeError"><b>Decoding error:</b> {{ decodeError }}</v-alert>
-              <v-alert dense outlined type="warning" v-else-if="!decodedObj"><b>Please insert url or open text file</b></v-alert>
-            </v-tab-item>
-          </v-tabs-items>
+          <v-textarea
+            label="Encoded Bookmarks (url)"
+            v-model="mainData.bookmarks.import.urlData"
+            counter
+            no-resize
+            class="lba"
+            :disabled="mainData.bookmarks.import.external"
+          ></v-textarea>
+          <div class="d-flex flex-wrap my-3" v-if="!mainData.bookmarks.import.external">
+            <v-btn @click="loadTextFile" class="mx-2 mb-2 flex-grow-1">Load text file</v-btn>
+          </div>
+          <input type="file" ref="txtFile" @change="selectTxtFile" accept=".txt" style="display:none">
+          <v-alert dense outlined type="error" v-if="decodeError"><b>Decoding error:</b> {{ decodeError }}</v-alert>
+          <v-alert dense outlined type="warning" v-else-if="!decodedObj"><b>Please insert url or open text file</b></v-alert>
           <template v-if="decodedObj">
             <v-alert dense outlined type="info">
               <b>Bookmarks:</b> {{ countBookmarks }}<br>
@@ -72,7 +60,6 @@ export default {
     'mainData': Object,
   },
   data: () => ({
-    tab: null,
     decodeError: null,
     decodedObj: null,
     delBookmarks: false,
@@ -96,6 +83,7 @@ export default {
     closeDialog () {
       this.mainData.bookmarks.import.external = false
       this.mainData.bookmarks.import.show = false
+      this.mainData.bookmarks.import.urlData = null
     },
     importBookmarks () {
       console.log(this.decodedObj, this.mainData.bookmarks.elements)
@@ -119,7 +107,7 @@ export default {
       this.decompressUrlData()
     },
     decompressUrlData () {
-      if (this.tab === 0 && this.mainData.bookmarks.import.urlData) {
+      if (this.mainData.bookmarks.import.urlData) {
         var codec = require('json-url')('lzma')
         let cData = this.mainData.bookmarks.import.urlData
         if (cData.indexOf('bookmarks=') > -1) {

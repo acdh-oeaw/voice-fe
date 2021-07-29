@@ -32,11 +32,11 @@
             <v-list>
               <v-list-item @click="downloadSearchResults = { id: 'xls', txt: 'XLSX file' }">
                 <v-list-item-icon class="mr-4"><v-icon>mdi-microsoft-excel</v-icon></v-list-item-icon>
-                <v-list-item-title>XLS</v-list-item-title>
+                <v-list-item-title>XLSX</v-list-item-title>
               </v-list-item>
               <v-list-item @click="downloadSearchResults = { id: 'xlsWS', txt: 'XLSX file with Worksheets' }">
                 <v-list-item-icon class="mr-4"><v-icon>mdi-microsoft-excel</v-icon></v-list-item-icon>
-                <v-list-item-title>XLS - Worksheets</v-list-item-title>
+                <v-list-item-title>XLSX - Worksheets</v-list-item-title>
               </v-list-item>
               <v-list-item @click="downloadSearchResults = { id: 'csv', txt: 'CSV file' }">
                 <v-list-item-icon class="mr-4"><v-icon>mdi-file-delimited-outline</v-icon></v-list-item-icon>

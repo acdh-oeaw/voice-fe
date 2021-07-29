@@ -26,7 +26,7 @@
             <template v-else>
               <v-list-item @click="downloadText = { id: 'xls', txt: 'XLSX file' }">
                 <v-list-item-icon class="mr-4"><v-icon>mdi-microsoft-excel</v-icon></v-list-item-icon>
-                <v-list-item-title>XLS</v-list-item-title>
+                <v-list-item-title>XLSX</v-list-item-title>
               </v-list-item>
               <v-list-item @click="downloadText = { id: 'csv', txt: 'CSV file' }">
                 <v-list-item-icon class="mr-4"><v-icon>mdi-file-delimited-outline</v-icon></v-list-item-icon>

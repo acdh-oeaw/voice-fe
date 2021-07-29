@@ -256,7 +256,6 @@ function saveTable (mimeType, aFileType, aFilename, doneFunction, buffer) {
       doneFunction(false)
     }
   }
-
 }
 
 function addWs (wb, aSheet, view, filteredSearchResults) {

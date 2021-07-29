@@ -1,17 +1,15 @@
 import renderer from './Renderer'
-import htmlCss from '!!raw-loader!../assets/css/RenderLine.css'
-import htmlTemplate from '!!raw-loader!../assets/html/HtmlTemplate.html'
 const ExcelJS = require('exceljs')
 
 const localFunctions = {
-  saveSearchResult (xmlObjLines, filteredSearchResults, view, type, fxText, highlights, progressFunction = null, doneFunction = null) {
+  saveSearchResult (xmlObjLines, filteredSearchResults, view, type, fxText, highlights, progressFunction = null, doneFunction = null, htmlCss, htmlTemplate, xDocument) {
     let uList = []
-    renderExportUtterances(xmlObjLines, filteredSearchResults, view, type, fxText, highlights, progressFunction, doneFunction, uList, 0)
+    renderExportUtterances(xmlObjLines, filteredSearchResults, view, type, fxText, highlights, progressFunction, doneFunction, uList, 0, htmlCss, htmlTemplate, xDocument)
   },
 }
 
-function renderExportUtterances (xmlObjLines, filteredSearchResults, view, type, fxText, highlights, progressFunction = null, doneFunction = null, uList, uListPos) {
-  let htmlTmp = document.createElement('DIV')
+function renderExportUtterances (xmlObjLines, filteredSearchResults, view, type, fxText, highlights, progressFunction = null, doneFunction = null, uList, uListPos, htmlCss, htmlTemplate, xDocument) {
+  let htmlTmp = xDocument.createElement('DIV')
   let aLines = []
   if (progressFunction) {
     aLines = xmlObjLines.slice(uListPos, uListPos + 200)
@@ -32,7 +30,7 @@ function renderExportUtterances (xmlObjLines, filteredSearchResults, view, type,
         if (view.kwic && filteredSearchResults) {
           let aObj = filteredSearchResults.filter(x => x.uId === aU.uId)[0]
           aObj.hits.forEach(uHit => {
-            let kwicHtmlTmp = document.createElement('DIV')
+            let kwicHtmlTmp = xDocument.createElement('DIV')
             kwicHtmlTmp.innerHTML = htmlTmp.innerHTML
             let kwicHtml = kwicHtmlTmp.querySelector('#s_' + uHit[0])
             let kwicText = (kwicHtml.textContent || kwicHtml.innerText || '').trim().replace(/ +(?= )/g, '')
@@ -62,7 +60,7 @@ function renderExportUtterances (xmlObjLines, filteredSearchResults, view, type,
     })
     // console.log(uList)
     if (progressFunction) {
-      setTimeout(() => { renderExportUtterances(xmlObjLines, filteredSearchResults, view, type, fxText, highlights, progressFunction, doneFunction, uList, uListPos) }, 10)
+      setTimeout(() => { renderExportUtterances(xmlObjLines, filteredSearchResults, view, type, fxText, highlights, progressFunction, doneFunction, uList, uListPos, htmlCss, htmlTemplate, xDocument) }, 10)
     }
   }
   if (!progressFunction || aLines.length === 0) {
@@ -70,11 +68,11 @@ function renderExportUtterances (xmlObjLines, filteredSearchResults, view, type,
     if (progressFunction) {
       progressFunction(100)
     }
-    exportUtterancesList (xmlObjLines, filteredSearchResults, view, type, fxText, highlights, progressFunction, doneFunction, uList)
+    exportUtterancesList (xmlObjLines, filteredSearchResults, view, type, fxText, highlights, progressFunction, doneFunction, uList, htmlCss, htmlTemplate)
   }
 }
 
-function exportUtterancesList (xmlObjLines, filteredSearchResults, view, type, fxText, highlights, progressFunction = null, doneFunction = null, uList) {
+function exportUtterancesList (xmlObjLines, filteredSearchResults, view, type, fxText, highlights, progressFunction = null, doneFunction = null, uList, htmlCss, htmlTemplate) {
   // console.log('exportUtterancesList', view, type, uList)
   let aHeader = 'VOICE 3.0'
   let aTime = new Date()

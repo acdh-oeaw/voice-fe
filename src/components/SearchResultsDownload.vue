@@ -29,6 +29,8 @@
 
 <script>
 import exporter from '../functions/Exporter'
+import htmlCss from '!!raw-loader!../assets/css/RenderLine.css'
+import htmlTemplate from '!!raw-loader!../assets/html/HtmlTemplate.html'
 
 export default {
   name: 'SearchResultsDownload',
@@ -87,7 +89,10 @@ export default {
             },
             this.mainData.search.highlights,
             (p) => { this.rProgress = p },
-            this.saveFile
+            this.saveFile,
+            htmlCss,
+            htmlTemplate,
+            document
           )
         })
       }

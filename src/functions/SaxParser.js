@@ -64,7 +64,7 @@ const localFunctions = {
     return d
   },
   parseIt (xml, header = null, body = null, singleU = null) {
-    let sTime = performance.now()
+    // let sTime = performance.now()
     let headerStartPosition = 0
     let uStartPosition = 0
     let headerXML = null

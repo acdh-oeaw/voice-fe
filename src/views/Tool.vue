@@ -67,6 +67,7 @@ export default {
       if (this.$route.query.bookmarks) {
         this.mainData.bookmarks.import.urlData = this.$route.query.bookmarks
         this.mainData.bookmarks.import.show = true
+        this.mainData.bookmarks.import.external = true
         this.$router.push({ path: this.$route.path, query: Object.keys(this.$route.query).filter(key => key !== 'bookmarks').reduce((obj, key) => { return {...obj, [key]: this.$route.query[key]} }, {}) })
       }
     }

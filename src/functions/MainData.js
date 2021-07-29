@@ -31,7 +31,8 @@ const localFunctions = {
         edit: null,
         import: {
           show: false,
-          urlData: null
+          urlData: null,
+          external: false
         }
       },
       search: {

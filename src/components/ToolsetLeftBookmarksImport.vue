@@ -23,8 +23,9 @@
                 counter
                 no-resize
                 class="lba"
+                :disabled="mainData.bookmarks.import.external"
               ></v-textarea>
-              <div class="d-flex flex-wrap my-3">
+              <div class="d-flex flex-wrap my-3" v-if="!mainData.bookmarks.import.external">
                 <v-btn @click="loadTextFile" class="mx-2 mb-2 flex-grow-1">Load text file</v-btn>
               </div>
               <input type="file" ref="txtFile" @change="selectTxtFile" accept=".txt" style="display:none">
@@ -56,7 +57,7 @@
       <v-divider></v-divider>
       <v-card-actions>
         <v-spacer></v-spacer>
-        <v-btn color="primary" text @click="mainData.bookmarks.import.show = false">Close</v-btn>
+        <v-btn color="primary" text @click="closeDialog">Close</v-btn>
       </v-card-actions>
     </v-card>
   </v-dialog>
@@ -92,6 +93,10 @@ export default {
     }
   },
   methods: {
+    closeDialog () {
+      this.mainData.bookmarks.import.external = false
+      this.mainData.bookmarks.import.show = false
+    },
     importBookmarks () {
       console.log(this.decodedObj, this.mainData.bookmarks.elements)
       if (this.delBookmarks || Object.keys(this.mainData.bookmarks.elements).length === 0 ) {
@@ -107,6 +112,7 @@ export default {
         })
       }
       bookmarks.updateBookmarkStore(this.mainData.bookmarks)
+      this.closeDialog()
     },
     updateData () {
       this.decodedObj = null

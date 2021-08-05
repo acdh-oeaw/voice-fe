@@ -31,25 +31,27 @@
       </v-alert>
       <div v-else>
         <v-card class="mb-3" v-for="(sBookmarks, bIdx) in sortedBookmarks" :key="bIdx">
-          <div class="px-2 py-1 blue-grey lighten-4 d-flex">
+          <div @click="$set(collapsed, sBookmarks.category, !collapsed[sBookmarks.category])" class="px-2 py-1 bookmark-category blue-grey lighten-4 d-flex">
             <b>{{ sBookmarks.category === 'None' ? 'Without category' : sBookmarks.category }}</b>
             <v-spacer />
             {{ sBookmarks.elements.length }}
           </div>
-          <div v-for="element in sBookmarks.elements" :key="element.uId" class="d-flex px-2 pt-1 bookmark-line">
-            <div class="flex-grow-1">{{ element.uId.split('_')[0] + ':' + element.uId.split('_')[2] }}</div>
-            <div>
-              <v-tooltip top max-width="300" v-if="element.comment">
-                <template v-slot:activator="{ on, attrs }"><button v-bind="attrs" v-on="on" class="ml-1 comment-btn"></button></template>
-                <div class="py-1">
-                  <div v-if="element.category"><i><b>{{ element.category }}</b></i></div>
-                  <div v-html="element.comment.replace(/(?:\r\n|\r|\n)/g, '<br />')" />
-                </div>
-              </v-tooltip>
-              <button @click="goToUtterance(element.uId)" class="ml-1 jump-btn"></button>
-              <button @click="editBookmark(element.uId)" :class="'ml-1 ' + (shiftKeyDown ? 'trash-icon' : 'edit-icon')"></button>
+          <template v-if="!collapsed[sBookmarks.category]">
+            <div v-for="element in sBookmarks.elements" :key="element.uId" class="d-flex px-2 pt-1 bookmark-line">
+              <div class="flex-grow-1">{{ element.uId.split('_')[0] + ':' + element.uId.split('_')[2] }}</div>
+              <div>
+                <v-tooltip top max-width="300" v-if="element.comment">
+                  <template v-slot:activator="{ on, attrs }"><button v-bind="attrs" v-on="on" class="ml-1 comment-btn"></button></template>
+                  <div class="py-1">
+                    <div v-if="element.category"><i><b>{{ element.category }}</b></i></div>
+                    <div v-html="element.comment.replace(/(?:\r\n|\r|\n)/g, '<br />')" />
+                  </div>
+                </v-tooltip>
+                <button @click="goToUtterance(element.uId)" class="ml-1 jump-btn"></button>
+                <button @click="editBookmark(element.uId)" :class="'ml-1 ' + (shiftKeyDown ? 'trash-icon' : 'edit-icon')"></button>
+              </div>
             </div>
-          </div>
+          </template>
         </v-card>
       </div>
     </div>
@@ -85,7 +87,8 @@ export default {
   data: () => ({
     shiftKeyDown: false,
     localStorageDisabeld: true,
-    localStorageDialog: false
+    localStorageDialog: false,
+    collapsed: {}
   }),
   created () {
     window.addEventListener('keydown', this.keyDown)
@@ -195,5 +198,8 @@ export default {
   }
   .bookmark-line:last-child {
     border-bottom: none;
+  }
+  .bookmark-category {
+    cursor: pointer;
   }
 </style>

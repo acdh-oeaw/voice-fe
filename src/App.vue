@@ -1,10 +1,10 @@
 <template>
   <v-app>
     <v-container class="home-width" v-if="currentRouteName === 'home'">
-      <img :src="publicPath + 'images/vc-logo-0-676.png'" class="img-fluid w-100 mt-7" />
+      <img :src="publicPath + 'images/vc-logo-1-676.png'" class="img-fluid w-100 mt-15 mb-3" />
     </v-container>
     <v-container :class="{'max-width': !mainData.options.fullWidth, 'd-flex': true, 'pb-0': true}" :fluid="!mainData.wideScreen" v-else>
-      <router-link to="/"><img :src="publicPath + 'images/vc-logo-0-300.png'" class="img-fluid logo-small mt-1" /></router-link>
+      <router-link to="/"><img :src="publicPath + 'images/vc-logo-1-250.png'" class="img-fluid logo-small mt-1" /></router-link>
       <v-spacer />
       <div class="d-flex align-end">
         <v-btn @click="clearRenderCache" v-if="dev" x-small class="mr-3 d-none d-md-flex">Clear Render Cache</v-btn>
@@ -388,7 +388,7 @@ export default {
     line-height: 1rem;
   }
   .logo-small {
-    width: 200px;
+    width: 250px;
   }
   .fx-bt {
     border-top: 1px solid #ddd;

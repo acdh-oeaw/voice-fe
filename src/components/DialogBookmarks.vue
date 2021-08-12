@@ -34,7 +34,7 @@
         Created: {{ (new Date(added)).toLocaleString('en-US') }}
         <v-spacer />
         <v-btn color="error" @click="deleteBookmark" v-if="!isNew">Delete</v-btn>
-        <v-btn color="warning" @click="open = false">Close/Abort</v-btn>
+        <v-btn color="warning" @click="open = false">Close/Cancel</v-btn>
         <v-btn color="primary" @click="saveBookmark">Save</v-btn>
       </v-card-actions>
     </v-card>

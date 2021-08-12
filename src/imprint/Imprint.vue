@@ -1,7 +1,7 @@
 <template>
   <v-app>
     <v-container class="home-width">
-      <a href="/"><img :src="publicPath + 'images/vc-logo-0-676.png'" class="img-fluid w-100 mt-7" /></a>
+      <a href="/"><img :src="publicPath + 'images/vc-logo-1-676.png'" class="img-fluid w-100 mt-15 mb-3" /></a>
     </v-container>
     <v-main>
       <v-container>
@@ -96,7 +96,7 @@ export default {
     width: 100%;
   }
   .logo-small {
-    width: 200px;
+    width: 250px;
   }
   .fx-bt {
     border-top: 1px solid #ddd;

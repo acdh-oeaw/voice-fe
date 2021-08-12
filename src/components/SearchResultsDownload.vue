@@ -21,7 +21,7 @@
             class="mt-3"
           ></v-progress-linear>
         </template>
-        <v-btn @click="open = false" color="accent" class="w-100 mt-3">Abort</v-btn>
+        <v-btn @click="open = false" color="accent" class="w-100 mt-3">Cancel</v-btn>
       </v-card-text>
     </v-card>
   </v-dialog>

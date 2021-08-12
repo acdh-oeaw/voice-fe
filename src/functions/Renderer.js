@@ -159,7 +159,7 @@ function renderingUtterance(uObj, xmlObj, type, highlight, isSearch = false, xml
               (uObj.attributes && uObj.attributes['lemma'] ? ' title="Lemma: ' + uObj.attributes['lemma'] + '"' : '') + 
               '>'
       if (uObj.attributes && uObj.attributes['voice:syl']) {
-        aTxt += '@'.repeat(parseInt(uObj.attributes['voice:syl']))
+        aTxt += ' ' + '@'.repeat(parseInt(uObj.attributes['voice:syl'])) + ' '
       }
       aTxt += renderingUtteranceBefore(uObj, xmlObj, type, isSearch, xmlIdCache, fxCache)
       if (type === 'voice' && uObj.tag === 'seg' && uObj.attributes && uObj.attributes['type'] === 'ws' && xmlObj.list[uObj.parent].tag === 'unclear'

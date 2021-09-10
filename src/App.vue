@@ -10,7 +10,7 @@
         <v-btn @click="clearRenderCache" v-if="dev" x-small class="mr-3 d-none d-md-flex">Clear Render Cache</v-btn>
         <v-select dense hide-details class="d-none d-md-flex mr-3"
           label="API"
-          :items="['https://voice-node.acdh-dev.oeaw.ac.at/', 'http://127.0.0.1:3000/']"
+          :items="[apiUrl, 'http://127.0.0.1:3000/']"
           v-model="mainData.apiUrl"
           v-if="dev"
         ></v-select>
@@ -112,7 +112,7 @@
         <div class="d-flex flex-wrap justify-space-between align-center">
           <div>
             <v-chip class="mx-1 mb-1" label link small href="/dependency-license-report.html" target="_blank">Version: {{ mainData.version }}</v-chip>
-            <v-chip class="mx-1 mb-1" label small>API: {{ mainData.apiVersion }}</v-chip>
+            <v-chip class="mx-1 mb-1" label link small v-bind:href="apiDependencies" target="_blank">API: {{ mainData.apiVersion }}</v-chip>
           </div>
           <div class="text-center">
             VOICE. 2021. The Vienna-Oxford International Corpus of English (version VOICE 3.0 Online). ({{ now }}).
@@ -145,6 +145,7 @@ export default {
   data: () => ({
     loading: false,
     publicPath: process.env.BASE_URL,
+    apiUrl: process.env.VUE_APP_API_URL,
     dev: process.env.NODE_ENV === 'development',
     branch: process.env.VUE_APP_BRANCH,
     mainData: mainDataFunc.initMainData(),
@@ -363,6 +364,9 @@ export default {
     },
     dualViewPossible () {
       return this.mainData.wideScreen && this.mainData.options.fullWidth
+    },    
+    apiDependencies () {
+      return this.mainData.apiUrl + "dependency-license-report.html"
     }
   },
   watch: {

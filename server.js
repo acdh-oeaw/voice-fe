@@ -27,37 +27,39 @@ const morgan = require('morgan')
     LOGS_ENABLED
   } = process.env
 
-  const distDirectory = DIST_DIRECTORY || (config.has('distDirectory') ? config.get('distDirectory') :
-    'dist/')
-  const port = PORT || (config.has('port') ? config.get('port') :
-    3000)
-  const cacheEnabled = isEnabled(CACHE_ENABLED, 'cacheEnabled', config)
-  const cacheControlHeaderValue = CACHE_CONTROL_HEADER_VALUE || (config.has('cacheControlHeaderValue') ? config.get('cacheControlHeaderValue') :
-    'public, no-cache, max-age=604800')
-  const defaultFile = DEFALUT_FILE || (config.has('defaultFile') ? config.get('defaultFile') :
-    'index.html')
-  const logsEnabled = isEnabled(LOGS_ENABLED, 'logsEnabled', config)
-  const logsFormat = LOGS_FORMAT || (config.has('logsFormat') ? config.get('logsFormat') :
+  const c = {
+    distDirectory: DIST_DIRECTORY || (config.has('distDirectory') ? config.get('distDirectory') :
+    'dist/'),
+    port: PORT || (config.has('port') ? config.get('port') :
+    3000),
+    cacheEnabled: isEnabled(CACHE_ENABLED, 'cacheEnabled', config),
+    cacheControlHeaderValue: CACHE_CONTROL_HEADER_VALUE || (config.has('cacheControlHeaderValue') ? config.get('cacheControlHeaderValue') :
+    'public, no-cache, max-age=604800'),
+    defaultFile: DEFALUT_FILE || (config.has('defaultFile') ? config.get('defaultFile') :
+    'index.html'),
+    logsEnabled: isEnabled(LOGS_ENABLED, 'logsEnabled', config),
+    logsFormat: LOGS_FORMAT || (config.has('logsFormat') ? config.get('logsFormat') :
     jsonFormat)
+  }
 
   // middleware for serving static files
-  const serve = files(path.join(__dirname, distDirectory), {
+  const serve = files(path.join(__dirname, c.distDirectory), {
     lastModified: false,
     setHeaders: (res) => {
-      if (cacheEnabled) {
-        res.setHeader('cache-control', cacheControlHeaderValue)
+      if (c.cacheEnabled) {
+        res.setHeader('cache-control', c.cacheControlHeaderValue)
       }
     }
   })
 
   // server bootstrap
   const server = require('restana')({})
-  if (logsEnabled) {
-    server.use(morgan(logsFormat))
+  if (c.logsEnabled) {
+    server.use(morgan(c.logsFormat))
   }
   server.use((req, res, next) => {
     if (req.url === '/') {
-      req.url = defaultFile
+      req.url = c.defaultFile
     }
 
     return next()
@@ -69,7 +71,7 @@ const morgan = require('morgan')
 //   }
 
   // supporting cache
-  if (cacheEnabled) {
+  if (c.cacheEnabled) {
     server.use(cache())
   }
   server.use(serve)
@@ -118,5 +120,5 @@ function jsonFormat(tokens, req, res) {
     });
 }
 
-console.log(`{"listening on port": "${port}"}`)
-server.start(port)
+console.log(JSON.stringify(c))
+server.start(c.port)

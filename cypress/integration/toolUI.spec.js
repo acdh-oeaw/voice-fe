@@ -12,7 +12,7 @@ context('toolUI', () => {
     })
     it('page title is voice-fe', () => {
         // https://on.cypress.io/title
-        cy.title().should('include', 'VOICE CLARIAH')
+        cy.title().should('include', 'VOICE 3.0')
     })
     it('type search', () => {
         cy.get('label')

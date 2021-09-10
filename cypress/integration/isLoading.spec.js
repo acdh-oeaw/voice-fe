@@ -4,9 +4,9 @@ context('isLoading', () => {
       cy.visit('http://localhost:' + port)
       cy.viewport(1000, 800)
     })
-    it('page title is VOICE CLARIAH', () => {
+    it('page title is VOICE 3.0', () => {
       // https://on.cypress.io/title
-      cy.title().should('include', 'VOICE CLARIAH')
+      cy.title().should('include', 'VOICE 3.0')
     })
 
     it('consent buttons', () => {

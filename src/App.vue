@@ -109,10 +109,19 @@
     </v-dialog>
     <v-footer color="white" class="py-0 footer">
       <v-container class="py-0 px-2 text-right">
-        <div class="d-flex justify-space-between">
+        <div class="d-flex flex-wrap justify-space-between align-center">
           <div>
             <v-chip class="mx-1 mb-1" label link small href="/dependency-license-report.html" target="_blank">Version: {{ mainData.version }}</v-chip>
             <v-chip class="mx-1 mb-1" label small>API: {{ mainData.apiVersion }}</v-chip>
+          </div>
+          <div class="text-center">
+            <v-tooltip top max-width="600">
+              <template v-slot:activator="{ on, attrs }"><div v-bind="attrs" v-on="on">VOICE. 2021. The Vienna-Oxford International Corpus of English (version VOICE 3.0 Online). ({{ now }}).</div></template>
+              <div class="py-1 text-justify">
+                <p class="my-0">VOICE. 2021. The Vienna-Oxford International Corpus of English (version VOICE 3.0 Online). Founding director: Barbara Seidlhofer; Principal investigators VOICE 3.0: Marie-Luise Pitzl, Daniel Schopper; Researchers: Angelika Breiteneder, Hans-Christian Breuer, Nora Dorn, Theresa Klimpfinger, Stefan Majewski, Ruth Osimk-Teasdale, Hannes Pirker, Marie-Luise Pitzl, Michael Radeka, Stefanie Riegler, Barbara Seidlhofer, Omar Siam, Daniel Stoxreiter. Available at: https://voice.acdh.oeaw.ac.at ({{ now }}).</p>
+              </div>
+            </v-tooltip>
+            
           </div>
           <div>
             <v-chip class="mx-1 mb-1" label link small v-on:click="revokeCookieAndTrackingConsent" v-if="userOptedTracking" data-testid="revokeTracking">Stop tracking me</v-chip>
@@ -139,7 +148,8 @@ export default {
     branch: process.env.VUE_APP_BRANCH,
     mainData: mainDataFunc.initMainData(),
     userOptedTracking: true,
-    showSpeakerDialog: false
+    showSpeakerDialog: false,
+    now: new Date()
   }),
   mounted () {
     this.resized()
@@ -151,6 +161,7 @@ export default {
       this.mainData.version = this.mainData.version.substring(1)
     }
     bookmarks.loadBookmarkStore(this, this.mainData.bookmarks)
+    this.now = [this.now.getFullYear(), ('00' + (this.now.getMonth() + 1)).slice(-2), ('00' + this.now.getDate()).slice(-2)].join('-')
   },
   beforeDestroy () {
     window.removeEventListener('resize', this.resized)

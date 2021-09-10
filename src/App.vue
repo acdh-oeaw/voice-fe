@@ -115,8 +115,9 @@
             <v-chip class="mx-1 mb-1" label small>API: {{ mainData.apiVersion }}</v-chip>
           </div>
           <div class="text-center">
+            VOICE. 2021. The Vienna-Oxford International Corpus of English (version VOICE 3.0 Online). ({{ now }}).
             <v-tooltip top max-width="600">
-              <template v-slot:activator="{ on, attrs }"><div v-bind="attrs" v-on="on">VOICE. 2021. The Vienna-Oxford International Corpus of English (version VOICE 3.0 Online). ({{ now }}).</div></template>
+              <template v-slot:activator="{ on, attrs }"><v-icon dense style="top:-1px;" v-bind="attrs" v-on="on">mdi-information-outline</v-icon></template>
               <div class="py-1 text-justify">
                 <p class="my-0">VOICE. 2021. The Vienna-Oxford International Corpus of English (version VOICE 3.0 Online). Founding director: Barbara Seidlhofer; Principal investigators VOICE 3.0: Marie-Luise Pitzl, Daniel Schopper; Researchers: Angelika Breiteneder, Hans-Christian Breuer, Nora Dorn, Theresa Klimpfinger, Stefan Majewski, Ruth Osimk-Teasdale, Hannes Pirker, Marie-Luise Pitzl, Michael Radeka, Stefanie Riegler, Barbara Seidlhofer, Omar Siam, Daniel Stoxreiter. Available at: https://voice.acdh.oeaw.ac.at ({{ now }}).</p>
               </div>

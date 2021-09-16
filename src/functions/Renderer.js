@@ -276,6 +276,17 @@ function renderingUtteranceBefore(uObj, xmlObj, type, isSearch, xmlIdCache, fxCa
       }
       aTxt += '</span>'
     }
+    // voice:to tags - before
+    if (uObj.tag === 'voice:to') {
+      aTxt += '<span class="fx-voice-to">&lt;to '
+      if (uObj.attributes && uObj.attributes['who']) {
+        let speaker = uObj.attributes['who'].split('_')
+        if (speaker && speaker[1]) {
+          aTxt += speaker[1]
+        }
+      }
+      aTxt += '&gt;</span> '
+    }
     // pause
     if (uObj.tag === 'pause') {
       aTxt += ' ('
@@ -427,6 +438,17 @@ function renderingUtteranceAfter(uObj, xmlObj, type, isSearch, xmlIdCache, fxCac
         aTxt += ' '
       }
       aTxt += '</span>'
+    }
+    // voice:to tags - after
+    if (uObj.tag === 'voice:to') {
+      aTxt += '<span class="fx-voice-to">&lt;/to '
+      if (uObj.attributes && uObj.attributes['who']) {
+        let speaker = uObj.attributes['who'].split('_')
+        if (speaker && speaker[1]) {
+          aTxt += speaker[1]
+        }
+      }
+      aTxt += '&gt;</span> '
     }
     // spel - after
     if (uObj.attributes && uObj.attributes['voice:mode'] && uObj.attributes['voice:mode'] === 'spelt') {

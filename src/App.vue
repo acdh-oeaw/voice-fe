@@ -37,19 +37,19 @@
               <v-list-item-title>Search Manual</v-list-item-title>
             </v-list-item>
             <v-list-item href="https://voice-clariah.acdh.oeaw.ac.at/wp-content/uploads/2021/04/VOICE-mark-up-conventions.pdf" target="_blank">
-              <v-list-item-icon class="mr-4"><v-icon>mdi-pdf-box</v-icon></v-list-item-icon>
+              <v-list-item-icon class="mr-4"><v-icon>mdi-file-pdf-box</v-icon></v-list-item-icon>
               <v-list-item-title>Mark-Up Conventions</v-list-item-title>
             </v-list-item>
             <v-list-item href="https://voice-clariah.acdh.oeaw.ac.at/wp-content/uploads/2021/04/VOICE-spelling-conventions.pdf" target="_blank">
-              <v-list-item-icon class="mr-4"><v-icon>mdi-pdf-box</v-icon></v-list-item-icon>
+              <v-list-item-icon class="mr-4"><v-icon>mdi-file-pdf-box</v-icon></v-list-item-icon>
               <v-list-item-title>Spelling Conventions</v-list-item-title>
             </v-list-item>
             <v-list-item href="https://voice-clariah.acdh.oeaw.ac.at/wp-content/uploads/2021/04/POS-tagging-and-lemmatization-manual.pdf" target="_blank">
-              <v-list-item-icon class="mr-4"><v-icon>mdi-pdf-box</v-icon></v-list-item-icon>
+              <v-list-item-icon class="mr-4"><v-icon>mdi-file-pdf-box</v-icon></v-list-item-icon>
               <v-list-item-title>POS and Lemmatization Manual</v-list-item-title>
             </v-list-item>
             <v-list-item href="https://voice-clariah.acdh.oeaw.ac.at/wp-content/uploads/2021/04/Short-POS-tagset.pdf" target="_blank">
-              <v-list-item-icon class="mr-4"><v-icon>mdi-pdf-box</v-icon></v-list-item-icon>
+              <v-list-item-icon class="mr-4"><v-icon>mdi-file-pdf-box</v-icon></v-list-item-icon>
               <v-list-item-title>Short POS Tag Set</v-list-item-title>
             </v-list-item>
             <v-list-item >

@@ -43,6 +43,7 @@ export default {
     dev: process.env.NODE_ENV === 'development',
     version: process.env.VUE_APP_VERSION,
     apiVersion: '?',
+    apiDependencyAndLicense: '?',
     branch: process.env.VUE_APP_BRANCH,
     userOptedTracking: false,
     matomoId: `You opted out of tracking so there is no ID`
@@ -51,7 +52,8 @@ export default {
       this.$http
         .get(process.env.VUE_APP_API_URL)
         .then((response) => {
-          this.apiVersion = response.bodyText
+          this.apiVersion = response.data.apiVersion
+          this.apiDependencyAndLicense = response.data.apiDependencyAndLicense
         })
         .catch((err) => {
           console.log(err)

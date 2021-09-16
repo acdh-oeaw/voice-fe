@@ -112,7 +112,7 @@
         <div class="d-flex flex-wrap justify-space-between align-center">
           <div>
             <v-chip class="mx-1 mb-1" label link small href="/dependency-license-report.html" target="_blank">Version: {{ mainData.version }}</v-chip>
-            <v-chip class="mx-1 mb-1" label link small v-bind:href="apiDependencies" target="_blank">API: {{ mainData.apiVersion }}</v-chip>
+            <v-chip class="mx-1 mb-1" label link small v-bind:href="mainData.apiDependencyAndLicense" target="_blank">API: {{ mainData.apiVersion }}</v-chip>
           </div>
           <div class="text-center">
             VOICE. 2021. The Vienna-Oxford International Corpus of English (version VOICE 3.0 Online). ({{ now }}).
@@ -180,7 +180,8 @@ export default {
       this.$http
         .get(this.mainData.apiUrl)
         .then((response) => {
-          this.mainData.apiVersion = response.bodyText
+          this.mainData.apiVersion = response.data.apiVersion
+          this.mainData.apiDependencyAndLicense = response.data.apiDependencyAndLicense
         })
         .catch((err) => {
           console.log(err)
@@ -364,9 +365,6 @@ export default {
     },
     dualViewPossible () {
       return this.mainData.wideScreen && this.mainData.options.fullWidth
-    },    
-    apiDependencies () {
-      return this.mainData.apiUrl + "dependency-license-report.html"
     }
   },
   watch: {

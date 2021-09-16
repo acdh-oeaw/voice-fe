@@ -7,6 +7,7 @@ const localFunctions = {
       app: null,
       apiUrl: process.env.VUE_APP_API_URL,
       apiVersion: '?',
+      apiDependencyAndLicense: '?',
       version: '?',
       filter: {
         active: false,

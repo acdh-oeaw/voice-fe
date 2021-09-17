@@ -75,7 +75,8 @@
               </tr>
             </template>
             <template v-if="element.headerObj.data.particDesc.personIdentified.length > 0">
-              <tr><th colspan="6">Identified</th></tr>
+              <tr><td>&nbsp;</td></tr>
+              <tr><th colspan="6">Identified Speakers</th></tr>
               <tr><th>ID</th><th>Sex</th><th>Age</th><th>L1</th><th>Role</th><th>Occupation</th></tr>
               <tr v-for="(pi, i) in element.headerObj.data.particDesc.personIdentified" :key="'pdpi' + i">
                 <th>{{ pi.id }}</th>
@@ -91,6 +92,7 @@
               <tr><th colspan="6">{{ element.headerObj.data.particDesc.personNotIdentified.join(', ') }}</th></tr>
             </template>
             <template v-if="element.headerObj.data.particDesc.relationGrp && element.headerObj.data.particDesc.relationGrp.length > 0">
+              <tr><td>&nbsp;</td></tr>
               <tr class="person" v-for="(rg, i) in element.headerObj.data.particDesc.relationGrp" :key="'pdrg' + i">
                 <th colspan="2">{{ rg.h }}</th>
                 <td colspan="4">{{ rg.d }}</td>

@@ -261,7 +261,7 @@ function parseHeader (xmlObj) {
       if (o.tag === 'title' && o.tree.indexOf('titlestmt') > -1) {
         data.title = localFunctions.getText(o)
       }
-      if (o.tag === 'edition') {
+      if (o.tag === 'edition' && o.tree.indexOf('editionstmt') > -1) {
         data.edition = localFunctions.getText(o)
       }
       if (o.tag === 'recording' && o.tree.indexOf('recordingstmt') > -1) {

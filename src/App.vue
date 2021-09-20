@@ -52,7 +52,7 @@
               <v-list-item-icon class="mr-4"><v-icon>mdi-file-pdf-box</v-icon></v-list-item-icon>
               <v-list-item-title>Short POS Tag Set</v-list-item-title>
             </v-list-item>
-            <v-list-item href="https://voice.acdh.oeaw.ac.at/about/" target="_blank">
+            <v-list-item href="https://voice.acdh.oeaw.ac.at/how-to-cite-voice-3-0-online/" target="_blank">
               <v-list-item-icon class="mr-4"><v-icon>mdi-book</v-icon></v-list-item-icon>
               <v-list-item-title>How to Cite VOICE</v-list-item-title>
             </v-list-item>

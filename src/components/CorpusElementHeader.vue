@@ -4,7 +4,7 @@
     <div v-if="element && element.headerObj">
       <h2 v-if="element.headerObj.data.title">{{ element.headerObj.data.title.charAt(0).toUpperCase() + element.headerObj.data.title.slice(1) }}</h2>
       <hr/>
-      <h3 v-if="element.headerObj.data.edition">{{ element.headerObj.data.edition }}</h3>
+      <h3 v-if="element.headerObj.data.edition">{{ element.headerObj.data.edition.replace('XML', 'Online') }}</h3>
       <div class="recording" v-if="element.headerObj.data.recordingDuration || element.headerObj.data.recordingInfos">
         <h3>Recording</h3>
         <table class="rec-entries ml-2">

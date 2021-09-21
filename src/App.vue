@@ -128,7 +128,7 @@
             <v-chip class="mx-1 mb-1" label link small v-on:click="revokeCookieAndTrackingConsent" v-if="userOptedTracking" data-testid="revokeTracking">Stop tracking me</v-chip>
             <v-chip class="mx-1 mb-1" label link small color="primary" href="https://www.oeaw.ac.at/en/oeaw/data-protection" data-testid="privacyPolicy" target="_blank">Privacy Policy</v-chip>
             <v-chip class="mx-1 mb-1" label link small color="primary" href="/imprint.html" data-testid="siteNotice">Site Notice</v-chip>
-            <v-chip class="mx-1 mb-1" label link small color="primary" href="mailto:voice3.0@oeaw.ac.at?subject=Feedback">Feedback</v-chip>
+            <v-chip class="mx-1 mb-1" label link small color="primary" v-bind:href="feedbackMailto">Feedback</v-chip>
           </div>
         </div>
       </v-container>
@@ -365,6 +365,13 @@ export default {
     },
     dualViewPossible () {
       return this.mainData.wideScreen && this.mainData.options.fullWidth
+    },
+    feedbackMailto () {
+      const mailToLink = "mailto:voice3@oeaw.ac.at?subject=Feedback"
+      if (this.mainData.search.searched)
+        return mailToLink+"&body=Hi,%0D%0AI wanted to write to you about this search: \""+this.mainData.search.results.query.q+"\"%0D%0ACQL: "+this.mainData.search.results.cql+"%0D%0A(Delete this if you want to give us general feedback)"
+      else
+        return mailToLink
     }
   },
   watch: {

@@ -1,12 +1,12 @@
 <template>
   <div ref="viewarea" class="viewarea linescroll" v-on:scroll="scrolling()">
     <div class="view-tools pa-2 pb-0" v-if="view === 'pos'">
-      <v-btn href="https://voice-clariah.acdh.oeaw.ac.at/wp-content/uploads/2021/04/Short-POS-tagset.pdf" target="_blank" class="mr-2 mb-2" small><v-icon class="mr-2" small>mdi-book-open-variant</v-icon> List of POS tag</v-btn>
-      <v-btn href="https://voice-clariah.acdh.oeaw.ac.at/wp-content/uploads/2021/04/POS-tagging-and-lemmatization-manual.pdf" target="_blank" class="mr-2 mb-2" small><v-icon class="mr-2" small>mdi-book-open-variant</v-icon> POS tagging and lemmatization</v-btn>
+      <v-btn href="https://voice.acdh.oeaw.ac.at/wp-content/uploads/2021/04/Short-POS-tagset.pdf" target="_blank" class="mr-2 mb-2" small><v-icon class="mr-2" small>mdi-book-open-variant</v-icon> List of POS tag</v-btn>
+      <v-btn href="https://voice.acdh.oeaw.ac.at/wp-content/uploads/2021/04/POS-tagging-and-lemmatization-manual.pdf" target="_blank" class="mr-2 mb-2" small><v-icon class="mr-2" small>mdi-book-open-variant</v-icon> POS tagging and lemmatization</v-btn>
     </div>
     <div class="view-tools pa-2 pb-0" v-if="view === 'voice'">
-      <v-btn href="https://voice-clariah.acdh.oeaw.ac.at/wp-content/uploads/2021/04/VOICE-mark-up-conventions.pdf" target="_blank" class="mr-2 mb-2" small><v-icon class="mr-2" small>mdi-book-open-variant</v-icon> Mark-Up Conventions</v-btn>
-      <v-btn href="https://voice-clariah.acdh.oeaw.ac.at/wp-content/uploads/2021/04/VOICE-spelling-conventions.pdf" target="_blank" class="mr-2 mb-2" small><v-icon class="mr-2" small>mdi-book-open-variant</v-icon> Spelling Conventions</v-btn>
+      <v-btn href="https://voice.acdh.oeaw.ac.at/wp-content/uploads/2021/04/VOICE-mark-up-conventions.pdf" target="_blank" class="mr-2 mb-2" small><v-icon class="mr-2" small>mdi-book-open-variant</v-icon> Mark-Up Conventions</v-btn>
+      <v-btn href="https://voice.acdh.oeaw.ac.at/wp-content/uploads/2021/04/VOICE-spelling-conventions.pdf" target="_blank" class="mr-2 mb-2" small><v-icon class="mr-2" small>mdi-book-open-variant</v-icon> Spelling Conventions</v-btn>
     </div>
     <template
       v-for="(aLine, aIdx) in element.bodyObj.data.u.list"

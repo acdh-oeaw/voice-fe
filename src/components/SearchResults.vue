@@ -85,12 +85,12 @@
             <div style="font-size: 0.9rem; line-height: 1.1rem;">To view a search result in the corresponding corpus text, click on the utterance ID in the search results.</div>
           </v-alert>
           <div v-if="mainData.search.view.type === 'pos'">
-            <v-btn href="https://voice-clariah.acdh.oeaw.ac.at/wp-content/uploads/2021/04/Short-POS-tagset.pdf" target="_blank" class="mr-2 mb-3" small><v-icon class="mr-2" small>mdi-book-open-variant</v-icon> List of POS tag</v-btn>
-            <v-btn href="https://voice-clariah.acdh.oeaw.ac.at/wp-content/uploads/2021/04/POS-tagging-and-lemmatization-manual.pdf" target="_blank" class="mr-2 mb-3" small><v-icon class="mr-2" small>mdi-book-open-variant</v-icon> POS tagging and lemmatization</v-btn>
+            <v-btn href="https://voice.acdh.oeaw.ac.at/wp-content/uploads/2021/04/Short-POS-tagset.pdf" target="_blank" class="mr-2 mb-3" small><v-icon class="mr-2" small>mdi-book-open-variant</v-icon> List of POS tag</v-btn>
+            <v-btn href="https://voice.acdh.oeaw.ac.at/wp-content/uploads/2021/04/POS-tagging-and-lemmatization-manual.pdf" target="_blank" class="mr-2 mb-3" small><v-icon class="mr-2" small>mdi-book-open-variant</v-icon> POS tagging and lemmatization</v-btn>
           </div>
           <div v-if="mainData.search.view.type === 'voice'">
-            <v-btn href="https://voice-clariah.acdh.oeaw.ac.at/wp-content/uploads/2021/04/VOICE-mark-up-conventions.pdf" target="_blank" class="mr-2 mb-3" small><v-icon class="mr-2" small>mdi-book-open-variant</v-icon> Mark-Up Conventions</v-btn>
-            <v-btn href="https://voice-clariah.acdh.oeaw.ac.at/wp-content/uploads/2021/04/VOICE-spelling-conventions.pdf" target="_blank" class="mr-2 mb-3" small><v-icon class="mr-2" small>mdi-book-open-variant</v-icon> Spelling Conventions</v-btn>
+            <v-btn href="https://voice.acdh.oeaw.ac.at/wp-content/uploads/2021/04/VOICE-mark-up-conventions.pdf" target="_blank" class="mr-2 mb-3" small><v-icon class="mr-2" small>mdi-book-open-variant</v-icon> Mark-Up Conventions</v-btn>
+            <v-btn href="https://voice.acdh.oeaw.ac.at/wp-content/uploads/2021/04/VOICE-spelling-conventions.pdf" target="_blank" class="mr-2 mb-3" small><v-icon class="mr-2" small>mdi-book-open-variant</v-icon> Spelling Conventions</v-btn>
           </div>
           <SearchResultsView
             ref="searchResultsView"

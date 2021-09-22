@@ -27,7 +27,7 @@
       <v-btn color="indigo darken-4 white--text" v-bind:small="true" v-on:click="cookiesAndTrackingRejected" data-testid="rejectTracking">I dont't want this</v-btn>
     </div>
     <div class="text-center py-5">
-      <p>The web interface for VOICE 3.0 Online was developed in the <a href="https://voice-clariah.acdh.oeaw.ac.at/" target="_blank">VOICE CLARIAH project</a></p>
+      <p>The web interface for VOICE 3.0 Online was developed in the <a href="https://voice.acdh.oeaw.ac.at/" target="_blank">VOICE CLARIAH project</a></p>
     </div>
   </div>
 </template>

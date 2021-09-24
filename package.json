@@ -14,6 +14,10 @@
       "url": "https://www.oeaw.ac.at/acdh/team/current-team/omar-siam"
     }
   ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/acdh-oeaw/voice-fe.git"
+  },
   "license": "MIT",
   "engines": {
     "node": "14.x",

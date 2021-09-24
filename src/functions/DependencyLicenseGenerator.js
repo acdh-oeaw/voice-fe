@@ -42,7 +42,7 @@ async.map(depsIndex, getPackageReportData, function(err, results) {
         Version: ${packageJson.version}<br/>
         Author: ${packageJson.author.name}<br/>
         ${packageJson.contributors.map(contributor => `Contributor: ${contributor.name}</br>`)}
-        Source: ${packageJson.repository.url}</br>
+        Source: <a href="${packageJson.repository.url}">${packageJson.repository.url}</a></br>
         License: ${packageJson.license}
         <pre>${fs.readFileSync('LICENSE')}</pre>
         <h2>Dependencies</h2>

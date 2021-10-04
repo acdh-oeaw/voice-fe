@@ -204,6 +204,12 @@ function renderingUtterance(uObj, xmlObj, type, highlight, isSearch = false, xml
           } else {
             ws = true
           }
+        } else if (uObj.parent) {
+          let oSiblings = xmlObj.list[uObj.parent].children
+          let oPos = oSiblings.indexOf(uObj)
+          if (oPos > 0 && oSiblings[oPos - 1].tag === 'unclear') {
+            aTxt = ' ' + aTxt
+          }
         }
       } else {
         if (type === 'voice') {

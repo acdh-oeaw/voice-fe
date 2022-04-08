@@ -1,4 +1,4 @@
-const GitRevisionPlugin = require('git-revision-webpack-plugin')
+const {GitRevisionPlugin} = require('git-revision-webpack-plugin')
 const webpack = require('webpack')
 const fs = require('fs')
 

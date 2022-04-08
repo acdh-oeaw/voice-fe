@@ -1,7 +1,7 @@
 {
   "label":"VOICE",
   "title":"Vienna-Oxford International Corpus of English (VOICE)",
-  "teiHeader":"<div xmlns=\"http:\/\/www.w3.org\/1999\/xhtml\" class=\"header\" xml:space=\"preserve\">\n  <div class=\"title\">\n    <h1>\n                    Vienna-Oxford International Corpus of English (VOICE)\n\t<\/h1>\n      \n\t\t<h2>\n                         VOICE 3.0 Online, September 2021\n\t\t<\/h2>\n      \n    \n      <h3>Project Director<\/h3>\n      <ul>\n        \n                        <li>\n                            Barbara Seidlhofer\n                        <\/li>\n        \n                        <li>\n                            Marie-Luise Pitzl\n                        <\/li>\n        \n      <\/ul>\n    \n    \n      \n\t\t\n\t\t\n\t\t\n\t\t<h3>\n                            Researchers – VOICE 3.0 XML \n                        <\/h3>\n\t\t<ul>\n                            \n\t\t\t<li>\n                                    Hans Christian Breuer\n                                <\/li>\n\t\t  \n\t\t\t<li>\n                                    Ruth Osimk-Teasdale \n                                <\/li>\n\t\t  \n\t\t\t<li>\n                                    Hannes Pirker\n                                <\/li>\n\t\t  \n\t\t\t<li>\n                                    Marie-Luise Pitzl\n                                <\/li>\n\t\t  \n\t\t\t<li>\n                                    Stefanie Riegler\n                                <\/li>\n\t\t  \n\t\t\t<li>\n                                    Daniel Schopper\n                                <\/li>\n\t\t  \n\t\t\t<li>\n                                    Barbara Seidlhofer\n                                <\/li>\n\t\t  \n\t\t\t<li>\n                                    Omar Siam\n                                <\/li>\n\t\t  \n\t\t\t<li>\n                                    Daniel Stoxreiter\n                                <\/li>\n\t\t  \n\t\t<\/ul>\n      \n\t\t\n\t\t\n\t\t\n\t\t<h3>\n                            Researchers – VOICE 2.0 POS XML &amp; VOICE 2.0 XML \n                        <\/h3>\n\t\t<ul>\n                            \n\t\t\t<li>\n                                    Stefan Majewski\n                                <\/li>\n\t\t  \n\t\t\t<li>\n                                    Ruth Osimk-Teasdale \n                                <\/li>\n\t\t  \n\t\t\t<li>\n                                    Marie-Luise Pitzl\n                                <\/li>\n\t\t  \n\t\t\t<li>\n                                    Michael Radeka\n                                <\/li>\n\t\t  \n\t\t<\/ul>\n      \n\t\t\n\t\t\n\t\t\n\t\t<h3>\n                            Researchers – Creation of VOICE 1.0 XML   \n                        <\/h3>\n\t\t<ul>\n                            \n\t\t\t<li>\n                                    Angelika Breiteneder\n                                <\/li>\n\t\t  \n\t\t\t<li>\n                                    Theresa Klimpfinger\n                                <\/li>\n\t\t  \n\t\t\t<li>\n                                    Stefan Majewski\n                                <\/li>\n\t\t  \n\t\t\t<li>\n                                    Marie-Luise Pitzl\n                                <\/li>\n\t\t  \n\t\t<\/ul>\n      \n    \n    \n      <h3>Project Funding<\/h3>\n      <ul>\n                        <li>\n                            \n                    The creation of VOICE 1.0 and 2.0 was funded by FWF, the Austrian Science Fund (Project No. L116 and L448).\n                    The creation of VOICE 3.0 Online and VOICE 3.0 XML was supported by funding from CLARIAH-AT and by staff\n                    members of the Austrian Center for Digital Humanities and Cultural Heritage at the Austrian Academy of\n                    Sciences and the English Department at the University of Vienna.\n                \n                        <\/li>\n\t\n\t  <li>\n\n\t      \n\t\t\tThese funds were further supplemented by a contribution from Oxford University Press in 2008 and 2009. Supporting funds were also provided in the early pilot phase by Oxford University Press and by the Hochschuljubiläumsstiftung der Stadt Wien.\n\t      \n\t  <\/li>\n\t\n      <\/ul>\n    \n    \n      <h3>Size<\/h3>\n      <p>\n                         1,023,082 orthographically defined words, totalling 110 hours 35 minutes and 56 seconds of recording.\n            \n      <\/p>\n    \n    \n      <h3>Source Description<\/h3>\n      \n\t\t<p>\n                        VOICE is based on audio-recordings of 151\n                        naturally-occurring, non-scripted, face-to-face interactions\n                        involving 753 identified individuals from 49 different first\n                        language backgrounds using English as a lingua franca (ELF),\n                        i.e. English used as a common means of communication among\n                        speakers from different first-language backgrounds. The\n                        recordings were carried out between July 2001 and November\n                        2007, usually using portable mini-disc recorders with\n                        external microphones. Most of the audio-recordings are\n                        supplemented by detailed field notes including information\n                        about the nature of the speech event and the interaction\n                        taking place as well as about the participants engaging in\n                        these ELF interactions. The interactions recorded are\n                        complete speech events from different domains (educational,\n                        leisure, professional) and of different speech event types\n                        (conversation, interview, meeting, panel, press conference,\n                        question-answer session, seminar discussion, service\n                        encounter, working group discussion, workshop\n                        discussion). The audio-recordings were transcribed, checked\n                        and proof-read by trained transcribers and researchers in\n                        accordance with the VOICE mark-up and spelling conventions\n                        [2.1] (see  <a target=\"_blank\" href=\"https:\/\/voice.acdh.oeaw.ac.at\/wp-content\/uploads\/2021\/04\/VOICE-mark-up-conventions.pdf\">https:\/\/voice.acdh.oeaw.ac.at\/wp-content\/uploads\/2021\/04\/VOICE-mark-up-conventions.pdf<\/a>  and  <a target=\"_blank\" href=\"https:\/\/voice.acdh.oeaw.ac.at\/wp-content\/uploads\/2021\/04\/VOICE-spelling-conventions.pdf\">https:\/\/voice.acdh.oeaw.ac.at\/wp-content\/uploads\/2021\/04\/VOICE-spelling-conventions.pdf<\/a>).\n                    <\/p><p> Details for each electronic text are given in\n                        the individual text headers.<\/p><p>The principles and practices underlying the selection and\n                        design of the corpus are documented in the project and sampling\n                        description.<\/p>\n      \n    \n  <\/div>\n  \n    <h3>Publication Statement<\/h3>\n    <p>Austrian Academy of Sciences<\/p><p>University of Vienna<\/p><p>Sonnenfelsgasse 19<br \/>1010 Vienna<br \/>Austria<br \/>Email: voice3@oeaw.ac.at<br \/>Website: https:\/\/voice3.acdh.oeaw.ac.at\/ <br \/>Website: https:\/\/voice.acdh.oeaw.ac.at\/ <br \/>ACDH-CH Helpdesk: acdh-ch-helpdesk@oeaw.ac.at <br \/><\/p><p>\n                        The Vienna-Oxford International Corpus of English (VOICE) was created by Barbara Seidlhofer\n                        (founding director) and Angelika Breiteneder, Theresa Klimpfinger, Stefan Majewski, Marie-Luise Pitzl\n                        (project researchers) from 2005 to 2011. VOICE POS XML 2.0 was the first part-of-speech tagged\n                        version of VOICE and was based on the same data source as VOICE 2.0 XML (released 2013).\n                        VOICE 2.0 XML and VOICE POS XML 2.0 included minor revisions with regard to previous versions.\n                        VOICE 3.0 XML is a new, merged version of VOICE 2.0 XML and VOICE POS XML 2.0 and is available\n                        for download in  <a target=\"_blank\" href=\"https:\/\/arche.acdh.oeaw.ac.at\/\">ARCHE (A Resource Center for the HumanitiEs)<\/a> \n                        under a  <a target=\"_blank\" href=\"https:\/\/creativecommons.org\/licenses\/by\/4.0\/\">Creative Commons Attribution 4.0 International (CC BY 4.0) License<\/a>  \n                        23 selected audio files are available as audio streams in the  <a target=\"_blank\" href=\" https:\/\/voice3.acdh.oeaw.ac.at\">VOICE Online interface <\/a>.\n                    <\/p><p>CC-BY<\/p><p>You are free to: Share — copy and redistribute the material in any medium or format. Adapt — remix, transform, and build upon the material for any purpose, even commercially.\n                           You must give appropriate credit, provide a link to the license, and indicate if changes were made. You may do so in any reasonable manner,\n                           but not in any way that suggests the licensor endorses you or your use. \n                        <\/p><p><\/p><p>\n                        \n                    <\/p><p><\/p><p>\n                        \n                    <\/p><p>\n  For further enquiries please contact the\n  VOICE Project at         \n <a target=\"_blank\" href=\"mailto:voice3@oeaw.ac.at\">voice3@oeaw.ac.at<\/a>.        <\/p>\n  \n\n  \n    <h2>\n                    Project\n      \n\t\t and Sampling Description\n      \n    <\/h2>\n    <p>\n                    The most wide-spread contemporary use of English throughout\n                    the world is that of English as a lingua franca (ELF),\n                    i.e. English used as a common means of communication among\n                    speakers from different first-language backgrounds  <a target=\"_blank\" href=\"#BIB_UELF\">Seidlhofer 2011<\/a>). Nevertheless,\n                    linguistic descriptions before the mid-2000s focused almost\n                    entirely on English as spoken and written by its native speakers.\n                    Starting in 2005, the VOICE project sought to redress the\n                    balance by compiling the first general corpus capturing\n                    spoken ELF interactions as they happen naturally in various\n                    contexts. VOICE was designed and compiled to make possible\n                    linguistic descriptions of this most common contemporary use\n                    of English by providing a corpus of spoken ELF interactions\n                    which has been freely accessible to linguistic researchers\n                    all over the world since 2009. The corpus is stored in a\n                    TEI-based XML format and rendered accessible online through\n                    an open-access user interface at  <a target=\"_blank\" href=\"https:\/\/voice3.acdh.oeaw.ac.at\">https:\/\/voice3.acdh.oeaw.ac.at<\/a>.\n                    HTML and TXT versions of the corpus are provided in the VOICE 3.0 XML download package.\n                    The current versions VOICE 3.0 Online and VOICE 3.0 XML were \n                    created between April 2020 and September 2021 in the VOICE CLARIAH\n                    project (see  <a target=\"_blank\" href=\"https:\/\/voice.acdh.oeaw.ac.at\">https:\/\/voice.acdh.oeaw.ac.at<\/a>). \n                    The previously separate part-of-speech (POS) tagged and lemmatized version of\n                    VOICE XML and VOICE Online has been fully incorporated into VOICE 3.0 \n                    XML and VOICE 3.0 Online.\n                <\/p><p>\n                    The unit chosen for sampling data for inclusion in VOICE is\n                    that of the speech event. Speech events are (as far as\n                    practicalities allowed) included in their entirety. The speech\n                    events were selected for inclusion in the corpus on the basis\n                    of a set of seven external, i.e. non-linguistic, criteria,\n                    which therefore define the target population. Accordingly,\n                    VOICE captures speech events that fulfill the following\n                    criteria:\n                    <ul><li>\n                            English as a lingua franca (operationally defined as \n                            any use of English among speakers of different first \n                            languages for whom English is the communicative medium\n                            of choice, and often the only option)\n                        <\/li><li>Spoken<\/li><li>Naturally occurring<\/li><li>Interactive<\/li><li>Face-to-face<\/li><li>Non-scripted<\/li><li>\n                            Self-selected participation (i.e. the speakers\n                            decided for themselves that they are capable\n                            of using ELF to accomplish specific\n                            participant roles in the speech event they are\n                            taking part in)\n                        <\/li><\/ul>\n                <\/p><p>\n                    As to the sampling method used, subgroups of the\n                    target population were identified on the level of\n                    domain and target proportions specified for these as\n                    follows: Educational 25%, Leisure 10%,\n                    Professional-business 20%, Professional-organizational\n                    35%, Professional-research\/science 10%.<\/p><p>\n                    Short portions of some speech events were left\n                    untranscribed. Such gaps in the transcripts can occur\n                    for the following reasons: monologues exceeding ten\n                    minutes, scripted speech, sensitive content,\n                    non-English speech exceeding more than one utterance\n                    per speaker, unintelligible speech, longish\n                    explanations by VOICE researchers present. Such gaps\n                    in transcription are always indicated in the\n                    transcript, specifying the reason for the gap, the\n                    length of this untranscribed portion and some\n                    contextual information about what happens during the\n                    gap.\n                <\/p>\n  \n\n  \n    <h3>Domains: definitions<\/h3>\n\t<dl>\n                    <dl><dd>Domains in VOICE denote socially defined\n                            situations or areas of activity.<\/dd><dl><dl><dt>ED (educational): <\/dt><dd>The educational domain includes all\n                                social situations connected with institutions\n                                or people involved in teaching, training or\n                                studying.<\/dd><\/dl><dl><dt>LE (leisure): <\/dt><dd>The leisure domain includes all\n                                social situations occurring during the time\n                                that is spent doing something one chooses to\n                                do when one is not working or\n                                studying.<\/dd><\/dl><dl><dt>P (professional): <\/dt><dd>The professional domain includes all\n                                social situations connected with an activity\n                                that needs special expertise.\n                            <\/dd><dl><dl><dt>PB (professional business): <\/dt><dd>The professional business domain\n                                    includes all social situations connected\n                                    with activities of making, buying, selling\n                                    or supplying goods or services for money.\n                                <\/dd><\/dl><dl><dt>PO (professional organizational): <\/dt><dd>The professional organizational\n                                    domain includes all social situations\n                                    connected with activities of international\n                                    organizations or networks which are not\n                                    doing research or business.<\/dd><\/dl><dl><dt>PR (professional research and science): <\/dt><dd>The professional research\/science\n                                    domain includes all social situations\n                                    connected with the careful study of a\n                                    subject, especially in order to discover new\n                                    facts or information about it.<\/dd><\/dl><\/dl><\/dl><\/dl><\/dl>\n\t<\/dl>\n  \n\n  \n    <h3>Speech Event Types: definitions<\/h3>\n\t<dl>\n                    <dl><dd>Speech Event Types (SPETs) in VOICE refer to\n                            particular types of speech event which are defined on the\n                            basis of purpose, type, and number of\n                            participants.<\/dd><dl><dl><dt>con (conversation): <\/dt><dd>A conversation is defined as a speech\n                                event at which people interact without a\n                                predefined purpose.<\/dd><\/dl><dl><dt>int (interview): <\/dt><dd>An interview is defined as a speech\n                                event at which questions are being asked\n                                and answered.<\/dd><\/dl><dl><dt>mtg (meeting): <\/dt><dd>A meeting is defined as a speech\n                                event at which a clearly defined group of\n                                people meets to discuss previously specified\n                                matters.<\/dd><\/dl><dl><dt>pan (panel): <\/dt><dd>A panel is defined as a speech event\n                                at which a group of specialists give their\n                                advice or opinion on a specified topic to an\n                                audience.<\/dd><\/dl><dl><dt>prc (press conference): <\/dt><dd>A press conference is defined as a\n                                speech event at which somebody talks to a\n                                group of journalists in order to answer their\n                                questions and\/or to make an official\n                                statement.<\/dd><\/dl><dl><dt>qas (question-answer session): <\/dt><dd>A question-answer session is defined\n                                as a speech event at which members of an\n                                audience ask questions which are answered by\n                                specialist speakers.<\/dd><\/dl><dl><dt>sed (seminar discussion): <\/dt><dd>A seminar discussion is defined as a\n                                speech event at which a group of people meets\n                                for systematic study and\/or work under the\n                                direction of one or more experts.<\/dd><\/dl><dl><dt>sve (service encounter): <\/dt><dd>A service encounter is defined as a\n                                speech event at which somebody seeks a service\n                                which is provided by somebody else.<\/dd><\/dl><dl><dt>wgd (working group discussion): <\/dt><dd>A working group discussion is defined\n                                as a speech event at which a (temporarily\n                                formed) subgroup of a larger group discusses a\n                                particular problem or question in order to\n                                suggest ways of dealing with it.<\/dd><\/dl><dl><dt>wsd (workshop discussion): <\/dt><dd>A workshop discussion is defined as a\n                                speech event at which a specific group of\n                                people exchanges views, ideas or information\n                                on a particular topic.<\/dd><\/dl><\/dl><\/dl>\n\t<\/dl>\n  \n  \n\n  \n    <h2>Transcription<\/h2>\n    <p>\n                        The speech events included in VOICE are transcribed\n                        according to the VOICE Transcription Conventions\n                        [2.1], comprising the  <a target=\"_blank\" href=\"https:\/\/voice.acdh.oeaw.ac.at\/wp-content\/uploads\/2021\/04\/VOICE-mark-up-conventions.pdf\">VOICE mark-up conventions<\/a> \n                        and the  <a target=\"_blank\" href=\"https:\/\/voice.acdh.oeaw.ac.at\/wp-content\/uploads\/2021\/04\/VOICE-spelling-conventions.pdf\">VOICE spelling conventions<\/a>. \n                        With the exception of\n                        four wide-spread lexicalized phonological reductions\n                        (<em>cos<\/em>,  <em>gonna<\/em>,\n                         <em>gotta<\/em>,  <em>wanna<\/em>) and all\n                        standard contractions, words are represented in full\n                        standard orthographic form. Specific mark-up,\n                        e.g. for lengthening, emphasis, speaking modes,\n                        rising and falling intonation, allows for selected\n                        prosodic features to be included in the\n                        transcripts. All false starts and repetitions are\n                        represented in the transcripts.\n                    <\/p><p>\n                        Based on  <a target=\"_blank\" href=\"http:\/\/www.tei-c.org\/release\/doc\/tei-p5-doc\/en\/html\/ \">TEI Guidelines<\/a> \n                        and for the purposes of this transcription,\n                        an utterance in a speech event is normally taken to be \"a\n                        stretch of speech usually preceded and followed by silence\n                        or by a change of speaker\".\n                    <\/p><p>\n                        The speech events in VOICE also include switches\n                        into non-English speech. Generally, one utterance\n                        per person in non-English speech is transcribed, but\n                        longer turns in non-English speech are left\n                        untranscribed. If the transcriber is familiar with\n                        the language, non-English utterances are transcribed\n                        in full standard orthographic form, but excluding\n                        diacritics, umlauts, and non-Roman\n                        characters. Whenever possible, an approximate\n                        translation into English is provided.\n                    <\/p><p>\n                        Words are represented in British English spelling,\n                        following the  <a target=\"_blank\" href=\"http:\/\/www.oup.com\/elt\/catalogue\/teachersites\/oald7\/?cc=global \">Oxford\n                            Advanced Learner's Dictionary (7th edition)<\/a>,\n                        with the exception of 12 words (as well as their\n                        derivatives) which are spelt according to American\n                        English usage:  <em>center<\/em>,\n                         <em>theater<\/em>,  <em>behavior<\/em>,\n                         <em>color<\/em>,  <em>favor<\/em>,\n                         <em>labor<\/em>,  <em>neighbor<\/em>,\n                         <em>defense<\/em>,  <em>offense<\/em>,\n                         <em>disk<\/em>,  <em>program<\/em>, and\n                         <em>travel<\/em> (<em>traveled<\/em>,  <em>\n                            traveler<\/em>,  <em>traveling<\/em>).\n                    <\/p><p>\n                        Additionally, all words (verbs, nouns, etc.) which\n                        can be spelt with either  <em>-ise<\/em> or\n                         <em>-ize<\/em> are spelt with the\n                         <em>-ize<\/em> variant in the transcripts. For\n                        the rationale behind this decision see  <a target=\"_blank\" href=\"http:\/\/gupea.ub.gu.se\/dspace\/handle\/2077\/3153 \">Breiteneder,\n                            Pitzl, Majewski and Klimpfinger 2006.<\/a> \n                    <\/p><p>\n  For further enquiries please contact the\n  VOICE Project at         \n<\/p><p>\n                        In addition to manual checking and proof-reading,\n                        the individual transcripts were checked with the\n                        OpenOffice.org spellchecker.\n                    <\/p><p>\n                        Furthermore, spelling in the entire corpus was\n                        checked against the Oxford Advanced Learner's\n                        Dictionary lexicon.\n                    <\/p><p>\n                        Minor revisions and corrections in some of the corpus\n                        texts were made for the release of VOICE 2.0  in July 2012.\n                    <\/p><p> Minor changes in a small number of text headers (regarding the categorization of power relations and acquaintedness) were made between January and September 2021 for the release of VOICE 3.0. <\/p>\n  \n\n  \n  \n    <h2>Speaker Information<\/h2>\n\t\n\t  <h3>First Languages<\/h3>\n\t  <dl>\n                            <dl><dd>The speakers' first languages are specified as\n                            defined in  <a target=\"_blank\" href=\"http:\/\/tools.ietf.org\/html\/bcp47 \">BCP 47 Tags for\n                                Identifying Languages<\/a>. Languages are abbreviated\n                            according to the  <a target=\"_blank\" href=\"http:\/\/www.loc.gov\/standards\/iso639-2\/php\/code_list.php\">ISO\n                                639-2  <span class=\"emph\">Codes for the representation of names and\n                                    languages<\/span><\/a>. Countries are abbreviated according\n                            to the corresponding  <a target=\"_blank\" href=\"http:\/\/www.iso.org\/iso\/english_country_names_and_code_elements \">ISO\n                                3166-1-alpha-2 codes<\/a>.\n                        <\/dd><\/dl>\n\t  <\/dl>\n\t\n\t\n\t  <h3>Person Roles: definitions<\/h3>\n\t  <dl>\n                            <dl><dd>Person role indicates a speaker's primary\n                            role in a speech event.<\/dd><dl><dl><dt>participant: <\/dt><dd>A participant is defined as a\n                                person who actively takes part in a speech\n                                event but has no special role within it\n                                (default term).<\/dd><\/dl><dl><dt>chair: <\/dt><dd>A chair is defined as a participant\n                                who occupies the role of a\n                                chairperson.<\/dd><\/dl><dl><dt>coordinator: <\/dt><dd>A coordinator is defined as a\n                                participant who supports or helps the\n                                chairperson.<\/dd><\/dl><dl><dt>presenter: <\/dt><dd>A presenter is defined as a\n                                participant who gives a presentation and is\n                                available to answer related\n                                questions.<\/dd><\/dl><dl><dt>audience: <\/dt><dd>Audience is defined as a\n                                participant who abandons the role of silent\n                                addressee in order to ask a question or make\n                                a comment.<\/dd><\/dl><dl><dt>interviewer: <\/dt><dd>An interviewer is defined as a\n                                participant who interviews another (or\n                                several) participant(s).<\/dd><\/dl><dl><dt>interviewee: <\/dt><dd>An interviewee is defined as a\n                                participant who is being\n                                interviewed.<\/dd><\/dl><dl><dt>teacher: <\/dt><dd>A teacher is defined as a\n                                participant who teaches other\n                                participants.<\/dd><\/dl><dl><dt>student: <\/dt><dd>A student is defined as a\n                                participant who is being taught.<\/dd><\/dl><dl><dt>non-participant: <\/dt><dd>A non-participant is defined as a\n                                person who is not part of the speech event,\n                                but joins the speech event for a very short\n                                period.<\/dd><\/dl><dl><dt>researcher: <\/dt><dd>A researcher is defined as a person\n                                who is present during a speech event as an\n                                observer for the purpose of making a\n                                recording and\/or taking\n                                field-notes.<\/dd><\/dl><dl><dt>translator: <\/dt><dd>A translator is defined as a\n                                participant who has the task of translating\n                                what other participants say.<\/dd><\/dl><\/dl><\/dl>\n\t  <\/dl>\n\t\n\t\n\t  <h3>Person Groups: definitions<\/h3>\n\t  <dl>\n                            <dl><dd>Person groups is an approximate\n                            classification grouping the people present according\n                            to their overall roles in a speech event.<\/dd><dl><dl><dt>speakers: <\/dt><dd>All persons who say something in the\n                                course of a speech event. The number of\n                                speakers thus equals the number of identified\n                                speakers in the transcript.<\/dd><\/dl><dl><dt>interactants: <\/dt><dd>\n                                All speakers except for researchers and\n                                non-participants.\n                            <\/dd><\/dl><dl><dt>group audience: <\/dt><dd>All people attending a speech event\n                                as silent addressees. The number of audience\n                                members is to be understood as an\n                                approximation.<\/dd><\/dl><\/dl><\/dl>\n\t  <\/dl>\n\t\n\n\t\n\t  <h3> Speakers Not Identified<\/h3>\n\t  <dl class=\"speakers\">\n\t  <dt>SX: \n\t  <\/dt><dd>Unidentified speaker<\/dd><dt>SX-m: \n\t  <\/dt><dd>Unidentified male speaker<\/dd><dt>SX-f: \n\t  <\/dt><dd>Unidentified female speaker<\/dd><dt>SS: \n\t  <\/dt><dd>Unidentified group of speakers<\/dd>\n\t  <\/dl>\n\t\n\n\t\n\t  <h3>Power Relations: definitions<\/h3>\n\t  <dl>\n                            <dl><dd>Power relations is an approximate\n                            classification indicating the span of\n                            social\/hierarchical status among participants in any\n                            given speech event. This classification does not\n                            apply to non-participants and researchers.<\/dd><dl><dl><dt>fairly symmetrical: <\/dt><dd>The participants have equal or\n                                similar social\/hierarchical status.<\/dd><\/dl><dl><dt>fairly asymmetrical: <\/dt><dd>The participants have unequal\n                                social\/hierarchical status.<\/dd><\/dl><dl><dt>unknown: <\/dt><dd>The power relations of the\n                                participants are not known.<\/dd><\/dl><\/dl><\/dl>\n\t  <\/dl>\n\t\n\t\n\t  <h3>Acquaintedness: definitions<\/h3>\n\t  <dl>\n                            <dl><dd>Acquaintedness indicates whether\n                            participants (excluding non-participants and\n                            researchers) have met before (at least\n                            once).<\/dd><dl><dl><dt>acquainted: <\/dt><dd>All participants have met before.<\/dd><\/dl><dl><dt>predominantly acquainted: <\/dt><dd>The majority of participants have met\n                                before.<\/dd><\/dl><dl><dt>predominantly unacquainted: <\/dt><dd>Only a few participants have met\n                                before, the majority are meeting for the first\n                                time.<\/dd><\/dl><dl><dt>unacquainted: <\/dt><dd>All participants are meeting for the\n                                first time.<\/dd><\/dl><dl><dt>unknown: <\/dt><dd>The degree of acquaintedness of the participants is not known.<\/dd><\/dl><\/dl><\/dl>\n\t  <\/dl>\n\t\n  \n  \n  <\/div>",
+  "teiHeader":"<div xmlns=\"http:\/\/www.w3.org\/1999\/xhtml\" class=\"header\" xml:space=\"preserve\">\n  <div class=\"title\">\n    <h1>\n                    Vienna-Oxford International Corpus of English (VOICE)\n\t<\/h1>\n      \n\t\t<h2>\n                         VOICE 3.0 Online, September 2021\n\t\t<\/h2>\n      \n    \n      <h3>Project Director<\/h3>\n      <ul>\n        \n                        <li>\n                            Barbara Seidlhofer\n                        <\/li>\n        \n                        <li>\n                            Marie-Luise Pitzl\n                        <\/li>\n        \n      <\/ul>\n    \n    \n      \n\t\t\n\t\t\n\t\t\n\t\t<h3>\n                            Researchers – VOICE 3.0 XML \n                        <\/h3>\n\t\t<ul>\n                            \n\t\t\t<li>\n                                    Hans Christian Breuer\n                                <\/li>\n\t\t  \n\t\t\t<li>\n                                    Ruth Osimk-Teasdale \n                                <\/li>\n\t\t  \n\t\t\t<li>\n                                    Hannes Pirker\n                                <\/li>\n\t\t  \n\t\t\t<li>\n                                    Marie-Luise Pitzl\n                                <\/li>\n\t\t  \n\t\t\t<li>\n                                    Stefanie Riegler\n                                <\/li>\n\t\t  \n\t\t\t<li>\n                                    Daniel Schopper\n                                <\/li>\n\t\t  \n\t\t\t<li>\n                                    Barbara Seidlhofer\n                                <\/li>\n\t\t  \n\t\t\t<li>\n                                    Omar Siam\n                                <\/li>\n\t\t  \n\t\t\t<li>\n                                    Daniel Stoxreiter\n                                <\/li>\n\t\t  \n\t\t<\/ul>\n      \n\t\t\n\t\t\n\t\t\n\t\t<h3>\n                            Researchers – VOICE 2.0 POS XML &amp; VOICE 2.0 XML \n                        <\/h3>\n\t\t<ul>\n                            \n\t\t\t<li>\n                                    Stefan Majewski\n                                <\/li>\n\t\t  \n\t\t\t<li>\n                                    Ruth Osimk-Teasdale \n                                <\/li>\n\t\t  \n\t\t\t<li>\n                                    Marie-Luise Pitzl\n                                <\/li>\n\t\t  \n\t\t\t<li>\n                                    Michael Radeka\n                                <\/li>\n\t\t  \n\t\t<\/ul>\n      \n\t\t\n\t\t\n\t\t\n\t\t<h3>\n                            Researchers – Creation of VOICE 1.0 XML   \n                        <\/h3>\n\t\t<ul>\n                            \n\t\t\t<li>\n                                    Angelika Breiteneder\n                                <\/li>\n\t\t  \n\t\t\t<li>\n                                    Theresa Klimpfinger\n                                <\/li>\n\t\t  \n\t\t\t<li>\n                                    Stefan Majewski\n                                <\/li>\n\t\t  \n\t\t\t<li>\n                                    Marie-Luise Pitzl\n                                <\/li>\n\t\t  \n\t\t<\/ul>\n      \n    \n    \n      <h3>Project Funding<\/h3>\n      <ul>\n                        <li>\n                            \n                    The creation of VOICE 1.0 and 2.0 was funded by FWF, the Austrian Science Fund (Project No. L116 and L448).\n                    The creation of VOICE 3.0 Online and VOICE 3.0 XML was supported by funding from CLARIAH-AT and by staff\n                    members of the Austrian Centre for Digital Humanities and Cultural Heritage at the Austrian Academy of\n                    Sciences and the English Department at the University of Vienna.\n                \n                        <\/li>\n\t\n\t  <li>\n\n\t      \n\t\t\tThese funds were further supplemented by a contribution from Oxford University Press in 2008 and 2009. Supporting funds were also provided in the early pilot phase by Oxford University Press and by the Hochschuljubiläumsstiftung der Stadt Wien.\n\t      \n\t  <\/li>\n\t\n      <\/ul>\n    \n    \n      <h3>Size<\/h3>\n      <p>\n                         1,023,082 orthographically defined words, totalling 110 hours 35 minutes and 56 seconds of recording.\n            \n      <\/p>\n    \n    \n      <h3>Source Description<\/h3>\n      \n\t\t<p>\n                        VOICE is based on audio-recordings of 151\n                        naturally-occurring, non-scripted, face-to-face interactions\n                        involving 753 identified individuals from 49 different first\n                        language backgrounds using English as a lingua franca (ELF),\n                        i.e. English used as a common means of communication among\n                        speakers from different first-language backgrounds. The\n                        recordings were carried out between July 2001 and November\n                        2007, usually using portable mini-disc recorders with\n                        external microphones. Most of the audio-recordings are\n                        supplemented by detailed field notes including information\n                        about the nature of the speech event and the interaction\n                        taking place as well as about the participants engaging in\n                        these ELF interactions. The interactions recorded are\n                        complete speech events from different domains (educational,\n                        leisure, professional) and of different speech event types\n                        (conversation, interview, meeting, panel, press conference,\n                        question-answer session, seminar discussion, service\n                        encounter, working group discussion, workshop\n                        discussion). The audio-recordings were transcribed, checked\n                        and proof-read by trained transcribers and researchers in\n                        accordance with the VOICE mark-up and spelling conventions\n                        [2.1] (see  <a target=\"_blank\" href=\"https:\/\/voice.acdh.oeaw.ac.at\/wp-content\/uploads\/2021\/04\/VOICE-mark-up-conventions.pdf\">https:\/\/voice.acdh.oeaw.ac.at\/wp-content\/uploads\/2021\/04\/VOICE-mark-up-conventions.pdf<\/a>  and  <a target=\"_blank\" href=\"https:\/\/voice.acdh.oeaw.ac.at\/wp-content\/uploads\/2021\/04\/VOICE-spelling-conventions.pdf\">https:\/\/voice.acdh.oeaw.ac.at\/wp-content\/uploads\/2021\/04\/VOICE-spelling-conventions.pdf<\/a>).\n                    <\/p><p> Details for each electronic text are given in\n                        the individual text headers.<\/p><p>The principles and practices underlying the selection and\n                        design of the corpus are documented in the project and sampling\n                        description.<\/p>\n      \n    \n  <\/div>\n  \n    <h3>Publication Statement<\/h3>\n    <p>Austrian Academy of Sciences<\/p><p>University of Vienna<\/p><p>Sonnenfelsgasse 19<br \/>1010 Vienna<br \/>Austria<br \/>Email: voice3@oeaw.ac.at<br \/>Website: https:\/\/voice3.acdh.oeaw.ac.at\/ <br \/>Website: https:\/\/voice.acdh.oeaw.ac.at\/ <br \/>ACDH-CH Helpdesk: acdh-ch-helpdesk@oeaw.ac.at <br \/><\/p><p>\n                        The Vienna-Oxford International Corpus of English (VOICE) was created by Barbara Seidlhofer\n                        (founding director) and Angelika Breiteneder, Theresa Klimpfinger, Stefan Majewski, Marie-Luise Pitzl\n                        (project researchers) from 2005 to 2011. VOICE POS XML 2.0 was the first part-of-speech tagged\n                        version of VOICE and was based on the same data source as VOICE 2.0 XML (released 2013).\n                        VOICE 2.0 XML and VOICE POS XML 2.0 included minor revisions with regard to previous versions.\n                        VOICE 3.0 XML is a new, merged version of VOICE 2.0 XML and VOICE POS XML 2.0 and is available\n                        for download in  <a target=\"_blank\" href=\"https:\/\/arche.acdh.oeaw.ac.at\/\">ARCHE (A Resource Center for the HumanitiEs)<\/a> \n                        under a  <a target=\"_blank\" href=\"https:\/\/creativecommons.org\/licenses\/by\/4.0\/\">Creative Commons Attribution 4.0 International (CC BY 4.0) License<\/a>  \n                        23 selected audio files are available as audio streams in the  <a target=\"_blank\" href=\" https:\/\/voice3.acdh.oeaw.ac.at\">VOICE Online interface <\/a>.\n                    <\/p><p>CC-BY<\/p><p>You are free to: Share — copy and redistribute the material in any medium or format. Adapt — remix, transform, and build upon the material for any purpose, even commercially.\n                           You must give appropriate credit, provide a link to the license, and indicate if changes were made. You may do so in any reasonable manner,\n                           but not in any way that suggests the licensor endorses you or your use. \n                        <\/p><p><\/p><p>\n                        \n                    <\/p><p><\/p><p>\n                        \n                    <\/p><p>\n  For further enquiries please contact the\n  VOICE Project at         \n <a target=\"_blank\" href=\"mailto:voice3@oeaw.ac.at\">voice3@oeaw.ac.at<\/a>.        <\/p>\n  \n\n  \n    <h2>\n                    Project\n      \n\t\t and Sampling Description\n      \n    <\/h2>\n    <p>\n                    The most wide-spread contemporary use of English throughout\n                    the world is that of English as a lingua franca (ELF),\n                    i.e. English used as a common means of communication among\n                    speakers from different first-language backgrounds  <a target=\"_blank\" href=\"#BIB_UELF\">Seidlhofer 2011<\/a>). Nevertheless,\n                    linguistic descriptions before the mid-2000s focused almost\n                    entirely on English as spoken and written by its native speakers.\n                    Starting in 2005, the VOICE project sought to redress the\n                    balance by compiling the first general corpus capturing\n                    spoken ELF interactions as they happen naturally in various\n                    contexts. VOICE was designed and compiled to make possible\n                    linguistic descriptions of this most common contemporary use\n                    of English by providing a corpus of spoken ELF interactions\n                    which has been freely accessible to linguistic researchers\n                    all over the world since 2009. The corpus is stored in a\n                    TEI-based XML format and rendered accessible online through\n                    an open-access user interface at  <a target=\"_blank\" href=\"https:\/\/voice3.acdh.oeaw.ac.at\">https:\/\/voice3.acdh.oeaw.ac.at<\/a>.\n                    HTML and TXT versions of the corpus are provided in the VOICE 3.0 XML download package.\n                    The current versions VOICE 3.0 Online and VOICE 3.0 XML were \n                    created between April 2020 and September 2021 in the VOICE CLARIAH\n                    project (see  <a target=\"_blank\" href=\"https:\/\/voice-clariah.acdh.oeaw.ac.at\">https:\/\/voice-clariah.acdh.oeaw.ac.at<\/a>). \n                    The previously separate part-of-speech (POS) tagged and lemmatized version of\n                    VOICE XML and VOICE Online has been fully incorporated into VOICE 3.0 \n                    XML and VOICE 3.0 Online.\n                <\/p><p>\n                    The unit chosen for sampling data for inclusion in VOICE is\n                    that of the speech event. Speech events are (as far as\n                    practicalities allowed) included in their entirety. The speech\n                    events were selected for inclusion in the corpus on the basis\n                    of a set of seven external, i.e. non-linguistic, criteria,\n                    which therefore define the target population. Accordingly,\n                    VOICE captures speech events that fulfill the following\n                    criteria:\n                    <ul><li>\n                            English as a lingua franca (operationally defined as \n                            any use of English among speakers of different first \n                            languages for whom English is the communicative medium\n                            of choice, and often the only option)\n                        <\/li><li>Spoken<\/li><li>Naturally occurring<\/li><li>Interactive<\/li><li>Face-to-face<\/li><li>Non-scripted<\/li><li>\n                            Self-selected participation (i.e. the speakers\n                            decided for themselves that they are capable\n                            of using ELF to accomplish specific\n                            participant roles in the speech event they are\n                            taking part in)\n                        <\/li><\/ul>\n                <\/p><p>\n                    As to the sampling method used, subgroups of the\n                    target population were identified on the level of\n                    domain and target proportions specified for these as\n                    follows: Educational 25%, Leisure 10%,\n                    Professional-business 20%, Professional-organizational\n                    35%, Professional-research\/science 10%.<\/p><p>\n                    Short portions of some speech events were left\n                    untranscribed. Such gaps in the transcripts can occur\n                    for the following reasons: monologues exceeding ten\n                    minutes, scripted speech, sensitive content,\n                    non-English speech exceeding more than one utterance\n                    per speaker, unintelligible speech, longish\n                    explanations by VOICE researchers present. Such gaps\n                    in transcription are always indicated in the\n                    transcript, specifying the reason for the gap, the\n                    length of this untranscribed portion and some\n                    contextual information about what happens during the\n                    gap.\n                <\/p>\n  \n\n  \n    <h3>Domains: definitions<\/h3>\n\t<dl>\n                    <dl><dd>Domains in VOICE denote socially defined\n                            situations or areas of activity.<\/dd><dl><dl><dt>ED (educational): <\/dt><dd>The educational domain includes all\n                                social situations connected with institutions\n                                or people involved in teaching, training or\n                                studying.<\/dd><\/dl><dl><dt>LE (leisure): <\/dt><dd>The leisure domain includes all\n                                social situations occurring during the time\n                                that is spent doing something one chooses to\n                                do when one is not working or\n                                studying.<\/dd><\/dl><dl><dt>P (professional): <\/dt><dd>The professional domain includes all\n                                social situations connected with an activity\n                                that needs special expertise.\n                            <\/dd><dl><dl><dt>PB (professional business): <\/dt><dd>The professional business domain\n                                    includes all social situations connected\n                                    with activities of making, buying, selling\n                                    or supplying goods or services for money.\n                                <\/dd><\/dl><dl><dt>PO (professional organizational): <\/dt><dd>The professional organizational\n                                    domain includes all social situations\n                                    connected with activities of international\n                                    organizations or networks which are not\n                                    doing research or business.<\/dd><\/dl><dl><dt>PR (professional research and science): <\/dt><dd>The professional research\/science\n                                    domain includes all social situations\n                                    connected with the careful study of a\n                                    subject, especially in order to discover new\n                                    facts or information about it.<\/dd><\/dl><\/dl><\/dl><\/dl><\/dl>\n\t<\/dl>\n  \n\n  \n    <h3>Speech Event Types: definitions<\/h3>\n\t<dl>\n                    <dl><dd>Speech Event Types (SPETs) in VOICE refer to\n                            particular types of speech event which are defined on the\n                            basis of purpose, type, and number of\n                            participants.<\/dd><dl><dl><dt>con (conversation): <\/dt><dd>A conversation is defined as a speech\n                                event at which people interact without a\n                                predefined purpose.<\/dd><\/dl><dl><dt>int (interview): <\/dt><dd>An interview is defined as a speech\n                                event at which questions are being asked\n                                and answered.<\/dd><\/dl><dl><dt>mtg (meeting): <\/dt><dd>A meeting is defined as a speech\n                                event at which a clearly defined group of\n                                people meets to discuss previously specified\n                                matters.<\/dd><\/dl><dl><dt>pan (panel): <\/dt><dd>A panel is defined as a speech event\n                                at which a group of specialists give their\n                                advice or opinion on a specified topic to an\n                                audience.<\/dd><\/dl><dl><dt>prc (press conference): <\/dt><dd>A press conference is defined as a\n                                speech event at which somebody talks to a\n                                group of journalists in order to answer their\n                                questions and\/or to make an official\n                                statement.<\/dd><\/dl><dl><dt>qas (question-answer session): <\/dt><dd>A question-answer session is defined\n                                as a speech event at which members of an\n                                audience ask questions which are answered by\n                                specialist speakers.<\/dd><\/dl><dl><dt>sed (seminar discussion): <\/dt><dd>A seminar discussion is defined as a\n                                speech event at which a group of people meets\n                                for systematic study and\/or work under the\n                                direction of one or more experts.<\/dd><\/dl><dl><dt>sve (service encounter): <\/dt><dd>A service encounter is defined as a\n                                speech event at which somebody seeks a service\n                                which is provided by somebody else.<\/dd><\/dl><dl><dt>wgd (working group discussion): <\/dt><dd>A working group discussion is defined\n                                as a speech event at which a (temporarily\n                                formed) subgroup of a larger group discusses a\n                                particular problem or question in order to\n                                suggest ways of dealing with it.<\/dd><\/dl><dl><dt>wsd (workshop discussion): <\/dt><dd>A workshop discussion is defined as a\n                                speech event at which a specific group of\n                                people exchanges views, ideas or information\n                                on a particular topic.<\/dd><\/dl><\/dl><\/dl>\n\t<\/dl>\n  \n  \n\n  \n    <h2>Transcription<\/h2>\n    <p>\n                        The speech events included in VOICE are transcribed\n                        according to the VOICE Transcription Conventions\n                        [2.1], comprising the  <a target=\"_blank\" href=\"https:\/\/voice.acdh.oeaw.ac.at\/wp-content\/uploads\/2021\/04\/VOICE-mark-up-conventions.pdf\">VOICE mark-up conventions<\/a> \n                        and the  <a target=\"_blank\" href=\"https:\/\/voice.acdh.oeaw.ac.at\/wp-content\/uploads\/2021\/04\/VOICE-spelling-conventions.pdf\">VOICE spelling conventions<\/a>. \n                        With the exception of\n                        four wide-spread lexicalized phonological reductions\n                        (<em>cos<\/em>,  <em>gonna<\/em>,\n                         <em>gotta<\/em>,  <em>wanna<\/em>) and all\n                        standard contractions, words are represented in full\n                        standard orthographic form. Specific mark-up,\n                        e.g. for lengthening, emphasis, speaking modes,\n                        rising and falling intonation, allows for selected\n                        prosodic features to be included in the\n                        transcripts. All false starts and repetitions are\n                        represented in the transcripts.\n                    <\/p><p>\n                        Based on  <a target=\"_blank\" href=\"http:\/\/www.tei-c.org\/release\/doc\/tei-p5-doc\/en\/html\/ \">TEI Guidelines<\/a> \n                        and for the purposes of this transcription,\n                        an utterance in a speech event is normally taken to be \"a\n                        stretch of speech usually preceded and followed by silence\n                        or by a change of speaker\".\n                    <\/p><p>\n                        The speech events in VOICE also include switches\n                        into non-English speech. Generally, one utterance\n                        per person in non-English speech is transcribed, but\n                        longer turns in non-English speech are left\n                        untranscribed. If the transcriber is familiar with\n                        the language, non-English utterances are transcribed\n                        in full standard orthographic form, but excluding\n                        diacritics, umlauts, and non-Roman\n                        characters. Whenever possible, an approximate\n                        translation into English is provided.\n                    <\/p><p>\n                        Words are represented in British English spelling,\n                        following the  <a target=\"_blank\" href=\"http:\/\/www.oup.com\/elt\/catalogue\/teachersites\/oald7\/?cc=global \">Oxford\n                            Advanced Learner's Dictionary (7th edition)<\/a>,\n                        with the exception of 12 words (as well as their\n                        derivatives) which are spelt according to American\n                        English usage:  <em>center<\/em>,\n                         <em>theater<\/em>,  <em>behavior<\/em>,\n                         <em>color<\/em>,  <em>favor<\/em>,\n                         <em>labor<\/em>,  <em>neighbor<\/em>,\n                         <em>defense<\/em>,  <em>offense<\/em>,\n                         <em>disk<\/em>,  <em>program<\/em>, and\n                         <em>travel<\/em> (<em>traveled<\/em>,  <em>\n                            traveler<\/em>,  <em>traveling<\/em>).\n                    <\/p><p>\n                        Additionally, all words (verbs, nouns, etc.) which\n                        can be spelt with either  <em>-ise<\/em> or\n                         <em>-ize<\/em> are spelt with the\n                         <em>-ize<\/em> variant in the transcripts. For\n                        the rationale behind this decision see  <a target=\"_blank\" href=\"http:\/\/gupea.ub.gu.se\/dspace\/handle\/2077\/3153 \">Breiteneder,\n                            Pitzl, Majewski and Klimpfinger 2006.<\/a> \n                    <\/p><p>\n  For further enquiries please contact the\n  VOICE Project at         \n<\/p><p>\n                        In addition to manual checking and proof-reading,\n                        the individual transcripts were checked with the\n                        OpenOffice.org spellchecker.\n                    <\/p><p>\n                        Furthermore, spelling in the entire corpus was\n                        checked against the Oxford Advanced Learner's\n                        Dictionary lexicon.\n                    <\/p><p>\n                        Minor revisions and corrections in some of the corpus\n                        texts were made for the release of VOICE 2.0  in July 2012.\n                    <\/p><p> Minor changes in a small number of text headers (regarding the categorization of power relations and acquaintedness) were made between January and September 2021 for the release of VOICE 3.0. <\/p>\n  \n\n  \n  \n    <h2>Speaker Information<\/h2>\n\t\n\t  <h3>First Languages<\/h3>\n\t  <dl>\n                            <dl><dd>The speakers' first languages are specified as\n                            defined in  <a target=\"_blank\" href=\"http:\/\/tools.ietf.org\/html\/bcp47 \">BCP 47 Tags for\n                                Identifying Languages<\/a>. Languages are abbreviated\n                            according to the  <a target=\"_blank\" href=\"http:\/\/www.loc.gov\/standards\/iso639-2\/php\/code_list.php\">ISO\n                                639-2  <span class=\"emph\">Codes for the representation of names and\n                                    languages<\/span><\/a>. Countries are abbreviated according\n                            to the corresponding  <a target=\"_blank\" href=\"http:\/\/www.iso.org\/iso\/english_country_names_and_code_elements \">ISO\n                                3166-1-alpha-2 codes<\/a>.\n                        <\/dd><\/dl>\n\t  <\/dl>\n\t\n\t\n\t  <h3>Person Roles: definitions<\/h3>\n\t  <dl>\n                            <dl><dd>Person role indicates a speaker's primary\n                            role in a speech event.<\/dd><dl><dl><dt>participant: <\/dt><dd>A participant is defined as a\n                                person who actively takes part in a speech\n                                event but has no special role within it\n                                (default term).<\/dd><\/dl><dl><dt>chair: <\/dt><dd>A chair is defined as a participant\n                                who occupies the role of a\n                                chairperson.<\/dd><\/dl><dl><dt>coordinator: <\/dt><dd>A coordinator is defined as a\n                                participant who supports or helps the\n                                chairperson.<\/dd><\/dl><dl><dt>presenter: <\/dt><dd>A presenter is defined as a\n                                participant who gives a presentation and is\n                                available to answer related\n                                questions.<\/dd><\/dl><dl><dt>audience: <\/dt><dd>Audience is defined as a\n                                participant who abandons the role of silent\n                                addressee in order to ask a question or make\n                                a comment.<\/dd><\/dl><dl><dt>interviewer: <\/dt><dd>An interviewer is defined as a\n                                participant who interviews another (or\n                                several) participant(s).<\/dd><\/dl><dl><dt>interviewee: <\/dt><dd>An interviewee is defined as a\n                                participant who is being\n                                interviewed.<\/dd><\/dl><dl><dt>teacher: <\/dt><dd>A teacher is defined as a\n                                participant who teaches other\n                                participants.<\/dd><\/dl><dl><dt>student: <\/dt><dd>A student is defined as a\n                                participant who is being taught.<\/dd><\/dl><dl><dt>non-participant: <\/dt><dd>A non-participant is defined as a\n                                person who is not part of the speech event,\n                                but joins the speech event for a very short\n                                period.<\/dd><\/dl><dl><dt>researcher: <\/dt><dd>A researcher is defined as a person\n                                who is present during a speech event as an\n                                observer for the purpose of making a\n                                recording and\/or taking\n                                field-notes.<\/dd><\/dl><dl><dt>translator: <\/dt><dd>A translator is defined as a\n                                participant who has the task of translating\n                                what other participants say.<\/dd><\/dl><\/dl><\/dl>\n\t  <\/dl>\n\t\n\t\n\t  <h3>Person Groups: definitions<\/h3>\n\t  <dl>\n                            <dl><dd>Person groups is an approximate\n                            classification grouping the people present according\n                            to their overall roles in a speech event.<\/dd><dl><dl><dt>speakers: <\/dt><dd>All persons who say something in the\n                                course of a speech event. The number of\n                                speakers thus equals the number of identified\n                                speakers in the transcript.<\/dd><\/dl><dl><dt>interactants: <\/dt><dd>\n                                All speakers except for researchers and\n                                non-participants.\n                            <\/dd><\/dl><dl><dt>group audience: <\/dt><dd>All people attending a speech event\n                                as silent addressees. The number of audience\n                                members is to be understood as an\n                                approximation.<\/dd><\/dl><\/dl><\/dl>\n\t  <\/dl>\n\t\n\n\t\n\t  <h3> Speakers Not Identified<\/h3>\n\t  <dl class=\"speakers\">\n\t  <dt>SX: \n\t  <\/dt><dd>Unidentified speaker<\/dd><dt>SX-m: \n\t  <\/dt><dd>Unidentified male speaker<\/dd><dt>SX-f: \n\t  <\/dt><dd>Unidentified female speaker<\/dd><dt>SS: \n\t  <\/dt><dd>Unidentified group of speakers<\/dd>\n\t  <\/dl>\n\t\n\n\t\n\t  <h3>Power Relations: definitions<\/h3>\n\t  <dl>\n                            <dl><dd>Power relations is an approximate\n                            classification indicating the span of\n                            social\/hierarchical status among participants in any\n                            given speech event. This classification does not\n                            apply to non-participants and researchers.<\/dd><dl><dl><dt>fairly symmetrical: <\/dt><dd>The participants have equal or\n                                similar social\/hierarchical status.<\/dd><\/dl><dl><dt>fairly asymmetrical: <\/dt><dd>The participants have unequal\n                                social\/hierarchical status.<\/dd><\/dl><dl><dt>unknown: <\/dt><dd>The power relations of the\n                                participants are not known.<\/dd><\/dl><\/dl><\/dl>\n\t  <\/dl>\n\t\n\t\n\t  <h3>Acquaintedness: definitions<\/h3>\n\t  <dl>\n                            <dl><dd>Acquaintedness indicates whether\n                            participants (excluding non-participants and\n                            researchers) have met before (at least\n                            once).<\/dd><dl><dl><dt>acquainted: <\/dt><dd>All participants have met before.<\/dd><\/dl><dl><dt>predominantly acquainted: <\/dt><dd>The majority of participants have met\n                                before.<\/dd><\/dl><dl><dt>predominantly unacquainted: <\/dt><dd>Only a few participants have met\n                                before, the majority are meeting for the first\n                                time.<\/dd><\/dl><dl><dt>unacquainted: <\/dt><dd>All participants are meeting for the\n                                first time.<\/dd><\/dl><dl><dt>unknown: <\/dt><dd>The degree of acquaintedness of the participants is not known.<\/dd><\/dl><\/dl><\/dl>\n\t  <\/dl>\n\t\n  \n  \n  <\/div>",
   "filterEnums":{
     "speakersBucket":[
       "2–3",
@@ -14359,14 +14359,14 @@
       "label":"ED",
       "speechEvents":[
         {
-          "id":"EDcon4",
+          "id":"EDcon4.xml",
           "title":"conversation about a party and preparation for German course",
           "domain":"ED",
           "spet":"con",
           "refs":{
             "audio":null,
-            "TEI":"\/VOICE_CLARIAH\/speechEvent\/EDcon4",
-            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/EDcon4\/header"
+            "TEI":"\/VOICE_CLARIAH\/speechEvent\/EDcon4.xml",
+            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/EDcon4.xml\/header"
           },
           "audioAvailable":false,
           "words":5420,
@@ -14535,14 +14535,14 @@
           "relationAcquaintedness":"acquainted"
         },
         {
-          "id":"EDcon250",
+          "id":"EDcon250.xml",
           "title":"lunch conversation about different university systems and other topics",
           "domain":"ED",
           "spet":"con",
           "refs":{
             "audio":null,
-            "TEI":"\/VOICE_CLARIAH\/speechEvent\/EDcon250",
-            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/EDcon250\/header"
+            "TEI":"\/VOICE_CLARIAH\/speechEvent\/EDcon250.xml",
+            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/EDcon250.xml\/header"
           },
           "audioAvailable":false,
           "words":6379,
@@ -14686,14 +14686,14 @@
           "relationAcquaintedness":"acquainted"
         },
         {
-          "id":"EDcon496",
+          "id":"EDcon496.xml",
           "title":"conversation between business students",
           "domain":"ED",
           "spet":"con",
           "refs":{
             "audio":"https:\/\/voice.acdh.oeaw.ac.at\/sound\/EDcon496.mp3",
-            "TEI":"\/VOICE_CLARIAH\/speechEvent\/EDcon496",
-            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/EDcon496\/header"
+            "TEI":"\/VOICE_CLARIAH\/speechEvent\/EDcon496.xml",
+            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/EDcon496.xml\/header"
           },
           "audioAvailable":true,
           "words":5075,
@@ -14788,14 +14788,14 @@
           "relationAcquaintedness":"acquainted"
         },
         {
-          "id":"EDcon521",
+          "id":"EDcon521.xml",
           "title":"conversation between students from Europe about working and studying in different European countries",
           "domain":"ED",
           "spet":"con",
           "refs":{
             "audio":"https:\/\/voice.acdh.oeaw.ac.at\/sound\/EDcon521.mp3",
-            "TEI":"\/VOICE_CLARIAH\/speechEvent\/EDcon521",
-            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/EDcon521\/header"
+            "TEI":"\/VOICE_CLARIAH\/speechEvent\/EDcon521.xml",
+            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/EDcon521.xml\/header"
           },
           "audioAvailable":true,
           "words":11637,
@@ -15059,14 +15059,14 @@
           "relationAcquaintedness":"acquainted"
         },
         {
-          "id":"EDint328",
+          "id":"EDint328.xml",
           "title":"interview with a couple about language attitudes in Malta",
           "domain":"ED",
           "spet":"int",
           "refs":{
             "audio":null,
-            "TEI":"\/VOICE_CLARIAH\/speechEvent\/EDint328",
-            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/EDint328\/header"
+            "TEI":"\/VOICE_CLARIAH\/speechEvent\/EDint328.xml",
+            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/EDint328.xml\/header"
           },
           "audioAvailable":false,
           "words":5802,
@@ -15133,14 +15133,14 @@
           "relationAcquaintedness":"acquainted"
         },
         {
-          "id":"EDint330",
+          "id":"EDint330.xml",
           "title":"interview with architects and interior designers about the use of English in Malta",
           "domain":"ED",
           "spet":"int",
           "refs":{
             "audio":null,
-            "TEI":"\/VOICE_CLARIAH\/speechEvent\/EDint330",
-            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/EDint330\/header"
+            "TEI":"\/VOICE_CLARIAH\/speechEvent\/EDint330.xml",
+            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/EDint330.xml\/header"
           },
           "audioAvailable":false,
           "words":8703,
@@ -15225,14 +15225,14 @@
           "relationAcquaintedness":"predominantly_acquainted"
         },
         {
-          "id":"EDint331",
+          "id":"EDint331.xml",
           "title":"interview with a university professor about the use of English and Maltese in Malta",
           "domain":"ED",
           "spet":"int",
           "refs":{
             "audio":null,
-            "TEI":"\/VOICE_CLARIAH\/speechEvent\/EDint331",
-            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/EDint331\/header"
+            "TEI":"\/VOICE_CLARIAH\/speechEvent\/EDint331.xml",
+            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/EDint331.xml\/header"
           },
           "audioAvailable":false,
           "words":6110,
@@ -15271,14 +15271,14 @@
           "relationAcquaintedness":"unacquainted"
         },
         {
-          "id":"EDint604",
+          "id":"EDint604.xml",
           "title":"interview about attitudes towards the use of English and Maltese in Malta",
           "domain":"ED",
           "spet":"int",
           "refs":{
             "audio":null,
-            "TEI":"\/VOICE_CLARIAH\/speechEvent\/EDint604",
-            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/EDint604\/header"
+            "TEI":"\/VOICE_CLARIAH\/speechEvent\/EDint604.xml",
+            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/EDint604.xml\/header"
           },
           "audioAvailable":false,
           "words":1599,
@@ -15328,14 +15328,14 @@
           "relationAcquaintedness":"predominantly_unacquainted"
         },
         {
-          "id":"EDint605",
+          "id":"EDint605.xml",
           "title":"interview about the use of English and Maltese in Malta",
           "domain":"ED",
           "spet":"int",
           "refs":{
             "audio":null,
-            "TEI":"\/VOICE_CLARIAH\/speechEvent\/EDint605",
-            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/EDint605\/header"
+            "TEI":"\/VOICE_CLARIAH\/speechEvent\/EDint605.xml",
+            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/EDint605.xml\/header"
           },
           "audioAvailable":false,
           "words":1862,
@@ -15383,14 +15383,14 @@
           "relationAcquaintedness":"predominantly_unacquainted"
         },
         {
-          "id":"EDsed31",
+          "id":"EDsed31.xml",
           "title":"seminar discussion about Austrian stereotypes and cultural differences in general",
           "domain":"ED",
           "spet":"sed",
           "refs":{
             "audio":null,
-            "TEI":"\/VOICE_CLARIAH\/speechEvent\/EDsed31",
-            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/EDsed31\/header"
+            "TEI":"\/VOICE_CLARIAH\/speechEvent\/EDsed31.xml",
+            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/EDsed31.xml\/header"
           },
           "audioAvailable":false,
           "words":22198,
@@ -15743,14 +15743,14 @@
           "relationAcquaintedness":"predominantly_unacquainted"
         },
         {
-          "id":"EDsed251",
+          "id":"EDsed251.xml",
           "title":"seminar discussion about academic mobility",
           "domain":"ED",
           "spet":"sed",
           "refs":{
             "audio":"https:\/\/voice.acdh.oeaw.ac.at\/sound\/EDsed251.mp3",
-            "TEI":"\/VOICE_CLARIAH\/speechEvent\/EDsed251",
-            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/EDsed251\/header"
+            "TEI":"\/VOICE_CLARIAH\/speechEvent\/EDsed251.xml",
+            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/EDsed251.xml\/header"
           },
           "audioAvailable":true,
           "words":15445,
@@ -16038,14 +16038,14 @@
           "relationAcquaintedness":"predominantly_acquainted"
         },
         {
-          "id":"EDsed301",
+          "id":"EDsed301.xml",
           "title":"seminar discussion about agriculture in the European Union",
           "domain":"ED",
           "spet":"sed",
           "refs":{
             "audio":null,
-            "TEI":"\/VOICE_CLARIAH\/speechEvent\/EDsed301",
-            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/EDsed301\/header"
+            "TEI":"\/VOICE_CLARIAH\/speechEvent\/EDsed301.xml",
+            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/EDsed301.xml\/header"
           },
           "audioAvailable":false,
           "words":8292,
@@ -16214,14 +16214,14 @@
           "relationAcquaintedness":"acquainted"
         },
         {
-          "id":"EDsed362",
+          "id":"EDsed362.xml",
           "title":"seminar discussion about suggestions for combating terrorism",
           "domain":"ED",
           "spet":"sed",
           "refs":{
             "audio":null,
-            "TEI":"\/VOICE_CLARIAH\/speechEvent\/EDsed362",
-            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/EDsed362\/header"
+            "TEI":"\/VOICE_CLARIAH\/speechEvent\/EDsed362.xml",
+            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/EDsed362.xml\/header"
           },
           "audioAvailable":false,
           "words":7164,
@@ -16532,14 +16532,14 @@
           "relationAcquaintedness":"predominantly_acquainted"
         },
         {
-          "id":"EDsed363",
+          "id":"EDsed363.xml",
           "title":"seminar discussion on a text about an artist and his installations",
           "domain":"ED",
           "spet":"sed",
           "refs":{
             "audio":null,
-            "TEI":"\/VOICE_CLARIAH\/speechEvent\/EDsed363",
-            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/EDsed363\/header"
+            "TEI":"\/VOICE_CLARIAH\/speechEvent\/EDsed363.xml",
+            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/EDsed363.xml\/header"
           },
           "audioAvailable":false,
           "words":6338,
@@ -16750,14 +16750,14 @@
           "relationAcquaintedness":"predominantly_acquainted"
         },
         {
-          "id":"EDsed364",
+          "id":"EDsed364.xml",
           "title":"seminar discussion on a film about Gustav Klimt",
           "domain":"ED",
           "spet":"sed",
           "refs":{
             "audio":null,
-            "TEI":"\/VOICE_CLARIAH\/speechEvent\/EDsed364",
-            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/EDsed364\/header"
+            "TEI":"\/VOICE_CLARIAH\/speechEvent\/EDsed364.xml",
+            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/EDsed364.xml\/header"
           },
           "audioAvailable":false,
           "words":4173,
@@ -16960,14 +16960,14 @@
           "relationAcquaintedness":"predominantly_acquainted"
         },
         {
-          "id":"EDsve421",
+          "id":"EDsve421.xml",
           "title":"service encounter helping international students with practical matters",
           "domain":"ED",
           "spet":"sve",
           "refs":{
             "audio":null,
-            "TEI":"\/VOICE_CLARIAH\/speechEvent\/EDsve421",
-            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/EDsve421\/header"
+            "TEI":"\/VOICE_CLARIAH\/speechEvent\/EDsve421.xml",
+            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/EDsve421.xml\/header"
           },
           "audioAvailable":false,
           "words":3166,
@@ -17093,14 +17093,14 @@
           "relationAcquaintedness":"predominantly_unacquainted"
         },
         {
-          "id":"EDsve422",
+          "id":"EDsve422.xml",
           "title":"service encounter helping international students with practical information",
           "domain":"ED",
           "spet":"sve",
           "refs":{
             "audio":"https:\/\/voice.acdh.oeaw.ac.at\/sound\/EDsve422.mp3",
-            "TEI":"\/VOICE_CLARIAH\/speechEvent\/EDsve422",
-            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/EDsve422\/header"
+            "TEI":"\/VOICE_CLARIAH\/speechEvent\/EDsve422.xml",
+            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/EDsve422.xml\/header"
           },
           "audioAvailable":true,
           "words":1981,
@@ -17259,14 +17259,14 @@
           "relationAcquaintedness":"predominantly_unacquainted"
         },
         {
-          "id":"EDsve423",
+          "id":"EDsve423.xml",
           "title":"service encounter helping four international students with practical information",
           "domain":"ED",
           "spet":"sve",
           "refs":{
             "audio":null,
-            "TEI":"\/VOICE_CLARIAH\/speechEvent\/EDsve423",
-            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/EDsve423\/header"
+            "TEI":"\/VOICE_CLARIAH\/speechEvent\/EDsve423.xml",
+            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/EDsve423.xml\/header"
           },
           "audioAvailable":false,
           "words":2611,
@@ -17399,14 +17399,14 @@
           "relationAcquaintedness":"predominantly_acquainted"
         },
         {
-          "id":"EDsve451",
+          "id":"EDsve451.xml",
           "title":"service encounter about important administrative matters for international students",
           "domain":"ED",
           "spet":"sve",
           "refs":{
             "audio":null,
-            "TEI":"\/VOICE_CLARIAH\/speechEvent\/EDsve451",
-            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/EDsve451\/header"
+            "TEI":"\/VOICE_CLARIAH\/speechEvent\/EDsve451.xml",
+            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/EDsve451.xml\/header"
           },
           "audioAvailable":false,
           "words":1281,
@@ -17480,14 +17480,14 @@
           "relationAcquaintedness":"predominantly_unacquainted"
         },
         {
-          "id":"EDsve452",
+          "id":"EDsve452.xml",
           "title":"service encounter helping three international students with practical matters",
           "domain":"ED",
           "spet":"sve",
           "refs":{
             "audio":null,
-            "TEI":"\/VOICE_CLARIAH\/speechEvent\/EDsve452",
-            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/EDsve452\/header"
+            "TEI":"\/VOICE_CLARIAH\/speechEvent\/EDsve452.xml",
+            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/EDsve452.xml\/header"
           },
           "audioAvailable":false,
           "words":2659,
@@ -17612,14 +17612,14 @@
           "relationAcquaintedness":"predominantly_unacquainted"
         },
         {
-          "id":"EDwgd5",
+          "id":"EDwgd5.xml",
           "title":"working group discussion about organizing a presentation on a common foreign policy for the European Union",
           "domain":"ED",
           "spet":"wgd",
           "refs":{
             "audio":null,
-            "TEI":"\/VOICE_CLARIAH\/speechEvent\/EDwgd5",
-            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/EDwgd5\/header"
+            "TEI":"\/VOICE_CLARIAH\/speechEvent\/EDwgd5.xml",
+            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/EDwgd5.xml\/header"
           },
           "audioAvailable":false,
           "words":5052,
@@ -17789,14 +17789,14 @@
           "relationAcquaintedness":"acquainted"
         },
         {
-          "id":"EDwgd6",
+          "id":"EDwgd6.xml",
           "title":"working group discussion between students on measures for preventing acts of terrorism",
           "domain":"ED",
           "spet":"wgd",
           "refs":{
             "audio":null,
-            "TEI":"\/VOICE_CLARIAH\/speechEvent\/EDwgd6",
-            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/EDwgd6\/header"
+            "TEI":"\/VOICE_CLARIAH\/speechEvent\/EDwgd6.xml",
+            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/EDwgd6.xml\/header"
           },
           "audioAvailable":false,
           "words":4421,
@@ -18025,14 +18025,14 @@
           "relationAcquaintedness":"acquainted"
         },
         {
-          "id":"EDwgd241",
+          "id":"EDwgd241.xml",
           "title":"working group discussion about the advantages and disadvantages of different scenarios concerning the future of English in Europe",
           "domain":"ED",
           "spet":"wgd",
           "refs":{
             "audio":null,
-            "TEI":"\/VOICE_CLARIAH\/speechEvent\/EDwgd241",
-            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/EDwgd241\/header"
+            "TEI":"\/VOICE_CLARIAH\/speechEvent\/EDwgd241.xml",
+            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/EDwgd241.xml\/header"
           },
           "audioAvailable":false,
           "words":10834,
@@ -18212,14 +18212,14 @@
           "relationAcquaintedness":"acquainted"
         },
         {
-          "id":"EDwgd305",
+          "id":"EDwgd305.xml",
           "title":"working group discussion about the presentation of a specific future scenario concerning the linguistic landscape of Europe",
           "domain":"ED",
           "spet":"wgd",
           "refs":{
             "audio":null,
-            "TEI":"\/VOICE_CLARIAH\/speechEvent\/EDwgd305",
-            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/EDwgd305\/header"
+            "TEI":"\/VOICE_CLARIAH\/speechEvent\/EDwgd305.xml",
+            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/EDwgd305.xml\/header"
           },
           "audioAvailable":false,
           "words":11339,
@@ -18391,14 +18391,14 @@
           "relationAcquaintedness":"acquainted"
         },
         {
-          "id":"EDwgd497",
+          "id":"EDwgd497.xml",
           "title":"working group discussion about organizing a joint consultancy project",
           "domain":"ED",
           "spet":"wgd",
           "refs":{
             "audio":"https:\/\/voice.acdh.oeaw.ac.at\/sound\/EDwgd497.mp3",
-            "TEI":"\/VOICE_CLARIAH\/speechEvent\/EDwgd497",
-            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/EDwgd497\/header"
+            "TEI":"\/VOICE_CLARIAH\/speechEvent\/EDwgd497.xml",
+            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/EDwgd497.xml\/header"
           },
           "audioAvailable":true,
           "words":6371,
@@ -18534,14 +18534,14 @@
           "relationAcquaintedness":"acquainted"
         },
         {
-          "id":"EDwsd9",
+          "id":"EDwsd9.xml",
           "title":"workshop discussion on organization and content of discussion groups to follow",
           "domain":"ED",
           "spet":"wsd",
           "refs":{
             "audio":null,
-            "TEI":"\/VOICE_CLARIAH\/speechEvent\/EDwsd9",
-            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/EDwsd9\/header"
+            "TEI":"\/VOICE_CLARIAH\/speechEvent\/EDwsd9.xml",
+            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/EDwsd9.xml\/header"
           },
           "audioAvailable":false,
           "words":1550,
@@ -18703,14 +18703,14 @@
           "relationAcquaintedness":"acquainted"
         },
         {
-          "id":"EDwsd15",
+          "id":"EDwsd15.xml",
           "title":"workshop discussion on the possible future of Europe as regards linguacultural unity and diversity",
           "domain":"ED",
           "spet":"wsd",
           "refs":{
             "audio":null,
-            "TEI":"\/VOICE_CLARIAH\/speechEvent\/EDwsd15",
-            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/EDwsd15\/header"
+            "TEI":"\/VOICE_CLARIAH\/speechEvent\/EDwsd15.xml",
+            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/EDwsd15.xml\/header"
           },
           "audioAvailable":false,
           "words":5924,
@@ -19089,14 +19089,14 @@
           "relationAcquaintedness":"acquainted"
         },
         {
-          "id":"EDwsd242",
+          "id":"EDwsd242.xml",
           "title":"workshop discussion on the organization of a presentation",
           "domain":"ED",
           "spet":"wsd",
           "refs":{
             "audio":null,
-            "TEI":"\/VOICE_CLARIAH\/speechEvent\/EDwsd242",
-            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/EDwsd242\/header"
+            "TEI":"\/VOICE_CLARIAH\/speechEvent\/EDwsd242.xml",
+            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/EDwsd242.xml\/header"
           },
           "audioAvailable":false,
           "words":5398,
@@ -19382,14 +19382,14 @@
           "relationAcquaintedness":"acquainted"
         },
         {
-          "id":"EDwsd302",
+          "id":"EDwsd302.xml",
           "title":"workshop discussion on the five most important values for human life",
           "domain":"ED",
           "spet":"wsd",
           "refs":{
             "audio":null,
-            "TEI":"\/VOICE_CLARIAH\/speechEvent\/EDwsd302",
-            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/EDwsd302\/header"
+            "TEI":"\/VOICE_CLARIAH\/speechEvent\/EDwsd302.xml",
+            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/EDwsd302.xml\/header"
           },
           "audioAvailable":false,
           "words":14698,
@@ -19809,14 +19809,14 @@
           "relationAcquaintedness":"predominantly_unacquainted"
         },
         {
-          "id":"EDwsd303",
+          "id":"EDwsd303.xml",
           "title":"workshop discussion on the definition of the term lingua franca",
           "domain":"ED",
           "spet":"wsd",
           "refs":{
             "audio":"https:\/\/voice.acdh.oeaw.ac.at\/sound\/EDwsd303.mp3",
-            "TEI":"\/VOICE_CLARIAH\/speechEvent\/EDwsd303",
-            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/EDwsd303\/header"
+            "TEI":"\/VOICE_CLARIAH\/speechEvent\/EDwsd303.xml",
+            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/EDwsd303.xml\/header"
           },
           "audioAvailable":true,
           "words":10516,
@@ -20084,14 +20084,14 @@
           "relationAcquaintedness":"acquainted"
         },
         {
-          "id":"EDwsd304",
+          "id":"EDwsd304.xml",
           "title":"working group discussion on four different scenarios regarding the future of English in Europe",
           "domain":"ED",
           "spet":"wsd",
           "refs":{
             "audio":null,
-            "TEI":"\/VOICE_CLARIAH\/speechEvent\/EDwsd304",
-            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/EDwsd304\/header"
+            "TEI":"\/VOICE_CLARIAH\/speechEvent\/EDwsd304.xml",
+            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/EDwsd304.xml\/header"
           },
           "audioAvailable":false,
           "words":13952,
@@ -20474,14 +20474,14 @@
           "relationAcquaintedness":"predominantly_acquainted"
         },
         {
-          "id":"EDwsd306",
+          "id":"EDwsd306.xml",
           "title":"workshop discussion about the best, the worst and the most likely scenarios concerning the future of English and regional cultures in Europe",
           "domain":"ED",
           "spet":"wsd",
           "refs":{
             "audio":null,
-            "TEI":"\/VOICE_CLARIAH\/speechEvent\/EDwsd306",
-            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/EDwsd306\/header"
+            "TEI":"\/VOICE_CLARIAH\/speechEvent\/EDwsd306.xml",
+            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/EDwsd306.xml\/header"
           },
           "audioAvailable":false,
           "words":14866,
@@ -20838,14 +20838,14 @@
           "relationAcquaintedness":"acquainted"
         },
         {
-          "id":"EDwsd464",
+          "id":"EDwsd464.xml",
           "title":"workshop discussion about the organization of a student conference",
           "domain":"ED",
           "spet":"wsd",
           "refs":{
             "audio":null,
-            "TEI":"\/VOICE_CLARIAH\/speechEvent\/EDwsd464",
-            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/EDwsd464\/header"
+            "TEI":"\/VOICE_CLARIAH\/speechEvent\/EDwsd464.xml",
+            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/EDwsd464.xml\/header"
           },
           "audioAvailable":false,
           "words":11708,
@@ -21251,14 +21251,14 @@
           "relationAcquaintedness":"predominantly_unacquainted"
         },
         {
-          "id":"EDwsd499",
+          "id":"EDwsd499.xml",
           "title":"workshop discussion on issues related to students and citizenship",
           "domain":"ED",
           "spet":"wsd",
           "refs":{
             "audio":null,
-            "TEI":"\/VOICE_CLARIAH\/speechEvent\/EDwsd499",
-            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/EDwsd499\/header"
+            "TEI":"\/VOICE_CLARIAH\/speechEvent\/EDwsd499.xml",
+            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/EDwsd499.xml\/header"
           },
           "audioAvailable":false,
           "words":14804,
@@ -21457,14 +21457,14 @@
           "relationAcquaintedness":"predominantly_acquainted"
         },
         {
-          "id":"EDwsd590",
+          "id":"EDwsd590.xml",
           "title":"workshop discussion on the division into four different subgroups",
           "domain":"ED",
           "spet":"wsd",
           "refs":{
             "audio":null,
-            "TEI":"\/VOICE_CLARIAH\/speechEvent\/EDwsd590",
-            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/EDwsd590\/header"
+            "TEI":"\/VOICE_CLARIAH\/speechEvent\/EDwsd590.xml",
+            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/EDwsd590.xml\/header"
           },
           "audioAvailable":false,
           "words":1607,
@@ -21789,14 +21789,14 @@
       "label":"LE",
       "speechEvents":[
         {
-          "id":"LEcon8",
+          "id":"LEcon8.xml",
           "title":"dinner table conversation among international students",
           "domain":"LE",
           "spet":"con",
           "refs":{
             "audio":null,
-            "TEI":"\/VOICE_CLARIAH\/speechEvent\/LEcon8",
-            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/LEcon8\/header"
+            "TEI":"\/VOICE_CLARIAH\/speechEvent\/LEcon8.xml",
+            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/LEcon8.xml\/header"
           },
           "audioAvailable":false,
           "words":3114,
@@ -21930,14 +21930,14 @@
           "relationAcquaintedness":"acquainted"
         },
         {
-          "id":"LEcon227",
+          "id":"LEcon227.xml",
           "title":"conversation between exchange students about cultural differences",
           "domain":"LE",
           "spet":"con",
           "refs":{
             "audio":null,
-            "TEI":"\/VOICE_CLARIAH\/speechEvent\/LEcon227",
-            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/LEcon227\/header"
+            "TEI":"\/VOICE_CLARIAH\/speechEvent\/LEcon227.xml",
+            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/LEcon227.xml\/header"
           },
           "audioAvailable":false,
           "words":2538,
@@ -21976,14 +21976,14 @@
           "relationAcquaintedness":"acquainted"
         },
         {
-          "id":"LEcon228",
+          "id":"LEcon228.xml",
           "title":"conversation between exchange students about the safety of living in a students' hall of residence",
           "domain":"LE",
           "spet":"con",
           "refs":{
             "audio":null,
-            "TEI":"\/VOICE_CLARIAH\/speechEvent\/LEcon228",
-            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/LEcon228\/header"
+            "TEI":"\/VOICE_CLARIAH\/speechEvent\/LEcon228.xml",
+            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/LEcon228.xml\/header"
           },
           "audioAvailable":false,
           "words":896,
@@ -22042,14 +22042,14 @@
           "relationAcquaintedness":"acquainted"
         },
         {
-          "id":"LEcon229",
+          "id":"LEcon229.xml",
           "title":"conversation between international students at a club",
           "domain":"LE",
           "spet":"con",
           "refs":{
             "audio":null,
-            "TEI":"\/VOICE_CLARIAH\/speechEvent\/LEcon229",
-            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/LEcon229\/header"
+            "TEI":"\/VOICE_CLARIAH\/speechEvent\/LEcon229.xml",
+            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/LEcon229.xml\/header"
           },
           "audioAvailable":false,
           "words":3285,
@@ -22130,14 +22130,14 @@
           "relationAcquaintedness":"acquainted"
         },
         {
-          "id":"LEcon329",
+          "id":"LEcon329.xml",
           "title":"conversation in car while driving around to show sights",
           "domain":"LE",
           "spet":"con",
           "refs":{
             "audio":null,
-            "TEI":"\/VOICE_CLARIAH\/speechEvent\/LEcon329",
-            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/LEcon329\/header"
+            "TEI":"\/VOICE_CLARIAH\/speechEvent\/LEcon329.xml",
+            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/LEcon329.xml\/header"
           },
           "audioAvailable":false,
           "words":4704,
@@ -22204,14 +22204,14 @@
           "relationAcquaintedness":"acquainted"
         },
         {
-          "id":"LEcon351",
+          "id":"LEcon351.xml",
           "title":"conversation about customs and legends among students at a party",
           "domain":"LE",
           "spet":"con",
           "refs":{
             "audio":null,
-            "TEI":"\/VOICE_CLARIAH\/speechEvent\/LEcon351",
-            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/LEcon351\/header"
+            "TEI":"\/VOICE_CLARIAH\/speechEvent\/LEcon351.xml",
+            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/LEcon351.xml\/header"
           },
           "audioAvailable":false,
           "words":2204,
@@ -22319,14 +22319,14 @@
           "relationAcquaintedness":"acquainted"
         },
         {
-          "id":"LEcon352",
+          "id":"LEcon352.xml",
           "title":"conversation between international students about language differences at a party",
           "domain":"LE",
           "spet":"con",
           "refs":{
             "audio":null,
-            "TEI":"\/VOICE_CLARIAH\/speechEvent\/LEcon352",
-            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/LEcon352\/header"
+            "TEI":"\/VOICE_CLARIAH\/speechEvent\/LEcon352.xml",
+            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/LEcon352.xml\/header"
           },
           "audioAvailable":false,
           "words":2126,
@@ -22426,14 +22426,14 @@
           "relationAcquaintedness":"acquainted"
         },
         {
-          "id":"LEcon353",
+          "id":"LEcon353.xml",
           "title":"conversation at a party about Spanish in Argentina and about a dog",
           "domain":"LE",
           "spet":"con",
           "refs":{
             "audio":null,
-            "TEI":"\/VOICE_CLARIAH\/speechEvent\/LEcon353",
-            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/LEcon353\/header"
+            "TEI":"\/VOICE_CLARIAH\/speechEvent\/LEcon353.xml",
+            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/LEcon353.xml\/header"
           },
           "audioAvailable":false,
           "words":1877,
@@ -22507,14 +22507,14 @@
           "relationAcquaintedness":"predominantly_acquainted"
         },
         {
-          "id":"LEcon405",
+          "id":"LEcon405.xml",
           "title":"conversation between exchange students about tourism and settling into a new city",
           "domain":"LE",
           "spet":"con",
           "refs":{
             "audio":null,
-            "TEI":"\/VOICE_CLARIAH\/speechEvent\/LEcon405",
-            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/LEcon405\/header"
+            "TEI":"\/VOICE_CLARIAH\/speechEvent\/LEcon405.xml",
+            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/LEcon405.xml\/header"
           },
           "audioAvailable":false,
           "words":1933,
@@ -22562,14 +22562,14 @@
           "relationAcquaintedness":"unacquainted"
         },
         {
-          "id":"LEcon417",
+          "id":"LEcon417.xml",
           "title":"conversation between female exchange students at local restaurant",
           "domain":"LE",
           "spet":"con",
           "refs":{
             "audio":null,
-            "TEI":"\/VOICE_CLARIAH\/speechEvent\/LEcon417",
-            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/LEcon417\/header"
+            "TEI":"\/VOICE_CLARIAH\/speechEvent\/LEcon417.xml",
+            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/LEcon417.xml\/header"
           },
           "audioAvailable":false,
           "words":2392,
@@ -22652,14 +22652,14 @@
           "relationAcquaintedness":"predominantly_unacquainted"
         },
         {
-          "id":"LEcon418",
+          "id":"LEcon418.xml",
           "title":"conversation between two students about festivals in different cultures",
           "domain":"LE",
           "spet":"con",
           "refs":{
             "audio":null,
-            "TEI":"\/VOICE_CLARIAH\/speechEvent\/LEcon418",
-            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/LEcon418\/header"
+            "TEI":"\/VOICE_CLARIAH\/speechEvent\/LEcon418.xml",
+            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/LEcon418.xml\/header"
           },
           "audioAvailable":false,
           "words":1452,
@@ -22706,14 +22706,14 @@
           "relationAcquaintedness":"acquainted"
         },
         {
-          "id":"LEcon420",
+          "id":"LEcon420.xml",
           "title":"conversation about sights in Scotland",
           "domain":"LE",
           "spet":"con",
           "refs":{
             "audio":"https:\/\/voice.acdh.oeaw.ac.at\/sound\/LEcon420.mp3",
-            "TEI":"\/VOICE_CLARIAH\/speechEvent\/LEcon420",
-            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/LEcon420\/header"
+            "TEI":"\/VOICE_CLARIAH\/speechEvent\/LEcon420.xml",
+            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/LEcon420.xml\/header"
           },
           "audioAvailable":true,
           "words":4576,
@@ -22786,14 +22786,14 @@
           "relationAcquaintedness":"predominantly_acquainted"
         },
         {
-          "id":"LEcon545",
+          "id":"LEcon545.xml",
           "title":"conversation among exchange students who are invited to celebrate pancake day",
           "domain":"LE",
           "spet":"con",
           "refs":{
             "audio":"https:\/\/voice.acdh.oeaw.ac.at\/sound\/LEcon545.mp3",
-            "TEI":"\/VOICE_CLARIAH\/speechEvent\/LEcon545",
-            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/LEcon545\/header"
+            "TEI":"\/VOICE_CLARIAH\/speechEvent\/LEcon545.xml",
+            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/LEcon545.xml\/header"
           },
           "audioAvailable":true,
           "words":7413,
@@ -22923,14 +22923,14 @@
           "relationAcquaintedness":"acquainted"
         },
         {
-          "id":"LEcon547",
+          "id":"LEcon547.xml",
           "title":"conversation between family and visiting student in car while driving around and visiting a castle",
           "domain":"LE",
           "spet":"con",
           "refs":{
             "audio":null,
-            "TEI":"\/VOICE_CLARIAH\/speechEvent\/LEcon547",
-            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/LEcon547\/header"
+            "TEI":"\/VOICE_CLARIAH\/speechEvent\/LEcon547.xml",
+            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/LEcon547.xml\/header"
           },
           "audioAvailable":false,
           "words":1220,
@@ -23006,14 +23006,14 @@
           "relationAcquaintedness":"acquainted"
         },
         {
-          "id":"LEcon548",
+          "id":"LEcon548.xml",
           "title":"conversation between family and visiting student before going out with friends",
           "domain":"LE",
           "spet":"con",
           "refs":{
             "audio":null,
-            "TEI":"\/VOICE_CLARIAH\/speechEvent\/LEcon548",
-            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/LEcon548\/header"
+            "TEI":"\/VOICE_CLARIAH\/speechEvent\/LEcon548.xml",
+            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/LEcon548.xml\/header"
           },
           "audioAvailable":false,
           "words":6909,
@@ -23108,14 +23108,14 @@
           "relationAcquaintedness":"predominantly_acquainted"
         },
         {
-          "id":"LEcon560",
+          "id":"LEcon560.xml",
           "title":"conversation among exchange students about their first experiences in Austria and various other topics",
           "domain":"LE",
           "spet":"con",
           "refs":{
             "audio":null,
-            "TEI":"\/VOICE_CLARIAH\/speechEvent\/LEcon560",
-            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/LEcon560\/header"
+            "TEI":"\/VOICE_CLARIAH\/speechEvent\/LEcon560.xml",
+            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/LEcon560.xml\/header"
           },
           "audioAvailable":false,
           "words":21867,
@@ -23320,14 +23320,14 @@
           "relationAcquaintedness":"predominantly_acquainted"
         },
         {
-          "id":"LEcon562",
+          "id":"LEcon562.xml",
           "title":"conversation among exchange students about various topics",
           "domain":"LE",
           "spet":"con",
           "refs":{
             "audio":null,
-            "TEI":"\/VOICE_CLARIAH\/speechEvent\/LEcon562",
-            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/LEcon562\/header"
+            "TEI":"\/VOICE_CLARIAH\/speechEvent\/LEcon562.xml",
+            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/LEcon562.xml\/header"
           },
           "audioAvailable":false,
           "words":15388,
@@ -23548,14 +23548,14 @@
           "relationAcquaintedness":"predominantly_unacquainted"
         },
         {
-          "id":"LEcon565",
+          "id":"LEcon565.xml",
           "title":"conversation about what to eat for lunch",
           "domain":"LE",
           "spet":"con",
           "refs":{
             "audio":null,
-            "TEI":"\/VOICE_CLARIAH\/speechEvent\/LEcon565",
-            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/LEcon565\/header"
+            "TEI":"\/VOICE_CLARIAH\/speechEvent\/LEcon565.xml",
+            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/LEcon565.xml\/header"
           },
           "audioAvailable":false,
           "words":3979,
@@ -23602,14 +23602,14 @@
           "relationAcquaintedness":"acquainted"
         },
         {
-          "id":"LEcon566",
+          "id":"LEcon566.xml",
           "title":"conversation between a couple while having lunch",
           "domain":"LE",
           "spet":"con",
           "refs":{
             "audio":"https:\/\/voice.acdh.oeaw.ac.at\/sound\/LEcon566.mp3",
-            "TEI":"\/VOICE_CLARIAH\/speechEvent\/LEcon566",
-            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/LEcon566\/header"
+            "TEI":"\/VOICE_CLARIAH\/speechEvent\/LEcon566.xml",
+            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/LEcon566.xml\/header"
           },
           "audioAvailable":true,
           "words":5634,
@@ -23656,14 +23656,14 @@
           "relationAcquaintedness":"acquainted"
         },
         {
-          "id":"LEcon573",
+          "id":"LEcon573.xml",
           "title":"conversation between a couple about a trip to Liverpool",
           "domain":"LE",
           "spet":"con",
           "refs":{
             "audio":null,
-            "TEI":"\/VOICE_CLARIAH\/speechEvent\/LEcon573",
-            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/LEcon573\/header"
+            "TEI":"\/VOICE_CLARIAH\/speechEvent\/LEcon573.xml",
+            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/LEcon573.xml\/header"
           },
           "audioAvailable":false,
           "words":1731,
@@ -23710,14 +23710,14 @@
           "relationAcquaintedness":"acquainted"
         },
         {
-          "id":"LEcon575",
+          "id":"LEcon575.xml",
           "title":"conversation while cooking dinner",
           "domain":"LE",
           "spet":"con",
           "refs":{
             "audio":null,
-            "TEI":"\/VOICE_CLARIAH\/speechEvent\/LEcon575",
-            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/LEcon575\/header"
+            "TEI":"\/VOICE_CLARIAH\/speechEvent\/LEcon575.xml",
+            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/LEcon575.xml\/header"
           },
           "audioAvailable":false,
           "words":2865,
@@ -23764,14 +23764,14 @@
           "relationAcquaintedness":"acquainted"
         },
         {
-          "id":"LEint551",
+          "id":"LEint551.xml",
           "title":"interview with participants of a scout camp about traveling and leisure activities in the preceding week",
           "domain":"LE",
           "spet":"int",
           "refs":{
             "audio":null,
-            "TEI":"\/VOICE_CLARIAH\/speechEvent\/LEint551",
-            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/LEint551\/header"
+            "TEI":"\/VOICE_CLARIAH\/speechEvent\/LEint551.xml",
+            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/LEint551.xml\/header"
           },
           "audioAvailable":false,
           "words":442,
@@ -23810,14 +23810,14 @@
           "relationAcquaintedness":"unacquainted"
         },
         {
-          "id":"LEint552",
+          "id":"LEint552.xml",
           "title":"interview about activities related to a scout camp",
           "domain":"LE",
           "spet":"int",
           "refs":{
             "audio":null,
-            "TEI":"\/VOICE_CLARIAH\/speechEvent\/LEint552",
-            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/LEint552\/header"
+            "TEI":"\/VOICE_CLARIAH\/speechEvent\/LEint552.xml",
+            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/LEint552.xml\/header"
           },
           "audioAvailable":false,
           "words":512,
@@ -23856,14 +23856,14 @@
           "relationAcquaintedness":"unacquainted"
         },
         {
-          "id":"LEint553",
+          "id":"LEint553.xml",
           "title":"interview with participants of a scout camp about a trip to Tyrol",
           "domain":"LE",
           "spet":"int",
           "refs":{
             "audio":null,
-            "TEI":"\/VOICE_CLARIAH\/speechEvent\/LEint553",
-            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/LEint553\/header"
+            "TEI":"\/VOICE_CLARIAH\/speechEvent\/LEint553.xml",
+            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/LEint553.xml\/header"
           },
           "audioAvailable":false,
           "words":411,
@@ -23927,14 +23927,14 @@
           "relationAcquaintedness":"predominantly_unacquainted"
         },
         {
-          "id":"LEint554",
+          "id":"LEint554.xml",
           "title":"interview with participants of a scout camp about travel plans",
           "domain":"LE",
           "spet":"int",
           "refs":{
             "audio":null,
-            "TEI":"\/VOICE_CLARIAH\/speechEvent\/LEint554",
-            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/LEint554\/header"
+            "TEI":"\/VOICE_CLARIAH\/speechEvent\/LEint554.xml",
+            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/LEint554.xml\/header"
           },
           "audioAvailable":false,
           "words":847,
@@ -24049,14 +24049,14 @@
           "relationAcquaintedness":"predominantly_acquainted"
         },
         {
-          "id":"LEint555",
+          "id":"LEint555.xml",
           "title":"interview about scout project concerned with food",
           "domain":"LE",
           "spet":"int",
           "refs":{
             "audio":null,
-            "TEI":"\/VOICE_CLARIAH\/speechEvent\/LEint555",
-            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/LEint555\/header"
+            "TEI":"\/VOICE_CLARIAH\/speechEvent\/LEint555.xml",
+            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/LEint555.xml\/header"
           },
           "audioAvailable":false,
           "words":903,
@@ -24100,14 +24100,14 @@
       "label":"PB",
       "speechEvents":[
         {
-          "id":"PBcon594",
+          "id":"PBcon594.xml",
           "title":"conversation about being a successful woman in the business world",
           "domain":"PB",
           "spet":"con",
           "refs":{
             "audio":null,
-            "TEI":"\/VOICE_CLARIAH\/speechEvent\/PBcon594",
-            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/PBcon594\/header"
+            "TEI":"\/VOICE_CLARIAH\/speechEvent\/PBcon594.xml",
+            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/PBcon594.xml\/header"
           },
           "audioAvailable":false,
           "words":2212,
@@ -24196,14 +24196,14 @@
           "relationAcquaintedness":"acquainted"
         },
         {
-          "id":"PBmtg3",
+          "id":"PBmtg3.xml",
           "title":"business meeting at a food company",
           "domain":"PB",
           "spet":"mtg",
           "refs":{
             "audio":null,
-            "TEI":"\/VOICE_CLARIAH\/speechEvent\/PBmtg3",
-            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/PBmtg3\/header"
+            "TEI":"\/VOICE_CLARIAH\/speechEvent\/PBmtg3.xml",
+            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/PBmtg3.xml\/header"
           },
           "audioAvailable":false,
           "words":24601,
@@ -24342,14 +24342,14 @@
           "relationAcquaintedness":"predominantly_acquainted"
         },
         {
-          "id":"PBmtg27",
+          "id":"PBmtg27.xml",
           "title":"sales team meeting about internal matters of a forwarding agency",
           "domain":"PB",
           "spet":"mtg",
           "refs":{
             "audio":"https:\/\/voice.acdh.oeaw.ac.at\/sound\/PBmtg27.mp3",
-            "TEI":"\/VOICE_CLARIAH\/speechEvent\/PBmtg27",
-            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/PBmtg27\/header"
+            "TEI":"\/VOICE_CLARIAH\/speechEvent\/PBmtg27.xml",
+            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/PBmtg27.xml\/header"
           },
           "audioAvailable":true,
           "words":15068,
@@ -24475,14 +24475,14 @@
           "relationAcquaintedness":"acquainted"
         },
         {
-          "id":"PBmtg269",
+          "id":"PBmtg269.xml",
           "title":"business meeting about coordinating a PR campaign across several countries",
           "domain":"PB",
           "spet":"mtg",
           "refs":{
             "audio":null,
-            "TEI":"\/VOICE_CLARIAH\/speechEvent\/PBmtg269",
-            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/PBmtg269\/header"
+            "TEI":"\/VOICE_CLARIAH\/speechEvent\/PBmtg269.xml",
+            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/PBmtg269.xml\/header"
           },
           "audioAvailable":false,
           "words":22585,
@@ -24618,14 +24618,14 @@
           "relationAcquaintedness":"acquainted"
         },
         {
-          "id":"PBmtg280",
+          "id":"PBmtg280.xml",
           "title":"business meeting on the status of a project",
           "domain":"PB",
           "spet":"mtg",
           "refs":{
             "audio":null,
-            "TEI":"\/VOICE_CLARIAH\/speechEvent\/PBmtg280",
-            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/PBmtg280\/header"
+            "TEI":"\/VOICE_CLARIAH\/speechEvent\/PBmtg280.xml",
+            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/PBmtg280.xml\/header"
           },
           "audioAvailable":false,
           "words":4768,
@@ -24726,14 +24726,14 @@
           "relationAcquaintedness":"acquainted"
         },
         {
-          "id":"PBmtg300",
+          "id":"PBmtg300.xml",
           "title":"business meeting at a forwarding agency with a sales representative of an airline",
           "domain":"PB",
           "spet":"mtg",
           "refs":{
             "audio":null,
-            "TEI":"\/VOICE_CLARIAH\/speechEvent\/PBmtg300",
-            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/PBmtg300\/header"
+            "TEI":"\/VOICE_CLARIAH\/speechEvent\/PBmtg300.xml",
+            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/PBmtg300.xml\/header"
           },
           "audioAvailable":false,
           "words":35277,
@@ -24910,14 +24910,14 @@
           "relationAcquaintedness":"predominantly_acquainted"
         },
         {
-          "id":"PBmtg414",
+          "id":"PBmtg414.xml",
           "title":"business meeting about the sales of products",
           "domain":"PB",
           "spet":"mtg",
           "refs":{
             "audio":null,
-            "TEI":"\/VOICE_CLARIAH\/speechEvent\/PBmtg414",
-            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/PBmtg414\/header"
+            "TEI":"\/VOICE_CLARIAH\/speechEvent\/PBmtg414.xml",
+            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/PBmtg414.xml\/header"
           },
           "audioAvailable":false,
           "words":21195,
@@ -25024,14 +25024,14 @@
           "relationAcquaintedness":"acquainted"
         },
         {
-          "id":"PBmtg462",
+          "id":"PBmtg462.xml",
           "title":"business meeting about promotion activities of a distribution company",
           "domain":"PB",
           "spet":"mtg",
           "refs":{
             "audio":"https:\/\/voice.acdh.oeaw.ac.at\/sound\/PBmtg462.mp3",
-            "TEI":"\/VOICE_CLARIAH\/speechEvent\/PBmtg462",
-            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/PBmtg462\/header"
+            "TEI":"\/VOICE_CLARIAH\/speechEvent\/PBmtg462.xml",
+            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/PBmtg462.xml\/header"
           },
           "audioAvailable":true,
           "words":15640,
@@ -25195,14 +25195,14 @@
           "relationAcquaintedness":"acquainted"
         },
         {
-          "id":"PBmtg463",
+          "id":"PBmtg463.xml",
           "title":"business meeting at a food company about future orders and product news",
           "domain":"PB",
           "spet":"mtg",
           "refs":{
             "audio":null,
-            "TEI":"\/VOICE_CLARIAH\/speechEvent\/PBmtg463",
-            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/PBmtg463\/header"
+            "TEI":"\/VOICE_CLARIAH\/speechEvent\/PBmtg463.xml",
+            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/PBmtg463.xml\/header"
           },
           "audioAvailable":false,
           "words":15484,
@@ -25358,14 +25358,14 @@
           "relationAcquaintedness":"acquainted"
         },
         {
-          "id":"PBpan10",
+          "id":"PBpan10.xml",
           "title":"panel about the potential accession of Turkey to the European Union",
           "domain":"PB",
           "spet":"pan",
           "refs":{
             "audio":null,
-            "TEI":"\/VOICE_CLARIAH\/speechEvent\/PBpan10",
-            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/PBpan10\/header"
+            "TEI":"\/VOICE_CLARIAH\/speechEvent\/PBpan10.xml",
+            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/PBpan10.xml\/header"
           },
           "audioAvailable":false,
           "words":7898,
@@ -25517,14 +25517,14 @@
           "relationAcquaintedness":"predominantly_unacquainted"
         },
         {
-          "id":"PBpan25",
+          "id":"PBpan25.xml",
           "title":"panel on the economic situation of the South-eastern European member states of the EU and their potential accession to the European Monetary Union",
           "domain":"PB",
           "spet":"pan",
           "refs":{
             "audio":null,
-            "TEI":"\/VOICE_CLARIAH\/speechEvent\/PBpan25",
-            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/PBpan25\/header"
+            "TEI":"\/VOICE_CLARIAH\/speechEvent\/PBpan25.xml",
+            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/PBpan25.xml\/header"
           },
           "audioAvailable":false,
           "words":10873,
@@ -25690,14 +25690,14 @@
           "relationAcquaintedness":"acquaintedness_unknown"
         },
         {
-          "id":"PBpan28",
+          "id":"PBpan28.xml",
           "title":"panel about financial markets in Central and Eastern Europe",
           "domain":"PB",
           "spet":"pan",
           "refs":{
             "audio":"https:\/\/voice.acdh.oeaw.ac.at\/sound\/PBpan28.mp3",
-            "TEI":"\/VOICE_CLARIAH\/speechEvent\/PBpan28",
-            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/PBpan28\/header"
+            "TEI":"\/VOICE_CLARIAH\/speechEvent\/PBpan28.xml",
+            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/PBpan28.xml\/header"
           },
           "audioAvailable":true,
           "words":9798,
@@ -25843,14 +25843,14 @@
           "relationAcquaintedness":"acquaintedness_unknown"
         },
         {
-          "id":"PBpan581",
+          "id":"PBpan581.xml",
           "title":"panel on demographic changes in Central and Eastern Europe",
           "domain":"PB",
           "spet":"pan",
           "refs":{
             "audio":null,
-            "TEI":"\/VOICE_CLARIAH\/speechEvent\/PBpan581",
-            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/PBpan581\/header"
+            "TEI":"\/VOICE_CLARIAH\/speechEvent\/PBpan581.xml",
+            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/PBpan581.xml\/header"
           },
           "audioAvailable":false,
           "words":8128,
@@ -25970,14 +25970,14 @@
           "relationAcquaintedness":"predominantly_unacquainted"
         },
         {
-          "id":"PBqas410",
+          "id":"PBqas410.xml",
           "title":"question-answer session about steel technology",
           "domain":"PB",
           "spet":"qas",
           "refs":{
             "audio":null,
-            "TEI":"\/VOICE_CLARIAH\/speechEvent\/PBqas410",
-            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/PBqas410\/header"
+            "TEI":"\/VOICE_CLARIAH\/speechEvent\/PBqas410.xml",
+            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/PBqas410.xml\/header"
           },
           "audioAvailable":false,
           "words":1824,
@@ -26125,14 +26125,14 @@
           "relationAcquaintedness":"predominantly_unacquainted"
         },
         {
-          "id":"PBqas411",
+          "id":"PBqas411.xml",
           "title":"question-answer session on issues of steel technology",
           "domain":"PB",
           "spet":"qas",
           "refs":{
             "audio":"https:\/\/voice.acdh.oeaw.ac.at\/sound\/PBqas411.mp3",
-            "TEI":"\/VOICE_CLARIAH\/speechEvent\/PBqas411",
-            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/PBqas411\/header"
+            "TEI":"\/VOICE_CLARIAH\/speechEvent\/PBqas411.xml",
+            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/PBqas411.xml\/header"
           },
           "audioAvailable":true,
           "words":1790,
@@ -26296,14 +26296,14 @@
           "relationAcquaintedness":"predominantly_unacquainted"
         },
         {
-          "id":"PBqas412",
+          "id":"PBqas412.xml",
           "title":"question-answer session on technology used in steel production",
           "domain":"PB",
           "spet":"qas",
           "refs":{
             "audio":null,
-            "TEI":"\/VOICE_CLARIAH\/speechEvent\/PBqas412",
-            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/PBqas412\/header"
+            "TEI":"\/VOICE_CLARIAH\/speechEvent\/PBqas412.xml",
+            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/PBqas412.xml\/header"
           },
           "audioAvailable":false,
           "words":2341,
@@ -26483,14 +26483,14 @@
           "relationAcquaintedness":"predominantly_unacquainted"
         },
         {
-          "id":"PBqas523",
+          "id":"PBqas523.xml",
           "title":"question-answer session on issues of steelmaking",
           "domain":"PB",
           "spet":"qas",
           "refs":{
             "audio":null,
-            "TEI":"\/VOICE_CLARIAH\/speechEvent\/PBqas523",
-            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/PBqas523\/header"
+            "TEI":"\/VOICE_CLARIAH\/speechEvent\/PBqas523.xml",
+            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/PBqas523.xml\/header"
           },
           "audioAvailable":false,
           "words":728,
@@ -26558,14 +26558,14 @@
           "relationAcquaintedness":"predominantly_acquainted"
         },
         {
-          "id":"PBsve426",
+          "id":"PBsve426.xml",
           "title":"service encounter about prolonging stay in Austria",
           "domain":"PB",
           "spet":"sve",
           "refs":{
             "audio":null,
-            "TEI":"\/VOICE_CLARIAH\/speechEvent\/PBsve426",
-            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/PBsve426\/header"
+            "TEI":"\/VOICE_CLARIAH\/speechEvent\/PBsve426.xml",
+            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/PBsve426.xml\/header"
           },
           "audioAvailable":false,
           "words":955,
@@ -26604,14 +26604,14 @@
           "relationAcquaintedness":"unacquainted"
         },
         {
-          "id":"PBsve430",
+          "id":"PBsve430.xml",
           "title":"service encounter about visa application for family members",
           "domain":"PB",
           "spet":"sve",
           "refs":{
             "audio":null,
-            "TEI":"\/VOICE_CLARIAH\/speechEvent\/PBsve430",
-            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/PBsve430\/header"
+            "TEI":"\/VOICE_CLARIAH\/speechEvent\/PBsve430.xml",
+            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/PBsve430.xml\/header"
           },
           "audioAvailable":false,
           "words":297,
@@ -26650,14 +26650,14 @@
           "relationAcquaintedness":"unacquainted"
         },
         {
-          "id":"PBsve434",
+          "id":"PBsve434.xml",
           "title":"service encounter about moving into a room earlier than planned",
           "domain":"PB",
           "spet":"sve",
           "refs":{
             "audio":null,
-            "TEI":"\/VOICE_CLARIAH\/speechEvent\/PBsve434",
-            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/PBsve434\/header"
+            "TEI":"\/VOICE_CLARIAH\/speechEvent\/PBsve434.xml",
+            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/PBsve434.xml\/header"
           },
           "audioAvailable":false,
           "words":486,
@@ -26696,14 +26696,14 @@
           "relationAcquaintedness":"unacquainted"
         },
         {
-          "id":"PBsve435",
+          "id":"PBsve435.xml",
           "title":"service encounter about getting an address printed out",
           "domain":"PB",
           "spet":"sve",
           "refs":{
             "audio":null,
-            "TEI":"\/VOICE_CLARIAH\/speechEvent\/PBsve435",
-            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/PBsve435\/header"
+            "TEI":"\/VOICE_CLARIAH\/speechEvent\/PBsve435.xml",
+            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/PBsve435.xml\/header"
           },
           "audioAvailable":false,
           "words":154,
@@ -26742,14 +26742,14 @@
           "relationAcquaintedness":"unacquainted"
         },
         {
-          "id":"PBsve436",
+          "id":"PBsve436.xml",
           "title":"service encounter about getting a deposit back",
           "domain":"PB",
           "spet":"sve",
           "refs":{
             "audio":null,
-            "TEI":"\/VOICE_CLARIAH\/speechEvent\/PBsve436",
-            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/PBsve436\/header"
+            "TEI":"\/VOICE_CLARIAH\/speechEvent\/PBsve436.xml",
+            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/PBsve436.xml\/header"
           },
           "audioAvailable":false,
           "words":668,
@@ -26805,14 +26805,14 @@
           "relationAcquaintedness":"unacquainted"
         },
         {
-          "id":"PBsve437",
+          "id":"PBsve437.xml",
           "title":"service encounter about renting a room",
           "domain":"PB",
           "spet":"sve",
           "refs":{
             "audio":null,
-            "TEI":"\/VOICE_CLARIAH\/speechEvent\/PBsve437",
-            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/PBsve437\/header"
+            "TEI":"\/VOICE_CLARIAH\/speechEvent\/PBsve437.xml",
+            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/PBsve437.xml\/header"
           },
           "audioAvailable":false,
           "words":637,
@@ -26856,14 +26856,14 @@
       "label":"PO",
       "speechEvents":[
         {
-          "id":"POcon543",
+          "id":"POcon543.xml",
           "title":"lunch conversation between professionals working in higher education",
           "domain":"PO",
           "spet":"con",
           "refs":{
             "audio":null,
-            "TEI":"\/VOICE_CLARIAH\/speechEvent\/POcon543",
-            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/POcon543\/header"
+            "TEI":"\/VOICE_CLARIAH\/speechEvent\/POcon543.xml",
+            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/POcon543.xml\/header"
           },
           "audioAvailable":false,
           "words":8445,
@@ -27030,14 +27030,14 @@
           "relationAcquaintedness":"acquainted"
         },
         {
-          "id":"POcon549",
+          "id":"POcon549.xml",
           "title":"conversation over lunch between professionals involved in European higher education matters",
           "domain":"PO",
           "spet":"con",
           "refs":{
             "audio":null,
-            "TEI":"\/VOICE_CLARIAH\/speechEvent\/POcon549",
-            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/POcon549\/header"
+            "TEI":"\/VOICE_CLARIAH\/speechEvent\/POcon549.xml",
+            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/POcon549.xml\/header"
           },
           "audioAvailable":false,
           "words":5640,
@@ -27260,14 +27260,14 @@
           "relationAcquaintedness":"acquainted"
         },
         {
-          "id":"POcon591",
+          "id":"POcon591.xml",
           "title":"conversation during coffee break about shopping malls",
           "domain":"PO",
           "spet":"con",
           "refs":{
             "audio":null,
-            "TEI":"\/VOICE_CLARIAH\/speechEvent\/POcon591",
-            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/POcon591\/header"
+            "TEI":"\/VOICE_CLARIAH\/speechEvent\/POcon591.xml",
+            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/POcon591.xml\/header"
           },
           "audioAvailable":false,
           "words":1276,
@@ -27382,14 +27382,14 @@
           "relationAcquaintedness":"acquainted"
         },
         {
-          "id":"POmtg314",
+          "id":"POmtg314.xml",
           "title":"meeting to discuss the proceedings of a planned workshop on joint degree programs",
           "domain":"PO",
           "spet":"mtg",
           "refs":{
             "audio":null,
-            "TEI":"\/VOICE_CLARIAH\/speechEvent\/POmtg314",
-            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/POmtg314\/header"
+            "TEI":"\/VOICE_CLARIAH\/speechEvent\/POmtg314.xml",
+            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/POmtg314.xml\/header"
           },
           "audioAvailable":false,
           "words":14767,
@@ -27639,14 +27639,14 @@
           "relationAcquaintedness":"predominantly_acquainted"
         },
         {
-          "id":"POmtg315",
+          "id":"POmtg315.xml",
           "title":"meeting to discuss and prepare the thematic organization of workshops on joint degree programs",
           "domain":"PO",
           "spet":"mtg",
           "refs":{
             "audio":null,
-            "TEI":"\/VOICE_CLARIAH\/speechEvent\/POmtg315",
-            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/POmtg315\/header"
+            "TEI":"\/VOICE_CLARIAH\/speechEvent\/POmtg315.xml",
+            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/POmtg315.xml\/header"
           },
           "audioAvailable":false,
           "words":9231,
@@ -27881,14 +27881,14 @@
           "relationAcquaintedness":"acquainted"
         },
         {
-          "id":"POmtg316",
+          "id":"POmtg316.xml",
           "title":"meeting to discuss the results of the preceding working group discussion",
           "domain":"PO",
           "spet":"mtg",
           "refs":{
             "audio":null,
-            "TEI":"\/VOICE_CLARIAH\/speechEvent\/POmtg316",
-            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/POmtg316\/header"
+            "TEI":"\/VOICE_CLARIAH\/speechEvent\/POmtg316.xml",
+            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/POmtg316.xml\/header"
           },
           "audioAvailable":false,
           "words":5910,
@@ -28137,14 +28137,14 @@
           "relationAcquaintedness":"acquainted"
         },
         {
-          "id":"POmtg403",
+          "id":"POmtg403.xml",
           "title":"meeting about standards in quality assurance for European higher education",
           "domain":"PO",
           "spet":"mtg",
           "refs":{
             "audio":null,
-            "TEI":"\/VOICE_CLARIAH\/speechEvent\/POmtg403",
-            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/POmtg403\/header"
+            "TEI":"\/VOICE_CLARIAH\/speechEvent\/POmtg403.xml",
+            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/POmtg403.xml\/header"
           },
           "audioAvailable":false,
           "words":12848,
@@ -28295,14 +28295,14 @@
           "relationAcquaintedness":"acquainted"
         },
         {
-          "id":"POmtg404",
+          "id":"POmtg404.xml",
           "title":"meeting between representatives of European higher education quality assurance networks",
           "domain":"PO",
           "spet":"mtg",
           "refs":{
             "audio":null,
-            "TEI":"\/VOICE_CLARIAH\/speechEvent\/POmtg404",
-            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/POmtg404\/header"
+            "TEI":"\/VOICE_CLARIAH\/speechEvent\/POmtg404.xml",
+            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/POmtg404.xml\/header"
           },
           "audioAvailable":false,
           "words":14641,
@@ -28541,14 +28541,14 @@
           "relationAcquaintedness":"predominantly_unacquainted"
         },
         {
-          "id":"POmtg439",
+          "id":"POmtg439.xml",
           "title":"meeting of project group discussing two past project events",
           "domain":"PO",
           "spet":"mtg",
           "refs":{
             "audio":null,
-            "TEI":"\/VOICE_CLARIAH\/speechEvent\/POmtg439",
-            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/POmtg439\/header"
+            "TEI":"\/VOICE_CLARIAH\/speechEvent\/POmtg439.xml",
+            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/POmtg439.xml\/header"
           },
           "audioAvailable":false,
           "words":11922,
@@ -28716,14 +28716,14 @@
           "relationAcquaintedness":"acquainted"
         },
         {
-          "id":"POmtg444",
+          "id":"POmtg444.xml",
           "title":"meeting of project group to discuss and evaluate a booklet",
           "domain":"PO",
           "spet":"mtg",
           "refs":{
             "audio":"https:\/\/voice.acdh.oeaw.ac.at\/sound\/POmtg444.mp3",
-            "TEI":"\/VOICE_CLARIAH\/speechEvent\/POmtg444",
-            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/POmtg444\/header"
+            "TEI":"\/VOICE_CLARIAH\/speechEvent\/POmtg444.xml",
+            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/POmtg444.xml\/header"
           },
           "audioAvailable":true,
           "words":6692,
@@ -28951,14 +28951,14 @@
           "relationAcquaintedness":"acquainted"
         },
         {
-          "id":"POmtg447",
+          "id":"POmtg447.xml",
           "title":"meeting of a project group to discuss one of their projects",
           "domain":"PO",
           "spet":"mtg",
           "refs":{
             "audio":null,
-            "TEI":"\/VOICE_CLARIAH\/speechEvent\/POmtg447",
-            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/POmtg447\/header"
+            "TEI":"\/VOICE_CLARIAH\/speechEvent\/POmtg447.xml",
+            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/POmtg447.xml\/header"
           },
           "audioAvailable":false,
           "words":4177,
@@ -29171,14 +29171,14 @@
           "relationAcquaintedness":"acquainted"
         },
         {
-          "id":"POmtg539",
+          "id":"POmtg539.xml",
           "title":"meeting about quality assurance and a mission statement for a European quality assurance organization",
           "domain":"PO",
           "spet":"mtg",
           "refs":{
             "audio":null,
-            "TEI":"\/VOICE_CLARIAH\/speechEvent\/POmtg539",
-            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/POmtg539\/header"
+            "TEI":"\/VOICE_CLARIAH\/speechEvent\/POmtg539.xml",
+            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/POmtg539.xml\/header"
           },
           "audioAvailable":false,
           "words":6103,
@@ -29346,14 +29346,14 @@
           "relationAcquaintedness":"acquainted"
         },
         {
-          "id":"POmtg541",
+          "id":"POmtg541.xml",
           "title":"meeting on quality assurance issues in European higher education",
           "domain":"PO",
           "spet":"mtg",
           "refs":{
             "audio":null,
-            "TEI":"\/VOICE_CLARIAH\/speechEvent\/POmtg541",
-            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/POmtg541\/header"
+            "TEI":"\/VOICE_CLARIAH\/speechEvent\/POmtg541.xml",
+            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/POmtg541.xml\/header"
           },
           "audioAvailable":false,
           "words":11345,
@@ -29504,14 +29504,14 @@
           "relationAcquaintedness":"acquainted"
         },
         {
-          "id":"POmtg542",
+          "id":"POmtg542.xml",
           "title":"meeting between professionals to discuss an internal document on higher education in Europe",
           "domain":"PO",
           "spet":"mtg",
           "refs":{
             "audio":null,
-            "TEI":"\/VOICE_CLARIAH\/speechEvent\/POmtg542",
-            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/POmtg542\/header"
+            "TEI":"\/VOICE_CLARIAH\/speechEvent\/POmtg542.xml",
+            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/POmtg542.xml\/header"
           },
           "audioAvailable":false,
           "words":4497,
@@ -29588,14 +29588,14 @@
           "relationAcquaintedness":"acquainted"
         },
         {
-          "id":"POmtg546",
+          "id":"POmtg546.xml",
           "title":"meeting to discuss issues of quality assurance within the European higher education area",
           "domain":"PO",
           "spet":"mtg",
           "refs":{
             "audio":null,
-            "TEI":"\/VOICE_CLARIAH\/speechEvent\/POmtg546",
-            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/POmtg546\/header"
+            "TEI":"\/VOICE_CLARIAH\/speechEvent\/POmtg546.xml",
+            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/POmtg546.xml\/header"
           },
           "audioAvailable":false,
           "words":16685,
@@ -29818,14 +29818,14 @@
           "relationAcquaintedness":"predominantly_acquainted"
         },
         {
-          "id":"POprc465",
+          "id":"POprc465.xml",
           "title":"press conference about the cooperation of Serbia with the European Union",
           "domain":"PO",
           "spet":"prc",
           "refs":{
             "audio":"https:\/\/voice.acdh.oeaw.ac.at\/sound\/POprc465.mp3",
-            "TEI":"\/VOICE_CLARIAH\/speechEvent\/POprc465",
-            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/POprc465\/header"
+            "TEI":"\/VOICE_CLARIAH\/speechEvent\/POprc465.xml",
+            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/POprc465.xml\/header"
           },
           "audioAvailable":true,
           "words":3190,
@@ -29981,14 +29981,14 @@
           "relationAcquaintedness":"predominantly_unacquainted"
         },
         {
-          "id":"POprc522",
+          "id":"POprc522.xml",
           "title":"press conference about the military conflict between Israel and the Hezbollah in Lebanon",
           "domain":"PO",
           "spet":"prc",
           "refs":{
             "audio":null,
-            "TEI":"\/VOICE_CLARIAH\/speechEvent\/POprc522",
-            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/POprc522\/header"
+            "TEI":"\/VOICE_CLARIAH\/speechEvent\/POprc522.xml",
+            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/POprc522.xml\/header"
           },
           "audioAvailable":false,
           "words":3433,
@@ -30119,14 +30119,14 @@
           "relationAcquaintedness":"predominantly_unacquainted"
         },
         {
-          "id":"POprc557",
+          "id":"POprc557.xml",
           "title":"press conference on illegal immigration in Spain",
           "domain":"PO",
           "spet":"prc",
           "refs":{
             "audio":null,
-            "TEI":"\/VOICE_CLARIAH\/speechEvent\/POprc557",
-            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/POprc557\/header"
+            "TEI":"\/VOICE_CLARIAH\/speechEvent\/POprc557.xml",
+            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/POprc557.xml\/header"
           },
           "audioAvailable":false,
           "words":1448,
@@ -30220,14 +30220,14 @@
           "relationAcquaintedness":"predominantly_unacquainted"
         },
         {
-          "id":"POprc558",
+          "id":"POprc558.xml",
           "title":"press conference on the accession of Romania and Bulgaria to the European Union",
           "domain":"PO",
           "spet":"prc",
           "refs":{
             "audio":null,
-            "TEI":"\/VOICE_CLARIAH\/speechEvent\/POprc558",
-            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/POprc558\/header"
+            "TEI":"\/VOICE_CLARIAH\/speechEvent\/POprc558.xml",
+            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/POprc558.xml\/header"
           },
           "audioAvailable":false,
           "words":4091,
@@ -30411,14 +30411,14 @@
           "relationAcquaintedness":"predominantly_unacquainted"
         },
         {
-          "id":"POprc559",
+          "id":"POprc559.xml",
           "title":"press conference on the EU-Norway energy partnership dialogue",
           "domain":"PO",
           "spet":"prc",
           "refs":{
             "audio":null,
-            "TEI":"\/VOICE_CLARIAH\/speechEvent\/POprc559",
-            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/POprc559\/header"
+            "TEI":"\/VOICE_CLARIAH\/speechEvent\/POprc559.xml",
+            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/POprc559.xml\/header"
           },
           "audioAvailable":false,
           "words":5421,
@@ -30601,14 +30601,14 @@
           "relationAcquaintedness":"predominantly_unacquainted"
         },
         {
-          "id":"POwgd12",
+          "id":"POwgd12.xml",
           "title":"working group discussion on administrative matters concerning joint degree programs in Europe",
           "domain":"PO",
           "spet":"wgd",
           "refs":{
             "audio":null,
-            "TEI":"\/VOICE_CLARIAH\/speechEvent\/POwgd12",
-            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/POwgd12\/header"
+            "TEI":"\/VOICE_CLARIAH\/speechEvent\/POwgd12.xml",
+            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/POwgd12.xml\/header"
           },
           "audioAvailable":false,
           "words":13175,
@@ -30817,14 +30817,14 @@
           "relationAcquaintedness":"predominantly_acquainted"
         },
         {
-          "id":"POwgd14",
+          "id":"POwgd14.xml",
           "title":"working group discussion on joint degree programs in Europe",
           "domain":"PO",
           "spet":"wgd",
           "refs":{
             "audio":"https:\/\/voice.acdh.oeaw.ac.at\/sound\/POwgd14.mp3",
-            "TEI":"\/VOICE_CLARIAH\/speechEvent\/POwgd14",
-            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/POwgd14\/header"
+            "TEI":"\/VOICE_CLARIAH\/speechEvent\/POwgd14.xml",
+            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/POwgd14.xml\/header"
           },
           "audioAvailable":true,
           "words":20130,
@@ -31043,14 +31043,14 @@
           "relationAcquaintedness":"predominantly_acquainted"
         },
         {
-          "id":"POwgd26",
+          "id":"POwgd26.xml",
           "title":"working group discussion about academic issues with regard to establishing a joint European degree",
           "domain":"PO",
           "spet":"wgd",
           "refs":{
             "audio":"https:\/\/voice.acdh.oeaw.ac.at\/sound\/POwgd26.mp3",
-            "TEI":"\/VOICE_CLARIAH\/speechEvent\/POwgd26",
-            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/POwgd26\/header"
+            "TEI":"\/VOICE_CLARIAH\/speechEvent\/POwgd26.xml",
+            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/POwgd26.xml\/header"
           },
           "audioAvailable":true,
           "words":8122,
@@ -31254,14 +31254,14 @@
           "relationAcquaintedness":"acquainted"
         },
         {
-          "id":"POwgd37",
+          "id":"POwgd37.xml",
           "title":"working group discussion on the improvement of communication between the members of the organization",
           "domain":"PO",
           "spet":"wgd",
           "refs":{
             "audio":"https:\/\/voice.acdh.oeaw.ac.at\/sound\/POwgd37.mp3",
-            "TEI":"\/VOICE_CLARIAH\/speechEvent\/POwgd37",
-            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/POwgd37\/header"
+            "TEI":"\/VOICE_CLARIAH\/speechEvent\/POwgd37.xml",
+            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/POwgd37.xml\/header"
           },
           "audioAvailable":true,
           "words":7056,
@@ -31479,14 +31479,14 @@
           "relationAcquaintedness":"acquainted"
         },
         {
-          "id":"POwgd243",
+          "id":"POwgd243.xml",
           "title":"working group discussion on the timing of the implementation of joint degree programs",
           "domain":"PO",
           "spet":"wgd",
           "refs":{
             "audio":null,
-            "TEI":"\/VOICE_CLARIAH\/speechEvent\/POwgd243",
-            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/POwgd243\/header"
+            "TEI":"\/VOICE_CLARIAH\/speechEvent\/POwgd243.xml",
+            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/POwgd243.xml\/header"
           },
           "audioAvailable":false,
           "words":11210,
@@ -31653,14 +31653,14 @@
           "relationAcquaintedness":"acquainted"
         },
         {
-          "id":"POwgd317",
+          "id":"POwgd317.xml",
           "title":"working group discussion about administrative questions with regard to establishing a joint European degree",
           "domain":"PO",
           "spet":"wgd",
           "refs":{
             "audio":null,
-            "TEI":"\/VOICE_CLARIAH\/speechEvent\/POwgd317",
-            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/POwgd317\/header"
+            "TEI":"\/VOICE_CLARIAH\/speechEvent\/POwgd317.xml",
+            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/POwgd317.xml\/header"
           },
           "audioAvailable":false,
           "words":12251,
@@ -31797,14 +31797,14 @@
           "relationAcquaintedness":"acquainted"
         },
         {
-          "id":"POwgd325",
+          "id":"POwgd325.xml",
           "title":"working group discussion on the organization of joint degree programs in Europe",
           "domain":"PO",
           "spet":"wgd",
           "refs":{
             "audio":null,
-            "TEI":"\/VOICE_CLARIAH\/speechEvent\/POwgd325",
-            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/POwgd325\/header"
+            "TEI":"\/VOICE_CLARIAH\/speechEvent\/POwgd325.xml",
+            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/POwgd325.xml\/header"
           },
           "audioAvailable":false,
           "words":22808,
@@ -32115,14 +32115,14 @@
           "relationAcquaintedness":"acquainted"
         },
         {
-          "id":"POwgd375",
+          "id":"POwgd375.xml",
           "title":"working group discussion on the European youth pact and the job situation",
           "domain":"PO",
           "spet":"wgd",
           "refs":{
             "audio":null,
-            "TEI":"\/VOICE_CLARIAH\/speechEvent\/POwgd375",
-            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/POwgd375\/header"
+            "TEI":"\/VOICE_CLARIAH\/speechEvent\/POwgd375.xml",
+            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/POwgd375.xml\/header"
           },
           "audioAvailable":false,
           "words":9949,
@@ -32271,14 +32271,14 @@
           "relationAcquaintedness":"predominantly_acquainted"
         },
         {
-          "id":"POwgd378",
+          "id":"POwgd378.xml",
           "title":"working group discussion about communication and knowledge transfer across youth organizations",
           "domain":"PO",
           "spet":"wgd",
           "refs":{
             "audio":null,
-            "TEI":"\/VOICE_CLARIAH\/speechEvent\/POwgd378",
-            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/POwgd378\/header"
+            "TEI":"\/VOICE_CLARIAH\/speechEvent\/POwgd378.xml",
+            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/POwgd378.xml\/header"
           },
           "audioAvailable":false,
           "words":2591,
@@ -32355,14 +32355,14 @@
           "relationAcquaintedness":"acquainted"
         },
         {
-          "id":"POwgd442",
+          "id":"POwgd442.xml",
           "title":"working group discussion on dissemination strategies for a project in the media",
           "domain":"PO",
           "spet":"wgd",
           "refs":{
             "audio":null,
-            "TEI":"\/VOICE_CLARIAH\/speechEvent\/POwgd442",
-            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/POwgd442\/header"
+            "TEI":"\/VOICE_CLARIAH\/speechEvent\/POwgd442.xml",
+            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/POwgd442.xml\/header"
           },
           "audioAvailable":false,
           "words":5319,
@@ -32448,14 +32448,14 @@
           "relationAcquaintedness":"acquainted"
         },
         {
-          "id":"POwgd449",
+          "id":"POwgd449.xml",
           "title":"working group discussion on most important points in project planning",
           "domain":"PO",
           "spet":"wgd",
           "refs":{
             "audio":null,
-            "TEI":"\/VOICE_CLARIAH\/speechEvent\/POwgd449",
-            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/POwgd449\/header"
+            "TEI":"\/VOICE_CLARIAH\/speechEvent\/POwgd449.xml",
+            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/POwgd449.xml\/header"
           },
           "audioAvailable":false,
           "words":4447,
@@ -32576,14 +32576,14 @@
           "relationAcquaintedness":"acquainted"
         },
         {
-          "id":"POwgd510",
+          "id":"POwgd510.xml",
           "title":"working group discussion on youth participation and the role of NGO's",
           "domain":"PO",
           "spet":"wgd",
           "refs":{
             "audio":null,
-            "TEI":"\/VOICE_CLARIAH\/speechEvent\/POwgd510",
-            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/POwgd510\/header"
+            "TEI":"\/VOICE_CLARIAH\/speechEvent\/POwgd510.xml",
+            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/POwgd510.xml\/header"
           },
           "audioAvailable":false,
           "words":12039,
@@ -32787,14 +32787,14 @@
           "relationAcquaintedness":"predominantly_acquainted"
         },
         {
-          "id":"POwgd524",
+          "id":"POwgd524.xml",
           "title":"working group discussion about problems and challenges concerning voluntary work",
           "domain":"PO",
           "spet":"wgd",
           "refs":{
             "audio":null,
-            "TEI":"\/VOICE_CLARIAH\/speechEvent\/POwgd524",
-            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/POwgd524\/header"
+            "TEI":"\/VOICE_CLARIAH\/speechEvent\/POwgd524.xml",
+            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/POwgd524.xml\/header"
           },
           "audioAvailable":false,
           "words":10880,
@@ -32982,14 +32982,14 @@
           "relationAcquaintedness":"acquainted"
         },
         {
-          "id":"POwsd256",
+          "id":"POwsd256.xml",
           "title":"workshop discussion on the European youth pact and the job situation",
           "domain":"PO",
           "spet":"wsd",
           "refs":{
             "audio":null,
-            "TEI":"\/VOICE_CLARIAH\/speechEvent\/POwsd256",
-            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/POwsd256\/header"
+            "TEI":"\/VOICE_CLARIAH\/speechEvent\/POwsd256.xml",
+            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/POwsd256.xml\/header"
           },
           "audioAvailable":false,
           "words":2043,
@@ -33125,14 +33125,14 @@
           "relationAcquaintedness":"predominantly_acquainted"
         },
         {
-          "id":"POwsd257",
+          "id":"POwsd257.xml",
           "title":"workshop discussion on youth and jobs in Europe",
           "domain":"PO",
           "spet":"wsd",
           "refs":{
             "audio":null,
-            "TEI":"\/VOICE_CLARIAH\/speechEvent\/POwsd257",
-            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/POwsd257\/header"
+            "TEI":"\/VOICE_CLARIAH\/speechEvent\/POwsd257.xml",
+            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/POwsd257.xml\/header"
           },
           "audioAvailable":false,
           "words":12564,
@@ -33416,14 +33416,14 @@
           "relationAcquaintedness":"predominantly_unacquainted"
         },
         {
-          "id":"POwsd258",
+          "id":"POwsd258.xml",
           "title":"workshop discussion on the European youth pact and the relationship between local and international youth organizations in Europe",
           "domain":"PO",
           "spet":"wsd",
           "refs":{
             "audio":"https:\/\/voice.acdh.oeaw.ac.at\/sound\/POwsd258.mp3",
-            "TEI":"\/VOICE_CLARIAH\/speechEvent\/POwsd258",
-            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/POwsd258\/header"
+            "TEI":"\/VOICE_CLARIAH\/speechEvent\/POwsd258.xml",
+            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/POwsd258.xml\/header"
           },
           "audioAvailable":true,
           "words":14846,
@@ -33682,14 +33682,14 @@
           "relationAcquaintedness":"acquainted"
         },
         {
-          "id":"POwsd266",
+          "id":"POwsd266.xml",
           "title":"workshop discussion on the advantages and disadvantages of young people in the labor market",
           "domain":"PO",
           "spet":"wsd",
           "refs":{
             "audio":"https:\/\/voice.acdh.oeaw.ac.at\/sound\/POwsd266.mp3",
-            "TEI":"\/VOICE_CLARIAH\/speechEvent\/POwsd266",
-            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/POwsd266\/header"
+            "TEI":"\/VOICE_CLARIAH\/speechEvent\/POwsd266.xml",
+            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/POwsd266.xml\/header"
           },
           "audioAvailable":true,
           "words":11217,
@@ -33931,14 +33931,14 @@
           "relationAcquaintedness":"predominantly_unacquainted"
         },
         {
-          "id":"POwsd372",
+          "id":"POwsd372.xml",
           "title":"workshop discussion about young people's rights in the labor market",
           "domain":"PO",
           "spet":"wsd",
           "refs":{
             "audio":null,
-            "TEI":"\/VOICE_CLARIAH\/speechEvent\/POwsd372",
-            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/POwsd372\/header"
+            "TEI":"\/VOICE_CLARIAH\/speechEvent\/POwsd372.xml",
+            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/POwsd372.xml\/header"
           },
           "audioAvailable":false,
           "words":10846,
@@ -34197,14 +34197,14 @@
           "relationAcquaintedness":"acquainted"
         },
         {
-          "id":"POwsd374",
+          "id":"POwsd374.xml",
           "title":"workshop discussion about the situation of youth and employment",
           "domain":"PO",
           "spet":"wsd",
           "refs":{
             "audio":null,
-            "TEI":"\/VOICE_CLARIAH\/speechEvent\/POwsd374",
-            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/POwsd374\/header"
+            "TEI":"\/VOICE_CLARIAH\/speechEvent\/POwsd374.xml",
+            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/POwsd374.xml\/header"
           },
           "audioAvailable":false,
           "words":6552,
@@ -34415,14 +34415,14 @@
           "relationAcquaintedness":"predominantly_acquainted"
         },
         {
-          "id":"POwsd376",
+          "id":"POwsd376.xml",
           "title":"workshop discussion on the European youth pact with presentation of discussions in subgroups",
           "domain":"PO",
           "spet":"wsd",
           "refs":{
             "audio":null,
-            "TEI":"\/VOICE_CLARIAH\/speechEvent\/POwsd376",
-            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/POwsd376\/header"
+            "TEI":"\/VOICE_CLARIAH\/speechEvent\/POwsd376.xml",
+            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/POwsd376.xml\/header"
           },
           "audioAvailable":false,
           "words":3407,
@@ -34615,14 +34615,14 @@
           "relationAcquaintedness":"predominantly_acquainted"
         },
         {
-          "id":"POwsd379",
+          "id":"POwsd379.xml",
           "title":"workshop discussion about outcomes of discussions in subgroups",
           "domain":"PO",
           "spet":"wsd",
           "refs":{
             "audio":null,
-            "TEI":"\/VOICE_CLARIAH\/speechEvent\/POwsd379",
-            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/POwsd379\/header"
+            "TEI":"\/VOICE_CLARIAH\/speechEvent\/POwsd379.xml",
+            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/POwsd379.xml\/header"
           },
           "audioAvailable":false,
           "words":1331,
@@ -34781,14 +34781,14 @@
       "label":"PR",
       "speechEvents":[
         {
-          "id":"PRcon29",
+          "id":"PRcon29.xml",
           "title":"conversation at a conference reception",
           "domain":"PR",
           "spet":"con",
           "refs":{
             "audio":null,
-            "TEI":"\/VOICE_CLARIAH\/speechEvent\/PRcon29",
-            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/PRcon29\/header"
+            "TEI":"\/VOICE_CLARIAH\/speechEvent\/PRcon29.xml",
+            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/PRcon29.xml\/header"
           },
           "audioAvailable":false,
           "words":3162,
@@ -34869,14 +34869,14 @@
           "relationAcquaintedness":"predominantly_unacquainted"
         },
         {
-          "id":"PRcon531",
+          "id":"PRcon531.xml",
           "title":"conversation about solving a mathematical problem",
           "domain":"PR",
           "spet":"con",
           "refs":{
             "audio":null,
-            "TEI":"\/VOICE_CLARIAH\/speechEvent\/PRcon531",
-            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/PRcon531\/header"
+            "TEI":"\/VOICE_CLARIAH\/speechEvent\/PRcon531.xml",
+            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/PRcon531.xml\/header"
           },
           "audioAvailable":false,
           "words":680,
@@ -34941,14 +34941,14 @@
           "relationAcquaintedness":"acquainted"
         },
         {
-          "id":"PRcon534",
+          "id":"PRcon534.xml",
           "title":"conversation about the solution of functions in the Hartogs domain",
           "domain":"PR",
           "spet":"con",
           "refs":{
             "audio":null,
-            "TEI":"\/VOICE_CLARIAH\/speechEvent\/PRcon534",
-            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/PRcon534\/header"
+            "TEI":"\/VOICE_CLARIAH\/speechEvent\/PRcon534.xml",
+            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/PRcon534.xml\/header"
           },
           "audioAvailable":false,
           "words":2116,
@@ -34995,14 +34995,14 @@
           "relationAcquaintedness":"acquainted"
         },
         {
-          "id":"PRcon535",
+          "id":"PRcon535.xml",
           "title":"conversation between mathematicians during coffee break",
           "domain":"PR",
           "spet":"con",
           "refs":{
             "audio":null,
-            "TEI":"\/VOICE_CLARIAH\/speechEvent\/PRcon535",
-            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/PRcon535\/header"
+            "TEI":"\/VOICE_CLARIAH\/speechEvent\/PRcon535.xml",
+            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/PRcon535.xml\/header"
           },
           "audioAvailable":false,
           "words":2885,
@@ -35059,14 +35059,14 @@
           "relationAcquaintedness":"acquaintedness_unknown"
         },
         {
-          "id":"PRcon536",
+          "id":"PRcon536.xml",
           "title":"conversation between mathematicians about definition of strict pseudo-convexity",
           "domain":"PR",
           "spet":"con",
           "refs":{
             "audio":null,
-            "TEI":"\/VOICE_CLARIAH\/speechEvent\/PRcon536",
-            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/PRcon536\/header"
+            "TEI":"\/VOICE_CLARIAH\/speechEvent\/PRcon536.xml",
+            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/PRcon536.xml\/header"
           },
           "audioAvailable":false,
           "words":1662,
@@ -35143,14 +35143,14 @@
           "relationAcquaintedness":"predominantly_acquainted"
         },
         {
-          "id":"PRcon550",
+          "id":"PRcon550.xml",
           "title":"conversation about organizational matters and timing concerning the post of a visiting professor",
           "domain":"PR",
           "spet":"con",
           "refs":{
             "audio":null,
-            "TEI":"\/VOICE_CLARIAH\/speechEvent\/PRcon550",
-            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/PRcon550\/header"
+            "TEI":"\/VOICE_CLARIAH\/speechEvent\/PRcon550.xml",
+            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/PRcon550.xml\/header"
           },
           "audioAvailable":false,
           "words":873,
@@ -35189,14 +35189,14 @@
           "relationAcquaintedness":"acquainted"
         },
         {
-          "id":"PRcon599",
+          "id":"PRcon599.xml",
           "title":"conversation about positions at universities in different countries",
           "domain":"PR",
           "spet":"con",
           "refs":{
             "audio":null,
-            "TEI":"\/VOICE_CLARIAH\/speechEvent\/PRcon599",
-            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/PRcon599\/header"
+            "TEI":"\/VOICE_CLARIAH\/speechEvent\/PRcon599.xml",
+            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/PRcon599.xml\/header"
           },
           "audioAvailable":false,
           "words":2482,
@@ -35293,14 +35293,14 @@
           "relationAcquaintedness":"predominantly_unacquainted"
         },
         {
-          "id":"PRint30",
+          "id":"PRint30.xml",
           "title":"interview about personal research interests and famous sights in Vienna",
           "domain":"PR",
           "spet":"int",
           "refs":{
             "audio":null,
-            "TEI":"\/VOICE_CLARIAH\/speechEvent\/PRint30",
-            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/PRint30\/header"
+            "TEI":"\/VOICE_CLARIAH\/speechEvent\/PRint30.xml",
+            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/PRint30.xml\/header"
           },
           "audioAvailable":false,
           "words":1521,
@@ -35356,14 +35356,14 @@
           "relationAcquaintedness":"predominantly_unacquainted"
         },
         {
-          "id":"PRint33",
+          "id":"PRint33.xml",
           "title":"interview about the first impressions of the conference and the venue",
           "domain":"PR",
           "spet":"int",
           "refs":{
             "audio":null,
-            "TEI":"\/VOICE_CLARIAH\/speechEvent\/PRint33",
-            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/PRint33\/header"
+            "TEI":"\/VOICE_CLARIAH\/speechEvent\/PRint33.xml",
+            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/PRint33.xml\/header"
           },
           "audioAvailable":false,
           "words":506,
@@ -35402,14 +35402,14 @@
           "relationAcquaintedness":"unacquainted"
         },
         {
-          "id":"PRint595",
+          "id":"PRint595.xml",
           "title":"interview about studying in different countries",
           "domain":"PR",
           "spet":"int",
           "refs":{
             "audio":null,
-            "TEI":"\/VOICE_CLARIAH\/speechEvent\/PRint595",
-            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/PRint595\/header"
+            "TEI":"\/VOICE_CLARIAH\/speechEvent\/PRint595.xml",
+            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/PRint595.xml\/header"
           },
           "audioAvailable":false,
           "words":3069,
@@ -35500,14 +35500,14 @@
           "relationAcquaintedness":"predominantly_unacquainted"
         },
         {
-          "id":"PRint597",
+          "id":"PRint597.xml",
           "title":"interview about activities in Vienna, shopping and research",
           "domain":"PR",
           "spet":"int",
           "refs":{
             "audio":null,
-            "TEI":"\/VOICE_CLARIAH\/speechEvent\/PRint597",
-            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/PRint597\/header"
+            "TEI":"\/VOICE_CLARIAH\/speechEvent\/PRint597.xml",
+            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/PRint597.xml\/header"
           },
           "audioAvailable":false,
           "words":3474,
@@ -35574,14 +35574,14 @@
           "relationAcquaintedness":"predominantly_unacquainted"
         },
         {
-          "id":"PRint602",
+          "id":"PRint602.xml",
           "title":"interview about conference experience and impressions of city",
           "domain":"PR",
           "spet":"int",
           "refs":{
             "audio":null,
-            "TEI":"\/VOICE_CLARIAH\/speechEvent\/PRint602",
-            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/PRint602\/header"
+            "TEI":"\/VOICE_CLARIAH\/speechEvent\/PRint602.xml",
+            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/PRint602.xml\/header"
           },
           "audioAvailable":false,
           "words":252,
@@ -35620,14 +35620,14 @@
           "relationAcquaintedness":"unacquainted"
         },
         {
-          "id":"PRint603",
+          "id":"PRint603.xml",
           "title":"interview about paper at conference and impressions of city",
           "domain":"PR",
           "spet":"int",
           "refs":{
             "audio":null,
-            "TEI":"\/VOICE_CLARIAH\/speechEvent\/PRint603",
-            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/PRint603\/header"
+            "TEI":"\/VOICE_CLARIAH\/speechEvent\/PRint603.xml",
+            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/PRint603.xml\/header"
           },
           "audioAvailable":false,
           "words":352,
@@ -35666,14 +35666,14 @@
           "relationAcquaintedness":"unacquainted"
         },
         {
-          "id":"PRpan1",
+          "id":"PRpan1.xml",
           "title":"panel about the role of women in the Islamic world and the question of modernity",
           "domain":"PR",
           "spet":"pan",
           "refs":{
             "audio":"https:\/\/voice.acdh.oeaw.ac.at\/sound\/PRpan1.mp3",
-            "TEI":"\/VOICE_CLARIAH\/speechEvent\/PRpan1",
-            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/PRpan1\/header"
+            "TEI":"\/VOICE_CLARIAH\/speechEvent\/PRpan1.xml",
+            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/PRpan1.xml\/header"
           },
           "audioAvailable":true,
           "words":14834,
@@ -35890,14 +35890,14 @@
           "relationAcquaintedness":"predominantly_unacquainted"
         },
         {
-          "id":"PRpan13",
+          "id":"PRpan13.xml",
           "title":"panel discussion on the role of women and reproduction policies in different countries",
           "domain":"PR",
           "spet":"pan",
           "refs":{
             "audio":null,
-            "TEI":"\/VOICE_CLARIAH\/speechEvent\/PRpan13",
-            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/PRpan13\/header"
+            "TEI":"\/VOICE_CLARIAH\/speechEvent\/PRpan13.xml",
+            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/PRpan13.xml\/header"
           },
           "audioAvailable":false,
           "words":10963,
@@ -36115,14 +36115,14 @@
           "relationAcquaintedness":"predominantly_acquainted"
         },
         {
-          "id":"PRpan225",
+          "id":"PRpan225.xml",
           "title":"panel discussion about gender issues",
           "domain":"PR",
           "spet":"pan",
           "refs":{
             "audio":"https:\/\/voice.acdh.oeaw.ac.at\/sound\/PRpan225.mp3",
-            "TEI":"\/VOICE_CLARIAH\/speechEvent\/PRpan225",
-            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/PRpan225\/header"
+            "TEI":"\/VOICE_CLARIAH\/speechEvent\/PRpan225.xml",
+            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/PRpan225.xml\/header"
           },
           "audioAvailable":true,
           "words":6469,
@@ -36348,14 +36348,14 @@
           "relationAcquaintedness":"predominantly_acquainted"
         },
         {
-          "id":"PRpan252",
+          "id":"PRpan252.xml",
           "title":"panel on the role of teaching Turkish in Belarus",
           "domain":"PR",
           "spet":"pan",
           "refs":{
             "audio":null,
-            "TEI":"\/VOICE_CLARIAH\/speechEvent\/PRpan252",
-            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/PRpan252\/header"
+            "TEI":"\/VOICE_CLARIAH\/speechEvent\/PRpan252.xml",
+            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/PRpan252.xml\/header"
           },
           "audioAvailable":false,
           "words":3937,
@@ -36531,14 +36531,14 @@
           "relationAcquaintedness":"predominantly_acquainted"
         },
         {
-          "id":"PRpan294",
+          "id":"PRpan294.xml",
           "title":"panel on development of financial markets in Central and Eastern Europe",
           "domain":"PR",
           "spet":"pan",
           "refs":{
             "audio":null,
-            "TEI":"\/VOICE_CLARIAH\/speechEvent\/PRpan294",
-            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/PRpan294\/header"
+            "TEI":"\/VOICE_CLARIAH\/speechEvent\/PRpan294.xml",
+            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/PRpan294.xml\/header"
           },
           "audioAvailable":false,
           "words":11500,
@@ -36719,14 +36719,14 @@
           "relationAcquaintedness":"predominantly_unacquainted"
         },
         {
-          "id":"PRpan585",
+          "id":"PRpan585.xml",
           "title":"panel discussion on preventing seizures in temporal lobe epilepsy",
           "domain":"PR",
           "spet":"pan",
           "refs":{
             "audio":null,
-            "TEI":"\/VOICE_CLARIAH\/speechEvent\/PRpan585",
-            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/PRpan585\/header"
+            "TEI":"\/VOICE_CLARIAH\/speechEvent\/PRpan585.xml",
+            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/PRpan585.xml\/header"
           },
           "audioAvailable":false,
           "words":8316,
@@ -36883,14 +36883,14 @@
           "relationAcquaintedness":"acquaintedness_unknown"
         },
         {
-          "id":"PRqas18",
+          "id":"PRqas18.xml",
           "title":"question-answer session on issues involved in the organization of bi- and multilingual universities",
           "domain":"PR",
           "spet":"qas",
           "refs":{
             "audio":null,
-            "TEI":"\/VOICE_CLARIAH\/speechEvent\/PRqas18",
-            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/PRqas18\/header"
+            "TEI":"\/VOICE_CLARIAH\/speechEvent\/PRqas18.xml",
+            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/PRqas18.xml\/header"
           },
           "audioAvailable":false,
           "words":3023,
@@ -37014,14 +37014,14 @@
           "relationAcquaintedness":"acquaintedness_unknown"
         },
         {
-          "id":"PRqas19",
+          "id":"PRqas19.xml",
           "title":"question-answer session on issues of multilingualism at a Korean university",
           "domain":"PR",
           "spet":"qas",
           "refs":{
             "audio":null,
-            "TEI":"\/VOICE_CLARIAH\/speechEvent\/PRqas19",
-            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/PRqas19\/header"
+            "TEI":"\/VOICE_CLARIAH\/speechEvent\/PRqas19.xml",
+            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/PRqas19.xml\/header"
           },
           "audioAvailable":false,
           "words":1666,
@@ -37096,14 +37096,14 @@
           "relationAcquaintedness":"acquaintedness_unknown"
         },
         {
-          "id":"PRqas224",
+          "id":"PRqas224.xml",
           "title":"question-answer session on gender issues",
           "domain":"PR",
           "spet":"qas",
           "refs":{
             "audio":null,
-            "TEI":"\/VOICE_CLARIAH\/speechEvent\/PRqas224",
-            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/PRqas224\/header"
+            "TEI":"\/VOICE_CLARIAH\/speechEvent\/PRqas224.xml",
+            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/PRqas224.xml\/header"
           },
           "audioAvailable":false,
           "words":5397,
@@ -37262,14 +37262,14 @@
           "relationAcquaintedness":"acquaintedness_unknown"
         },
         {
-          "id":"PRqas407",
+          "id":"PRqas407.xml",
           "title":"question-answer session on development of stock markets in Central and Eastern European countries",
           "domain":"PR",
           "spet":"qas",
           "refs":{
             "audio":null,
-            "TEI":"\/VOICE_CLARIAH\/speechEvent\/PRqas407",
-            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/PRqas407\/header"
+            "TEI":"\/VOICE_CLARIAH\/speechEvent\/PRqas407.xml",
+            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/PRqas407.xml\/header"
           },
           "audioAvailable":false,
           "words":4548,
@@ -37388,14 +37388,14 @@
           "relationAcquaintedness":"predominantly_unacquainted"
         },
         {
-          "id":"PRqas409",
+          "id":"PRqas409.xml",
           "title":"question-answer session on Maastricht criteria and European Monetary Union",
           "domain":"PR",
           "spet":"qas",
           "refs":{
             "audio":"https:\/\/voice.acdh.oeaw.ac.at\/sound\/PRqas409.mp3",
-            "TEI":"\/VOICE_CLARIAH\/speechEvent\/PRqas409",
-            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/PRqas409\/header"
+            "TEI":"\/VOICE_CLARIAH\/speechEvent\/PRqas409.xml",
+            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/PRqas409.xml\/header"
           },
           "audioAvailable":true,
           "words":1613,
@@ -37496,14 +37496,14 @@
           "relationAcquaintedness":"predominantly_unacquainted"
         },
         {
-          "id":"PRqas495",
+          "id":"PRqas495.xml",
           "title":"question-answer session about youth issues in China",
           "domain":"PR",
           "spet":"qas",
           "refs":{
             "audio":null,
-            "TEI":"\/VOICE_CLARIAH\/speechEvent\/PRqas495",
-            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/PRqas495\/header"
+            "TEI":"\/VOICE_CLARIAH\/speechEvent\/PRqas495.xml",
+            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/PRqas495.xml\/header"
           },
           "audioAvailable":false,
           "words":4608,
@@ -37692,14 +37692,14 @@
           "relationAcquaintedness":"predominantly_unacquainted"
         },
         {
-          "id":"PRwgd537",
+          "id":"PRwgd537.xml",
           "title":"working group discussion about the development of a mathematical theorem",
           "domain":"PR",
           "spet":"wgd",
           "refs":{
             "audio":null,
-            "TEI":"\/VOICE_CLARIAH\/speechEvent\/PRwgd537",
-            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/PRwgd537\/header"
+            "TEI":"\/VOICE_CLARIAH\/speechEvent\/PRwgd537.xml",
+            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/PRwgd537.xml\/header"
           },
           "audioAvailable":false,
           "words":3030,

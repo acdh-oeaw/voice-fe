@@ -3,9 +3,11 @@ const fs = require('fs')
 const addPackagesToIndex = require('license-report/lib/addPackagesToIndex')
 const getPackageReportData = require('license-report/lib/getPackageReportData.js')
 const packageDataToReportData = require('license-report/lib/packageDataToReportData')
+const getInstalledVersions = require('license-report/lib/getInstalledVersions.js')
 const tabelify = require('@kessler/tableify')
 
 const packageJson = require('../../package.json')
+const packageLockJson = require('../../package-lock.json')
 
 const config = {
     fields: ['name', 'author', 'licenseType', 'link', 'installedVersion', 'remoteVersion'].reverse(),
@@ -22,8 +24,13 @@ const devDeps = packageJson.devDependencies
 let depsIndex = []
 addPackagesToIndex(deps, depsIndex, [])
 addPackagesToIndex(devDeps, depsIndex, [])
+const installedVersions = getInstalledVersions(packageLockJson, depsIndex)
 
-async.map(depsIndex, getPackageReportData, function(err, results) {
+async function myGetPackageReportData(packageEntry) {
+    return await getPackageReportData(packageEntry, installedVersions)
+}
+
+async.map(depsIndex, myGetPackageReportData, function(err, results) {
 	if (err) return console.error(err)
 	if (results.length === 0) return console.log('nothing to do')
 

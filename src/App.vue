@@ -238,6 +238,7 @@ export default {
                 this.$set(el, 'xml', '')
                 this.$set(el, 'xmlLoading', false)
                 this.$set(el, 'xmlLoaded',  false)
+                el.id = el.id.replace(/\.xml$/, '')
                 this.$set(aObj, el.id, el)
               }
             })

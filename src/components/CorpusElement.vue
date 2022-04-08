@@ -133,10 +133,10 @@ export default {
             console.log('Load Header ...', this.mainData.apiUrl, this.mainData.corpus.selectedElement)
             this.aElement.headerLoading = true
             this.$http
-              .get(this.mainData.apiUrl + 'xml/' + this.mainData.corpus.selectedElement + '/header')
+              .get(this.mainData.apiUrl + 'xml/' + this.mainData.corpus.selectedElement + '.xml/header')
               .then((response) => {
-                if (response.data && response.data.xmlId && this.mainData.corpus.selectedElement && this.mainData.corpus.obj[response.data.xmlId]) {
-                  let lElement = this.mainData.corpus.obj[response.data.xmlId]
+                if (response.data && response.data.xmlId && this.mainData.corpus.selectedElement && this.mainData.corpus.obj[response.data.xmlId.replace(/\.xml$/, '')]) {
+                  let lElement = this.mainData.corpus.obj[response.data.xmlId.replace(/\.xml$/, '')]
                   if (!response.data.error) {
                     lElement.header = response.data.xml
                     lElement.headerLoaded = true
@@ -160,10 +160,10 @@ export default {
             console.log('Load XML ...', this.mainData.apiUrl)
             this.aElement.xmlLoading = true
             this.$http
-              .get(this.mainData.apiUrl + 'xml/' + this.mainData.corpus.selectedElement + '/file')
+              .get(this.mainData.apiUrl + 'xml/' + this.mainData.corpus.selectedElement + '.xml/file')
               .then((response) => {
-                if (response.data && response.data.xmlId && this.mainData.corpus.selectedElement && this.mainData.corpus.obj[response.data.xmlId]) {
-                  let lElement = this.mainData.corpus.obj[response.data.xmlId]
+                if (response.data && response.data.xmlId && this.mainData.corpus.selectedElement && this.mainData.corpus.obj[response.data.xmlId.replace(/\.xml$/, '')]) {
+                  let lElement = this.mainData.corpus.obj[response.data.xmlId.replace(/\.xml$/, '')]
                   if (!response.data.error) {
                     lElement.xml = response.data.xml
                     lElement.xmlLoaded = true

@@ -38,16 +38,16 @@ const localFunctions = {
       let data = localStorage.getItem('bookmarks', null)
       if (data) {
         data = JSON.parse(data)
-        if (data.hasOwnProperty('active')) {
+        if (Object.prototype.hasOwnProperty.call(data,'active')) {
           vThis.$set(bookmarks, 'active', data.active)
         }
-        if (data.hasOwnProperty('localStorage')) {
+        if (Object.prototype.hasOwnProperty.call(data, 'localStorage')) {
           vThis.$set(bookmarks, 'localStorage', data.localStorage)
         }
-        if (data.hasOwnProperty('elements')) {
+        if (Object.prototype.hasOwnProperty.call(data, 'elements')) {
           vThis.$set(bookmarks, 'elements', data.elements)
         }
-        console.log('loadBookmarkStore', data.hasOwnProperty('active'), data, bookmarks)
+        console.log('loadBookmarkStore', Object.prototype.hasOwnProperty.call(data, 'active'), data, bookmarks)
       }
     }
   },

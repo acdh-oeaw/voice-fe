@@ -85,6 +85,11 @@
     "vue-template-compiler": "^2.6.14",
     "vuetify-loader": "^1.7.3"
   },
+  "overrides": {
+    "portfinder": {
+      "async": "^3.2.2"
+    }
+  },
   "jest": {
     "moduleFileExtensions": [
       "js",

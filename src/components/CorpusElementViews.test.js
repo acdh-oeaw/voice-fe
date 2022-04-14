@@ -167,6 +167,20 @@ test('render a view <w part="I">si</w><emph><w part="M">mul</w></emph><w part="F
     expect(line).toContainHTML('<span class="tag-w" title="Lemma: play">played</span> <span class="tag-w" title="Lemma: simultaneously">si</span><span class="tag-emph"><span class="tag-w">mul</span></span><span class="tag-w">taneously</span> <span class="tag-w" title="Lemma: in">in</span> ')
 })
 
+test('render spel without the continuous representation <w xml:id="xTok_EDwsd303_001273" voice:mode="spelt" orig="i d" norm="s_id" ana="#SPfSP" lemma="">id</w>', async () => {
+    const { getByTestId } = renderUtterance(`<u who="#EDwsd303_S1" xml:id="EDwsd303_u_107">
+    <w xml:id="xTok_EDwsd303_001267" ana="#VHZfVHZ" lemma="have">has</w>
+    <w xml:id="xTok_EDwsd303_001269" ana="#DTfDT" lemma="the">the</w>
+    <w xml:id="xTok_EDwsd303_001271" ana="#JJfJJ" lemma="same">same</w>
+    <w xml:id="xTok_EDwsd303_001273" voice:mode="spelt" orig="i d" norm="s_id" ana="#SPfSP" lemma="">id</w>
+    <pause xml:id="EDwsd303_d2e3769"/>
+    <w xml:id="xTok_EDwsd303_001275" ana="#INfIN" lemma="with">with</w>
+</u>`)
+    const line = getByTestId('lineContent')
+    await fireEvent.focus(line) // only after some event the rendered TEI appears
+    expect(line).toContainHTML("<span class=\"tag-w\" title=\"Lemma: have\">has</span> <span class=\"tag-w\" title=\"Lemma: the\">the</span> <span class=\"tag-w\" title=\"Lemma: same\">same</span> <span class=\"tag-w\"><span class=\"fx-spel\"> &lt;spel&gt; </span><span class=\"fx-spelt-orig\">i d</span><span class=\"fx-spel\"> &lt;/spel&gt; </span></span> <span class=\"tag-pause\"> (.) </span><span class=\"tag-w\" title=\"Lemma: with\">with</span>")
+})
+
 function renderUtterance(utteranceXML, aView) {
     const parsed = {},
           view = aView || 'voice'

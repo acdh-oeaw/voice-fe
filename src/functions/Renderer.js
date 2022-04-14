@@ -109,7 +109,7 @@ const localFunctions = {
   },
 }
 
-function renderingUtterance(uObj, xmlObj, type, highlight, isSearch = false, xmlIdCache, fxCache) {
+function renderingUtterance(uObj, xmlObj, type, highlight, isSearch = false, xmlIdCache, fxCache, renderText = true) {
   let aTxt = ''
   if (uObj.type === 'tag') {
     if (uObj.tag === 'u') {
@@ -168,10 +168,10 @@ function renderingUtterance(uObj, xmlObj, type, highlight, isSearch = false, xml
         aTxt += ''
       }
       if (uObj.attributes && uObj.attributes['voice:mode'] && uObj.attributes['voice:mode'] === 'spelt' && uObj.attributes['orig']) {
-        aTxt += '<span class="fx-spelt-orig">' + uObj.attributes['orig'] + '</span><span class="fx-spelt-cont">'
+        aTxt += '<span class="fx-spelt-orig">' + uObj.attributes['orig']
       }
       uObj.children.forEach(c => {
-        aTxt += renderingUtterance(c, xmlObj, type, highlight, isSearch, xmlIdCache, fxCache)
+        aTxt += renderingUtterance(c, xmlObj, type, highlight, isSearch, xmlIdCache, fxCache, !(uObj?.attributes?.['voice:mode'] === 'spelt'))
       })
       if (uObj.attributes && uObj.attributes['voice:mode'] && uObj.attributes['voice:mode'] === 'spelt' && uObj.attributes['orig']) {
         aTxt += '</span>'
@@ -238,7 +238,7 @@ function renderingUtterance(uObj, xmlObj, type, highlight, isSearch = false, xml
         aTxt += ' '
       }
     }
-  } else if (uObj.type === 'text') {
+  } else if (uObj.type === 'text' && renderText) {
     aTxt += uObj.value.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').trim()
   }
   return aTxt

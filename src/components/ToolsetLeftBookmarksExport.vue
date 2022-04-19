@@ -85,7 +85,7 @@ export default {
     },
     getFilename () {
       let aTime = new Date()
-      return 'voice-bookmarks_' + aTime.getFullYear() + '-' + ('0' + aTime.getMonth()).slice(-2) + '-' + ('0' + aTime.getDay()).slice(-2) + '_' + ('0' + aTime.getHours()).slice(-2) + '-' + ('0' + aTime.getMinutes()).slice(-2) + '-' + ('0' + aTime.getSeconds()).slice(-2)
+      return 'voice-bookmarks_' + aTime.getFullYear() + '-' + ('0' + aTime.getMonth()+1).slice(-2) + '-' + ('0' + aTime.getDate()).slice(-2) + '_' + ('0' + aTime.getHours()).slice(-2) + '-' + ('0' + aTime.getMinutes()).slice(-2) + '-' + ('0' + aTime.getSeconds()).slice(-2)
     },
     saveBookmarksTable (fileType) {
       console.log('saveBookmarksTable', fileType, this.mainData.bookmarks.elements)

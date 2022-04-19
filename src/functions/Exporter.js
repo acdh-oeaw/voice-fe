@@ -77,7 +77,7 @@ function exportUtterancesList (xmlObjLines, filteredSearchResults, view, type, f
   let aHeader = 'VOICE 3.0'
   let aTime = new Date()
   let aDateTime = aTime.toLocaleString('en-US')
-  let aFilename = 'voice' + (fxText && fxText.fileFx ? '-' + fxText.fileFx : '') + '_' + aTime.getFullYear() + '-' + ('0' + aTime.getMonth()+1).slice(-2) + '-' + ('0' + aTime.getDate()).slice(-2) + '_' + ('0' + aTime.getHours()).slice(-2) + '-' + ('0' + aTime.getMinutes()).slice(-2) + '-' + ('0' + aTime.getSeconds()).slice(-2)
+  let aFilename = 'voice' + (fxText && fxText.fileFx ? '-' + fxText.fileFx : '') + '_' + aTime.getFullYear() + '-' + ('0' + (aTime.getMonth()+1)).slice(-2) + '-' + ('0' + aTime.getDate()).slice(-2) + '_' + ('0' + aTime.getHours()).slice(-2) + '-' + ('0' + aTime.getMinutes()).slice(-2) + '-' + ('0' + aTime.getSeconds()).slice(-2)
   if (type.id === 'text') {
     let aExportText = ''
     aExportText += aHeader + '\n'

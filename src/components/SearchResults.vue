@@ -10,7 +10,7 @@
             <v-tab href="#voice">voice</v-tab>
             <v-tab href="#plain">plain</v-tab>
             <v-tab href="#pos">PoS</v-tab>
-            <v-tab href="#xml-view">XML</v-tab>
+            <v-tab href="#xml-view" :disabled="mainData.search.view.kwic">XML</v-tab>
           </v-tabs>
           <v-checkbox
             label="KWIC"

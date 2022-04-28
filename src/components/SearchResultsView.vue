@@ -132,7 +132,7 @@ export default {
     },
     showSpeaker (l) {
       // console.log(l.xmlId, this.xmlObjLines[l.idx].uObj.obj.attributes.who.split('_').slice(-1)[0])
-      this.mainData.showSpeaker = {id: l.xmlId, speaker: this.xmlObjLines[l.idx].uObj.obj.attributes.who.split('_').slice(-1)[0]}
+      this.mainData.showSpeaker = {id: l.xmlId.replace(/\.xml$/, ''), speaker: this.xmlObjLines[l.idx].uObj.obj.attributes.who.split('_').slice(-1)[0]}
     },
     goToUtterance (u) {
       this.$emit('goToUtterance', u)

@@ -106,8 +106,8 @@ export default {
                     if (aU.highlight) {
                         aU.highlight.forEach((v, k) => {highlights.set(k, v)})
                     }
-                    if (this.mainData.search.foundXmlId.indexOf(aU.xmlId) < 0) {
-                      this.mainData.search.foundXmlId.push(aU.xmlId)
+                    if (this.mainData.search.foundXmlId.indexOf(aU.xmlId.replace(/\.xml$/, '')) < 0) {
+                      this.mainData.search.foundXmlId.push(aU.xmlId.replace(/\.xml$/, ''))
                     }
                   })
                   Object.seal(highlights)

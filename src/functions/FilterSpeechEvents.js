@@ -62,7 +62,7 @@ const localFunctions = {
       xmlIds = xmlIds.filter(e => corpus.obj[e].audioAvailable)
     }
     // console.log('getFilteredIds', xmlIds, corpus)
-    return xmlIds.map(id => id + '.xml')
+    return xmlIds
   }
 }
 

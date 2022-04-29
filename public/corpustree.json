@@ -14359,14 +14359,14 @@
       "label":"ED",
       "speechEvents":[
         {
-          "id":"EDcon4.xml",
+          "id":"EDcon4",
           "title":"conversation about a party and preparation for German course",
           "domain":"ED",
           "spet":"con",
           "refs":{
             "audio":null,
-            "TEI":"\/VOICE_CLARIAH\/speechEvent\/EDcon4.xml",
-            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/EDcon4.xml\/header"
+            "TEI":"\/VOICE_CLARIAH\/speechEvent\/EDcon4",
+            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/EDcon4\/header"
           },
           "audioAvailable":false,
           "words":5420,
@@ -14535,14 +14535,14 @@
           "relationAcquaintedness":"acquainted"
         },
         {
-          "id":"EDcon250.xml",
+          "id":"EDcon250",
           "title":"lunch conversation about different university systems and other topics",
           "domain":"ED",
           "spet":"con",
           "refs":{
             "audio":null,
-            "TEI":"\/VOICE_CLARIAH\/speechEvent\/EDcon250.xml",
-            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/EDcon250.xml\/header"
+            "TEI":"\/VOICE_CLARIAH\/speechEvent\/EDcon250",
+            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/EDcon250\/header"
           },
           "audioAvailable":false,
           "words":6379,
@@ -14686,14 +14686,14 @@
           "relationAcquaintedness":"acquainted"
         },
         {
-          "id":"EDcon496.xml",
+          "id":"EDcon496",
           "title":"conversation between business students",
           "domain":"ED",
           "spet":"con",
           "refs":{
             "audio":"https:\/\/voice.acdh.oeaw.ac.at\/sound\/EDcon496.mp3",
-            "TEI":"\/VOICE_CLARIAH\/speechEvent\/EDcon496.xml",
-            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/EDcon496.xml\/header"
+            "TEI":"\/VOICE_CLARIAH\/speechEvent\/EDcon496",
+            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/EDcon496\/header"
           },
           "audioAvailable":true,
           "words":5075,
@@ -14788,14 +14788,14 @@
           "relationAcquaintedness":"acquainted"
         },
         {
-          "id":"EDcon521.xml",
+          "id":"EDcon521",
           "title":"conversation between students from Europe about working and studying in different European countries",
           "domain":"ED",
           "spet":"con",
           "refs":{
             "audio":"https:\/\/voice.acdh.oeaw.ac.at\/sound\/EDcon521.mp3",
-            "TEI":"\/VOICE_CLARIAH\/speechEvent\/EDcon521.xml",
-            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/EDcon521.xml\/header"
+            "TEI":"\/VOICE_CLARIAH\/speechEvent\/EDcon521",
+            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/EDcon521\/header"
           },
           "audioAvailable":true,
           "words":11637,
@@ -15059,14 +15059,14 @@
           "relationAcquaintedness":"acquainted"
         },
         {
-          "id":"EDint328.xml",
+          "id":"EDint328",
           "title":"interview with a couple about language attitudes in Malta",
           "domain":"ED",
           "spet":"int",
           "refs":{
             "audio":null,
-            "TEI":"\/VOICE_CLARIAH\/speechEvent\/EDint328.xml",
-            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/EDint328.xml\/header"
+            "TEI":"\/VOICE_CLARIAH\/speechEvent\/EDint328",
+            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/EDint328\/header"
           },
           "audioAvailable":false,
           "words":5802,
@@ -15133,14 +15133,14 @@
           "relationAcquaintedness":"acquainted"
         },
         {
-          "id":"EDint330.xml",
+          "id":"EDint330",
           "title":"interview with architects and interior designers about the use of English in Malta",
           "domain":"ED",
           "spet":"int",
           "refs":{
             "audio":null,
-            "TEI":"\/VOICE_CLARIAH\/speechEvent\/EDint330.xml",
-            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/EDint330.xml\/header"
+            "TEI":"\/VOICE_CLARIAH\/speechEvent\/EDint330",
+            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/EDint330\/header"
           },
           "audioAvailable":false,
           "words":8703,
@@ -15225,14 +15225,14 @@
           "relationAcquaintedness":"predominantly_acquainted"
         },
         {
-          "id":"EDint331.xml",
+          "id":"EDint331",
           "title":"interview with a university professor about the use of English and Maltese in Malta",
           "domain":"ED",
           "spet":"int",
           "refs":{
             "audio":null,
-            "TEI":"\/VOICE_CLARIAH\/speechEvent\/EDint331.xml",
-            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/EDint331.xml\/header"
+            "TEI":"\/VOICE_CLARIAH\/speechEvent\/EDint331",
+            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/EDint331\/header"
           },
           "audioAvailable":false,
           "words":6110,
@@ -15271,14 +15271,14 @@
           "relationAcquaintedness":"unacquainted"
         },
         {
-          "id":"EDint604.xml",
+          "id":"EDint604",
           "title":"interview about attitudes towards the use of English and Maltese in Malta",
           "domain":"ED",
           "spet":"int",
           "refs":{
             "audio":null,
-            "TEI":"\/VOICE_CLARIAH\/speechEvent\/EDint604.xml",
-            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/EDint604.xml\/header"
+            "TEI":"\/VOICE_CLARIAH\/speechEvent\/EDint604",
+            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/EDint604\/header"
           },
           "audioAvailable":false,
           "words":1599,
@@ -15328,14 +15328,14 @@
           "relationAcquaintedness":"predominantly_unacquainted"
         },
         {
-          "id":"EDint605.xml",
+          "id":"EDint605",
           "title":"interview about the use of English and Maltese in Malta",
           "domain":"ED",
           "spet":"int",
           "refs":{
             "audio":null,
-            "TEI":"\/VOICE_CLARIAH\/speechEvent\/EDint605.xml",
-            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/EDint605.xml\/header"
+            "TEI":"\/VOICE_CLARIAH\/speechEvent\/EDint605",
+            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/EDint605\/header"
           },
           "audioAvailable":false,
           "words":1862,
@@ -15383,14 +15383,14 @@
           "relationAcquaintedness":"predominantly_unacquainted"
         },
         {
-          "id":"EDsed31.xml",
+          "id":"EDsed31",
           "title":"seminar discussion about Austrian stereotypes and cultural differences in general",
           "domain":"ED",
           "spet":"sed",
           "refs":{
             "audio":null,
-            "TEI":"\/VOICE_CLARIAH\/speechEvent\/EDsed31.xml",
-            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/EDsed31.xml\/header"
+            "TEI":"\/VOICE_CLARIAH\/speechEvent\/EDsed31",
+            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/EDsed31\/header"
           },
           "audioAvailable":false,
           "words":22198,
@@ -15743,14 +15743,14 @@
           "relationAcquaintedness":"predominantly_unacquainted"
         },
         {
-          "id":"EDsed251.xml",
+          "id":"EDsed251",
           "title":"seminar discussion about academic mobility",
           "domain":"ED",
           "spet":"sed",
           "refs":{
             "audio":"https:\/\/voice.acdh.oeaw.ac.at\/sound\/EDsed251.mp3",
-            "TEI":"\/VOICE_CLARIAH\/speechEvent\/EDsed251.xml",
-            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/EDsed251.xml\/header"
+            "TEI":"\/VOICE_CLARIAH\/speechEvent\/EDsed251",
+            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/EDsed251\/header"
           },
           "audioAvailable":true,
           "words":15445,
@@ -16038,14 +16038,14 @@
           "relationAcquaintedness":"predominantly_acquainted"
         },
         {
-          "id":"EDsed301.xml",
+          "id":"EDsed301",
           "title":"seminar discussion about agriculture in the European Union",
           "domain":"ED",
           "spet":"sed",
           "refs":{
             "audio":null,
-            "TEI":"\/VOICE_CLARIAH\/speechEvent\/EDsed301.xml",
-            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/EDsed301.xml\/header"
+            "TEI":"\/VOICE_CLARIAH\/speechEvent\/EDsed301",
+            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/EDsed301\/header"
           },
           "audioAvailable":false,
           "words":8292,
@@ -16214,14 +16214,14 @@
           "relationAcquaintedness":"acquainted"
         },
         {
-          "id":"EDsed362.xml",
+          "id":"EDsed362",
           "title":"seminar discussion about suggestions for combating terrorism",
           "domain":"ED",
           "spet":"sed",
           "refs":{
             "audio":null,
-            "TEI":"\/VOICE_CLARIAH\/speechEvent\/EDsed362.xml",
-            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/EDsed362.xml\/header"
+            "TEI":"\/VOICE_CLARIAH\/speechEvent\/EDsed362",
+            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/EDsed362\/header"
           },
           "audioAvailable":false,
           "words":7164,
@@ -16532,14 +16532,14 @@
           "relationAcquaintedness":"predominantly_acquainted"
         },
         {
-          "id":"EDsed363.xml",
+          "id":"EDsed363",
           "title":"seminar discussion on a text about an artist and his installations",
           "domain":"ED",
           "spet":"sed",
           "refs":{
             "audio":null,
-            "TEI":"\/VOICE_CLARIAH\/speechEvent\/EDsed363.xml",
-            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/EDsed363.xml\/header"
+            "TEI":"\/VOICE_CLARIAH\/speechEvent\/EDsed363",
+            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/EDsed363\/header"
           },
           "audioAvailable":false,
           "words":6338,
@@ -16750,14 +16750,14 @@
           "relationAcquaintedness":"predominantly_acquainted"
         },
         {
-          "id":"EDsed364.xml",
+          "id":"EDsed364",
           "title":"seminar discussion on a film about Gustav Klimt",
           "domain":"ED",
           "spet":"sed",
           "refs":{
             "audio":null,
-            "TEI":"\/VOICE_CLARIAH\/speechEvent\/EDsed364.xml",
-            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/EDsed364.xml\/header"
+            "TEI":"\/VOICE_CLARIAH\/speechEvent\/EDsed364",
+            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/EDsed364\/header"
           },
           "audioAvailable":false,
           "words":4173,
@@ -16960,14 +16960,14 @@
           "relationAcquaintedness":"predominantly_acquainted"
         },
         {
-          "id":"EDsve421.xml",
+          "id":"EDsve421",
           "title":"service encounter helping international students with practical matters",
           "domain":"ED",
           "spet":"sve",
           "refs":{
             "audio":null,
-            "TEI":"\/VOICE_CLARIAH\/speechEvent\/EDsve421.xml",
-            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/EDsve421.xml\/header"
+            "TEI":"\/VOICE_CLARIAH\/speechEvent\/EDsve421",
+            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/EDsve421\/header"
           },
           "audioAvailable":false,
           "words":3166,
@@ -17093,14 +17093,14 @@
           "relationAcquaintedness":"predominantly_unacquainted"
         },
         {
-          "id":"EDsve422.xml",
+          "id":"EDsve422",
           "title":"service encounter helping international students with practical information",
           "domain":"ED",
           "spet":"sve",
           "refs":{
             "audio":"https:\/\/voice.acdh.oeaw.ac.at\/sound\/EDsve422.mp3",
-            "TEI":"\/VOICE_CLARIAH\/speechEvent\/EDsve422.xml",
-            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/EDsve422.xml\/header"
+            "TEI":"\/VOICE_CLARIAH\/speechEvent\/EDsve422",
+            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/EDsve422\/header"
           },
           "audioAvailable":true,
           "words":1981,
@@ -17259,14 +17259,14 @@
           "relationAcquaintedness":"predominantly_unacquainted"
         },
         {
-          "id":"EDsve423.xml",
+          "id":"EDsve423",
           "title":"service encounter helping four international students with practical information",
           "domain":"ED",
           "spet":"sve",
           "refs":{
             "audio":null,
-            "TEI":"\/VOICE_CLARIAH\/speechEvent\/EDsve423.xml",
-            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/EDsve423.xml\/header"
+            "TEI":"\/VOICE_CLARIAH\/speechEvent\/EDsve423",
+            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/EDsve423\/header"
           },
           "audioAvailable":false,
           "words":2611,
@@ -17399,14 +17399,14 @@
           "relationAcquaintedness":"predominantly_acquainted"
         },
         {
-          "id":"EDsve451.xml",
+          "id":"EDsve451",
           "title":"service encounter about important administrative matters for international students",
           "domain":"ED",
           "spet":"sve",
           "refs":{
             "audio":null,
-            "TEI":"\/VOICE_CLARIAH\/speechEvent\/EDsve451.xml",
-            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/EDsve451.xml\/header"
+            "TEI":"\/VOICE_CLARIAH\/speechEvent\/EDsve451",
+            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/EDsve451\/header"
           },
           "audioAvailable":false,
           "words":1281,
@@ -17480,14 +17480,14 @@
           "relationAcquaintedness":"predominantly_unacquainted"
         },
         {
-          "id":"EDsve452.xml",
+          "id":"EDsve452",
           "title":"service encounter helping three international students with practical matters",
           "domain":"ED",
           "spet":"sve",
           "refs":{
             "audio":null,
-            "TEI":"\/VOICE_CLARIAH\/speechEvent\/EDsve452.xml",
-            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/EDsve452.xml\/header"
+            "TEI":"\/VOICE_CLARIAH\/speechEvent\/EDsve452",
+            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/EDsve452\/header"
           },
           "audioAvailable":false,
           "words":2659,
@@ -17612,14 +17612,14 @@
           "relationAcquaintedness":"predominantly_unacquainted"
         },
         {
-          "id":"EDwgd5.xml",
+          "id":"EDwgd5",
           "title":"working group discussion about organizing a presentation on a common foreign policy for the European Union",
           "domain":"ED",
           "spet":"wgd",
           "refs":{
             "audio":null,
-            "TEI":"\/VOICE_CLARIAH\/speechEvent\/EDwgd5.xml",
-            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/EDwgd5.xml\/header"
+            "TEI":"\/VOICE_CLARIAH\/speechEvent\/EDwgd5",
+            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/EDwgd5\/header"
           },
           "audioAvailable":false,
           "words":5052,
@@ -17789,14 +17789,14 @@
           "relationAcquaintedness":"acquainted"
         },
         {
-          "id":"EDwgd6.xml",
+          "id":"EDwgd6",
           "title":"working group discussion between students on measures for preventing acts of terrorism",
           "domain":"ED",
           "spet":"wgd",
           "refs":{
             "audio":null,
-            "TEI":"\/VOICE_CLARIAH\/speechEvent\/EDwgd6.xml",
-            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/EDwgd6.xml\/header"
+            "TEI":"\/VOICE_CLARIAH\/speechEvent\/EDwgd6",
+            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/EDwgd6\/header"
           },
           "audioAvailable":false,
           "words":4421,
@@ -18025,14 +18025,14 @@
           "relationAcquaintedness":"acquainted"
         },
         {
-          "id":"EDwgd241.xml",
+          "id":"EDwgd241",
           "title":"working group discussion about the advantages and disadvantages of different scenarios concerning the future of English in Europe",
           "domain":"ED",
           "spet":"wgd",
           "refs":{
             "audio":null,
-            "TEI":"\/VOICE_CLARIAH\/speechEvent\/EDwgd241.xml",
-            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/EDwgd241.xml\/header"
+            "TEI":"\/VOICE_CLARIAH\/speechEvent\/EDwgd241",
+            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/EDwgd241\/header"
           },
           "audioAvailable":false,
           "words":10834,
@@ -18212,14 +18212,14 @@
           "relationAcquaintedness":"acquainted"
         },
         {
-          "id":"EDwgd305.xml",
+          "id":"EDwgd305",
           "title":"working group discussion about the presentation of a specific future scenario concerning the linguistic landscape of Europe",
           "domain":"ED",
           "spet":"wgd",
           "refs":{
             "audio":null,
-            "TEI":"\/VOICE_CLARIAH\/speechEvent\/EDwgd305.xml",
-            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/EDwgd305.xml\/header"
+            "TEI":"\/VOICE_CLARIAH\/speechEvent\/EDwgd305",
+            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/EDwgd305\/header"
           },
           "audioAvailable":false,
           "words":11339,
@@ -18391,14 +18391,14 @@
           "relationAcquaintedness":"acquainted"
         },
         {
-          "id":"EDwgd497.xml",
+          "id":"EDwgd497",
           "title":"working group discussion about organizing a joint consultancy project",
           "domain":"ED",
           "spet":"wgd",
           "refs":{
             "audio":"https:\/\/voice.acdh.oeaw.ac.at\/sound\/EDwgd497.mp3",
-            "TEI":"\/VOICE_CLARIAH\/speechEvent\/EDwgd497.xml",
-            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/EDwgd497.xml\/header"
+            "TEI":"\/VOICE_CLARIAH\/speechEvent\/EDwgd497",
+            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/EDwgd497\/header"
           },
           "audioAvailable":true,
           "words":6371,
@@ -18534,14 +18534,14 @@
           "relationAcquaintedness":"acquainted"
         },
         {
-          "id":"EDwsd9.xml",
+          "id":"EDwsd9",
           "title":"workshop discussion on organization and content of discussion groups to follow",
           "domain":"ED",
           "spet":"wsd",
           "refs":{
             "audio":null,
-            "TEI":"\/VOICE_CLARIAH\/speechEvent\/EDwsd9.xml",
-            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/EDwsd9.xml\/header"
+            "TEI":"\/VOICE_CLARIAH\/speechEvent\/EDwsd9",
+            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/EDwsd9\/header"
           },
           "audioAvailable":false,
           "words":1550,
@@ -18703,14 +18703,14 @@
           "relationAcquaintedness":"acquainted"
         },
         {
-          "id":"EDwsd15.xml",
+          "id":"EDwsd15",
           "title":"workshop discussion on the possible future of Europe as regards linguacultural unity and diversity",
           "domain":"ED",
           "spet":"wsd",
           "refs":{
             "audio":null,
-            "TEI":"\/VOICE_CLARIAH\/speechEvent\/EDwsd15.xml",
-            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/EDwsd15.xml\/header"
+            "TEI":"\/VOICE_CLARIAH\/speechEvent\/EDwsd15",
+            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/EDwsd15\/header"
           },
           "audioAvailable":false,
           "words":5924,
@@ -19089,14 +19089,14 @@
           "relationAcquaintedness":"acquainted"
         },
         {
-          "id":"EDwsd242.xml",
+          "id":"EDwsd242",
           "title":"workshop discussion on the organization of a presentation",
           "domain":"ED",
           "spet":"wsd",
           "refs":{
             "audio":null,
-            "TEI":"\/VOICE_CLARIAH\/speechEvent\/EDwsd242.xml",
-            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/EDwsd242.xml\/header"
+            "TEI":"\/VOICE_CLARIAH\/speechEvent\/EDwsd242",
+            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/EDwsd242\/header"
           },
           "audioAvailable":false,
           "words":5398,
@@ -19382,14 +19382,14 @@
           "relationAcquaintedness":"acquainted"
         },
         {
-          "id":"EDwsd302.xml",
+          "id":"EDwsd302",
           "title":"workshop discussion on the five most important values for human life",
           "domain":"ED",
           "spet":"wsd",
           "refs":{
             "audio":null,
-            "TEI":"\/VOICE_CLARIAH\/speechEvent\/EDwsd302.xml",
-            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/EDwsd302.xml\/header"
+            "TEI":"\/VOICE_CLARIAH\/speechEvent\/EDwsd302",
+            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/EDwsd302\/header"
           },
           "audioAvailable":false,
           "words":14698,
@@ -19809,14 +19809,14 @@
           "relationAcquaintedness":"predominantly_unacquainted"
         },
         {
-          "id":"EDwsd303.xml",
+          "id":"EDwsd303",
           "title":"workshop discussion on the definition of the term lingua franca",
           "domain":"ED",
           "spet":"wsd",
           "refs":{
             "audio":"https:\/\/voice.acdh.oeaw.ac.at\/sound\/EDwsd303.mp3",
-            "TEI":"\/VOICE_CLARIAH\/speechEvent\/EDwsd303.xml",
-            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/EDwsd303.xml\/header"
+            "TEI":"\/VOICE_CLARIAH\/speechEvent\/EDwsd303",
+            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/EDwsd303\/header"
           },
           "audioAvailable":true,
           "words":10516,
@@ -20084,14 +20084,14 @@
           "relationAcquaintedness":"acquainted"
         },
         {
-          "id":"EDwsd304.xml",
+          "id":"EDwsd304",
           "title":"working group discussion on four different scenarios regarding the future of English in Europe",
           "domain":"ED",
           "spet":"wsd",
           "refs":{
             "audio":null,
-            "TEI":"\/VOICE_CLARIAH\/speechEvent\/EDwsd304.xml",
-            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/EDwsd304.xml\/header"
+            "TEI":"\/VOICE_CLARIAH\/speechEvent\/EDwsd304",
+            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/EDwsd304\/header"
           },
           "audioAvailable":false,
           "words":13952,
@@ -20474,14 +20474,14 @@
           "relationAcquaintedness":"predominantly_acquainted"
         },
         {
-          "id":"EDwsd306.xml",
+          "id":"EDwsd306",
           "title":"workshop discussion about the best, the worst and the most likely scenarios concerning the future of English and regional cultures in Europe",
           "domain":"ED",
           "spet":"wsd",
           "refs":{
             "audio":null,
-            "TEI":"\/VOICE_CLARIAH\/speechEvent\/EDwsd306.xml",
-            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/EDwsd306.xml\/header"
+            "TEI":"\/VOICE_CLARIAH\/speechEvent\/EDwsd306",
+            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/EDwsd306\/header"
           },
           "audioAvailable":false,
           "words":14866,
@@ -20838,14 +20838,14 @@
           "relationAcquaintedness":"acquainted"
         },
         {
-          "id":"EDwsd464.xml",
+          "id":"EDwsd464",
           "title":"workshop discussion about the organization of a student conference",
           "domain":"ED",
           "spet":"wsd",
           "refs":{
             "audio":null,
-            "TEI":"\/VOICE_CLARIAH\/speechEvent\/EDwsd464.xml",
-            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/EDwsd464.xml\/header"
+            "TEI":"\/VOICE_CLARIAH\/speechEvent\/EDwsd464",
+            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/EDwsd464\/header"
           },
           "audioAvailable":false,
           "words":11708,
@@ -21251,14 +21251,14 @@
           "relationAcquaintedness":"predominantly_unacquainted"
         },
         {
-          "id":"EDwsd499.xml",
+          "id":"EDwsd499",
           "title":"workshop discussion on issues related to students and citizenship",
           "domain":"ED",
           "spet":"wsd",
           "refs":{
             "audio":null,
-            "TEI":"\/VOICE_CLARIAH\/speechEvent\/EDwsd499.xml",
-            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/EDwsd499.xml\/header"
+            "TEI":"\/VOICE_CLARIAH\/speechEvent\/EDwsd499",
+            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/EDwsd499\/header"
           },
           "audioAvailable":false,
           "words":14804,
@@ -21457,14 +21457,14 @@
           "relationAcquaintedness":"predominantly_acquainted"
         },
         {
-          "id":"EDwsd590.xml",
+          "id":"EDwsd590",
           "title":"workshop discussion on the division into four different subgroups",
           "domain":"ED",
           "spet":"wsd",
           "refs":{
             "audio":null,
-            "TEI":"\/VOICE_CLARIAH\/speechEvent\/EDwsd590.xml",
-            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/EDwsd590.xml\/header"
+            "TEI":"\/VOICE_CLARIAH\/speechEvent\/EDwsd590",
+            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/EDwsd590\/header"
           },
           "audioAvailable":false,
           "words":1607,
@@ -21789,14 +21789,14 @@
       "label":"LE",
       "speechEvents":[
         {
-          "id":"LEcon8.xml",
+          "id":"LEcon8",
           "title":"dinner table conversation among international students",
           "domain":"LE",
           "spet":"con",
           "refs":{
             "audio":null,
-            "TEI":"\/VOICE_CLARIAH\/speechEvent\/LEcon8.xml",
-            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/LEcon8.xml\/header"
+            "TEI":"\/VOICE_CLARIAH\/speechEvent\/LEcon8",
+            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/LEcon8\/header"
           },
           "audioAvailable":false,
           "words":3114,
@@ -21930,14 +21930,14 @@
           "relationAcquaintedness":"acquainted"
         },
         {
-          "id":"LEcon227.xml",
+          "id":"LEcon227",
           "title":"conversation between exchange students about cultural differences",
           "domain":"LE",
           "spet":"con",
           "refs":{
             "audio":null,
-            "TEI":"\/VOICE_CLARIAH\/speechEvent\/LEcon227.xml",
-            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/LEcon227.xml\/header"
+            "TEI":"\/VOICE_CLARIAH\/speechEvent\/LEcon227",
+            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/LEcon227\/header"
           },
           "audioAvailable":false,
           "words":2538,
@@ -21976,14 +21976,14 @@
           "relationAcquaintedness":"acquainted"
         },
         {
-          "id":"LEcon228.xml",
+          "id":"LEcon228",
           "title":"conversation between exchange students about the safety of living in a students' hall of residence",
           "domain":"LE",
           "spet":"con",
           "refs":{
             "audio":null,
-            "TEI":"\/VOICE_CLARIAH\/speechEvent\/LEcon228.xml",
-            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/LEcon228.xml\/header"
+            "TEI":"\/VOICE_CLARIAH\/speechEvent\/LEcon228",
+            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/LEcon228\/header"
           },
           "audioAvailable":false,
           "words":896,
@@ -22042,14 +22042,14 @@
           "relationAcquaintedness":"acquainted"
         },
         {
-          "id":"LEcon229.xml",
+          "id":"LEcon229",
           "title":"conversation between international students at a club",
           "domain":"LE",
           "spet":"con",
           "refs":{
             "audio":null,
-            "TEI":"\/VOICE_CLARIAH\/speechEvent\/LEcon229.xml",
-            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/LEcon229.xml\/header"
+            "TEI":"\/VOICE_CLARIAH\/speechEvent\/LEcon229",
+            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/LEcon229\/header"
           },
           "audioAvailable":false,
           "words":3285,
@@ -22130,14 +22130,14 @@
           "relationAcquaintedness":"acquainted"
         },
         {
-          "id":"LEcon329.xml",
+          "id":"LEcon329",
           "title":"conversation in car while driving around to show sights",
           "domain":"LE",
           "spet":"con",
           "refs":{
             "audio":null,
-            "TEI":"\/VOICE_CLARIAH\/speechEvent\/LEcon329.xml",
-            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/LEcon329.xml\/header"
+            "TEI":"\/VOICE_CLARIAH\/speechEvent\/LEcon329",
+            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/LEcon329\/header"
           },
           "audioAvailable":false,
           "words":4704,
@@ -22204,14 +22204,14 @@
           "relationAcquaintedness":"acquainted"
         },
         {
-          "id":"LEcon351.xml",
+          "id":"LEcon351",
           "title":"conversation about customs and legends among students at a party",
           "domain":"LE",
           "spet":"con",
           "refs":{
             "audio":null,
-            "TEI":"\/VOICE_CLARIAH\/speechEvent\/LEcon351.xml",
-            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/LEcon351.xml\/header"
+            "TEI":"\/VOICE_CLARIAH\/speechEvent\/LEcon351",
+            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/LEcon351\/header"
           },
           "audioAvailable":false,
           "words":2204,
@@ -22319,14 +22319,14 @@
           "relationAcquaintedness":"acquainted"
         },
         {
-          "id":"LEcon352.xml",
+          "id":"LEcon352",
           "title":"conversation between international students about language differences at a party",
           "domain":"LE",
           "spet":"con",
           "refs":{
             "audio":null,
-            "TEI":"\/VOICE_CLARIAH\/speechEvent\/LEcon352.xml",
-            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/LEcon352.xml\/header"
+            "TEI":"\/VOICE_CLARIAH\/speechEvent\/LEcon352",
+            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/LEcon352\/header"
           },
           "audioAvailable":false,
           "words":2126,
@@ -22426,14 +22426,14 @@
           "relationAcquaintedness":"acquainted"
         },
         {
-          "id":"LEcon353.xml",
+          "id":"LEcon353",
           "title":"conversation at a party about Spanish in Argentina and about a dog",
           "domain":"LE",
           "spet":"con",
           "refs":{
             "audio":null,
-            "TEI":"\/VOICE_CLARIAH\/speechEvent\/LEcon353.xml",
-            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/LEcon353.xml\/header"
+            "TEI":"\/VOICE_CLARIAH\/speechEvent\/LEcon353",
+            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/LEcon353\/header"
           },
           "audioAvailable":false,
           "words":1877,
@@ -22507,14 +22507,14 @@
           "relationAcquaintedness":"predominantly_acquainted"
         },
         {
-          "id":"LEcon405.xml",
+          "id":"LEcon405",
           "title":"conversation between exchange students about tourism and settling into a new city",
           "domain":"LE",
           "spet":"con",
           "refs":{
             "audio":null,
-            "TEI":"\/VOICE_CLARIAH\/speechEvent\/LEcon405.xml",
-            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/LEcon405.xml\/header"
+            "TEI":"\/VOICE_CLARIAH\/speechEvent\/LEcon405",
+            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/LEcon405\/header"
           },
           "audioAvailable":false,
           "words":1933,
@@ -22562,14 +22562,14 @@
           "relationAcquaintedness":"unacquainted"
         },
         {
-          "id":"LEcon417.xml",
+          "id":"LEcon417",
           "title":"conversation between female exchange students at local restaurant",
           "domain":"LE",
           "spet":"con",
           "refs":{
             "audio":null,
-            "TEI":"\/VOICE_CLARIAH\/speechEvent\/LEcon417.xml",
-            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/LEcon417.xml\/header"
+            "TEI":"\/VOICE_CLARIAH\/speechEvent\/LEcon417",
+            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/LEcon417\/header"
           },
           "audioAvailable":false,
           "words":2392,
@@ -22652,14 +22652,14 @@
           "relationAcquaintedness":"predominantly_unacquainted"
         },
         {
-          "id":"LEcon418.xml",
+          "id":"LEcon418",
           "title":"conversation between two students about festivals in different cultures",
           "domain":"LE",
           "spet":"con",
           "refs":{
             "audio":null,
-            "TEI":"\/VOICE_CLARIAH\/speechEvent\/LEcon418.xml",
-            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/LEcon418.xml\/header"
+            "TEI":"\/VOICE_CLARIAH\/speechEvent\/LEcon418",
+            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/LEcon418\/header"
           },
           "audioAvailable":false,
           "words":1452,
@@ -22706,14 +22706,14 @@
           "relationAcquaintedness":"acquainted"
         },
         {
-          "id":"LEcon420.xml",
+          "id":"LEcon420",
           "title":"conversation about sights in Scotland",
           "domain":"LE",
           "spet":"con",
           "refs":{
             "audio":"https:\/\/voice.acdh.oeaw.ac.at\/sound\/LEcon420.mp3",
-            "TEI":"\/VOICE_CLARIAH\/speechEvent\/LEcon420.xml",
-            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/LEcon420.xml\/header"
+            "TEI":"\/VOICE_CLARIAH\/speechEvent\/LEcon420",
+            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/LEcon420\/header"
           },
           "audioAvailable":true,
           "words":4576,
@@ -22786,14 +22786,14 @@
           "relationAcquaintedness":"predominantly_acquainted"
         },
         {
-          "id":"LEcon545.xml",
+          "id":"LEcon545",
           "title":"conversation among exchange students who are invited to celebrate pancake day",
           "domain":"LE",
           "spet":"con",
           "refs":{
             "audio":"https:\/\/voice.acdh.oeaw.ac.at\/sound\/LEcon545.mp3",
-            "TEI":"\/VOICE_CLARIAH\/speechEvent\/LEcon545.xml",
-            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/LEcon545.xml\/header"
+            "TEI":"\/VOICE_CLARIAH\/speechEvent\/LEcon545",
+            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/LEcon545\/header"
           },
           "audioAvailable":true,
           "words":7413,
@@ -22923,14 +22923,14 @@
           "relationAcquaintedness":"acquainted"
         },
         {
-          "id":"LEcon547.xml",
+          "id":"LEcon547",
           "title":"conversation between family and visiting student in car while driving around and visiting a castle",
           "domain":"LE",
           "spet":"con",
           "refs":{
             "audio":null,
-            "TEI":"\/VOICE_CLARIAH\/speechEvent\/LEcon547.xml",
-            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/LEcon547.xml\/header"
+            "TEI":"\/VOICE_CLARIAH\/speechEvent\/LEcon547",
+            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/LEcon547\/header"
           },
           "audioAvailable":false,
           "words":1220,
@@ -23006,14 +23006,14 @@
           "relationAcquaintedness":"acquainted"
         },
         {
-          "id":"LEcon548.xml",
+          "id":"LEcon548",
           "title":"conversation between family and visiting student before going out with friends",
           "domain":"LE",
           "spet":"con",
           "refs":{
             "audio":null,
-            "TEI":"\/VOICE_CLARIAH\/speechEvent\/LEcon548.xml",
-            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/LEcon548.xml\/header"
+            "TEI":"\/VOICE_CLARIAH\/speechEvent\/LEcon548",
+            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/LEcon548\/header"
           },
           "audioAvailable":false,
           "words":6909,
@@ -23108,14 +23108,14 @@
           "relationAcquaintedness":"predominantly_acquainted"
         },
         {
-          "id":"LEcon560.xml",
+          "id":"LEcon560",
           "title":"conversation among exchange students about their first experiences in Austria and various other topics",
           "domain":"LE",
           "spet":"con",
           "refs":{
             "audio":null,
-            "TEI":"\/VOICE_CLARIAH\/speechEvent\/LEcon560.xml",
-            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/LEcon560.xml\/header"
+            "TEI":"\/VOICE_CLARIAH\/speechEvent\/LEcon560",
+            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/LEcon560\/header"
           },
           "audioAvailable":false,
           "words":21867,
@@ -23320,14 +23320,14 @@
           "relationAcquaintedness":"predominantly_acquainted"
         },
         {
-          "id":"LEcon562.xml",
+          "id":"LEcon562",
           "title":"conversation among exchange students about various topics",
           "domain":"LE",
           "spet":"con",
           "refs":{
             "audio":null,
-            "TEI":"\/VOICE_CLARIAH\/speechEvent\/LEcon562.xml",
-            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/LEcon562.xml\/header"
+            "TEI":"\/VOICE_CLARIAH\/speechEvent\/LEcon562",
+            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/LEcon562\/header"
           },
           "audioAvailable":false,
           "words":15388,
@@ -23548,14 +23548,14 @@
           "relationAcquaintedness":"predominantly_unacquainted"
         },
         {
-          "id":"LEcon565.xml",
+          "id":"LEcon565",
           "title":"conversation about what to eat for lunch",
           "domain":"LE",
           "spet":"con",
           "refs":{
             "audio":null,
-            "TEI":"\/VOICE_CLARIAH\/speechEvent\/LEcon565.xml",
-            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/LEcon565.xml\/header"
+            "TEI":"\/VOICE_CLARIAH\/speechEvent\/LEcon565",
+            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/LEcon565\/header"
           },
           "audioAvailable":false,
           "words":3979,
@@ -23602,14 +23602,14 @@
           "relationAcquaintedness":"acquainted"
         },
         {
-          "id":"LEcon566.xml",
+          "id":"LEcon566",
           "title":"conversation between a couple while having lunch",
           "domain":"LE",
           "spet":"con",
           "refs":{
             "audio":"https:\/\/voice.acdh.oeaw.ac.at\/sound\/LEcon566.mp3",
-            "TEI":"\/VOICE_CLARIAH\/speechEvent\/LEcon566.xml",
-            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/LEcon566.xml\/header"
+            "TEI":"\/VOICE_CLARIAH\/speechEvent\/LEcon566",
+            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/LEcon566\/header"
           },
           "audioAvailable":true,
           "words":5634,
@@ -23656,14 +23656,14 @@
           "relationAcquaintedness":"acquainted"
         },
         {
-          "id":"LEcon573.xml",
+          "id":"LEcon573",
           "title":"conversation between a couple about a trip to Liverpool",
           "domain":"LE",
           "spet":"con",
           "refs":{
             "audio":null,
-            "TEI":"\/VOICE_CLARIAH\/speechEvent\/LEcon573.xml",
-            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/LEcon573.xml\/header"
+            "TEI":"\/VOICE_CLARIAH\/speechEvent\/LEcon573",
+            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/LEcon573\/header"
           },
           "audioAvailable":false,
           "words":1731,
@@ -23710,14 +23710,14 @@
           "relationAcquaintedness":"acquainted"
         },
         {
-          "id":"LEcon575.xml",
+          "id":"LEcon575",
           "title":"conversation while cooking dinner",
           "domain":"LE",
           "spet":"con",
           "refs":{
             "audio":null,
-            "TEI":"\/VOICE_CLARIAH\/speechEvent\/LEcon575.xml",
-            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/LEcon575.xml\/header"
+            "TEI":"\/VOICE_CLARIAH\/speechEvent\/LEcon575",
+            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/LEcon575\/header"
           },
           "audioAvailable":false,
           "words":2865,
@@ -23764,14 +23764,14 @@
           "relationAcquaintedness":"acquainted"
         },
         {
-          "id":"LEint551.xml",
+          "id":"LEint551",
           "title":"interview with participants of a scout camp about traveling and leisure activities in the preceding week",
           "domain":"LE",
           "spet":"int",
           "refs":{
             "audio":null,
-            "TEI":"\/VOICE_CLARIAH\/speechEvent\/LEint551.xml",
-            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/LEint551.xml\/header"
+            "TEI":"\/VOICE_CLARIAH\/speechEvent\/LEint551",
+            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/LEint551\/header"
           },
           "audioAvailable":false,
           "words":442,
@@ -23810,14 +23810,14 @@
           "relationAcquaintedness":"unacquainted"
         },
         {
-          "id":"LEint552.xml",
+          "id":"LEint552",
           "title":"interview about activities related to a scout camp",
           "domain":"LE",
           "spet":"int",
           "refs":{
             "audio":null,
-            "TEI":"\/VOICE_CLARIAH\/speechEvent\/LEint552.xml",
-            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/LEint552.xml\/header"
+            "TEI":"\/VOICE_CLARIAH\/speechEvent\/LEint552",
+            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/LEint552\/header"
           },
           "audioAvailable":false,
           "words":512,
@@ -23856,14 +23856,14 @@
           "relationAcquaintedness":"unacquainted"
         },
         {
-          "id":"LEint553.xml",
+          "id":"LEint553",
           "title":"interview with participants of a scout camp about a trip to Tyrol",
           "domain":"LE",
           "spet":"int",
           "refs":{
             "audio":null,
-            "TEI":"\/VOICE_CLARIAH\/speechEvent\/LEint553.xml",
-            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/LEint553.xml\/header"
+            "TEI":"\/VOICE_CLARIAH\/speechEvent\/LEint553",
+            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/LEint553\/header"
           },
           "audioAvailable":false,
           "words":411,
@@ -23927,14 +23927,14 @@
           "relationAcquaintedness":"predominantly_unacquainted"
         },
         {
-          "id":"LEint554.xml",
+          "id":"LEint554",
           "title":"interview with participants of a scout camp about travel plans",
           "domain":"LE",
           "spet":"int",
           "refs":{
             "audio":null,
-            "TEI":"\/VOICE_CLARIAH\/speechEvent\/LEint554.xml",
-            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/LEint554.xml\/header"
+            "TEI":"\/VOICE_CLARIAH\/speechEvent\/LEint554",
+            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/LEint554\/header"
           },
           "audioAvailable":false,
           "words":847,
@@ -24049,14 +24049,14 @@
           "relationAcquaintedness":"predominantly_acquainted"
         },
         {
-          "id":"LEint555.xml",
+          "id":"LEint555",
           "title":"interview about scout project concerned with food",
           "domain":"LE",
           "spet":"int",
           "refs":{
             "audio":null,
-            "TEI":"\/VOICE_CLARIAH\/speechEvent\/LEint555.xml",
-            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/LEint555.xml\/header"
+            "TEI":"\/VOICE_CLARIAH\/speechEvent\/LEint555",
+            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/LEint555\/header"
           },
           "audioAvailable":false,
           "words":903,
@@ -24100,14 +24100,14 @@
       "label":"PB",
       "speechEvents":[
         {
-          "id":"PBcon594.xml",
+          "id":"PBcon594",
           "title":"conversation about being a successful woman in the business world",
           "domain":"PB",
           "spet":"con",
           "refs":{
             "audio":null,
-            "TEI":"\/VOICE_CLARIAH\/speechEvent\/PBcon594.xml",
-            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/PBcon594.xml\/header"
+            "TEI":"\/VOICE_CLARIAH\/speechEvent\/PBcon594",
+            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/PBcon594\/header"
           },
           "audioAvailable":false,
           "words":2212,
@@ -24196,14 +24196,14 @@
           "relationAcquaintedness":"acquainted"
         },
         {
-          "id":"PBmtg3.xml",
+          "id":"PBmtg3",
           "title":"business meeting at a food company",
           "domain":"PB",
           "spet":"mtg",
           "refs":{
             "audio":null,
-            "TEI":"\/VOICE_CLARIAH\/speechEvent\/PBmtg3.xml",
-            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/PBmtg3.xml\/header"
+            "TEI":"\/VOICE_CLARIAH\/speechEvent\/PBmtg3",
+            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/PBmtg3\/header"
           },
           "audioAvailable":false,
           "words":24601,
@@ -24342,14 +24342,14 @@
           "relationAcquaintedness":"predominantly_acquainted"
         },
         {
-          "id":"PBmtg27.xml",
+          "id":"PBmtg27",
           "title":"sales team meeting about internal matters of a forwarding agency",
           "domain":"PB",
           "spet":"mtg",
           "refs":{
             "audio":"https:\/\/voice.acdh.oeaw.ac.at\/sound\/PBmtg27.mp3",
-            "TEI":"\/VOICE_CLARIAH\/speechEvent\/PBmtg27.xml",
-            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/PBmtg27.xml\/header"
+            "TEI":"\/VOICE_CLARIAH\/speechEvent\/PBmtg27",
+            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/PBmtg27\/header"
           },
           "audioAvailable":true,
           "words":15068,
@@ -24475,14 +24475,14 @@
           "relationAcquaintedness":"acquainted"
         },
         {
-          "id":"PBmtg269.xml",
+          "id":"PBmtg269",
           "title":"business meeting about coordinating a PR campaign across several countries",
           "domain":"PB",
           "spet":"mtg",
           "refs":{
             "audio":null,
-            "TEI":"\/VOICE_CLARIAH\/speechEvent\/PBmtg269.xml",
-            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/PBmtg269.xml\/header"
+            "TEI":"\/VOICE_CLARIAH\/speechEvent\/PBmtg269",
+            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/PBmtg269\/header"
           },
           "audioAvailable":false,
           "words":22585,
@@ -24618,14 +24618,14 @@
           "relationAcquaintedness":"acquainted"
         },
         {
-          "id":"PBmtg280.xml",
+          "id":"PBmtg280",
           "title":"business meeting on the status of a project",
           "domain":"PB",
           "spet":"mtg",
           "refs":{
             "audio":null,
-            "TEI":"\/VOICE_CLARIAH\/speechEvent\/PBmtg280.xml",
-            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/PBmtg280.xml\/header"
+            "TEI":"\/VOICE_CLARIAH\/speechEvent\/PBmtg280",
+            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/PBmtg280\/header"
           },
           "audioAvailable":false,
           "words":4768,
@@ -24726,14 +24726,14 @@
           "relationAcquaintedness":"acquainted"
         },
         {
-          "id":"PBmtg300.xml",
+          "id":"PBmtg300",
           "title":"business meeting at a forwarding agency with a sales representative of an airline",
           "domain":"PB",
           "spet":"mtg",
           "refs":{
             "audio":null,
-            "TEI":"\/VOICE_CLARIAH\/speechEvent\/PBmtg300.xml",
-            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/PBmtg300.xml\/header"
+            "TEI":"\/VOICE_CLARIAH\/speechEvent\/PBmtg300",
+            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/PBmtg300\/header"
           },
           "audioAvailable":false,
           "words":35277,
@@ -24910,14 +24910,14 @@
           "relationAcquaintedness":"predominantly_acquainted"
         },
         {
-          "id":"PBmtg414.xml",
+          "id":"PBmtg414",
           "title":"business meeting about the sales of products",
           "domain":"PB",
           "spet":"mtg",
           "refs":{
             "audio":null,
-            "TEI":"\/VOICE_CLARIAH\/speechEvent\/PBmtg414.xml",
-            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/PBmtg414.xml\/header"
+            "TEI":"\/VOICE_CLARIAH\/speechEvent\/PBmtg414",
+            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/PBmtg414\/header"
           },
           "audioAvailable":false,
           "words":21195,
@@ -25024,14 +25024,14 @@
           "relationAcquaintedness":"acquainted"
         },
         {
-          "id":"PBmtg462.xml",
+          "id":"PBmtg462",
           "title":"business meeting about promotion activities of a distribution company",
           "domain":"PB",
           "spet":"mtg",
           "refs":{
             "audio":"https:\/\/voice.acdh.oeaw.ac.at\/sound\/PBmtg462.mp3",
-            "TEI":"\/VOICE_CLARIAH\/speechEvent\/PBmtg462.xml",
-            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/PBmtg462.xml\/header"
+            "TEI":"\/VOICE_CLARIAH\/speechEvent\/PBmtg462",
+            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/PBmtg462\/header"
           },
           "audioAvailable":true,
           "words":15640,
@@ -25195,14 +25195,14 @@
           "relationAcquaintedness":"acquainted"
         },
         {
-          "id":"PBmtg463.xml",
+          "id":"PBmtg463",
           "title":"business meeting at a food company about future orders and product news",
           "domain":"PB",
           "spet":"mtg",
           "refs":{
             "audio":null,
-            "TEI":"\/VOICE_CLARIAH\/speechEvent\/PBmtg463.xml",
-            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/PBmtg463.xml\/header"
+            "TEI":"\/VOICE_CLARIAH\/speechEvent\/PBmtg463",
+            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/PBmtg463\/header"
           },
           "audioAvailable":false,
           "words":15484,
@@ -25358,14 +25358,14 @@
           "relationAcquaintedness":"acquainted"
         },
         {
-          "id":"PBpan10.xml",
+          "id":"PBpan10",
           "title":"panel about the potential accession of Turkey to the European Union",
           "domain":"PB",
           "spet":"pan",
           "refs":{
             "audio":null,
-            "TEI":"\/VOICE_CLARIAH\/speechEvent\/PBpan10.xml",
-            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/PBpan10.xml\/header"
+            "TEI":"\/VOICE_CLARIAH\/speechEvent\/PBpan10",
+            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/PBpan10\/header"
           },
           "audioAvailable":false,
           "words":7898,
@@ -25517,14 +25517,14 @@
           "relationAcquaintedness":"predominantly_unacquainted"
         },
         {
-          "id":"PBpan25.xml",
+          "id":"PBpan25",
           "title":"panel on the economic situation of the South-eastern European member states of the EU and their potential accession to the European Monetary Union",
           "domain":"PB",
           "spet":"pan",
           "refs":{
             "audio":null,
-            "TEI":"\/VOICE_CLARIAH\/speechEvent\/PBpan25.xml",
-            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/PBpan25.xml\/header"
+            "TEI":"\/VOICE_CLARIAH\/speechEvent\/PBpan25",
+            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/PBpan25\/header"
           },
           "audioAvailable":false,
           "words":10873,
@@ -25690,14 +25690,14 @@
           "relationAcquaintedness":"acquaintedness_unknown"
         },
         {
-          "id":"PBpan28.xml",
+          "id":"PBpan28",
           "title":"panel about financial markets in Central and Eastern Europe",
           "domain":"PB",
           "spet":"pan",
           "refs":{
             "audio":"https:\/\/voice.acdh.oeaw.ac.at\/sound\/PBpan28.mp3",
-            "TEI":"\/VOICE_CLARIAH\/speechEvent\/PBpan28.xml",
-            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/PBpan28.xml\/header"
+            "TEI":"\/VOICE_CLARIAH\/speechEvent\/PBpan28",
+            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/PBpan28\/header"
           },
           "audioAvailable":true,
           "words":9798,
@@ -25843,14 +25843,14 @@
           "relationAcquaintedness":"acquaintedness_unknown"
         },
         {
-          "id":"PBpan581.xml",
+          "id":"PBpan581",
           "title":"panel on demographic changes in Central and Eastern Europe",
           "domain":"PB",
           "spet":"pan",
           "refs":{
             "audio":null,
-            "TEI":"\/VOICE_CLARIAH\/speechEvent\/PBpan581.xml",
-            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/PBpan581.xml\/header"
+            "TEI":"\/VOICE_CLARIAH\/speechEvent\/PBpan581",
+            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/PBpan581\/header"
           },
           "audioAvailable":false,
           "words":8128,
@@ -25970,14 +25970,14 @@
           "relationAcquaintedness":"predominantly_unacquainted"
         },
         {
-          "id":"PBqas410.xml",
+          "id":"PBqas410",
           "title":"question-answer session about steel technology",
           "domain":"PB",
           "spet":"qas",
           "refs":{
             "audio":null,
-            "TEI":"\/VOICE_CLARIAH\/speechEvent\/PBqas410.xml",
-            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/PBqas410.xml\/header"
+            "TEI":"\/VOICE_CLARIAH\/speechEvent\/PBqas410",
+            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/PBqas410\/header"
           },
           "audioAvailable":false,
           "words":1824,
@@ -26125,14 +26125,14 @@
           "relationAcquaintedness":"predominantly_unacquainted"
         },
         {
-          "id":"PBqas411.xml",
+          "id":"PBqas411",
           "title":"question-answer session on issues of steel technology",
           "domain":"PB",
           "spet":"qas",
           "refs":{
             "audio":"https:\/\/voice.acdh.oeaw.ac.at\/sound\/PBqas411.mp3",
-            "TEI":"\/VOICE_CLARIAH\/speechEvent\/PBqas411.xml",
-            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/PBqas411.xml\/header"
+            "TEI":"\/VOICE_CLARIAH\/speechEvent\/PBqas411",
+            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/PBqas411\/header"
           },
           "audioAvailable":true,
           "words":1790,
@@ -26296,14 +26296,14 @@
           "relationAcquaintedness":"predominantly_unacquainted"
         },
         {
-          "id":"PBqas412.xml",
+          "id":"PBqas412",
           "title":"question-answer session on technology used in steel production",
           "domain":"PB",
           "spet":"qas",
           "refs":{
             "audio":null,
-            "TEI":"\/VOICE_CLARIAH\/speechEvent\/PBqas412.xml",
-            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/PBqas412.xml\/header"
+            "TEI":"\/VOICE_CLARIAH\/speechEvent\/PBqas412",
+            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/PBqas412\/header"
           },
           "audioAvailable":false,
           "words":2341,
@@ -26483,14 +26483,14 @@
           "relationAcquaintedness":"predominantly_unacquainted"
         },
         {
-          "id":"PBqas523.xml",
+          "id":"PBqas523",
           "title":"question-answer session on issues of steelmaking",
           "domain":"PB",
           "spet":"qas",
           "refs":{
             "audio":null,
-            "TEI":"\/VOICE_CLARIAH\/speechEvent\/PBqas523.xml",
-            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/PBqas523.xml\/header"
+            "TEI":"\/VOICE_CLARIAH\/speechEvent\/PBqas523",
+            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/PBqas523\/header"
           },
           "audioAvailable":false,
           "words":728,
@@ -26558,14 +26558,14 @@
           "relationAcquaintedness":"predominantly_acquainted"
         },
         {
-          "id":"PBsve426.xml",
+          "id":"PBsve426",
           "title":"service encounter about prolonging stay in Austria",
           "domain":"PB",
           "spet":"sve",
           "refs":{
             "audio":null,
-            "TEI":"\/VOICE_CLARIAH\/speechEvent\/PBsve426.xml",
-            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/PBsve426.xml\/header"
+            "TEI":"\/VOICE_CLARIAH\/speechEvent\/PBsve426",
+            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/PBsve426\/header"
           },
           "audioAvailable":false,
           "words":955,
@@ -26604,14 +26604,14 @@
           "relationAcquaintedness":"unacquainted"
         },
         {
-          "id":"PBsve430.xml",
+          "id":"PBsve430",
           "title":"service encounter about visa application for family members",
           "domain":"PB",
           "spet":"sve",
           "refs":{
             "audio":null,
-            "TEI":"\/VOICE_CLARIAH\/speechEvent\/PBsve430.xml",
-            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/PBsve430.xml\/header"
+            "TEI":"\/VOICE_CLARIAH\/speechEvent\/PBsve430",
+            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/PBsve430\/header"
           },
           "audioAvailable":false,
           "words":297,
@@ -26650,14 +26650,14 @@
           "relationAcquaintedness":"unacquainted"
         },
         {
-          "id":"PBsve434.xml",
+          "id":"PBsve434",
           "title":"service encounter about moving into a room earlier than planned",
           "domain":"PB",
           "spet":"sve",
           "refs":{
             "audio":null,
-            "TEI":"\/VOICE_CLARIAH\/speechEvent\/PBsve434.xml",
-            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/PBsve434.xml\/header"
+            "TEI":"\/VOICE_CLARIAH\/speechEvent\/PBsve434",
+            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/PBsve434\/header"
           },
           "audioAvailable":false,
           "words":486,
@@ -26696,14 +26696,14 @@
           "relationAcquaintedness":"unacquainted"
         },
         {
-          "id":"PBsve435.xml",
+          "id":"PBsve435",
           "title":"service encounter about getting an address printed out",
           "domain":"PB",
           "spet":"sve",
           "refs":{
             "audio":null,
-            "TEI":"\/VOICE_CLARIAH\/speechEvent\/PBsve435.xml",
-            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/PBsve435.xml\/header"
+            "TEI":"\/VOICE_CLARIAH\/speechEvent\/PBsve435",
+            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/PBsve435\/header"
           },
           "audioAvailable":false,
           "words":154,
@@ -26742,14 +26742,14 @@
           "relationAcquaintedness":"unacquainted"
         },
         {
-          "id":"PBsve436.xml",
+          "id":"PBsve436",
           "title":"service encounter about getting a deposit back",
           "domain":"PB",
           "spet":"sve",
           "refs":{
             "audio":null,
-            "TEI":"\/VOICE_CLARIAH\/speechEvent\/PBsve436.xml",
-            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/PBsve436.xml\/header"
+            "TEI":"\/VOICE_CLARIAH\/speechEvent\/PBsve436",
+            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/PBsve436\/header"
           },
           "audioAvailable":false,
           "words":668,
@@ -26805,14 +26805,14 @@
           "relationAcquaintedness":"unacquainted"
         },
         {
-          "id":"PBsve437.xml",
+          "id":"PBsve437",
           "title":"service encounter about renting a room",
           "domain":"PB",
           "spet":"sve",
           "refs":{
             "audio":null,
-            "TEI":"\/VOICE_CLARIAH\/speechEvent\/PBsve437.xml",
-            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/PBsve437.xml\/header"
+            "TEI":"\/VOICE_CLARIAH\/speechEvent\/PBsve437",
+            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/PBsve437\/header"
           },
           "audioAvailable":false,
           "words":637,
@@ -26856,14 +26856,14 @@
       "label":"PO",
       "speechEvents":[
         {
-          "id":"POcon543.xml",
+          "id":"POcon543",
           "title":"lunch conversation between professionals working in higher education",
           "domain":"PO",
           "spet":"con",
           "refs":{
             "audio":null,
-            "TEI":"\/VOICE_CLARIAH\/speechEvent\/POcon543.xml",
-            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/POcon543.xml\/header"
+            "TEI":"\/VOICE_CLARIAH\/speechEvent\/POcon543",
+            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/POcon543\/header"
           },
           "audioAvailable":false,
           "words":8445,
@@ -27030,14 +27030,14 @@
           "relationAcquaintedness":"acquainted"
         },
         {
-          "id":"POcon549.xml",
+          "id":"POcon549",
           "title":"conversation over lunch between professionals involved in European higher education matters",
           "domain":"PO",
           "spet":"con",
           "refs":{
             "audio":null,
-            "TEI":"\/VOICE_CLARIAH\/speechEvent\/POcon549.xml",
-            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/POcon549.xml\/header"
+            "TEI":"\/VOICE_CLARIAH\/speechEvent\/POcon549",
+            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/POcon549\/header"
           },
           "audioAvailable":false,
           "words":5640,
@@ -27260,14 +27260,14 @@
           "relationAcquaintedness":"acquainted"
         },
         {
-          "id":"POcon591.xml",
+          "id":"POcon591",
           "title":"conversation during coffee break about shopping malls",
           "domain":"PO",
           "spet":"con",
           "refs":{
             "audio":null,
-            "TEI":"\/VOICE_CLARIAH\/speechEvent\/POcon591.xml",
-            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/POcon591.xml\/header"
+            "TEI":"\/VOICE_CLARIAH\/speechEvent\/POcon591",
+            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/POcon591\/header"
           },
           "audioAvailable":false,
           "words":1276,
@@ -27382,14 +27382,14 @@
           "relationAcquaintedness":"acquainted"
         },
         {
-          "id":"POmtg314.xml",
+          "id":"POmtg314",
           "title":"meeting to discuss the proceedings of a planned workshop on joint degree programs",
           "domain":"PO",
           "spet":"mtg",
           "refs":{
             "audio":null,
-            "TEI":"\/VOICE_CLARIAH\/speechEvent\/POmtg314.xml",
-            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/POmtg314.xml\/header"
+            "TEI":"\/VOICE_CLARIAH\/speechEvent\/POmtg314",
+            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/POmtg314\/header"
           },
           "audioAvailable":false,
           "words":14767,
@@ -27639,14 +27639,14 @@
           "relationAcquaintedness":"predominantly_acquainted"
         },
         {
-          "id":"POmtg315.xml",
+          "id":"POmtg315",
           "title":"meeting to discuss and prepare the thematic organization of workshops on joint degree programs",
           "domain":"PO",
           "spet":"mtg",
           "refs":{
             "audio":null,
-            "TEI":"\/VOICE_CLARIAH\/speechEvent\/POmtg315.xml",
-            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/POmtg315.xml\/header"
+            "TEI":"\/VOICE_CLARIAH\/speechEvent\/POmtg315",
+            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/POmtg315\/header"
           },
           "audioAvailable":false,
           "words":9231,
@@ -27881,14 +27881,14 @@
           "relationAcquaintedness":"acquainted"
         },
         {
-          "id":"POmtg316.xml",
+          "id":"POmtg316",
           "title":"meeting to discuss the results of the preceding working group discussion",
           "domain":"PO",
           "spet":"mtg",
           "refs":{
             "audio":null,
-            "TEI":"\/VOICE_CLARIAH\/speechEvent\/POmtg316.xml",
-            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/POmtg316.xml\/header"
+            "TEI":"\/VOICE_CLARIAH\/speechEvent\/POmtg316",
+            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/POmtg316\/header"
           },
           "audioAvailable":false,
           "words":5910,
@@ -28137,14 +28137,14 @@
           "relationAcquaintedness":"acquainted"
         },
         {
-          "id":"POmtg403.xml",
+          "id":"POmtg403",
           "title":"meeting about standards in quality assurance for European higher education",
           "domain":"PO",
           "spet":"mtg",
           "refs":{
             "audio":null,
-            "TEI":"\/VOICE_CLARIAH\/speechEvent\/POmtg403.xml",
-            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/POmtg403.xml\/header"
+            "TEI":"\/VOICE_CLARIAH\/speechEvent\/POmtg403",
+            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/POmtg403\/header"
           },
           "audioAvailable":false,
           "words":12848,
@@ -28295,14 +28295,14 @@
           "relationAcquaintedness":"acquainted"
         },
         {
-          "id":"POmtg404.xml",
+          "id":"POmtg404",
           "title":"meeting between representatives of European higher education quality assurance networks",
           "domain":"PO",
           "spet":"mtg",
           "refs":{
             "audio":null,
-            "TEI":"\/VOICE_CLARIAH\/speechEvent\/POmtg404.xml",
-            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/POmtg404.xml\/header"
+            "TEI":"\/VOICE_CLARIAH\/speechEvent\/POmtg404",
+            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/POmtg404\/header"
           },
           "audioAvailable":false,
           "words":14641,
@@ -28541,14 +28541,14 @@
           "relationAcquaintedness":"predominantly_unacquainted"
         },
         {
-          "id":"POmtg439.xml",
+          "id":"POmtg439",
           "title":"meeting of project group discussing two past project events",
           "domain":"PO",
           "spet":"mtg",
           "refs":{
             "audio":null,
-            "TEI":"\/VOICE_CLARIAH\/speechEvent\/POmtg439.xml",
-            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/POmtg439.xml\/header"
+            "TEI":"\/VOICE_CLARIAH\/speechEvent\/POmtg439",
+            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/POmtg439\/header"
           },
           "audioAvailable":false,
           "words":11922,
@@ -28716,14 +28716,14 @@
           "relationAcquaintedness":"acquainted"
         },
         {
-          "id":"POmtg444.xml",
+          "id":"POmtg444",
           "title":"meeting of project group to discuss and evaluate a booklet",
           "domain":"PO",
           "spet":"mtg",
           "refs":{
             "audio":"https:\/\/voice.acdh.oeaw.ac.at\/sound\/POmtg444.mp3",
-            "TEI":"\/VOICE_CLARIAH\/speechEvent\/POmtg444.xml",
-            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/POmtg444.xml\/header"
+            "TEI":"\/VOICE_CLARIAH\/speechEvent\/POmtg444",
+            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/POmtg444\/header"
           },
           "audioAvailable":true,
           "words":6692,
@@ -28951,14 +28951,14 @@
           "relationAcquaintedness":"acquainted"
         },
         {
-          "id":"POmtg447.xml",
+          "id":"POmtg447",
           "title":"meeting of a project group to discuss one of their projects",
           "domain":"PO",
           "spet":"mtg",
           "refs":{
             "audio":null,
-            "TEI":"\/VOICE_CLARIAH\/speechEvent\/POmtg447.xml",
-            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/POmtg447.xml\/header"
+            "TEI":"\/VOICE_CLARIAH\/speechEvent\/POmtg447",
+            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/POmtg447\/header"
           },
           "audioAvailable":false,
           "words":4177,
@@ -29171,14 +29171,14 @@
           "relationAcquaintedness":"acquainted"
         },
         {
-          "id":"POmtg539.xml",
+          "id":"POmtg539",
           "title":"meeting about quality assurance and a mission statement for a European quality assurance organization",
           "domain":"PO",
           "spet":"mtg",
           "refs":{
             "audio":null,
-            "TEI":"\/VOICE_CLARIAH\/speechEvent\/POmtg539.xml",
-            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/POmtg539.xml\/header"
+            "TEI":"\/VOICE_CLARIAH\/speechEvent\/POmtg539",
+            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/POmtg539\/header"
           },
           "audioAvailable":false,
           "words":6103,
@@ -29346,14 +29346,14 @@
           "relationAcquaintedness":"acquainted"
         },
         {
-          "id":"POmtg541.xml",
+          "id":"POmtg541",
           "title":"meeting on quality assurance issues in European higher education",
           "domain":"PO",
           "spet":"mtg",
           "refs":{
             "audio":null,
-            "TEI":"\/VOICE_CLARIAH\/speechEvent\/POmtg541.xml",
-            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/POmtg541.xml\/header"
+            "TEI":"\/VOICE_CLARIAH\/speechEvent\/POmtg541",
+            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/POmtg541\/header"
           },
           "audioAvailable":false,
           "words":11345,
@@ -29504,14 +29504,14 @@
           "relationAcquaintedness":"acquainted"
         },
         {
-          "id":"POmtg542.xml",
+          "id":"POmtg542",
           "title":"meeting between professionals to discuss an internal document on higher education in Europe",
           "domain":"PO",
           "spet":"mtg",
           "refs":{
             "audio":null,
-            "TEI":"\/VOICE_CLARIAH\/speechEvent\/POmtg542.xml",
-            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/POmtg542.xml\/header"
+            "TEI":"\/VOICE_CLARIAH\/speechEvent\/POmtg542",
+            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/POmtg542\/header"
           },
           "audioAvailable":false,
           "words":4497,
@@ -29588,14 +29588,14 @@
           "relationAcquaintedness":"acquainted"
         },
         {
-          "id":"POmtg546.xml",
+          "id":"POmtg546",
           "title":"meeting to discuss issues of quality assurance within the European higher education area",
           "domain":"PO",
           "spet":"mtg",
           "refs":{
             "audio":null,
-            "TEI":"\/VOICE_CLARIAH\/speechEvent\/POmtg546.xml",
-            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/POmtg546.xml\/header"
+            "TEI":"\/VOICE_CLARIAH\/speechEvent\/POmtg546",
+            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/POmtg546\/header"
           },
           "audioAvailable":false,
           "words":16685,
@@ -29818,14 +29818,14 @@
           "relationAcquaintedness":"predominantly_acquainted"
         },
         {
-          "id":"POprc465.xml",
+          "id":"POprc465",
           "title":"press conference about the cooperation of Serbia with the European Union",
           "domain":"PO",
           "spet":"prc",
           "refs":{
             "audio":"https:\/\/voice.acdh.oeaw.ac.at\/sound\/POprc465.mp3",
-            "TEI":"\/VOICE_CLARIAH\/speechEvent\/POprc465.xml",
-            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/POprc465.xml\/header"
+            "TEI":"\/VOICE_CLARIAH\/speechEvent\/POprc465",
+            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/POprc465\/header"
           },
           "audioAvailable":true,
           "words":3190,
@@ -29981,14 +29981,14 @@
           "relationAcquaintedness":"predominantly_unacquainted"
         },
         {
-          "id":"POprc522.xml",
+          "id":"POprc522",
           "title":"press conference about the military conflict between Israel and the Hezbollah in Lebanon",
           "domain":"PO",
           "spet":"prc",
           "refs":{
             "audio":null,
-            "TEI":"\/VOICE_CLARIAH\/speechEvent\/POprc522.xml",
-            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/POprc522.xml\/header"
+            "TEI":"\/VOICE_CLARIAH\/speechEvent\/POprc522",
+            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/POprc522\/header"
           },
           "audioAvailable":false,
           "words":3433,
@@ -30119,14 +30119,14 @@
           "relationAcquaintedness":"predominantly_unacquainted"
         },
         {
-          "id":"POprc557.xml",
+          "id":"POprc557",
           "title":"press conference on illegal immigration in Spain",
           "domain":"PO",
           "spet":"prc",
           "refs":{
             "audio":null,
-            "TEI":"\/VOICE_CLARIAH\/speechEvent\/POprc557.xml",
-            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/POprc557.xml\/header"
+            "TEI":"\/VOICE_CLARIAH\/speechEvent\/POprc557",
+            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/POprc557\/header"
           },
           "audioAvailable":false,
           "words":1448,
@@ -30220,14 +30220,14 @@
           "relationAcquaintedness":"predominantly_unacquainted"
         },
         {
-          "id":"POprc558.xml",
+          "id":"POprc558",
           "title":"press conference on the accession of Romania and Bulgaria to the European Union",
           "domain":"PO",
           "spet":"prc",
           "refs":{
             "audio":null,
-            "TEI":"\/VOICE_CLARIAH\/speechEvent\/POprc558.xml",
-            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/POprc558.xml\/header"
+            "TEI":"\/VOICE_CLARIAH\/speechEvent\/POprc558",
+            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/POprc558\/header"
           },
           "audioAvailable":false,
           "words":4091,
@@ -30411,14 +30411,14 @@
           "relationAcquaintedness":"predominantly_unacquainted"
         },
         {
-          "id":"POprc559.xml",
+          "id":"POprc559",
           "title":"press conference on the EU-Norway energy partnership dialogue",
           "domain":"PO",
           "spet":"prc",
           "refs":{
             "audio":null,
-            "TEI":"\/VOICE_CLARIAH\/speechEvent\/POprc559.xml",
-            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/POprc559.xml\/header"
+            "TEI":"\/VOICE_CLARIAH\/speechEvent\/POprc559",
+            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/POprc559\/header"
           },
           "audioAvailable":false,
           "words":5421,
@@ -30601,14 +30601,14 @@
           "relationAcquaintedness":"predominantly_unacquainted"
         },
         {
-          "id":"POwgd12.xml",
+          "id":"POwgd12",
           "title":"working group discussion on administrative matters concerning joint degree programs in Europe",
           "domain":"PO",
           "spet":"wgd",
           "refs":{
             "audio":null,
-            "TEI":"\/VOICE_CLARIAH\/speechEvent\/POwgd12.xml",
-            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/POwgd12.xml\/header"
+            "TEI":"\/VOICE_CLARIAH\/speechEvent\/POwgd12",
+            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/POwgd12\/header"
           },
           "audioAvailable":false,
           "words":13175,
@@ -30817,14 +30817,14 @@
           "relationAcquaintedness":"predominantly_acquainted"
         },
         {
-          "id":"POwgd14.xml",
+          "id":"POwgd14",
           "title":"working group discussion on joint degree programs in Europe",
           "domain":"PO",
           "spet":"wgd",
           "refs":{
             "audio":"https:\/\/voice.acdh.oeaw.ac.at\/sound\/POwgd14.mp3",
-            "TEI":"\/VOICE_CLARIAH\/speechEvent\/POwgd14.xml",
-            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/POwgd14.xml\/header"
+            "TEI":"\/VOICE_CLARIAH\/speechEvent\/POwgd14",
+            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/POwgd14\/header"
           },
           "audioAvailable":true,
           "words":20130,
@@ -31043,14 +31043,14 @@
           "relationAcquaintedness":"predominantly_acquainted"
         },
         {
-          "id":"POwgd26.xml",
+          "id":"POwgd26",
           "title":"working group discussion about academic issues with regard to establishing a joint European degree",
           "domain":"PO",
           "spet":"wgd",
           "refs":{
             "audio":"https:\/\/voice.acdh.oeaw.ac.at\/sound\/POwgd26.mp3",
-            "TEI":"\/VOICE_CLARIAH\/speechEvent\/POwgd26.xml",
-            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/POwgd26.xml\/header"
+            "TEI":"\/VOICE_CLARIAH\/speechEvent\/POwgd26",
+            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/POwgd26\/header"
           },
           "audioAvailable":true,
           "words":8122,
@@ -31254,14 +31254,14 @@
           "relationAcquaintedness":"acquainted"
         },
         {
-          "id":"POwgd37.xml",
+          "id":"POwgd37",
           "title":"working group discussion on the improvement of communication between the members of the organization",
           "domain":"PO",
           "spet":"wgd",
           "refs":{
             "audio":"https:\/\/voice.acdh.oeaw.ac.at\/sound\/POwgd37.mp3",
-            "TEI":"\/VOICE_CLARIAH\/speechEvent\/POwgd37.xml",
-            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/POwgd37.xml\/header"
+            "TEI":"\/VOICE_CLARIAH\/speechEvent\/POwgd37",
+            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/POwgd37\/header"
           },
           "audioAvailable":true,
           "words":7056,
@@ -31479,14 +31479,14 @@
           "relationAcquaintedness":"acquainted"
         },
         {
-          "id":"POwgd243.xml",
+          "id":"POwgd243",
           "title":"working group discussion on the timing of the implementation of joint degree programs",
           "domain":"PO",
           "spet":"wgd",
           "refs":{
             "audio":null,
-            "TEI":"\/VOICE_CLARIAH\/speechEvent\/POwgd243.xml",
-            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/POwgd243.xml\/header"
+            "TEI":"\/VOICE_CLARIAH\/speechEvent\/POwgd243",
+            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/POwgd243\/header"
           },
           "audioAvailable":false,
           "words":11210,
@@ -31653,14 +31653,14 @@
           "relationAcquaintedness":"acquainted"
         },
         {
-          "id":"POwgd317.xml",
+          "id":"POwgd317",
           "title":"working group discussion about administrative questions with regard to establishing a joint European degree",
           "domain":"PO",
           "spet":"wgd",
           "refs":{
             "audio":null,
-            "TEI":"\/VOICE_CLARIAH\/speechEvent\/POwgd317.xml",
-            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/POwgd317.xml\/header"
+            "TEI":"\/VOICE_CLARIAH\/speechEvent\/POwgd317",
+            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/POwgd317\/header"
           },
           "audioAvailable":false,
           "words":12251,
@@ -31797,14 +31797,14 @@
           "relationAcquaintedness":"acquainted"
         },
         {
-          "id":"POwgd325.xml",
+          "id":"POwgd325",
           "title":"working group discussion on the organization of joint degree programs in Europe",
           "domain":"PO",
           "spet":"wgd",
           "refs":{
             "audio":null,
-            "TEI":"\/VOICE_CLARIAH\/speechEvent\/POwgd325.xml",
-            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/POwgd325.xml\/header"
+            "TEI":"\/VOICE_CLARIAH\/speechEvent\/POwgd325",
+            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/POwgd325\/header"
           },
           "audioAvailable":false,
           "words":22808,
@@ -32115,14 +32115,14 @@
           "relationAcquaintedness":"acquainted"
         },
         {
-          "id":"POwgd375.xml",
+          "id":"POwgd375",
           "title":"working group discussion on the European youth pact and the job situation",
           "domain":"PO",
           "spet":"wgd",
           "refs":{
             "audio":null,
-            "TEI":"\/VOICE_CLARIAH\/speechEvent\/POwgd375.xml",
-            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/POwgd375.xml\/header"
+            "TEI":"\/VOICE_CLARIAH\/speechEvent\/POwgd375",
+            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/POwgd375\/header"
           },
           "audioAvailable":false,
           "words":9949,
@@ -32271,14 +32271,14 @@
           "relationAcquaintedness":"predominantly_acquainted"
         },
         {
-          "id":"POwgd378.xml",
+          "id":"POwgd378",
           "title":"working group discussion about communication and knowledge transfer across youth organizations",
           "domain":"PO",
           "spet":"wgd",
           "refs":{
             "audio":null,
-            "TEI":"\/VOICE_CLARIAH\/speechEvent\/POwgd378.xml",
-            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/POwgd378.xml\/header"
+            "TEI":"\/VOICE_CLARIAH\/speechEvent\/POwgd378",
+            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/POwgd378\/header"
           },
           "audioAvailable":false,
           "words":2591,
@@ -32355,14 +32355,14 @@
           "relationAcquaintedness":"acquainted"
         },
         {
-          "id":"POwgd442.xml",
+          "id":"POwgd442",
           "title":"working group discussion on dissemination strategies for a project in the media",
           "domain":"PO",
           "spet":"wgd",
           "refs":{
             "audio":null,
-            "TEI":"\/VOICE_CLARIAH\/speechEvent\/POwgd442.xml",
-            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/POwgd442.xml\/header"
+            "TEI":"\/VOICE_CLARIAH\/speechEvent\/POwgd442",
+            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/POwgd442\/header"
           },
           "audioAvailable":false,
           "words":5319,
@@ -32448,14 +32448,14 @@
           "relationAcquaintedness":"acquainted"
         },
         {
-          "id":"POwgd449.xml",
+          "id":"POwgd449",
           "title":"working group discussion on most important points in project planning",
           "domain":"PO",
           "spet":"wgd",
           "refs":{
             "audio":null,
-            "TEI":"\/VOICE_CLARIAH\/speechEvent\/POwgd449.xml",
-            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/POwgd449.xml\/header"
+            "TEI":"\/VOICE_CLARIAH\/speechEvent\/POwgd449",
+            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/POwgd449\/header"
           },
           "audioAvailable":false,
           "words":4447,
@@ -32576,14 +32576,14 @@
           "relationAcquaintedness":"acquainted"
         },
         {
-          "id":"POwgd510.xml",
+          "id":"POwgd510",
           "title":"working group discussion on youth participation and the role of NGO's",
           "domain":"PO",
           "spet":"wgd",
           "refs":{
             "audio":null,
-            "TEI":"\/VOICE_CLARIAH\/speechEvent\/POwgd510.xml",
-            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/POwgd510.xml\/header"
+            "TEI":"\/VOICE_CLARIAH\/speechEvent\/POwgd510",
+            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/POwgd510\/header"
           },
           "audioAvailable":false,
           "words":12039,
@@ -32787,14 +32787,14 @@
           "relationAcquaintedness":"predominantly_acquainted"
         },
         {
-          "id":"POwgd524.xml",
+          "id":"POwgd524",
           "title":"working group discussion about problems and challenges concerning voluntary work",
           "domain":"PO",
           "spet":"wgd",
           "refs":{
             "audio":null,
-            "TEI":"\/VOICE_CLARIAH\/speechEvent\/POwgd524.xml",
-            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/POwgd524.xml\/header"
+            "TEI":"\/VOICE_CLARIAH\/speechEvent\/POwgd524",
+            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/POwgd524\/header"
           },
           "audioAvailable":false,
           "words":10880,
@@ -32982,14 +32982,14 @@
           "relationAcquaintedness":"acquainted"
         },
         {
-          "id":"POwsd256.xml",
+          "id":"POwsd256",
           "title":"workshop discussion on the European youth pact and the job situation",
           "domain":"PO",
           "spet":"wsd",
           "refs":{
             "audio":null,
-            "TEI":"\/VOICE_CLARIAH\/speechEvent\/POwsd256.xml",
-            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/POwsd256.xml\/header"
+            "TEI":"\/VOICE_CLARIAH\/speechEvent\/POwsd256",
+            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/POwsd256\/header"
           },
           "audioAvailable":false,
           "words":2043,
@@ -33125,14 +33125,14 @@
           "relationAcquaintedness":"predominantly_acquainted"
         },
         {
-          "id":"POwsd257.xml",
+          "id":"POwsd257",
           "title":"workshop discussion on youth and jobs in Europe",
           "domain":"PO",
           "spet":"wsd",
           "refs":{
             "audio":null,
-            "TEI":"\/VOICE_CLARIAH\/speechEvent\/POwsd257.xml",
-            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/POwsd257.xml\/header"
+            "TEI":"\/VOICE_CLARIAH\/speechEvent\/POwsd257",
+            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/POwsd257\/header"
           },
           "audioAvailable":false,
           "words":12564,
@@ -33416,14 +33416,14 @@
           "relationAcquaintedness":"predominantly_unacquainted"
         },
         {
-          "id":"POwsd258.xml",
+          "id":"POwsd258",
           "title":"workshop discussion on the European youth pact and the relationship between local and international youth organizations in Europe",
           "domain":"PO",
           "spet":"wsd",
           "refs":{
             "audio":"https:\/\/voice.acdh.oeaw.ac.at\/sound\/POwsd258.mp3",
-            "TEI":"\/VOICE_CLARIAH\/speechEvent\/POwsd258.xml",
-            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/POwsd258.xml\/header"
+            "TEI":"\/VOICE_CLARIAH\/speechEvent\/POwsd258",
+            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/POwsd258\/header"
           },
           "audioAvailable":true,
           "words":14846,
@@ -33682,14 +33682,14 @@
           "relationAcquaintedness":"acquainted"
         },
         {
-          "id":"POwsd266.xml",
+          "id":"POwsd266",
           "title":"workshop discussion on the advantages and disadvantages of young people in the labor market",
           "domain":"PO",
           "spet":"wsd",
           "refs":{
             "audio":"https:\/\/voice.acdh.oeaw.ac.at\/sound\/POwsd266.mp3",
-            "TEI":"\/VOICE_CLARIAH\/speechEvent\/POwsd266.xml",
-            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/POwsd266.xml\/header"
+            "TEI":"\/VOICE_CLARIAH\/speechEvent\/POwsd266",
+            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/POwsd266\/header"
           },
           "audioAvailable":true,
           "words":11217,
@@ -33931,14 +33931,14 @@
           "relationAcquaintedness":"predominantly_unacquainted"
         },
         {
-          "id":"POwsd372.xml",
+          "id":"POwsd372",
           "title":"workshop discussion about young people's rights in the labor market",
           "domain":"PO",
           "spet":"wsd",
           "refs":{
             "audio":null,
-            "TEI":"\/VOICE_CLARIAH\/speechEvent\/POwsd372.xml",
-            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/POwsd372.xml\/header"
+            "TEI":"\/VOICE_CLARIAH\/speechEvent\/POwsd372",
+            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/POwsd372\/header"
           },
           "audioAvailable":false,
           "words":10846,
@@ -34197,14 +34197,14 @@
           "relationAcquaintedness":"acquainted"
         },
         {
-          "id":"POwsd374.xml",
+          "id":"POwsd374",
           "title":"workshop discussion about the situation of youth and employment",
           "domain":"PO",
           "spet":"wsd",
           "refs":{
             "audio":null,
-            "TEI":"\/VOICE_CLARIAH\/speechEvent\/POwsd374.xml",
-            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/POwsd374.xml\/header"
+            "TEI":"\/VOICE_CLARIAH\/speechEvent\/POwsd374",
+            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/POwsd374\/header"
           },
           "audioAvailable":false,
           "words":6552,
@@ -34415,14 +34415,14 @@
           "relationAcquaintedness":"predominantly_acquainted"
         },
         {
-          "id":"POwsd376.xml",
+          "id":"POwsd376",
           "title":"workshop discussion on the European youth pact with presentation of discussions in subgroups",
           "domain":"PO",
           "spet":"wsd",
           "refs":{
             "audio":null,
-            "TEI":"\/VOICE_CLARIAH\/speechEvent\/POwsd376.xml",
-            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/POwsd376.xml\/header"
+            "TEI":"\/VOICE_CLARIAH\/speechEvent\/POwsd376",
+            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/POwsd376\/header"
           },
           "audioAvailable":false,
           "words":3407,
@@ -34615,14 +34615,14 @@
           "relationAcquaintedness":"predominantly_acquainted"
         },
         {
-          "id":"POwsd379.xml",
+          "id":"POwsd379",
           "title":"workshop discussion about outcomes of discussions in subgroups",
           "domain":"PO",
           "spet":"wsd",
           "refs":{
             "audio":null,
-            "TEI":"\/VOICE_CLARIAH\/speechEvent\/POwsd379.xml",
-            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/POwsd379.xml\/header"
+            "TEI":"\/VOICE_CLARIAH\/speechEvent\/POwsd379",
+            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/POwsd379\/header"
           },
           "audioAvailable":false,
           "words":1331,
@@ -34781,14 +34781,14 @@
       "label":"PR",
       "speechEvents":[
         {
-          "id":"PRcon29.xml",
+          "id":"PRcon29",
           "title":"conversation at a conference reception",
           "domain":"PR",
           "spet":"con",
           "refs":{
             "audio":null,
-            "TEI":"\/VOICE_CLARIAH\/speechEvent\/PRcon29.xml",
-            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/PRcon29.xml\/header"
+            "TEI":"\/VOICE_CLARIAH\/speechEvent\/PRcon29",
+            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/PRcon29\/header"
           },
           "audioAvailable":false,
           "words":3162,
@@ -34869,14 +34869,14 @@
           "relationAcquaintedness":"predominantly_unacquainted"
         },
         {
-          "id":"PRcon531.xml",
+          "id":"PRcon531",
           "title":"conversation about solving a mathematical problem",
           "domain":"PR",
           "spet":"con",
           "refs":{
             "audio":null,
-            "TEI":"\/VOICE_CLARIAH\/speechEvent\/PRcon531.xml",
-            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/PRcon531.xml\/header"
+            "TEI":"\/VOICE_CLARIAH\/speechEvent\/PRcon531",
+            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/PRcon531\/header"
           },
           "audioAvailable":false,
           "words":680,
@@ -34941,14 +34941,14 @@
           "relationAcquaintedness":"acquainted"
         },
         {
-          "id":"PRcon534.xml",
+          "id":"PRcon534",
           "title":"conversation about the solution of functions in the Hartogs domain",
           "domain":"PR",
           "spet":"con",
           "refs":{
             "audio":null,
-            "TEI":"\/VOICE_CLARIAH\/speechEvent\/PRcon534.xml",
-            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/PRcon534.xml\/header"
+            "TEI":"\/VOICE_CLARIAH\/speechEvent\/PRcon534",
+            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/PRcon534\/header"
           },
           "audioAvailable":false,
           "words":2116,
@@ -34995,14 +34995,14 @@
           "relationAcquaintedness":"acquainted"
         },
         {
-          "id":"PRcon535.xml",
+          "id":"PRcon535",
           "title":"conversation between mathematicians during coffee break",
           "domain":"PR",
           "spet":"con",
           "refs":{
             "audio":null,
-            "TEI":"\/VOICE_CLARIAH\/speechEvent\/PRcon535.xml",
-            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/PRcon535.xml\/header"
+            "TEI":"\/VOICE_CLARIAH\/speechEvent\/PRcon535",
+            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/PRcon535\/header"
           },
           "audioAvailable":false,
           "words":2885,
@@ -35059,14 +35059,14 @@
           "relationAcquaintedness":"acquaintedness_unknown"
         },
         {
-          "id":"PRcon536.xml",
+          "id":"PRcon536",
           "title":"conversation between mathematicians about definition of strict pseudo-convexity",
           "domain":"PR",
           "spet":"con",
           "refs":{
             "audio":null,
-            "TEI":"\/VOICE_CLARIAH\/speechEvent\/PRcon536.xml",
-            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/PRcon536.xml\/header"
+            "TEI":"\/VOICE_CLARIAH\/speechEvent\/PRcon536",
+            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/PRcon536\/header"
           },
           "audioAvailable":false,
           "words":1662,
@@ -35143,14 +35143,14 @@
           "relationAcquaintedness":"predominantly_acquainted"
         },
         {
-          "id":"PRcon550.xml",
+          "id":"PRcon550",
           "title":"conversation about organizational matters and timing concerning the post of a visiting professor",
           "domain":"PR",
           "spet":"con",
           "refs":{
             "audio":null,
-            "TEI":"\/VOICE_CLARIAH\/speechEvent\/PRcon550.xml",
-            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/PRcon550.xml\/header"
+            "TEI":"\/VOICE_CLARIAH\/speechEvent\/PRcon550",
+            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/PRcon550\/header"
           },
           "audioAvailable":false,
           "words":873,
@@ -35189,14 +35189,14 @@
           "relationAcquaintedness":"acquainted"
         },
         {
-          "id":"PRcon599.xml",
+          "id":"PRcon599",
           "title":"conversation about positions at universities in different countries",
           "domain":"PR",
           "spet":"con",
           "refs":{
             "audio":null,
-            "TEI":"\/VOICE_CLARIAH\/speechEvent\/PRcon599.xml",
-            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/PRcon599.xml\/header"
+            "TEI":"\/VOICE_CLARIAH\/speechEvent\/PRcon599",
+            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/PRcon599\/header"
           },
           "audioAvailable":false,
           "words":2482,
@@ -35293,14 +35293,14 @@
           "relationAcquaintedness":"predominantly_unacquainted"
         },
         {
-          "id":"PRint30.xml",
+          "id":"PRint30",
           "title":"interview about personal research interests and famous sights in Vienna",
           "domain":"PR",
           "spet":"int",
           "refs":{
             "audio":null,
-            "TEI":"\/VOICE_CLARIAH\/speechEvent\/PRint30.xml",
-            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/PRint30.xml\/header"
+            "TEI":"\/VOICE_CLARIAH\/speechEvent\/PRint30",
+            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/PRint30\/header"
           },
           "audioAvailable":false,
           "words":1521,
@@ -35356,14 +35356,14 @@
           "relationAcquaintedness":"predominantly_unacquainted"
         },
         {
-          "id":"PRint33.xml",
+          "id":"PRint33",
           "title":"interview about the first impressions of the conference and the venue",
           "domain":"PR",
           "spet":"int",
           "refs":{
             "audio":null,
-            "TEI":"\/VOICE_CLARIAH\/speechEvent\/PRint33.xml",
-            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/PRint33.xml\/header"
+            "TEI":"\/VOICE_CLARIAH\/speechEvent\/PRint33",
+            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/PRint33\/header"
           },
           "audioAvailable":false,
           "words":506,
@@ -35402,14 +35402,14 @@
           "relationAcquaintedness":"unacquainted"
         },
         {
-          "id":"PRint595.xml",
+          "id":"PRint595",
           "title":"interview about studying in different countries",
           "domain":"PR",
           "spet":"int",
           "refs":{
             "audio":null,
-            "TEI":"\/VOICE_CLARIAH\/speechEvent\/PRint595.xml",
-            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/PRint595.xml\/header"
+            "TEI":"\/VOICE_CLARIAH\/speechEvent\/PRint595",
+            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/PRint595\/header"
           },
           "audioAvailable":false,
           "words":3069,
@@ -35500,14 +35500,14 @@
           "relationAcquaintedness":"predominantly_unacquainted"
         },
         {
-          "id":"PRint597.xml",
+          "id":"PRint597",
           "title":"interview about activities in Vienna, shopping and research",
           "domain":"PR",
           "spet":"int",
           "refs":{
             "audio":null,
-            "TEI":"\/VOICE_CLARIAH\/speechEvent\/PRint597.xml",
-            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/PRint597.xml\/header"
+            "TEI":"\/VOICE_CLARIAH\/speechEvent\/PRint597",
+            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/PRint597\/header"
           },
           "audioAvailable":false,
           "words":3474,
@@ -35574,14 +35574,14 @@
           "relationAcquaintedness":"predominantly_unacquainted"
         },
         {
-          "id":"PRint602.xml",
+          "id":"PRint602",
           "title":"interview about conference experience and impressions of city",
           "domain":"PR",
           "spet":"int",
           "refs":{
             "audio":null,
-            "TEI":"\/VOICE_CLARIAH\/speechEvent\/PRint602.xml",
-            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/PRint602.xml\/header"
+            "TEI":"\/VOICE_CLARIAH\/speechEvent\/PRint602",
+            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/PRint602\/header"
           },
           "audioAvailable":false,
           "words":252,
@@ -35620,14 +35620,14 @@
           "relationAcquaintedness":"unacquainted"
         },
         {
-          "id":"PRint603.xml",
+          "id":"PRint603",
           "title":"interview about paper at conference and impressions of city",
           "domain":"PR",
           "spet":"int",
           "refs":{
             "audio":null,
-            "TEI":"\/VOICE_CLARIAH\/speechEvent\/PRint603.xml",
-            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/PRint603.xml\/header"
+            "TEI":"\/VOICE_CLARIAH\/speechEvent\/PRint603",
+            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/PRint603\/header"
           },
           "audioAvailable":false,
           "words":352,
@@ -35666,14 +35666,14 @@
           "relationAcquaintedness":"unacquainted"
         },
         {
-          "id":"PRpan1.xml",
+          "id":"PRpan1",
           "title":"panel about the role of women in the Islamic world and the question of modernity",
           "domain":"PR",
           "spet":"pan",
           "refs":{
             "audio":"https:\/\/voice.acdh.oeaw.ac.at\/sound\/PRpan1.mp3",
-            "TEI":"\/VOICE_CLARIAH\/speechEvent\/PRpan1.xml",
-            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/PRpan1.xml\/header"
+            "TEI":"\/VOICE_CLARIAH\/speechEvent\/PRpan1",
+            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/PRpan1\/header"
           },
           "audioAvailable":true,
           "words":14834,
@@ -35890,14 +35890,14 @@
           "relationAcquaintedness":"predominantly_unacquainted"
         },
         {
-          "id":"PRpan13.xml",
+          "id":"PRpan13",
           "title":"panel discussion on the role of women and reproduction policies in different countries",
           "domain":"PR",
           "spet":"pan",
           "refs":{
             "audio":null,
-            "TEI":"\/VOICE_CLARIAH\/speechEvent\/PRpan13.xml",
-            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/PRpan13.xml\/header"
+            "TEI":"\/VOICE_CLARIAH\/speechEvent\/PRpan13",
+            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/PRpan13\/header"
           },
           "audioAvailable":false,
           "words":10963,
@@ -36115,14 +36115,14 @@
           "relationAcquaintedness":"predominantly_acquainted"
         },
         {
-          "id":"PRpan225.xml",
+          "id":"PRpan225",
           "title":"panel discussion about gender issues",
           "domain":"PR",
           "spet":"pan",
           "refs":{
             "audio":"https:\/\/voice.acdh.oeaw.ac.at\/sound\/PRpan225.mp3",
-            "TEI":"\/VOICE_CLARIAH\/speechEvent\/PRpan225.xml",
-            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/PRpan225.xml\/header"
+            "TEI":"\/VOICE_CLARIAH\/speechEvent\/PRpan225",
+            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/PRpan225\/header"
           },
           "audioAvailable":true,
           "words":6469,
@@ -36348,14 +36348,14 @@
           "relationAcquaintedness":"predominantly_acquainted"
         },
         {
-          "id":"PRpan252.xml",
+          "id":"PRpan252",
           "title":"panel on the role of teaching Turkish in Belarus",
           "domain":"PR",
           "spet":"pan",
           "refs":{
             "audio":null,
-            "TEI":"\/VOICE_CLARIAH\/speechEvent\/PRpan252.xml",
-            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/PRpan252.xml\/header"
+            "TEI":"\/VOICE_CLARIAH\/speechEvent\/PRpan252",
+            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/PRpan252\/header"
           },
           "audioAvailable":false,
           "words":3937,
@@ -36531,14 +36531,14 @@
           "relationAcquaintedness":"predominantly_acquainted"
         },
         {
-          "id":"PRpan294.xml",
+          "id":"PRpan294",
           "title":"panel on development of financial markets in Central and Eastern Europe",
           "domain":"PR",
           "spet":"pan",
           "refs":{
             "audio":null,
-            "TEI":"\/VOICE_CLARIAH\/speechEvent\/PRpan294.xml",
-            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/PRpan294.xml\/header"
+            "TEI":"\/VOICE_CLARIAH\/speechEvent\/PRpan294",
+            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/PRpan294\/header"
           },
           "audioAvailable":false,
           "words":11500,
@@ -36719,14 +36719,14 @@
           "relationAcquaintedness":"predominantly_unacquainted"
         },
         {
-          "id":"PRpan585.xml",
+          "id":"PRpan585",
           "title":"panel discussion on preventing seizures in temporal lobe epilepsy",
           "domain":"PR",
           "spet":"pan",
           "refs":{
             "audio":null,
-            "TEI":"\/VOICE_CLARIAH\/speechEvent\/PRpan585.xml",
-            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/PRpan585.xml\/header"
+            "TEI":"\/VOICE_CLARIAH\/speechEvent\/PRpan585",
+            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/PRpan585\/header"
           },
           "audioAvailable":false,
           "words":8316,
@@ -36883,14 +36883,14 @@
           "relationAcquaintedness":"acquaintedness_unknown"
         },
         {
-          "id":"PRqas18.xml",
+          "id":"PRqas18",
           "title":"question-answer session on issues involved in the organization of bi- and multilingual universities",
           "domain":"PR",
           "spet":"qas",
           "refs":{
             "audio":null,
-            "TEI":"\/VOICE_CLARIAH\/speechEvent\/PRqas18.xml",
-            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/PRqas18.xml\/header"
+            "TEI":"\/VOICE_CLARIAH\/speechEvent\/PRqas18",
+            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/PRqas18\/header"
           },
           "audioAvailable":false,
           "words":3023,
@@ -37014,14 +37014,14 @@
           "relationAcquaintedness":"acquaintedness_unknown"
         },
         {
-          "id":"PRqas19.xml",
+          "id":"PRqas19",
           "title":"question-answer session on issues of multilingualism at a Korean university",
           "domain":"PR",
           "spet":"qas",
           "refs":{
             "audio":null,
-            "TEI":"\/VOICE_CLARIAH\/speechEvent\/PRqas19.xml",
-            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/PRqas19.xml\/header"
+            "TEI":"\/VOICE_CLARIAH\/speechEvent\/PRqas19",
+            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/PRqas19\/header"
           },
           "audioAvailable":false,
           "words":1666,
@@ -37096,14 +37096,14 @@
           "relationAcquaintedness":"acquaintedness_unknown"
         },
         {
-          "id":"PRqas224.xml",
+          "id":"PRqas224",
           "title":"question-answer session on gender issues",
           "domain":"PR",
           "spet":"qas",
           "refs":{
             "audio":null,
-            "TEI":"\/VOICE_CLARIAH\/speechEvent\/PRqas224.xml",
-            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/PRqas224.xml\/header"
+            "TEI":"\/VOICE_CLARIAH\/speechEvent\/PRqas224",
+            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/PRqas224\/header"
           },
           "audioAvailable":false,
           "words":5397,
@@ -37262,14 +37262,14 @@
           "relationAcquaintedness":"acquaintedness_unknown"
         },
         {
-          "id":"PRqas407.xml",
+          "id":"PRqas407",
           "title":"question-answer session on development of stock markets in Central and Eastern European countries",
           "domain":"PR",
           "spet":"qas",
           "refs":{
             "audio":null,
-            "TEI":"\/VOICE_CLARIAH\/speechEvent\/PRqas407.xml",
-            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/PRqas407.xml\/header"
+            "TEI":"\/VOICE_CLARIAH\/speechEvent\/PRqas407",
+            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/PRqas407\/header"
           },
           "audioAvailable":false,
           "words":4548,
@@ -37388,14 +37388,14 @@
           "relationAcquaintedness":"predominantly_unacquainted"
         },
         {
-          "id":"PRqas409.xml",
+          "id":"PRqas409",
           "title":"question-answer session on Maastricht criteria and European Monetary Union",
           "domain":"PR",
           "spet":"qas",
           "refs":{
             "audio":"https:\/\/voice.acdh.oeaw.ac.at\/sound\/PRqas409.mp3",
-            "TEI":"\/VOICE_CLARIAH\/speechEvent\/PRqas409.xml",
-            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/PRqas409.xml\/header"
+            "TEI":"\/VOICE_CLARIAH\/speechEvent\/PRqas409",
+            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/PRqas409\/header"
           },
           "audioAvailable":true,
           "words":1613,
@@ -37496,14 +37496,14 @@
           "relationAcquaintedness":"predominantly_unacquainted"
         },
         {
-          "id":"PRqas495.xml",
+          "id":"PRqas495",
           "title":"question-answer session about youth issues in China",
           "domain":"PR",
           "spet":"qas",
           "refs":{
             "audio":null,
-            "TEI":"\/VOICE_CLARIAH\/speechEvent\/PRqas495.xml",
-            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/PRqas495.xml\/header"
+            "TEI":"\/VOICE_CLARIAH\/speechEvent\/PRqas495",
+            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/PRqas495\/header"
           },
           "audioAvailable":false,
           "words":4608,
@@ -37692,14 +37692,14 @@
           "relationAcquaintedness":"predominantly_unacquainted"
         },
         {
-          "id":"PRwgd537.xml",
+          "id":"PRwgd537",
           "title":"working group discussion about the development of a mathematical theorem",
           "domain":"PR",
           "spet":"wgd",
           "refs":{
             "audio":null,
-            "TEI":"\/VOICE_CLARIAH\/speechEvent\/PRwgd537.xml",
-            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/PRwgd537.xml\/header"
+            "TEI":"\/VOICE_CLARIAH\/speechEvent\/PRwgd537",
+            "teiHeader":"\/VOICE_CLARIAH\/speechEvent\/PRwgd537\/header"
           },
           "audioAvailable":false,
           "words":3030,

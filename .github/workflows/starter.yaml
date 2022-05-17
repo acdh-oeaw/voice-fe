@@ -10,6 +10,7 @@ jobs:
       registry_root: ghcr.io/acdh-oeaw/
       default_port: "5000"
       source_image: tmp-cnb-image
+      herokuish_base_image: ghcr.io/acdh-oeaw/herokuish-for-cypress/main
       APP_NAME: voice-fe
 # This together with the branch name is also used as the namespace to deploy to
       APP_ROOT: "/"
@@ -34,6 +35,7 @@ jobs:
       image_tagged: ${{ needs.setup_workflow_env.outputs.image_tagged }}
       source_image: ${{ needs.setup_workflow_env.outputs.source_image }}
       default_port: ${{ needs.setup_workflow_env.outputs.default_port }}
+      herokuish_base_image: ${{ needs.setup_workflow_env.outputs.herokuish_base_image }}
       POSTGRES_ENABLED: ${{ needs.setup_workflow_env.outputs.POSTGRES_ENABLED }}
   _3:
     needs: [setup_workflow_env, _1, _2]

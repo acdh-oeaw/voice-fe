@@ -15,7 +15,7 @@ jobs:
 # This together with the branch name is also used as the namespace to deploy to
       APP_ROOT: "/"
       SERVICE_ID: "18319"
-      PUBLIC_URL: https://laravel-todo-example.acdh-cluster.arz.oeaw.ac.at
+      PUBLIC_URL: https://github-voice-fe-test-dev.acdh-cluster.arz.oeaw.ac.at
       POSTGRES_ENABLED: "false"
     steps:
       - run: "/bin/true"      

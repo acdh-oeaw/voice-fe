@@ -6,7 +6,8 @@ jobs:
   setup_workflow_env:
     runs-on: ubuntu-latest
     environment: review/dev
-    outputs: 
+    outputs:    
+      environment: review/dev
       image_tagged: voice-fe
       registry_root: ghcr.io/acdh-oeaw/
       default_port: "5000"
@@ -52,4 +53,4 @@ jobs:
       SERVICE_ID: ${{ needs.setup_workflow_env.outputs.SERVICE_ID }}
       PUBLIC_URL: ${{ needs.setup_workflow_env.outputs.PUBLIC_URL }}
       POSTGRES_ENABLED: ${{ needs.setup_workflow_env.outputs.POSTGRES_ENABLED == 'true'}}
-      HELM_UPGRADE_EXTRA_ARGS: "${{ needs.setup_workflow_env.outputs.HELM_UPGRADE_EXTRA_ARGS }}"
+      environment: "${{ needs.setup_workflow_env.outputs.environment}}"

@@ -18,10 +18,9 @@ jobs:
       SERVICE_ID: "18319"
       PUBLIC_URL: https://github-voice-fe-test-dev.acdh-cluster.arz.oeaw.ac.at
       POSTGRES_ENABLED: "false"
-      HELM_UPGRADE_EXTRA_ARGS: "${{ secrets.HELM_UPGRADE_EXTRA_ARGS }}"
     steps:
       - run: |
-          echo HELM_UPGRADE_EXTRA_ARGS=${{ secrets.HELM_UPGRADE_EXTRA_ARGS }}
+          echo run: echo '::set-output HELM_UPGRADE_EXTRA_ARGS=${{ secrets.HELM_UPGRADE_EXTRA_ARGS }}'
   _1:
     needs: [setup_workflow_env]
     uses: acdh-oeaw/gl-autodevops-minimal-port/.github/workflows/build-cnb-and-push-to-registry.yaml@main

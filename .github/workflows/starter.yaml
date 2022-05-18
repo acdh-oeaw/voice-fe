@@ -20,7 +20,7 @@ jobs:
       POSTGRES_ENABLED: "false"
     steps:
       - run: |
-          echo run: echo '::set-output HELM_UPGRADE_EXTRA_ARGS=${{ secrets.HELM_UPGRADE_EXTRA_ARGS }}'
+          echo run: echo '::set-output name=HELM_UPGRADE_EXTRA_ARGS::${{ secrets.HELM_UPGRADE_EXTRA_ARGS }}'
   _1:
     needs: [setup_workflow_env]
     uses: acdh-oeaw/gl-autodevops-minimal-port/.github/workflows/build-cnb-and-push-to-registry.yaml@main

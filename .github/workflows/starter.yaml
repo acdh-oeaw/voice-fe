@@ -20,10 +20,12 @@ jobs:
       POSTGRES_ENABLED: "false"
       HELM_UPGRADE_EXTRA_ARGS: "${{ secrets.HELM_UPGRADE_EXTRA_ARGS }}"
     steps:
-      - run: "/bin/true"      
+      - run: |
+          echo HELM_UPGRADE_EXTRA_ARGS=${{ secrets.HELM_UPGRADE_EXTRA_ARGS }}
   _1:
     needs: [setup_workflow_env]
-    uses: acdh-oeaw/gl-autodevops-minimal-port/.github/workflows/build-cnb-and-push-to-registry.yaml@main  
+    uses: acdh-oeaw/gl-autodevops-minimal-port/.github/workflows/build-cnb-and-push-to-registry.yaml@main
+    secrets: inherit
     with:
       registry_root: ${{ needs.setup_workflow_env.outputs.registry_root }}
       image_tagged: ${{ needs.setup_workflow_env.outputs.image_tagged }}
@@ -32,6 +34,7 @@ jobs:
   _2:
     needs: [setup_workflow_env]
     uses: acdh-oeaw/gl-autodevops-minimal-port/.github/workflows/herokuish-tests-db-url.yaml@main
+    secrets: inherit
     with:
       registry_root: ${{ needs.setup_workflow_env.outputs.registry_root }}
       image_tagged: ${{ needs.setup_workflow_env.outputs.image_tagged }}
@@ -42,11 +45,7 @@ jobs:
   _3:
     needs: [setup_workflow_env, _1, _2]
     uses: acdh-oeaw/gl-autodevops-minimal-port/.github/workflows/deploy.yml@main
-    secrets:
-      ACDH_KUBE_CONFIG: ${{ secrets.ACDH_KUBE_CONFIG }}
-      POSTGRES_USER: ${{ secrets.POSTGRES_USER }}
-      POSTGRES_PASSWORD: ${{ secrets.POSTGRES_PASSWORD }}
-      POSTGRES_DB: ${{ secrets.POSTGRES_DB }}
+    secrets: inherit
     with:
       DOCKER_TAG: ${{ needs.setup_workflow_env.outputs.registry_root }}${{ needs.setup_workflow_env.outputs.image_tagged }}/${{ github.ref_name }}
       APP_NAME: ${{ needs.setup_workflow_env.outputs.APP_NAME }}

@@ -6,9 +6,9 @@ on:
 jobs:
   setup_workflow_env:
     runs-on: ubuntu-latest
-    environment: production
+    environment: review/dev
     outputs:    
-      environment: production
+      environment: review/dev
       image_tagged: voice-fe
       registry_root: ghcr.io/acdh-oeaw/
       default_port: "5000"

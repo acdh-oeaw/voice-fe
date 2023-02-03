@@ -20,7 +20,7 @@
   },
   "license": "MIT",
   "engines": {
-    "node": "16.x",
+    "node": "18.x",
     "npm": "8.19.x"
   },
   "scripts": {
@@ -52,12 +52,12 @@
     "restana": "^4.9.3",
     "sax": "^1.2.4",
     "serve-static": "^1.15.0",
-    "vue": "^2.6.14",
+    "vue": "^2.7.13",
     "vue-matomo": "^4.1.0",
     "vue-resource": "^1.5.3",
     "vue-router": "^3.5.3",
     "vue-timers": "^2.0.4",
-    "vuetify": "^2.6.4"
+    "vuetify": "^2.6.12"
   },
   "devDependencies": {
     "@babel/core": "^7.17.9",
@@ -67,14 +67,14 @@
     "@vue/cli-plugin-babel": "^5.0.4",
     "@vue/cli-plugin-e2e-cypress": "^5.0.4",
     "@vue/cli-plugin-eslint": "^5.0.4",
-    "@vue/cli-plugin-unit-jest": "^5.0.4",
+    "@vue/cli-plugin-unit-jest": "^5.0.8",
     "@vue/cli-service": "^5.0.4",
     "@vue/test-utils": "^1.3.0",
-    "@vue/vue2-jest": "^27.0.0-alpha.4",
+    "@vue/vue2-jest": "^27.0.0",
     "babel-core": "^7.0.0-bridge.0",
     "babel-jest": "^27.5.1",
     "buffer": "^6.0.3",
-    "cypress": "^9.5.3",
+    "cypress": "^10.10.0",
     "eslint": "^8.12.0",
     "eslint-plugin-vue": "^8.6.0",
     "git-revision-webpack-plugin": "^5.0.0",
@@ -83,13 +83,15 @@
     "sass": "^1.50.0",
     "sass-loader": "^12.6.0",
     "vue-cli-plugin-vuetify": "^2.4.8",
-    "vue-jest": "^3.0.7",
     "vue-template-compiler": "^2.6.14",
     "vuetify-loader": "^1.7.3"
   },
   "overrides": {
     "portfinder": {
       "async": "^3.2.2"
+    },
+    "@babel/runtime-corejs2": {
+      "core-js": "^3.21.1"
     }
   },
   "jest": {
@@ -99,7 +101,7 @@
       "vue"
     ],
     "transform": {
-      ".*\\.(vue)$": "vue-jest",
+      ".*\\.(vue)$": "@vue/vue2-jest",
       ".*\\.(js)$": "babel-jest"
     },
     "testMatch": [

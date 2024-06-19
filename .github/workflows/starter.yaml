@@ -56,7 +56,6 @@ jobs:
       environment: ${{ needs.setup_workflow_env.outputs.environment}}
       registry_root: ${{ needs.setup_workflow_env.outputs.registry_root }}
       image_name: ${{ needs.setup_workflow_env.outputs.image_name }}
-      source_image: ${{ needs.setup_workflow_env.outputs.source_image }}
       default_port: ${{ needs.setup_workflow_env.outputs.default_port }}
       herokuish_base_image: ${{ needs.setup_workflow_env.outputs.herokuish_base_image }}
       POSTGRES_ENABLED: ${{ needs.setup_workflow_env.outputs.POSTGRES_ENABLED }}

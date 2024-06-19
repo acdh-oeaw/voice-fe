@@ -36,6 +36,10 @@
               <v-list-item-icon class="mr-4"><v-icon>mdi-file-pdf-box</v-icon></v-list-item-icon>
               <v-list-item-title>Search Manual</v-list-item-title>
             </v-list-item>
+            <v-list-item href="https://howto.acdh.oeaw.ac.at/de/resources/voice-3-0-tutorial" target="_blank">
+              <v-list-item-icon class="mr-4"><v-icon>mdi-open-in-new</v-icon></v-list-item-icon>
+              <v-list-item-title>Tutorial for VOICE 3.0</v-list-item-title>
+            </v-list-item>           
             <v-list-item href="https://voice.acdh.oeaw.ac.at/wp-content/uploads/2021/04/VOICE-mark-up-conventions.pdf" target="_blank">
               <v-list-item-icon class="mr-4"><v-icon>mdi-file-pdf-box</v-icon></v-list-item-icon>
               <v-list-item-title>Mark-Up Conventions</v-list-item-title>

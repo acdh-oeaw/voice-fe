@@ -18,7 +18,7 @@
       :disabled="!mainData.search.value || mainData.search.value.length < 2"
       >Search</v-btn
     >
-    <v-btn href="https://voice.acdh.oeaw.ac.at/wp-content/uploads/2021/09/Search-manual-VOICE-3.0-Online.pdf" target="_blank" class="ml-2" small><v-icon class="mr-2" small>mdi-book-open-variant</v-icon> search manual</v-btn>
+    <v-btn href="https://voice.acdh.oeaw.ac.at/assets/content/en/pages/search-manual/Search-manual-VOICE-3.0-Online.pdf" target="_blank" class="ml-2" small><v-icon class="mr-2" small>mdi-book-open-variant</v-icon> search manual</v-btn>
     <v-tooltip top max-width="400">
       <template v-slot:activator="{ on, attrs }"><v-icon v-bind="attrs" v-on="on" class="ml-2">mdi-information-outline</v-icon></template>
       <div class="py-1">

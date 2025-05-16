@@ -1,6 +1,6 @@
 {
   "name": "voice-fe",
-  "version": "1.1.4",
+  "version": "1.1.5",
   "private": true,
   "author": {
     "name": "Hans Christian Breuer",
@@ -20,8 +20,8 @@
   },
   "license": "MIT",
   "engines": {
-    "node": "20.x",
-    "npm": "9.8.x"
+    "node": "22.x",
+    "npm": "10.9.x"
   },
   "scripts": {
     "serve": "vue-cli-service serve",

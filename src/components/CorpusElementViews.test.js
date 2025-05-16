@@ -70,6 +70,20 @@ test('render a view <u><w>test</w></u>', async () => {
     expect(line).toContainHTML('<span class="tag-w">test</span>')
 })
 
+test('render a view w tagged with two alternative ana', async () => {
+    const { getByTestId /*, debug*/ } = renderUtterance(`<u>
+    <w xml:id="xTok_EDcon250_001165" 
+       ana="#PPfPP #PPfDM"
+       lemma="you">you</w>
+    <w xml:id="xTok_EDcon250_001167"
+       ana="#VVPfVVP #VVPfDM"
+       lemma="know">know</w></u>`, 'pos')
+    // debug()
+    const line = getByTestId('lineContent')
+    await fireEvent.focus(line) // only after some event the rendered TEI appears
+    expect(line).toContainHTML("<span class=\"tag-w\" title=\"Lemma: you\">you<span class=\"fx-ana\"><span class=\"fx-ana-s\">_</span><span class=\"fx-ana-form\">PP</span><span class=\"fx-ana-f fx-ana-f-s\">(PP)</span></span><span class=\"fx-ana\"><span class=\"fx-ana-s\">_</span><span class=\"fx-ana-form\">PP</span><span class=\"fx-ana-f\">(DM)</span></span></span> <span class=\"tag-w\" title=\"Lemma: know\">know<span class=\"fx-ana\"><span class=\"fx-ana-s\">_</span><span class=\"fx-ana-form\">VVP</span><span class=\"fx-ana-f fx-ana-f-s\">(VVP)</span></span><span class=\"fx-ana\"><span class=\"fx-ana-s\">_</span><span class=\"fx-ana-form\">VVP</span><span class=\"fx-ana-f\">(DM)</span></span></span> ")
+})
+
 test('render a view <u><w part="I">te</w><emph><w part="F">st</w></emph><w>next</w></u>', async () => {
     const { getByTestId /*, debug*/ } = renderUtterance('<u><w part="I">te</w><emph><w part="F">st</w></emph><w>next</w></u>')
     // debug()

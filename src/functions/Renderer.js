@@ -395,10 +395,12 @@ function renderingUtteranceAfter(uObj, xmlObj, type, isSearch, xmlIdCache, fxCac
     let pTxt = ''
     // ana
     if (uObj.attributes && uObj.attributes['ana']) {
-      let ana = uObj.attributes['ana'].replace(/#/g, '').split('f')
+      for (let ana of uObj.attributes['ana'].replace(/#/g, '').split(/ +/)) {
+      ana = ana.split('f')
       if (ana[0]) {
         pTxt += '<span class="fx-ana"><span class="fx-ana-s">_</span><span class="fx-ana-form">' + ana[0] + '</span>' + (ana[1] ? '<span class="fx-ana-f' + (ana[0] === ana[1] ? ' fx-ana-f-s' : '') + '">(' + ana[1] + ')</span>' : '') + '</span>'
       }
+    }
     }
     // pause
     // if (uObj.tag === 'pause') {

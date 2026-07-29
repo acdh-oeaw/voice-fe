@@ -1,6 +1,6 @@
 context('toolUI', () => {
     beforeEach(() => {
-        const port = Cypress.env('PORT') || '8080'
+        const port = Cypress.expose('PORT') || '8080'
         cy.visit('http://localhost:' + port + '/#/tool')
         cy.viewport(1000, 800)
         cy.wait(300)

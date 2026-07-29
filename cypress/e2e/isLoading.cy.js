@@ -1,6 +1,6 @@
 context('isLoading', () => {
     beforeEach(() => {
-      const port = Cypress.env('PORT')||'8080'
+      const port = Cypress.expose('PORT')||'8080'
       cy.visit('http://localhost:' + port)
       cy.viewport(1000, 800)
     })
